@@ -3,6 +3,7 @@ package org.jeecg.modules.student.dto;
 import lombok.Data;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @Description: 学生信息传输对象 (Data Transfer Object)
@@ -24,7 +25,22 @@ public class StudentDTO implements Serializable {
 
     @Schema(description = "姓名")
     private String name;
-    
+
+    @Schema(description = "性别")
+    private Integer sex;
+
+    @Schema(description = "出生日期")
+    private Date birthday;
+
+    @Schema(description = "专业")
+    private String major;
+
     @Schema(description = "班级")
     private String className;
+
+    @Schema(description = "年级")
+    private String year;
+
+    @Schema(description = "手机号")
+    private String phone;
 }
