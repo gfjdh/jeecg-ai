@@ -23,9 +23,6 @@ export const columns: BasicColumn[] = [
     title: '出生日期',
     dataIndex: 'birthday',
     width: 150,
-    customRender: ({ text }) => {
-      return !text ? "" : (text.length > 10 ? text.substr(0, 10) : text);
-    },
   },
   {
     title: '专业',

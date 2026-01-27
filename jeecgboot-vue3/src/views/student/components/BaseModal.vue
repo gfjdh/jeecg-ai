@@ -4,55 +4,50 @@
   </BasicModal>
 </template>
 <script lang="ts" setup>
-  import { ref, computed, unref } from 'vue';
+  import { ref, computed, unref, PropType } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
-  import { BasicForm, useForm } from '/@/components/Form/index';
-  import { formSchema } from './student.data';
-  import { saveOrUpdateStudent, getStudentById } from '/@/api/student/student.api';
+  import { BasicForm, useForm, FormSchema } from '/@/components/Form/index';
   
-  // 声明Emits
   const emit = defineEmits(['success', 'register']);
+  
+  const props = defineProps({
+    titlePrefix: { type: String, required: true },
+    formSchema: { type: Array as PropType<FormSchema[]>, required: true },
+    saveApi: { type: Function, required: true },
+    getDetailApi: { type: Function, required: true },
+  });
+
   const isUpdate = ref(true);
   
-  //表单配置
   const [registerForm, { resetFields, setFieldsValue, validate }] = useForm({
     labelWidth: 100,
-    schemas: formSchema,
+    schemas: props.formSchema,
     showActionButtonGroup: false,
     actionColOptions: {
       span: 24,
     },
   });
   
-  //表单赋值
   const [registerModal, { setModalProps, closeModal }] = useModalInner(async (data) => {
-    //重置表单
     await resetFields();
     setModalProps({ confirmLoading: false });
     isUpdate.value = !!data?.isUpdate;
     if (unref(isUpdate)) {
-      //获取详情
-      let record = await getStudentById({ id: data.record.id });
-      //表单赋值
+      let record = await props.getDetailApi({ id: data.record.id });
       await setFieldsValue({
         ...record,
       });
     }
   });
   
-  //设置标题
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增学生信息' : '编辑学生信息'));
+  const getTitle = computed(() => (!unref(isUpdate) ? `新增${props.titlePrefix}` : `编辑${props.titlePrefix}`));
   
-  //表单提交事件
   async function handleSubmit() {
     try {
       const values = await validate();
       setModalProps({ confirmLoading: true });
-      //提交表单
-      await saveOrUpdateStudent(values, isUpdate.value);
-      //关闭弹窗
+      await props.saveApi(values, isUpdate.value);
       closeModal();
-      //刷新列表
       emit('success');
     } finally {
       setModalProps({ confirmLoading: false });

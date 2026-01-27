@@ -1,0 +1,20 @@
+{
+  "properties": [
+    {
+      "name": "justauth.type.GITHUB",
+      "type": "java.lang.Object"
+    },
+    {
+      "name": "justauth.type.WECHAT_ENTERPRISE",
+      "type": "java.lang.Object"
+    },
+    {
+      "name": "justauth.type.DINGTALK",
+      "type": "java.lang.Object"
+    },
+    {
+      "name": "justauth.type.WECHAT_OPEN",
+      "type": "java.lang.Object"
+    }
+  ]
+}
