@@ -1,5 +1,6 @@
 import { BasicColumn, FormSchema } from '/@/components/Table';
 
+// 列配置
 export const columns: BasicColumn[] = [
   {
     title: '学号',
@@ -15,11 +16,8 @@ export const columns: BasicColumn[] = [
   },
   {
     title: '性别',
-    dataIndex: 'sex',
+    dataIndex: 'sex_dictText',
     width: 80,
-    customRender: ({ text }) => {
-      return text === 1 ? '男' : (text === 2 ? '女' : '未知');
-    },
   },
   {
     title: '出生日期',
@@ -31,7 +29,7 @@ export const columns: BasicColumn[] = [
   },
   {
     title: '专业',
-    dataIndex: 'major',
+    dataIndex: 'major_dictText',
     width: 150,
   },
   {
@@ -51,6 +49,7 @@ export const columns: BasicColumn[] = [
   },
 ];
 
+// 查询表单配置
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
@@ -64,8 +63,57 @@ export const searchFormSchema: FormSchema[] = [
     component: 'Input',
     colProps: { span: 6 },
   },
+  {
+    field: 'sex',
+    label: '性别',
+    component: 'JDictSelectTag',
+    componentProps: {
+      dictCode: 'sex',
+      stringToNumber: true,
+      placeholder: '请选择性别',
+    },
+    colProps: { span: 6 },
+  },
+  {
+    field: 'birthday',
+    label: '出生日期',
+    component: 'DatePicker',
+    componentProps: {
+      valueFormat: 'YYYY-MM-DD'
+    },
+    colProps: { span: 6 },
+  },
+  {
+    field: 'major',
+    label: '专业',
+    component: 'JDictSelectTag',
+    componentProps: {
+      dictCode: 'major',
+      placeholder: '请选择专业',
+    },
+    colProps: { span: 6 },
+  },
+  {
+    field: 'className',
+    label: '班级',
+    component: 'Input',
+    colProps: { span: 6 },
+  },
+  {
+    field: 'year',
+    label: '年级',
+    component: 'Input',
+    colProps: { span: 6 },
+  },
+  {
+    field: 'phone',
+    label: '手机号',
+    component: 'Input',
+    colProps: { span: 6 },
+  },
 ];
 
+// 表单配置
 export const formSchema: FormSchema[] = [
   {
     label: '主键',
@@ -88,12 +136,11 @@ export const formSchema: FormSchema[] = [
   {
     field: 'sex',
     label: '性别',
-    component: 'Select',
+    component: 'JDictSelectTag',
     componentProps: {
-      options: [
-        { label: '男', value: 1 },
-        { label: '女', value: 2 },
-      ],
+      dictCode: 'sex',
+      stringToNumber: true,
+      placeholder: '请选择性别',
     },
   },
   {
@@ -107,7 +154,11 @@ export const formSchema: FormSchema[] = [
   {
     field: 'major',
     label: '专业',
-    component: 'Input',
+    component: 'JDictSelectTag',
+    componentProps: {
+      dictCode: 'major',
+      placeholder: '请选择专业',
+    },
   },
   {
     field: 'className',

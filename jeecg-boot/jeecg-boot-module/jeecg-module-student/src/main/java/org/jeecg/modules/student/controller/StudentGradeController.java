@@ -1,9 +1,9 @@
 package org.jeecg.modules.student.controller;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.modules.student.entity.StudentGrade;
@@ -17,10 +17,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.system.base.controller.JeecgController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.jeecg.common.aspect.annotation.AutoLog;
 import org.jeecg.common.constant.CommonConstant;
+
 
 /**
  * @Description: 学生成绩管理
@@ -140,5 +143,29 @@ public class StudentGradeController extends JeecgController<StudentGrade, IStude
             return Result.error("未找到对应数据");
         }
         return Result.ok(studentGrade);
+    }
+
+    
+    /**
+     * 导出excel
+     *
+     * @param request
+     * @param student
+     */
+    @RequestMapping(value = "/exportXls")
+    public ModelAndView exportXls(HttpServletRequest request, StudentGrade studentGrade) {
+        return super.exportXls(request, studentGrade, StudentGrade.class, "学生成绩");
+    }
+
+    /**
+     * 通过excel导入数据
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @PostMapping(value = "/importExcel")
+    public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
+        return super.importExcel(request, response, StudentGrade.class);
     }
 }

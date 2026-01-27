@@ -8,7 +8,20 @@ enum Api {
   get = '/student/queryById',
   delete = '/student/delete',
   deleteBatch = '/student/deleteBatch',
+  exportXls = '/student/exportXls',
+  importExcel = '/student/importExcel',
 }
+
+/**
+ * 导出api
+ * @param params
+ */
+export const getExportUrl = Api.exportXls;
+
+/**
+ * 导入api
+ */
+export const getImportUrl = Api.importExcel;
 
 /**
  * 查询列表

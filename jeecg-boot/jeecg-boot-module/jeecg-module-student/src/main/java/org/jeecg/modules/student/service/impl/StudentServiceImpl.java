@@ -74,6 +74,11 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
 
     @Override
     public void deleteBatch(String ids) {
-        this.removeByIds(Arrays.asList(ids.split(",")));
+        super.removeByIds(Arrays.asList(ids.split(",")));
+    }
+
+    @Override
+    public void saveBatch(java.util.List<Student> studentList) {
+        super.saveBatch(studentList);
     }
 }

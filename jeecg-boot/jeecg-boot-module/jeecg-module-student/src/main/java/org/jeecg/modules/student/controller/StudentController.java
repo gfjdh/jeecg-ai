@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.servlet.ModelAndView;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * @Description: 学生信息管理 Controller
@@ -127,6 +129,28 @@ public class StudentController extends JeecgController<Student, IStudentService>
             return Result.error("未找到对应数据");
         }
         return Result.ok(student);
+    }
 
+    /**
+     * 导出excel
+     *
+     * @param request
+     * @param student
+     */
+    @RequestMapping(value = "/exportXls")
+    public ModelAndView exportXls(HttpServletRequest request, Student student) {
+        return super.exportXls(request, student, Student.class, "学生信息");
+    }
+
+    /**
+     * 通过excel导入数据
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @PostMapping(value = "/importExcel")
+    public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
+        return super.importExcel(request, response, Student.class);
     }
 }
