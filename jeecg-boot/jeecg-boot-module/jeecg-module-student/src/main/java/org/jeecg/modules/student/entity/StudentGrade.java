@@ -6,6 +6,8 @@ import org.jeecgframework.poi.excel.annotation.Excel;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import org.jeecg.common.aspect.annotation.Dict;
 import org.jeecg.common.system.base.entity.JeecgEntity;
 
 /**
@@ -30,6 +32,7 @@ public class StudentGrade extends JeecgEntity {
 	/**课程*/
 	@Excel(name = "课程", width = 15)
     @Schema(description = "课程")
+    @Dict(dicCode = "course")
     private java.lang.String course;
 
 	/**成绩*/

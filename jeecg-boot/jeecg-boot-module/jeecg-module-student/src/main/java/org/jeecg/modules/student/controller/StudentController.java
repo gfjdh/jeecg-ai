@@ -8,6 +8,7 @@ import org.jeecg.common.system.base.controller.JeecgController;
 import org.jeecg.modules.student.entity.Student;
 import org.jeecg.modules.student.service.IStudentService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -129,6 +130,18 @@ public class StudentController extends JeecgController<Student, IStudentService>
             return Result.error("未找到对应数据");
         }
         return Result.ok(student);
+    }
+
+    /**
+     * 根据学号检查学生是否存在
+     * @param studentNo
+     * @return
+     */
+    @Operation(summary = "学生信息-根据学号检查是否存在")
+    @GetMapping(value = "/checkByStudentNo")
+    public Result<Boolean> checkByStudentNo(@RequestParam(name="studentNo", required=true) String studentNo) {
+        long count = studentService.count(new LambdaQueryWrapper<Student>().eq(Student::getStudentNo, studentNo));
+        return Result.ok(count > 0);
     }
 
     /**

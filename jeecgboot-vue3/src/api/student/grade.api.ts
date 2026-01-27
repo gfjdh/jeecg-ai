@@ -2,15 +2,14 @@ import { defHttp } from '/@/utils/http/axios';
 import { Modal } from 'ant-design-vue';
 
 enum Api {
-  list = '/student/list',
-  save = '/student/add',
-  edit = '/student/edit',
-  get = '/student/queryById',
-  delete = '/student/delete',
-  deleteBatch = '/student/deleteBatch',
-  exportXls = '/student/exportXls',
-  importExcel = '/student/importExcel',
-  checkByStudentNo = '/student/checkByStudentNo',
+  list = '/student/grade/list',
+  save = '/student/grade/add',
+  edit = '/student/grade/edit',
+  get = '/student/grade/queryById',
+  delete = '/student/grade/delete',
+  deleteBatch = '/student/grade/deleteBatch',
+  exportXls = '/student/grade/exportXls',
+  importExcel = '/student/grade/importExcel',
 }
 
 /**
@@ -28,7 +27,7 @@ export const getImportUrl = Api.importExcel;
  * 查询列表
  * @param params
  */
-export const getStudentList = (params) => {
+export const getStudentGradeList = (params) => {
   return defHttp.get({ url: Api.list, params });
 };
 
@@ -36,7 +35,7 @@ export const getStudentList = (params) => {
  * 保存或者更新
  * @param params
  */
-export const saveOrUpdateStudent = (params, isUpdate) => {
+export const saveOrUpdateStudentGrade = (params, isUpdate) => {
   let url = isUpdate ? Api.edit : Api.save;
   return defHttp.post({ url: url, params });
 };
@@ -45,7 +44,7 @@ export const saveOrUpdateStudent = (params, isUpdate) => {
  * 查询详情
  * @param params
  */
-export const getStudentById = (params) => {
+export const getStudentGradeById = (params) => {
   return defHttp.get({ url: Api.get, params });
 };
 
@@ -53,7 +52,7 @@ export const getStudentById = (params) => {
  * 单条删除
  * @param params
  */
-export const deleteStudent = (params, handleSuccess) => {
+export const deleteStudentGrade = (params, handleSuccess) => {
   return defHttp.delete({ url: Api.delete, params }, { joinParamsToUrl: true }).then(() => {
     handleSuccess();
   });
@@ -63,7 +62,7 @@ export const deleteStudent = (params, handleSuccess) => {
  * 批量删除
  * @param params
  */
-export const batchDeleteStudent = (params, handleSuccess) => {
+export const batchDeleteStudentGrade = (params, handleSuccess) => {
   Modal.confirm({
     title: '确认删除',
     content: '是否删除选中数据',
@@ -75,12 +74,4 @@ export const batchDeleteStudent = (params, handleSuccess) => {
       });
     },
   });
-};
-
-/**
- * 根据学号校验是否存在
- * @param params
- */
-export const checkStudentExist = (params) => {
-  return defHttp.get({ url: Api.checkByStudentNo, params }, { isTransformResponse: true });
 };
