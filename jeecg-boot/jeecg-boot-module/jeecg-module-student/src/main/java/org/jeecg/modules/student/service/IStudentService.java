@@ -30,4 +30,10 @@ public interface IStudentService extends IService<Student> {
      * @param ids
      */
     void deleteBatch(String ids);
+
+    /**
+     * 批量添加
+     * @param studentList
+     */
+    void saveBatch(java.util.List<Student> studentList);
 }

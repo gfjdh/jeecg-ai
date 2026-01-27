@@ -64,6 +64,19 @@ public class StudentController extends JeecgController<Student, IStudentService>
     }
 
     /**
+     * 批量添加
+     * @param students
+     * @return
+     */
+    @AutoLog(value = "学生信息-批量添加", operateType = CommonConstant.OPERATE_TYPE_2)
+    @Operation(summary = "学生信息-批量添加")
+    @PostMapping(value = "/addBatch")
+    public Result<String> addBatch(@RequestBody java.util.List<Student> students) {
+        studentService.saveBatch(students);
+        return Result.ok("批量添加成功！");
+    }
+
+    /**
      * 编辑学生信息
      * @param student
      * @return

@@ -8,13 +8,10 @@
 
 ## 2. 日志管理
 - **@AutoLog**: 在 `StudentController` 的增删改方法上补充了 `@AutoLog` 注解，开启了系统操作日志的自动记录功能。
-    - **添加操作**: `@AutoLog(value = "学生信息-添加", operateType = CommonConstant.OPERATE_TYPE_2)`
-    - **编辑操作**: `@AutoLog(value = "学生信息-编辑", operateType = CommonConstant.OPERATE_TYPE_3)`
-    - **删除操作**: `@AutoLog(value = "学生信息-通过id删除", operateType = CommonConstant.OPERATE_TYPE_4)`
 
 ## 3. 安全与隐私
 - **@SensitiveField**: 在 `Student` 实体的 `phone` 字段上添加了 `@SensitiveField(type = SensitiveEnum.MOBILE_PHONE)` 注解。
-    - 实现了手机号在传输给前端时的自动脱敏处理，增强了用户隐私保护。
+    - 实现了手机号在批量传输给前端时的自动脱敏处理。
 
 ## 4. 工具与注解
 - **Swagger/OpenAPI**: 使用 `@Tag` 和 `@Operation` 注解生成标准 API 文档。
