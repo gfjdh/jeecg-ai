@@ -5,13 +5,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.modules.student.entity.StudentGrade;
 import org.jeecg.modules.student.service.IStudentGradeService;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 
 import org.jeecg.common.system.base.controller.JeecgController;
@@ -55,9 +52,7 @@ public class StudentGradeController extends JeecgController<StudentGrade, IStude
                                    @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
                                    @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
                                    HttpServletRequest req) {
-        QueryWrapper<StudentGrade> queryWrapper = QueryGenerator.initQueryWrapper(studentGrade, req.getParameterMap());
-        Page<StudentGrade> page = new Page<StudentGrade>(pageNo, pageSize);
-        IPage<StudentGrade> pageList = studentGradeService.page(page, queryWrapper);
+        IPage<StudentGrade> pageList = studentGradeService.queryPageList(studentGrade, pageNo, pageSize, req.getParameterMap());
         return Result.ok(pageList);
     }
     

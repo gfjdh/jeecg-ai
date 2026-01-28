@@ -84,3 +84,18 @@ export const batchDeleteStudent = (params, handleSuccess) => {
 export const checkStudentExist = (params) => {
   return defHttp.get({ url: Api.checkByStudentNo, params }, { isTransformResponse: true });
 };
+
+/**
+ * 获取年级列表
+ */
+export const getYearList = () => {
+  return defHttp.get({ url: '/sys/dict/getDictItems/student_info,year,year' });
+};
+
+/**
+ * 根据年级获取班级
+ * @param year
+ */
+export const getClassListByYear = (year) => {
+  return defHttp.get({ url: `/sys/dict/getDictItems/student_info,class_name,class_name,year='${year}'` });
+};

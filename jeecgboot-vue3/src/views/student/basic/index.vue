@@ -13,7 +13,10 @@
     :modalFormSchema="formSchema"
     :modalSaveApi="saveOrUpdateStudent"
     :modalGetDetailApi="getStudentById"
+    :hasDetail="true"
+    @viewDetail="handleViewDetail"
   />
+  <StudentDetailDrawer @register="registerDrawer" />
 </template>
 <script lang="ts" name="student-basic" setup>
   import { getStudentList, 
@@ -25,4 +28,12 @@
            getStudentById } from '/@/api/student/student.api';
   import { columns, searchFormSchema, formSchema } from './student.data';
   import BaseList from '../components/BaseList.vue';
+  import StudentDetailDrawer from './StudentDetailDrawer.vue';
+  import { useDrawer } from '/@/components/Drawer';
+
+  const [registerDrawer, { openDrawer }] = useDrawer();
+
+  function handleViewDetail(record: any) {
+    openDrawer(true, record);
+  }
 </script>

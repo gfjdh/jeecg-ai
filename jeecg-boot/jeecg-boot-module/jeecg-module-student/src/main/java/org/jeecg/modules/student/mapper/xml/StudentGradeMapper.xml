@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.student.mapper.StudentGradeMapper">
+
+    <select id="queryStudentGradePage" resultType="org.jeecg.modules.student.entity.StudentGrade">
+        SELECT 
+            g.*,
+            s.name as studentName,
+            s.class_name as className,
+            s.year
+        FROM 
+            student_grade g
+        LEFT JOIN 
+            student_info s 
+        ON 
+            g.student_no = s.student_no
+        ${ew.customSqlSegment}
+    </select>
+</mapper>

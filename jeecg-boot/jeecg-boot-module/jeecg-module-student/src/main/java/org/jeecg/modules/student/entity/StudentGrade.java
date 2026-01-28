@@ -1,5 +1,6 @@
 package org.jeecg.modules.student.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.jeecgframework.poi.excel.annotation.Excel;
@@ -29,6 +30,10 @@ public class StudentGrade extends JeecgEntity {
     @Schema(description = "学号")
     private java.lang.String studentNo;
 
+    /**学生姓名*/
+    @TableField(exist = false)
+    private java.lang.String studentName;
+
 	/**课程*/
 	@Excel(name = "课程", width = 15)
     @Schema(description = "课程")
@@ -39,4 +44,16 @@ public class StudentGrade extends JeecgEntity {
 	@Excel(name = "成绩", width = 15)
     @Schema(description = "成绩")
     private java.lang.Double score;
+
+    /**班级*/
+    @Excel(name = "班级", width = 15)
+    @Schema(description = "班级")
+    @TableField(exist = false)
+    private java.lang.String className;
+
+    /**年级*/
+    @Excel(name = "年级", width = 15)
+    @Schema(description = "年级")
+    @TableField(exist = false)
+    private java.lang.String year;
 }

@@ -2,6 +2,7 @@
   <div>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
+        <slot name="toolbar"></slot>
         <Button type="primary" preIcon="ant-design:plus-outlined" @click="handleAdd">新增</Button>
         <Button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</Button>
         <a-upload name="file" :showUploadList="false" :customRequest="(file) => onImportXls(file)">
@@ -55,6 +56,8 @@
   import { FormSchema } from '/@/components/Form/index';
   import BaseModal from './BaseModal.vue';
 
+  const emit = defineEmits(['viewDetail']);
+
   const props = defineProps({
     // 列表配置
     tableTitle: { type: String, required: true },
@@ -76,6 +79,7 @@
     modalFormSchema: { type: Array as PropType<FormSchema[]>, required: true },
     modalSaveApi: { type: Function, required: true },
     modalGetDetailApi: { type: Function, required: true },
+    hasDetail: { type: Boolean, default: false },
   });
 
   const [ registerModal, { openModal }] = useModal();
@@ -106,7 +110,7 @@
   const [registerTable, { reload }, { rowSelection, selectedRowKeys }] = tableContext;
 
   function getActions(record) {
-    return [
+    const actions = [
       {
         label: '编辑',
         onClick: handleEdit.bind(null, record),
@@ -119,6 +123,17 @@
         },
       },
     ];
+    if (props.hasDetail) {
+      actions.unshift({
+        label: '详情',
+        onClick: handleDetail.bind(null, record),
+      });
+    }
+    return actions;
+  }
+
+  function handleDetail(record) {
+    emit('viewDetail', record);
   }
 
   function handleAdd() {
@@ -149,4 +164,6 @@
   function batchHandleDelete() {
     props.batchDeleteApi({ ids: selectedRowKeys.value.join(',') }, reload);
   }
+
+  defineExpose({ reload });
 </script>

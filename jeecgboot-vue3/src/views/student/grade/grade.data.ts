@@ -10,6 +10,24 @@ export const columns: BasicColumn[] = [
     align: 'left',
   },
   {
+    title: '学生姓名',
+    dataIndex: 'studentName',
+    width: 120,
+    align: 'left',
+  },
+  {
+    title: '班级',
+    dataIndex: 'className',
+    width: 120,
+    align: 'left',
+  },
+  {
+    title: '年级',
+    dataIndex: 'year',
+    width: 120,
+    align: 'left',
+  },
+  {
     title: '课程',
     dataIndex: 'course_dictText',
     width: 120,
@@ -41,6 +59,18 @@ export const searchFormSchema: FormSchema[] = [
     },
     colProps: { span: 6 },
   },
+  {
+    field: 'year',
+    label: '年级',
+    component: 'Input',
+    colProps: { span: 6 },
+  },
+  {
+    field: 'className',
+    label: '班级',
+    component: 'Input',
+    colProps: { span: 6 },
+  }
 ];
 
 // 表单配置

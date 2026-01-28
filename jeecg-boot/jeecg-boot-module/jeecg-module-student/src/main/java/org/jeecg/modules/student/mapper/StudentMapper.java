@@ -15,5 +15,4 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface StudentMapper extends BaseMapper<Student> {
     // 如果需要自定义复杂的 SQL 查询，可以在这里定义方法，并在 XML 中实现
-    // 或者使用注解 @Select, @Update 等
 }
