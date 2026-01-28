@@ -1,0 +1,56 @@
+version: '2'
+services:
+  jeecg-boot-mysql:
+    image: crpi-o08rhi2pxibxdenj.cn-beijing.personal.cr.aliyuncs.com/jeecg-gfjdh/jeecg-mysql:latest  # <--- 修改这里
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+      TZ: Asia/Shanghai
+    restart: always
+    container_name: jeecg-boot-mysql
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+      --max_allowed_packet=128M
+      --default-authentication-plugin=caching_sha2_password
+    networks:
+      - jeecg-boot
+
+  jeecg-boot-redis:
+    image: registry.cn-hangzhou.aliyuncs.com/jeecgdocker/redis:5.0
+    restart: always
+    hostname: jeecg-boot-redis
+    container_name: jeecg-boot-redis
+    networks:
+      - jeecg-boot
+
+  # Jeecg Boot 系统服务
+  jeecg-boot-system:
+    image: crpi-o08rhi2pxibxdenj.cn-beijing.personal.cr.aliyuncs.com/jeecg-gfjdh/jeecg-system:latest  # <--- 修改这里
+    restart: on-failure
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - jeecg-boot-mysql
+      - jeecg-boot-redis
+    container_name: jeecg-boot-system
+    hostname: jeecg-boot-system
+    networks:
+      - jeecg-boot
+
+  # Vue 前端
+  jeecg-vue:
+    image: crpi-o08rhi2pxibxdenj.cn-beijing.personal.cr.aliyuncs.com/jeecg-gfjdh/jeecg-vue:latest  # <--- 修改这里
+    container_name: jeecgboot-vue3-nginx
+    depends_on:
+      - jeecg-boot-system
+    networks:
+      - jeecg-boot
+    ports:
+      - 80:80
+
+networks:
+  jeecg-boot:
+    name: jeecg_boot

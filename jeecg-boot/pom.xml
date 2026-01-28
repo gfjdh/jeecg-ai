@@ -28,6 +28,8 @@
 	</parent>
 
 	<properties>
+		<assertj.version>3.27.7</assertj.version>
+		<spring-framework.version>6.2.12</spring-framework.version>
 		<jeecgboot.version>3.9.0</jeecgboot.version>
 		<!-- JDK版本支持17、21、24 -->
 		<java.version>17</java.version>

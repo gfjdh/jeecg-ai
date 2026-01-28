@@ -9051,3 +9051,5134 @@ END
 delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- --------------------------------------------------------
+-- 主机:                           127.0.0.1
+-- 服务器版本:                        9.6.0 - MySQL Community Server - GPL
+-- 服务器操作系统:                      Win64
+-- HeidiSQL 版本:                  12.14.0.7165
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+-- 导出  表 jeecgai.student_grade 结构
+CREATE TABLE IF NOT EXISTS `student_grade` (
+  `id` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '主键',
+  `create_by` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `student_no` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '学号',
+  `course` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '课程',
+  `score` double(10,2) DEFAULT NULL COMMENT '成绩',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `idx_sg_student_no` (`student_no`) USING BTREE,
+  CONSTRAINT `fk_sg_student_no` FOREIGN KEY (`student_no`) REFERENCES `student_info` (`student_no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='学生成绩信息';
+
+-- 正在导出表  jeecgai.student_grade 的数据：~1,970 rows (大约)
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016078921446391809', 'admin', '2026-01-27 17:20:46', NULL, NULL, '202430522', '8', 90.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368649908225', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202480140', '8', 78.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368649908226', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202481071', '8', 98.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368649908227', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202287615', '8', 85.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368649908228', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202464418', '8', 98.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368649908229', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202406356', '8', 89.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368649908230', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202231870', '8', 87.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368868012033', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202356601', '8', 92.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368868012034', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202241004', '8', 91.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368876400642', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202414952', '8', 72.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368884789250', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202281387', '8', 81.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368893177860', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202347401', '8', 92.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368893177861', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202357600', '8', 81.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368972869634', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202333742', '8', 89.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016343368972869635', 'admin', '2026-01-28 10:51:36', NULL, NULL, '202382105', '8', 93.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016344462520197122', 'admin', '2026-01-28 10:55:56', NULL, NULL, '202457263', '7', 8.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016344462843158529', 'admin', '2026-01-28 10:55:56', NULL, NULL, '202457263', '7', 89.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016344470514540545', 'admin', '2026-01-28 10:55:58', NULL, NULL, '202248930', '7', 4.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016344470954942466', 'admin', '2026-01-28 10:55:58', NULL, NULL, '202248930', '7', 45.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016344481025466370', 'admin', '2026-01-28 10:56:01', NULL, NULL, '202335406', '7', 7.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016344481373593602', 'admin', '2026-01-28 10:56:01', NULL, NULL, '202335406', '7', 78.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016345286419914753', 'admin', '2026-01-28 10:59:13', NULL, NULL, '202360451', '7', 8.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016345286809985026', 'admin', '2026-01-28 10:59:13', NULL, NULL, '202360451', '7', 89.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016345301905285122', 'admin', '2026-01-28 10:59:17', NULL, NULL, '202298660', '7', 4.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016345305931816961', 'admin', '2026-01-28 10:59:17', NULL, NULL, '202298660', '7', 45.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016346611723509761', 'admin', '2026-01-28 11:04:29', NULL, NULL, '202482299', '7', 89.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016346616848949249', 'admin', '2026-01-28 11:04:30', NULL, NULL, '202239571', '7', 56.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016346621873725442', 'admin', '2026-01-28 11:04:31', NULL, NULL, '202440589', '7', 78.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016346628647526401', 'admin', '2026-01-28 11:04:33', NULL, NULL, '202410765', '7', 98.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016346638432837633', 'admin', '2026-01-28 11:04:35', NULL, NULL, '202300154', '7', 78.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016346643239510018', 'admin', '2026-01-28 11:04:36', NULL, NULL, '202363614', '7', 81.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016346647874215937', 'admin', '2026-01-28 11:04:37', NULL, NULL, '202421518', '7', 95.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016346653003849730', 'admin', '2026-01-28 11:04:39', NULL, NULL, '202432528', '7', 72.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016346658284478465', 'admin', '2026-01-28 11:04:40', NULL, NULL, '202466537', '7', 83.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2016346665888751618', 'admin', '2026-01-28 11:04:42', NULL, NULL, '202212833', '7', 94.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017041969572233700', 'admin', '2026-01-26 11:41:53', 'admin', '2026-01-26 14:39:02', '202447615', '4', 89.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017042549162544400', 'admin', '2026-01-26 11:24:24', 'admin', '2026-01-26 13:32:53', '202271682', '4', 92.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017044271933426400', 'admin', '2026-01-26 08:01:26', 'admin', '2026-01-26 21:21:48', '202478723', '3', 56.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017044320200796200', 'admin', '2026-01-26 23:04:06', 'admin', '2026-01-26 23:19:50', '202308118', '6', 92.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017045172943330800', 'admin', '2026-01-26 09:23:24', 'admin', '2026-01-26 10:57:48', '202458628', '3', 94.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017045530381316600', 'admin', '2026-01-26 03:16:47', 'admin', '2026-01-26 07:40:38', '202279672', '7', 54.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017045738143834600', 'admin', '2026-01-26 10:46:15', 'admin', '2026-01-26 13:30:13', '202414952', '5', 50.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017046196997422600', 'admin', '2026-01-26 09:36:13', 'admin', '2026-01-26 23:17:53', '202360674', '5', 56.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017046317854376400', 'admin', '2026-01-26 22:41:23', 'admin', '2026-01-26 23:56:14', '202402888', '7', 83.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017046577582940000', 'admin', '2026-01-26 03:24:58', 'admin', '2026-01-26 21:28:35', '202298253', '2', 93.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017046864362310100', 'admin', '2026-01-26 15:27:35', 'admin', '2026-01-26 22:51:53', '202294260', '8', 66.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017046969322513700', 'admin', '2026-01-26 17:30:55', 'admin', '2026-01-26 22:12:32', '202366709', '7', 67.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017047188580525800', 'admin', '2026-01-26 17:40:20', 'admin', '2026-01-26 19:22:54', '202464467', '6', 77.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017048038828312600', 'admin', '2026-01-26 19:06:46', 'admin', '2026-01-26 20:38:25', '202458632', '6', 65.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017048237139869400', 'admin', '2026-01-26 21:36:43', 'admin', '2026-01-26 21:50:22', '202455308', '8', 75.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017048245558167600', 'admin', '2026-01-26 23:21:36', 'admin', '2026-01-26 23:58:39', '202285760', '1', 96.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017048432509463800', 'admin', '2026-01-26 08:10:40', 'admin', '2026-01-26 11:11:44', '202297773', '6', 86.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017051465152770300', 'admin', '2026-01-26 18:07:36', 'admin', '2026-01-26 20:33:09', '202354633', '7', 57.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017051803021868500', 'admin', '2026-01-26 02:05:55', 'admin', '2026-01-26 12:12:43', '202231102', '5', 90.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017052187581147100', 'admin', '2026-01-26 21:31:19', 'admin', '2026-01-26 23:08:21', '202298402', '4', 71.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017054046348862200', 'admin', '2026-01-26 23:03:02', 'admin', '2026-01-26 23:09:12', '202313856', '7', 56.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017054113626846500', 'admin', '2026-01-26 00:06:13', 'admin', '2026-01-26 13:19:33', '202310362', '2', 79.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017055930735867000', 'admin', '2026-01-26 02:39:47', 'admin', '2026-01-26 17:08:32', '202437834', '6', 86.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017057678275942100', 'admin', '2026-01-26 19:04:29', 'admin', '2026-01-26 23:16:05', '202374558', '2', 56.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017057688675242000', 'admin', '2026-01-26 10:37:31', 'admin', '2026-01-26 17:29:31', '202379991', '3', 71.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017058049333658600', 'admin', '2026-01-26 20:37:03', 'admin', '2026-01-26 23:32:38', '202460201', '6', 83.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017058463510626600', 'admin', '2026-01-26 08:20:11', 'admin', '2026-01-26 15:21:27', '202367021', '2', 58.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017059190057638000', 'admin', '2026-01-26 23:01:59', 'admin', '2026-01-26 23:23:18', '202363614', '6', 93.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017059471006510000', 'admin', '2026-01-26 21:48:47', 'admin', '2026-01-26 23:17:21', '202368280', '1', 58.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017059871584857900', 'admin', '2026-01-26 12:29:37', 'admin', '2026-01-26 21:12:26', '202337727', '3', 93.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017060317851972900', 'admin', '2026-01-26 07:48:00', 'admin', '2026-01-26 23:46:03', '202386080', '4', 82.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017060942312522200', 'admin', '2026-01-26 06:40:46', 'admin', '2026-01-26 19:09:54', '202320895', '3', 85.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017062347370230000', 'admin', '2026-01-26 22:05:08', 'admin', '2026-01-26 23:29:58', '202366709', '5', 75.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017062802184867800', 'admin', '2026-01-26 22:40:50', 'admin', '2026-01-26 23:40:07', '202429920', '4', 75.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017063001511590000', 'admin', '2026-01-26 18:22:28', 'admin', '2026-01-26 18:45:56', '202261895', '3', 62.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017063478080158500', 'admin', '2026-01-26 09:00:23', 'admin', '2026-01-26 10:30:49', '202315584', '4', 50.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017064711736124700', 'admin', '2026-01-26 00:27:07', 'admin', '2026-01-26 22:53:02', '202430172', '3', 73.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017064723897653200', 'admin', '2026-01-26 15:38:45', 'admin', '2026-01-26 18:38:08', '202429920', '3', 79.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017064759348454000', 'admin', '2026-01-26 03:37:16', 'admin', '2026-01-26 07:41:25', '202359486', '1', 81.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017064846106524400', 'admin', '2026-01-26 14:59:52', 'admin', '2026-01-26 20:23:27', '202203130', '3', 84.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017065372817870800', 'admin', '2026-01-26 01:03:11', 'admin', '2026-01-26 06:17:00', '202441496', '5', 76.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017066970449801200', 'admin', '2026-01-26 10:21:49', 'admin', '2026-01-26 22:01:53', '202211164', '8', 73.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017067183026393900', 'admin', '2026-01-26 20:45:38', 'admin', '2026-01-26 21:06:08', '202458818', '6', 98.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017067508570890200', 'admin', '2026-01-26 01:46:03', 'admin', '2026-01-26 05:43:17', '202279672', '8', 86.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017067677047470600', 'admin', '2026-01-26 20:17:21', 'admin', '2026-01-26 21:39:11', '202386480', '1', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017068141801933300', 'admin', '2026-01-26 12:06:02', 'admin', '2026-01-26 14:27:58', '202365957', '4', 71.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017068576510158800', 'admin', '2026-01-26 06:38:58', 'admin', '2026-01-26 14:50:14', '202428598', '8', 78.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017069320424280800', 'admin', '2026-01-26 21:36:41', 'admin', '2026-01-26 23:46:58', '202244872', '7', 62.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017070459169369300', 'admin', '2026-01-26 22:19:53', 'admin', '2026-01-26 22:52:22', '202325050', '4', 93.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017070747768776400', 'admin', '2026-01-26 15:12:31', 'admin', '2026-01-26 19:19:15', '202284383', '7', 88.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017070895721647400', 'admin', '2026-01-26 14:16:28', 'admin', '2026-01-26 18:22:20', '202306841', '4', 78.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017070949836529400', 'admin', '2026-01-26 00:53:52', 'admin', '2026-01-26 01:07:46', '202462466', '3', 85.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017071219603354600', 'admin', '2026-01-26 00:18:09', 'admin', '2026-01-26 05:36:51', '202201228', '8', 52.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017072027131063800', 'admin', '2026-01-26 23:56:45', 'admin', '2026-01-26 23:59:38', '202438100', '3', 60.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017072101235617800', 'admin', '2026-01-26 05:43:03', 'admin', '2026-01-26 15:55:56', '202426491', '3', 70.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017073627406279400', 'admin', '2026-01-26 16:28:27', 'admin', '2026-01-26 19:55:16', '202393358', '2', 93.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017073795042034000', 'admin', '2026-01-26 17:31:34', 'admin', '2026-01-26 17:33:08', '202475027', '7', 71.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017073934432783000', 'admin', '2026-01-26 00:35:01', 'admin', '2026-01-26 01:54:06', '202335609', '5', 98.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017074040098695000', 'admin', '2026-01-26 20:37:02', 'admin', '2026-01-26 21:58:20', '202244872', '8', 57.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017074111552964400', 'admin', '2026-01-26 09:27:33', 'admin', '2026-01-26 09:43:43', '202367905', '5', 79.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017074137614020600', 'admin', '2026-01-26 11:45:06', 'admin', '2026-01-26 21:25:43', '202317962', '5', 95.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017074261195698700', 'admin', '2026-01-26 02:58:42', 'admin', '2026-01-26 21:26:59', '202216210', '4', 50.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017074282407462400', 'admin', '2026-01-26 20:59:44', 'admin', '2026-01-26 23:04:44', '202440589', '8', 60.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017074348606901200', 'admin', '2026-01-26 20:15:29', 'admin', '2026-01-26 20:29:02', '202346454', '7', 75.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017074875878677000', 'admin', '2026-01-26 08:42:45', 'admin', '2026-01-26 18:52:54', '202242916', '1', 52.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017075013749939500', 'admin', '2026-01-26 22:24:58', 'admin', '2026-01-26 23:02:23', '202335406', '5', 79.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017075304342922800', 'admin', '2026-01-26 00:45:10', 'admin', '2026-01-26 01:34:19', '202432974', '4', 92.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017075791072564700', 'admin', '2026-01-26 04:32:42', 'admin', '2026-01-26 19:28:11', '202270473', '2', 70.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017075915448098300', 'admin', '2026-01-26 02:36:22', 'admin', '2026-01-26 03:45:55', '202472108', '6', 72.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017076047877081900', 'admin', '2026-01-26 12:57:28', 'admin', '2026-01-26 20:37:19', '202271791', '8', 53.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017077191406229800', 'admin', '2026-01-26 02:37:56', 'admin', '2026-01-26 17:28:19', '202407850', '4', 85.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017078222432155000', 'admin', '2026-01-26 07:59:44', 'admin', '2026-01-26 23:19:08', '202339685', '5', 75.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017078808001682200', 'admin', '2026-01-26 17:14:31', 'admin', '2026-01-26 17:32:03', '202357600', '3', 74.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017079025110299100', 'admin', '2026-01-26 01:42:33', 'admin', '2026-01-26 15:45:38', '202353666', '3', 95.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017079092864302600', 'admin', '2026-01-26 14:35:06', 'admin', '2026-01-26 14:53:05', '202384453', '8', 70.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017079968945641700', 'admin', '2026-01-26 07:34:15', 'admin', '2026-01-26 11:29:45', '202334944', '3', 95.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017081276596677000', 'admin', '2026-01-26 07:03:15', 'admin', '2026-01-26 20:14:41', '202265876', '1', 61.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017081973973886500', 'admin', '2026-01-26 13:47:08', 'admin', '2026-01-26 20:08:50', '202364296', '8', 80.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017082282652972800', 'admin', '2026-01-26 00:42:06', 'admin', '2026-01-26 06:58:15', '202487648', '4', 57.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017082414555976400', 'admin', '2026-01-26 12:13:56', 'admin', '2026-01-26 18:43:30', '202271791', '4', 67.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017083267878312200', 'admin', '2026-01-26 10:53:03', 'admin', '2026-01-26 19:59:56', '202278458', '3', 62.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017083573339102200', 'admin', '2026-01-26 02:36:28', 'admin', '2026-01-26 17:21:13', '202373002', '3', 69.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017083822163166000', 'admin', '2026-01-26 21:56:15', 'admin', '2026-01-26 22:08:14', '202435673', '3', 74.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017083940447382500', 'admin', '2026-01-26 01:54:59', 'admin', '2026-01-26 21:20:31', '202481739', '5', 72.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017084781765422300', 'admin', '2026-01-26 20:44:40', 'admin', '2026-01-26 20:52:33', '202437834', '8', 94.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017085073515453000', 'admin', '2026-01-26 17:34:06', 'admin', '2026-01-26 19:23:23', '202293347', '8', 73.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017085458137439000', 'admin', '2026-01-26 13:56:38', 'admin', '2026-01-26 16:53:38', '202287242', '5', 90.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017085699530883800', 'admin', '2026-01-26 01:58:11', 'admin', '2026-01-26 09:36:09', '202486753', '8', 73.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017085954497169200', 'admin', '2026-01-26 03:25:29', 'admin', '2026-01-26 18:13:20', '202351284', '6', 89.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017086162578779400', 'admin', '2026-01-26 17:38:36', 'admin', '2026-01-26 20:26:52', '202458632', '7', 53.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017086833009843200', 'admin', '2026-01-26 01:28:45', 'admin', '2026-01-26 16:05:24', '202280982', '2', 91.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017086856594689000', 'admin', '2026-01-26 02:34:40', 'admin', '2026-01-26 14:04:34', '202406356', '8', 83.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017087050616428000', 'admin', '2026-01-26 15:03:23', 'admin', '2026-01-26 17:23:03', '202247141', '5', 51.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017087445056559600', 'admin', '2026-01-26 03:35:35', 'admin', '2026-01-26 10:39:19', '202430172', '5', 80.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017087663750154800', 'admin', '2026-01-26 03:27:33', 'admin', '2026-01-26 13:25:41', '202224904', '2', 95.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017087837456137500', 'admin', '2026-01-26 11:59:31', 'admin', '2026-01-26 22:00:35', '202327406', '7', 57.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017088021038872300', 'admin', '2026-01-26 23:34:08', 'admin', '2026-01-26 23:38:05', '202422146', '5', 64.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017088117092040200', 'admin', '2026-01-26 13:40:45', 'admin', '2026-01-26 17:02:41', '202468343', '2', 70.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017088406248207600', 'admin', '2026-01-26 20:43:59', 'admin', '2026-01-26 20:54:32', '202393358', '3', 87.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017088782955196700', 'admin', '2026-01-26 18:26:57', 'admin', '2026-01-26 20:39:12', '202464418', '3', 95.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017089038685950500', 'admin', '2026-01-26 03:54:33', 'admin', '2026-01-26 12:14:26', '202494261', '8', 66.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017089342050988500', 'admin', '2026-01-26 12:18:19', 'admin', '2026-01-26 23:26:57', '202388833', '8', 91.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017089619174657300', 'admin', '2026-01-26 01:11:37', 'admin', '2026-01-26 13:50:17', '202306425', '4', 78.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017090156757385500', 'admin', '2026-01-26 10:25:09', 'admin', '2026-01-26 20:09:35', '202368822', '6', 79.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017091281355720000', 'admin', '2026-01-26 00:46:44', 'admin', '2026-01-26 22:31:46', '202393355', '6', 89.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017091458388226600', 'admin', '2026-01-26 00:30:36', 'admin', '2026-01-26 16:24:05', '202499467', '7', 79.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017091563058677800', 'admin', '2026-01-26 18:13:52', 'admin', '2026-01-26 20:04:46', '202224904', '6', 66.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017091805935239000', 'admin', '2026-01-26 16:17:06', 'admin', '2026-01-26 17:18:42', '202345753', '7', 65.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017093362871502600', 'admin', '2026-01-26 14:01:06', 'admin', '2026-01-26 19:13:05', '202335867', '5', 61.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017093775644383500', 'admin', '2026-01-26 22:40:21', 'admin', '2026-01-26 23:23:48', '202363614', '7', 58.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017094565230680300', 'admin', '2026-01-26 18:36:51', 'admin', '2026-01-26 20:17:08', '202465337', '6', 91.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017094710295262000', 'admin', '2026-01-26 18:11:24', 'admin', '2026-01-26 19:33:34', '202433505', '7', 94.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017094725681078500', 'admin', '2026-01-26 11:21:59', 'admin', '2026-01-26 19:18:30', '202241168', '4', 53.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017094763297644000', 'admin', '2026-01-26 19:12:50', 'admin', '2026-01-26 21:37:48', '202478723', '1', 88.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017095409129051000', 'admin', '2026-01-26 20:23:29', 'admin', '2026-01-26 20:26:28', '202444199', '7', 63.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017095603599871000', 'admin', '2026-01-26 00:43:07', 'admin', '2026-01-26 09:05:46', '202277984', '8', 89.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017096141717538000', 'admin', '2026-01-26 14:27:51', 'admin', '2026-01-26 17:09:29', '202480013', '2', 64.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017096436596427000', 'admin', '2026-01-26 16:22:19', 'admin', '2026-01-26 19:13:09', '202326936', '5', 94.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017097650088691200', 'admin', '2026-01-26 20:58:14', 'admin', '2026-01-26 22:08:57', '202207764', '3', 85.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017097995597047300', 'admin', '2026-01-26 07:26:35', 'admin', '2026-01-26 20:28:43', '202223272', '5', 86.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017098715481134800', 'admin', '2026-01-26 22:09:18', 'admin', '2026-01-26 22:40:55', '202442638', '7', 87.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017099524804389000', 'admin', '2026-01-26 03:32:47', 'admin', '2026-01-26 20:05:49', '202372784', '7', 70.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017099637951830000', 'admin', '2026-01-26 08:27:21', 'admin', '2026-01-26 12:14:35', '202441106', '2', 53.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017099787391053300', 'admin', '2026-01-26 03:34:28', 'admin', '2026-01-26 14:11:13', '202382105', '8', 76.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017100330621621500', 'admin', '2026-01-26 18:50:16', 'admin', '2026-01-26 23:49:59', '202494261', '4', 86.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017100728423248600', 'admin', '2026-01-26 14:33:34', 'admin', '2026-01-26 20:56:16', '202222138', '5', 95.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017101541871656400', 'admin', '2026-01-26 23:06:31', 'admin', '2026-01-26 23:40:35', '202430396', '5', 98.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017101695733652500', 'admin', '2026-01-26 05:46:04', 'admin', '2026-01-26 21:11:02', '202261009', '3', 50.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017102123045863200', 'admin', '2026-01-26 16:55:30', 'admin', '2026-01-26 17:35:58', '202446027', '5', 71.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017102151542846200', 'admin', '2026-01-26 07:09:22', 'admin', '2026-01-26 22:47:10', '202391186', '4', 72.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017102961421273600', 'admin', '2026-01-26 12:08:10', 'admin', '2026-01-26 16:24:35', '202487648', '6', 62.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017103433466650400', 'admin', '2026-01-26 17:56:21', 'admin', '2026-01-26 22:33:53', '202485539', '2', 83.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017105584001195300', 'admin', '2026-01-26 14:20:05', 'admin', '2026-01-26 16:11:44', '202210868', '3', 66.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017107291091918300', 'admin', '2026-01-26 01:53:21', 'admin', '2026-01-26 12:35:32', '202281635', '2', 94.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017107447708674300', 'admin', '2026-01-26 11:12:57', 'admin', '2026-01-26 19:05:40', '202318047', '6', 57.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017108502648908500', 'admin', '2026-01-26 02:12:42', 'admin', '2026-01-26 17:55:37', '202216602', '8', 56.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017109458994353400', 'admin', '2026-01-26 16:54:34', 'admin', '2026-01-26 19:57:01', '202296748', '6', 68.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017110221083698000', 'admin', '2026-01-26 18:14:32', 'admin', '2026-01-26 21:03:29', '202351284', '5', 58.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017110338187633700', 'admin', '2026-01-26 13:41:11', 'admin', '2026-01-26 16:15:13', '202260973', '4', 63.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017110893325556700', 'admin', '2026-01-26 14:59:54', 'admin', '2026-01-26 19:16:07', '202402888', '5', 97.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017111065931352300', 'admin', '2026-01-26 00:02:53', 'admin', '2026-01-26 03:11:45', '202367797', '7', 68.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017111779025536500', 'admin', '2026-01-26 12:06:19', 'admin', '2026-01-26 23:08:03', '202288477', '8', 74.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017112356063392300', 'admin', '2026-01-26 08:30:51', 'admin', '2026-01-26 23:25:21', '202360451', '6', 61.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017112666939792600', 'admin', '2026-01-26 06:48:56', 'admin', '2026-01-26 09:06:49', '202482009', '5', 76.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017113402631804400', 'admin', '2026-01-26 05:42:51', 'admin', '2026-01-26 15:41:59', '202390688', '7', 63.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017113853866976000', 'admin', '2026-01-26 19:00:15', 'admin', '2026-01-26 20:01:11', '202257930', '2', 61.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017113928069834200', 'admin', '2026-01-26 17:51:36', 'admin', '2026-01-26 21:05:48', '202360674', '4', 56.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017113971834282200', 'admin', '2026-01-26 00:28:49', 'admin', '2026-01-26 18:22:30', '202259372', '4', 87.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017114013450950400', 'admin', '2026-01-26 15:29:34', 'admin', '2026-01-26 16:47:12', '202208589', '5', 83.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017114189819815700', 'admin', '2026-01-26 01:16:01', 'admin', '2026-01-26 03:46:48', '202260973', '5', 67.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017114912208201200', 'admin', '2026-01-26 07:22:20', 'admin', '2026-01-26 11:48:23', '202317962', '7', 55.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017115628276774400', 'admin', '2026-01-26 19:43:45', 'admin', '2026-01-26 22:45:52', '202362201', '6', 56.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017116885003566800', 'admin', '2026-01-26 08:54:48', 'admin', '2026-01-26 17:25:21', '202368822', '8', 83.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017116964164013300', 'admin', '2026-01-26 08:04:12', 'admin', '2026-01-26 22:17:35', '202422827', '2', 80.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017117099934939400', 'admin', '2026-01-26 07:15:11', 'admin', '2026-01-26 15:39:51', '202229615', '8', 70.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017118013923193900', 'admin', '2026-01-26 15:21:01', 'admin', '2026-01-26 23:47:06', '202422827', '1', 86.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017118093344845600', 'admin', '2026-01-26 18:23:09', 'admin', '2026-01-26 23:51:27', '202304675', '1', 75.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017118602961862700', 'admin', '2026-01-26 16:24:40', 'admin', '2026-01-26 23:54:09', '202253268', '6', 93.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017120241126810400', 'admin', '2026-01-26 13:10:51', 'admin', '2026-01-26 15:48:45', '202384326', '6', 77.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017121240950262300', 'admin', '2026-01-26 04:53:58', 'admin', '2026-01-26 19:41:07', '202419548', '8', 61.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017121882507699200', 'admin', '2026-01-26 12:42:41', 'admin', '2026-01-26 15:08:39', '202207643', '5', 50.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017122215928625000', 'admin', '2026-01-26 10:06:25', 'admin', '2026-01-26 19:25:25', '202260869', '1', 86.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017122344360939300', 'admin', '2026-01-26 06:41:54', 'admin', '2026-01-26 17:03:31', '202320420', '6', 81.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017122412634238500', 'admin', '2026-01-26 23:38:35', 'admin', '2026-01-26 23:53:32', '202339685', '8', 94.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017122598808299300', 'admin', '2026-01-26 04:07:55', 'admin', '2026-01-26 11:30:59', '202318083', '8', 81.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017123173092092700', 'admin', '2026-01-26 20:21:38', 'admin', '2026-01-26 23:13:47', '202432295', '8', 52.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017123469344475400', 'admin', '2026-01-26 05:58:57', 'admin', '2026-01-26 20:04:00', '202408719', '8', 63.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017123920242029800', 'admin', '2026-01-26 00:14:26', 'admin', '2026-01-26 08:42:02', '202333742', '6', 72.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017124092364453000', 'admin', '2026-01-26 04:32:31', 'admin', '2026-01-26 13:53:49', '202343402', '7', 54.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017125842694110700', 'admin', '2026-01-26 18:37:31', 'admin', '2026-01-26 23:51:18', '202298149', '6', 58.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017126138389567700', 'admin', '2026-01-26 04:44:13', 'admin', '2026-01-26 10:30:33', '202336240', '4', 85.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017126816478099700', 'admin', '2026-01-26 02:31:04', 'admin', '2026-01-26 18:56:20', '202345753', '2', 62.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017127157446278000', 'admin', '2026-01-26 01:27:38', 'admin', '2026-01-26 11:49:37', '202362201', '4', 93.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017127162691966000', 'admin', '2026-01-26 15:10:14', 'admin', '2026-01-26 19:32:20', '202406356', '3', 69.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017127581694652200', 'admin', '2026-01-26 15:08:06', 'admin', '2026-01-26 16:42:26', '202318292', '1', 55.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017128214325697000', 'admin', '2026-01-26 13:46:47', 'admin', '2026-01-26 22:31:12', '202455308', '7', 63.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017129477159278600', 'admin', '2026-01-26 01:36:25', 'admin', '2026-01-26 18:47:13', '202455308', '5', 78.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017129704398988300', 'admin', '2026-01-26 15:15:47', 'admin', '2026-01-26 23:12:16', '202267704', '2', 81.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017130294555445800', 'admin', '2026-01-26 02:05:01', 'admin', '2026-01-26 11:09:14', '202317962', '3', 52.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017131019859672300', 'admin', '2026-01-26 21:37:04', 'admin', '2026-01-26 23:04:53', '202259372', '3', 54.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017131156775636200', 'admin', '2026-01-26 20:05:27', 'admin', '2026-01-26 23:21:55', '202462466', '2', 52.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017131430855324400', 'admin', '2026-01-26 04:23:43', 'admin', '2026-01-26 14:57:30', '202467723', '7', 62.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017132140354910200', 'admin', '2026-01-26 11:55:42', 'admin', '2026-01-26 12:39:43', '202350599', '3', 75.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017132164081975300', 'admin', '2026-01-26 11:07:09', 'admin', '2026-01-26 23:35:09', '202496015', '5', 77.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017132214852635000', 'admin', '2026-01-26 13:45:51', 'admin', '2026-01-26 14:00:58', '202343738', '5', 92.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017133232844830500', 'admin', '2026-01-26 05:16:06', 'admin', '2026-01-26 07:52:15', '202360674', '7', 54.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017133712757204000', 'admin', '2026-01-26 07:39:23', 'admin', '2026-01-26 14:24:45', '202309639', '6', 98.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017134460010881000', 'admin', '2026-01-26 03:39:48', 'admin', '2026-01-26 23:06:53', '202257930', '5', 65.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017134514587592000', 'admin', '2026-01-26 08:52:32', 'admin', '2026-01-26 13:49:36', '202210279', '4', 58.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017134572828070100', 'admin', '2026-01-26 13:19:51', 'admin', '2026-01-26 21:09:06', '202360674', '8', 95.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017135705105876700', 'admin', '2026-01-26 16:30:00', 'admin', '2026-01-26 22:08:22', '202254898', '8', 50.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017136317765898800', 'admin', '2026-01-26 08:09:43', 'admin', '2026-01-26 09:17:44', '202329090', '7', 80.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017136341458710800', 'admin', '2026-01-26 02:08:39', 'admin', '2026-01-26 15:51:19', '202241855', '4', 93.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017137416476846600', 'admin', '2026-01-26 16:48:53', 'admin', '2026-01-26 18:49:04', '202435673', '5', 83.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017138244513742800', 'admin', '2026-01-26 13:58:27', 'admin', '2026-01-26 13:59:20', '202409676', '8', 53.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017139668780409000', 'admin', '2026-01-26 22:20:54', 'admin', '2026-01-26 23:17:18', '202321278', '4', 56.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017139759801854200', 'admin', '2026-01-26 23:45:08', 'admin', '2026-01-26 23:59:56', '202332697', '6', 59.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017139843507210800', 'admin', '2026-01-26 05:23:32', 'admin', '2026-01-26 10:38:40', '202498469', '4', 51.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017140328983749000', 'admin', '2026-01-26 06:49:40', 'admin', '2026-01-26 23:43:54', '202479852', '7', 64.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017140393079876900', 'admin', '2026-01-26 07:36:27', 'admin', '2026-01-26 16:40:57', '202229134', '2', 75.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017140695832731400', 'admin', '2026-01-26 21:44:02', 'admin', '2026-01-26 22:24:57', '202231454', '3', 87.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017141344641285400', 'admin', '2026-01-26 10:25:14', 'admin', '2026-01-26 13:18:41', '202232648', '7', 62.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017141659096031500', 'admin', '2026-01-26 11:31:45', 'admin', '2026-01-26 14:14:25', '202492083', '5', 52.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017141717764552200', 'admin', '2026-01-26 17:00:28', 'admin', '2026-01-26 19:41:42', '202376600', '1', 91.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017143193182562600', 'admin', '2026-01-26 11:56:26', 'admin', '2026-01-26 16:14:13', '202261895', '7', 88.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017143484607071500', 'admin', '2026-01-26 13:34:02', 'admin', '2026-01-26 20:05:17', '202212232', '8', 96.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017143624654297300', 'admin', '2026-01-26 14:51:31', 'admin', '2026-01-26 23:12:55', '202261051', '3', 69.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017143848465234700', 'admin', '2026-01-26 11:57:24', 'admin', '2026-01-26 14:14:27', '202488807', '3', 70.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017144027723227600', 'admin', '2026-01-26 06:09:35', 'admin', '2026-01-26 06:11:08', '202356398', '7', 95.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017144166361993000', 'admin', '2026-01-26 06:01:17', 'admin', '2026-01-26 23:44:38', '202391518', '7', 91.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017144202062291500', 'admin', '2026-01-26 02:22:54', 'admin', '2026-01-26 18:20:01', '202336240', '5', 65.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017146261830179000', 'admin', '2026-01-26 13:09:26', 'admin', '2026-01-26 16:03:24', '202224904', '1', 87.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017146568190323000', 'admin', '2026-01-26 21:23:24', 'admin', '2026-01-26 23:43:53', '202333742', '4', 73.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017146651014785000', 'admin', '2026-01-26 01:21:22', 'admin', '2026-01-26 09:44:53', '202454505', '5', 80.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017147407773116700', 'admin', '2026-01-26 09:22:03', 'admin', '2026-01-26 10:37:57', '202448667', '7', 80.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017148246284478200', 'admin', '2026-01-26 03:04:18', 'admin', '2026-01-26 14:56:32', '202322544', '7', 59.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017148469753197300', 'admin', '2026-01-26 04:18:26', 'admin', '2026-01-26 13:49:16', '202352116', '4', 53.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017149275026368800', 'admin', '2026-01-26 13:59:34', 'admin', '2026-01-26 23:52:43', '202409676', '3', 88.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017149368252529000', 'admin', '2026-01-26 14:53:50', 'admin', '2026-01-26 19:20:16', '202355110', '2', 89.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017150462403104500', 'admin', '2026-01-26 17:25:53', 'admin', '2026-01-26 19:24:22', '202308737', '6', 78.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017150881643967200', 'admin', '2026-01-26 14:51:57', 'admin', '2026-01-26 19:10:24', '202350599', '7', 95.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017151552658935600', 'admin', '2026-01-26 07:16:15', 'admin', '2026-01-26 14:51:20', '202341879', '8', 50.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017151760644004900', 'admin', '2026-01-26 06:02:02', 'admin', '2026-01-26 11:56:06', '202495494', '7', 93.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017151834899425500', 'admin', '2026-01-26 03:44:58', 'admin', '2026-01-26 23:13:38', '202447883', '7', 65.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017153147987790800', 'admin', '2026-01-26 04:03:21', 'admin', '2026-01-26 12:48:30', '202482009', '4', 94.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017153857758076200', 'admin', '2026-01-26 05:39:25', 'admin', '2026-01-26 21:06:08', '202436209', '4', 73.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017155148164256300', 'admin', '2026-01-26 17:24:57', 'admin', '2026-01-26 19:28:04', '202252607', '4', 73.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017156500296421600', 'admin', '2026-01-26 01:42:14', 'admin', '2026-01-26 05:46:45', '202263438', '2', 83.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017156748481525000', 'admin', '2026-01-26 23:49:17', 'admin', '2026-01-26 23:56:28', '202453871', '2', 70.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017157280248514300', 'admin', '2026-01-26 04:22:37', 'admin', '2026-01-26 19:54:46', '202432528', '7', 54.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017157492384778200', 'admin', '2026-01-26 21:14:31', 'admin', '2026-01-26 23:03:17', '202241004', '2', 76.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017158625748492800', 'admin', '2026-01-26 08:09:10', 'admin', '2026-01-26 17:13:35', '202212232', '4', 93.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017158705955110100', 'admin', '2026-01-26 06:06:23', 'admin', '2026-01-26 15:27:03', '202267100', '7', 76.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017158819197920000', 'admin', '2026-01-26 18:48:08', 'admin', '2026-01-26 23:18:56', '202245371', '3', 84.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017159014511448600', 'admin', '2026-01-26 20:20:39', 'admin', '2026-01-26 23:49:38', '202436895', '4', 90.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017159505275167500', 'admin', '2026-01-26 03:31:54', 'admin', '2026-01-26 05:04:00', '202221877', '4', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017159970155894300', 'admin', '2026-01-26 20:56:12', 'admin', '2026-01-26 23:08:43', '202232898', '6', 60.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017160023563082200', 'admin', '2026-01-26 16:24:47', 'admin', '2026-01-26 23:39:00', '202282081', '2', 68.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017161169660588300', 'admin', '2026-01-26 10:44:29', 'admin', '2026-01-26 18:18:26', '202209339', '3', 76.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017161941003401700', 'admin', '2026-01-26 19:12:18', 'admin', '2026-01-26 19:22:26', '202364563', '8', 85.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017162084129884700', 'admin', '2026-01-26 18:41:50', 'admin', '2026-01-26 23:34:45', '202216637', '3', 85.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017162288948326100', 'admin', '2026-01-26 12:54:54', 'admin', '2026-01-26 13:35:11', '202406055', '5', 98.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017162517895931400', 'admin', '2026-01-26 04:12:38', 'admin', '2026-01-26 06:21:13', '202480140', '6', 78.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017163577035313400', 'admin', '2026-01-26 19:27:10', 'admin', '2026-01-26 20:38:13', '202277035', '8', 88.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017164097793556000', 'admin', '2026-01-26 08:26:21', 'admin', '2026-01-26 17:16:06', '202289365', '3', 56.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017164845709572000', 'admin', '2026-01-26 06:21:45', 'admin', '2026-01-26 15:46:54', '202343402', '4', 52.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017165112088052200', 'admin', '2026-01-26 19:16:09', 'admin', '2026-01-26 20:22:25', '202296860', '3', 57.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017165149020244500', 'admin', '2026-01-26 07:20:28', 'admin', '2026-01-26 13:31:18', '202260973', '3', 56.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017165440394960600', 'admin', '2026-01-26 10:36:56', 'admin', '2026-01-26 13:15:54', '202479852', '2', 65.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017165569837433600', 'admin', '2026-01-26 11:11:54', 'admin', '2026-01-26 17:17:13', '202373252', '1', 70.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017165577107783000', 'admin', '2026-01-26 02:13:00', 'admin', '2026-01-26 10:50:17', '202482299', '2', 69.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017166070344066600', 'admin', '2026-01-26 18:13:16', 'admin', '2026-01-26 22:58:25', '202478493', '6', 73.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017167621450372000', 'admin', '2026-01-26 12:04:14', 'admin', '2026-01-26 14:54:59', '202432528', '6', 86.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017168485695873500', 'admin', '2026-01-26 20:11:51', 'admin', '2026-01-26 22:16:11', '202371299', '3', 64.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017169118792366600', 'admin', '2026-01-26 02:29:12', 'admin', '2026-01-26 09:38:48', '202406754', '1', 77.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017169147302832600', 'admin', '2026-01-26 04:14:28', 'admin', '2026-01-26 05:13:04', '202346454', '5', 84.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017169211714297900', 'admin', '2026-01-26 02:48:46', 'admin', '2026-01-26 15:51:48', '202356601', '1', 73.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017169900843722200', 'admin', '2026-01-26 08:39:52', 'admin', '2026-01-26 20:26:43', '202409023', '2', 61.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017170451877399000', 'admin', '2026-01-26 23:57:14', 'admin', '2026-01-26 23:59:41', '202474282', '1', 96.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017170564172710100', 'admin', '2026-01-26 17:46:44', 'admin', '2026-01-26 23:25:51', '202482468', '5', 63.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017171052176012300', 'admin', '2026-01-26 17:42:50', 'admin', '2026-01-26 23:00:39', '202489317', '2', 92.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017171120378368500', 'admin', '2026-01-26 23:37:25', 'admin', '2026-01-26 23:53:07', '202411163', '3', 67.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017172493978576000', 'admin', '2026-01-26 15:16:37', 'admin', '2026-01-26 20:08:50', '202298253', '7', 69.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017174085253023500', 'admin', '2026-01-26 10:30:06', 'admin', '2026-01-26 15:52:51', '202239571', '1', 80.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017174746473835000', 'admin', '2026-01-26 13:48:08', 'admin', '2026-01-26 14:40:40', '202386480', '5', 86.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017175184714459400', 'admin', '2026-01-26 06:26:56', 'admin', '2026-01-26 19:37:07', '202361314', '3', 86.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017175219934043400', 'admin', '2026-01-26 08:27:56', 'admin', '2026-01-26 09:47:02', '202459720', '5', 70.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017175708525364200', 'admin', '2026-01-26 07:04:09', 'admin', '2026-01-26 08:08:20', '202285770', '4', 93.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017175899379870700', 'admin', '2026-01-26 06:05:11', 'admin', '2026-01-26 10:40:11', '202429920', '2', 65.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017176175723978200', 'admin', '2026-01-26 01:59:14', 'admin', '2026-01-26 11:46:17', '202413193', '7', 81.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017176336768145400', 'admin', '2026-01-26 09:34:04', 'admin', '2026-01-26 21:00:13', '202393355', '1', 77.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017176469652884000', 'admin', '2026-01-26 09:22:29', 'admin', '2026-01-26 10:12:58', '202472082', '3', 92.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017177243985803000', 'admin', '2026-01-26 14:42:52', 'admin', '2026-01-26 15:42:44', '202335609', '3', 59.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017177521571089000', 'admin', '2026-01-26 08:32:16', 'admin', '2026-01-26 19:17:31', '202347200', '1', 80.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017177662293629400', 'admin', '2026-01-26 18:49:35', 'admin', '2026-01-26 20:57:48', '202297507', '8', 91.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017178857061511400', 'admin', '2026-01-26 19:49:41', 'admin', '2026-01-26 23:11:01', '202288752', '4', 71.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017179462085696500', 'admin', '2026-01-26 13:02:22', 'admin', '2026-01-26 13:44:51', '202300154', '2', 68.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017179806682274000', 'admin', '2026-01-26 16:44:03', 'admin', '2026-01-26 18:48:51', '202485539', '3', 74.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017180136460357600', 'admin', '2026-01-26 17:18:26', 'admin', '2026-01-26 18:46:53', '202298759', '3', 79.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017181487694297300', 'admin', '2026-01-26 15:18:17', 'admin', '2026-01-26 22:46:50', '202436895', '7', 89.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017181512743181600', 'admin', '2026-01-26 20:53:54', 'admin', '2026-01-26 23:42:25', '202200665', '4', 59.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017181654031682800', 'admin', '2026-01-26 06:46:59', 'admin', '2026-01-26 12:56:15', '202409023', '1', 55.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017182106503793400', 'admin', '2026-01-26 03:20:18', 'admin', '2026-01-26 08:30:37', '202445998', '6', 90.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017182977750654700', 'admin', '2026-01-26 17:56:25', 'admin', '2026-01-26 20:56:41', '202390688', '6', 95.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017183085715130400', 'admin', '2026-01-26 23:31:50', 'admin', '2026-01-26 23:32:18', '202326651', '2', 89.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017183717135535900', 'admin', '2026-01-26 02:26:16', 'admin', '2026-01-26 14:26:05', '202365100', '6', 96.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017184197135528400', 'admin', '2026-01-26 17:54:01', 'admin', '2026-01-26 22:17:40', '202460201', '8', 91.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017184377684189200', 'admin', '2026-01-26 01:47:24', 'admin', '2026-01-26 09:51:47', '202212232', '2', 96.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017185607126947000', 'admin', '2026-01-26 05:12:56', 'admin', '2026-01-26 16:20:07', '202498469', '6', 93.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017186385150060800', 'admin', '2026-01-26 20:43:34', 'admin', '2026-01-26 21:02:14', '202317962', '4', 67.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017187351189502700', 'admin', '2026-01-26 09:45:09', 'admin', '2026-01-26 13:54:35', '202472082', '6', 88.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017187701713531400', 'admin', '2026-01-26 14:51:13', 'admin', '2026-01-26 21:16:13', '202273868', '5', 61.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017187904966189800', 'admin', '2026-01-26 00:32:34', 'admin', '2026-01-26 22:58:58', '202210868', '6', 87.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017188250319538700', 'admin', '2026-01-26 19:39:21', 'admin', '2026-01-26 20:08:39', '202448509', '4', 70.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017188716626837000', 'admin', '2026-01-26 00:09:38', 'admin', '2026-01-26 05:57:39', '202320895', '8', 65.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017188822314625300', 'admin', '2026-01-26 05:28:19', 'admin', '2026-01-26 21:00:20', '202450214', '8', 72.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017188948469628700', 'admin', '2026-01-26 15:35:40', 'admin', '2026-01-26 22:44:54', '202231102', '2', 73.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017189528499819300', 'admin', '2026-01-26 20:09:31', 'admin', '2026-01-26 22:10:05', '202484662', '1', 51.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017189716435895000', 'admin', '2026-01-26 19:15:00', 'admin', '2026-01-26 20:09:50', '202410611', '2', 85.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017190851002785000', 'admin', '2026-01-26 20:00:39', 'admin', '2026-01-26 21:58:18', '202287242', '4', 61.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017191505615703000', 'admin', '2026-01-26 08:53:59', 'admin', '2026-01-26 19:21:05', '202393358', '7', 83.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017192062565600800', 'admin', '2026-01-26 02:56:19', 'admin', '2026-01-26 21:49:51', '202303627', '3', 90.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017192697075256300', 'admin', '2026-01-26 03:55:07', 'admin', '2026-01-26 23:41:39', '202224607', '1', 96.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017194616845870600', 'admin', '2026-01-26 07:24:55', 'admin', '2026-01-26 12:53:23', '202334944', '6', 62.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017195888054745900', 'admin', '2026-01-26 23:34:34', 'admin', '2026-01-26 23:59:53', '202300154', '1', 67.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017196131315278000', 'admin', '2026-01-26 11:57:34', 'admin', '2026-01-26 14:27:20', '202451697', '7', 59.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017197042187258000', 'admin', '2026-01-26 06:21:46', 'admin', '2026-01-26 08:47:51', '202495050', '7', 79.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017197936754984200', 'admin', '2026-01-26 05:18:03', 'admin', '2026-01-26 21:39:22', '202410765', '7', 73.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017198138400388000', 'admin', '2026-01-26 10:23:27', 'admin', '2026-01-26 14:49:29', '202229134', '4', 69.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017199173365537500', 'admin', '2026-01-26 11:57:02', 'admin', '2026-01-26 14:05:36', '202326651', '4', 67.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017199420260808200', 'admin', '2026-01-26 10:16:24', 'admin', '2026-01-26 19:28:39', '202409023', '3', 56.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017199688309898800', 'admin', '2026-01-26 03:28:27', 'admin', '2026-01-26 09:44:30', '202445998', '7', 65.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017199814156958200', 'admin', '2026-01-26 23:11:02', 'admin', '2026-01-26 23:50:32', '202431205', '4', 66.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017200171018891500', 'admin', '2026-01-26 18:47:23', 'admin', '2026-01-26 22:54:19', '202364563', '2', 68.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017200182891006200', 'admin', '2026-01-26 20:32:46', 'admin', '2026-01-26 21:43:52', '202458628', '5', 66.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017200342562143000', 'admin', '2026-01-26 15:13:31', 'admin', '2026-01-26 16:39:43', '202480140', '8', 81.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017200429601995000', 'admin', '2026-01-26 17:53:17', 'admin', '2026-01-26 23:01:16', '202450252', '1', 56.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017200518592064500', 'admin', '2026-01-26 15:52:01', 'admin', '2026-01-26 19:53:12', '202207643', '7', 96.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017200621064530700', 'admin', '2026-01-26 19:14:56', 'admin', '2026-01-26 19:33:10', '202296860', '5', 85.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017200663344450600', 'admin', '2026-01-26 22:11:32', 'admin', '2026-01-26 23:25:45', '202327137', '5', 97.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017202368821185500', 'admin', '2026-01-26 22:39:48', 'admin', '2026-01-26 23:26:06', '202212826', '6', 56.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017203362966144300', 'admin', '2026-01-26 01:16:26', 'admin', '2026-01-26 17:19:43', '202261051', '7', 75.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017203369827604700', 'admin', '2026-01-26 01:57:32', 'admin', '2026-01-26 10:35:03', '202450214', '1', 85.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017203478852695000', 'admin', '2026-01-26 12:02:28', 'admin', '2026-01-26 12:31:50', '202483207', '1', 84.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017203795959419600', 'admin', '2026-01-26 03:43:13', 'admin', '2026-01-26 22:25:46', '202329317', '8', 70.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017203916194999800', 'admin', '2026-01-26 09:35:53', 'admin', '2026-01-26 23:22:49', '202499467', '3', 73.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017204076601039400', 'admin', '2026-01-26 04:56:40', 'admin', '2026-01-26 12:01:18', '202493852', '4', 91.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017204265867750000', 'admin', '2026-01-26 08:29:59', 'admin', '2026-01-26 08:44:06', '202252408', '7', 70.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017204637635331800', 'admin', '2026-01-26 21:47:16', 'admin', '2026-01-26 23:23:13', '202326936', '8', 60.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017205235264963800', 'admin', '2026-01-26 03:29:04', 'admin', '2026-01-26 17:25:42', '202451881', '8', 85.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017206165426391800', 'admin', '2026-01-26 11:04:50', 'admin', '2026-01-26 11:06:24', '202298402', '3', 67.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017206320578508000', 'admin', '2026-01-26 19:36:16', 'admin', '2026-01-26 22:30:10', '202437933', '8', 57.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017206639058012700', 'admin', '2026-01-26 15:22:24', 'admin', '2026-01-26 18:37:27', '202308118', '2', 53.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017207443991843600', 'admin', '2026-01-26 16:08:07', 'admin', '2026-01-26 16:10:55', '202296860', '1', 54.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017208538324044000', 'admin', '2026-01-26 10:31:05', 'admin', '2026-01-26 17:13:57', '202310362', '5', 92.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017209009082072000', 'admin', '2026-01-26 07:19:14', 'admin', '2026-01-26 13:41:25', '202434303', '4', 88.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017209062323230500', 'admin', '2026-01-26 10:33:36', 'admin', '2026-01-26 22:26:55', '202208589', '2', 59.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017209637756228400', 'admin', '2026-01-26 21:53:07', 'admin', '2026-01-26 22:41:32', '202448361', '6', 67.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017210693281655300', 'admin', '2026-01-26 15:28:27', 'admin', '2026-01-26 17:16:20', '202483602', '2', 52.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017211785329938200', 'admin', '2026-01-26 10:30:23', 'admin', '2026-01-26 19:33:07', '202356398', '2', 92.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017211844020347100', 'admin', '2026-01-26 04:58:53', 'admin', '2026-01-26 20:22:32', '202388833', '7', 77.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017212285397523500', 'admin', '2026-01-26 17:58:17', 'admin', '2026-01-26 18:33:36', '202222138', '4', 77.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017213236626548200', 'admin', '2026-01-26 03:25:49', 'admin', '2026-01-26 23:33:45', '202465991', '5', 70.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017214237481833200', 'admin', '2026-01-26 08:36:05', 'admin', '2026-01-26 17:21:37', '202400731', '7', 74.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017214309870550500', 'admin', '2026-01-26 09:24:13', 'admin', '2026-01-26 17:24:08', '202379230', '4', 53.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017215394274725000', 'admin', '2026-01-26 11:04:53', 'admin', '2026-01-26 20:29:20', '202482009', '8', 65.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017215410274240300', 'admin', '2026-01-26 02:18:23', 'admin', '2026-01-26 23:59:50', '202481071', '3', 91.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017216649055616500', 'admin', '2026-01-26 23:34:07', 'admin', '2026-01-26 23:40:19', '202391186', '5', 51.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017216693071028200', 'admin', '2026-01-26 00:21:32', 'admin', '2026-01-26 21:30:11', '202221877', '5', 50.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017217646823271000', 'admin', '2026-01-26 19:00:37', 'admin', '2026-01-26 21:59:01', '202482009', '2', 74.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017218448334212400', 'admin', '2026-01-26 03:48:10', 'admin', '2026-01-26 03:51:08', '202408132', '5', 93.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017220333499734800', 'admin', '2026-01-26 10:07:50', 'admin', '2026-01-26 11:27:36', '202466468', '2', 76.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017222590300571600', 'admin', '2026-01-26 16:21:14', 'admin', '2026-01-26 22:47:40', '202355110', '3', 80.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017222626499580700', 'admin', '2026-01-26 21:14:16', 'admin', '2026-01-26 23:01:42', '202231776', '2', 79.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017223112375297000', 'admin', '2026-01-26 00:01:39', 'admin', '2026-01-26 20:17:21', '202248728', '2', 62.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017223215808452000', 'admin', '2026-01-26 05:57:23', 'admin', '2026-01-26 20:13:17', '202496075', '2', 57.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017223600402516700', 'admin', '2026-01-26 14:23:07', 'admin', '2026-01-26 22:41:39', '202274797', '3', 56.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017224068060892700', 'admin', '2026-01-26 14:28:15', 'admin', '2026-01-26 20:47:33', '202267100', '2', 72.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017224079298860000', 'admin', '2026-01-26 11:18:19', 'admin', '2026-01-26 20:37:46', '202335867', '3', 85.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017224135348730000', 'admin', '2026-01-26 19:05:48', 'admin', '2026-01-26 23:29:33', '202454945', '4', 79.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017224457343186700', 'admin', '2026-01-26 13:04:04', 'admin', '2026-01-26 22:01:47', '202436209', '1', 52.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017224563753765600', 'admin', '2026-01-26 07:20:17', 'admin', '2026-01-26 11:29:22', '202409676', '2', 84.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017225253687914500', 'admin', '2026-01-26 18:22:59', 'admin', '2026-01-26 20:50:47', '202451385', '2', 80.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017226065545099000', 'admin', '2026-01-26 18:03:46', 'admin', '2026-01-26 20:59:02', '202345753', '5', 96.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017226630201501400', 'admin', '2026-01-26 19:35:19', 'admin', '2026-01-26 22:35:18', '202451886', '5', 92.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017227020219384300', 'admin', '2026-01-26 12:00:16', 'admin', '2026-01-26 21:50:18', '202470324', '1', 54.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017227373684136700', 'admin', '2026-01-26 00:26:42', 'admin', '2026-01-26 22:47:06', '202439928', '1', 68.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017227622129142500', 'admin', '2026-01-26 20:50:01', 'admin', '2026-01-26 22:32:26', '202410419', '5', 75.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017227872725900300', 'admin', '2026-01-26 10:16:12', 'admin', '2026-01-26 13:23:17', '202438100', '6', 66.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017228023035391000', 'admin', '2026-01-26 12:31:05', 'admin', '2026-01-26 14:54:04', '202378536', '8', 61.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017228468048740600', 'admin', '2026-01-26 08:54:57', 'admin', '2026-01-26 19:44:27', '202337727', '4', 89.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017228786613217500', 'admin', '2026-01-26 00:41:45', 'admin', '2026-01-26 03:08:30', '202224607', '7', 51.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017229145112159500', 'admin', '2026-01-26 07:07:32', 'admin', '2026-01-26 09:23:52', '202485539', '6', 68.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017231012652987100', 'admin', '2026-01-26 05:50:40', 'admin', '2026-01-26 06:18:38', '202374558', '4', 63.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017231253274117400', 'admin', '2026-01-26 16:16:59', 'admin', '2026-01-26 17:04:47', '202208106', '6', 52.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017231417269394200', 'admin', '2026-01-26 06:40:00', 'admin', '2026-01-26 22:00:09', '202350599', '2', 86.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017231421651875300', 'admin', '2026-01-26 13:54:53', 'admin', '2026-01-26 22:22:38', '202448949', '5', 81.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017232262598077700', 'admin', '2026-01-26 05:06:59', 'admin', '2026-01-26 15:30:45', '202306841', '1', 80.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017232706742352600', 'admin', '2026-01-26 07:33:39', 'admin', '2026-01-26 18:36:43', '202335609', '8', 80.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017232995186542300', 'admin', '2026-01-26 21:25:52', 'admin', '2026-01-26 23:19:26', '202376600', '4', 80.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017233180753361200', 'admin', '2026-01-26 14:17:23', 'admin', '2026-01-26 17:20:01', '202254898', '3', 61.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017233263481936100', 'admin', '2026-01-26 02:16:49', 'admin', '2026-01-26 20:19:08', '202459608', '2', 64.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017234395764838000', 'admin', '2026-01-26 19:34:29', 'admin', '2026-01-26 21:55:54', '202287899', '6', 74.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017234567358487800', 'admin', '2026-01-26 07:12:11', 'admin', '2026-01-26 10:04:01', '202483602', '4', 98.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017236532612729600', 'admin', '2026-01-26 09:13:04', 'admin', '2026-01-26 16:57:32', '202211853', '7', 77.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017236928027579100', 'admin', '2026-01-26 05:22:05', 'admin', '2026-01-26 18:24:17', '202343738', '7', 54.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017237711406288600', 'admin', '2026-01-26 06:46:12', 'admin', '2026-01-26 08:05:45', '202458818', '1', 98.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017237860440852200', 'admin', '2026-01-26 10:56:36', 'admin', '2026-01-26 22:17:55', '202273190', '4', 72.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017238183196306200', 'admin', '2026-01-26 00:54:27', 'admin', '2026-01-26 07:22:28', '202488493', '5', 50.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017238330078716400', 'admin', '2026-01-26 16:41:49', 'admin', '2026-01-26 18:48:13', '202209735', '4', 93.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017241109416020200', 'admin', '2026-01-26 04:23:22', 'admin', '2026-01-26 14:56:30', '202458628', '2', 89.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017241386989211600', 'admin', '2026-01-26 08:13:02', 'admin', '2026-01-26 20:49:48', '202222369', '7', 59.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017241444762520000', 'admin', '2026-01-26 14:13:51', 'admin', '2026-01-26 16:17:08', '202339955', '2', 69.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017242996631854800', 'admin', '2026-01-26 17:43:43', 'admin', '2026-01-26 19:03:29', '202346808', '6', 52.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017243043449233200', 'admin', '2026-01-26 20:44:31', 'admin', '2026-01-26 21:28:56', '202208589', '6', 76.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017243093630211800', 'admin', '2026-01-26 12:55:21', 'admin', '2026-01-26 23:09:14', '202264864', '7', 80.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017244459017380900', 'admin', '2026-01-26 03:45:03', 'admin', '2026-01-26 14:47:30', '202407007', '2', 94.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017244890743487700', 'admin', '2026-01-26 18:24:20', 'admin', '2026-01-26 19:30:00', '202401242', '5', 91.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017244908136823300', 'admin', '2026-01-26 09:48:35', 'admin', '2026-01-26 21:09:11', '202440589', '7', 64.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017245147348830500', 'admin', '2026-01-26 06:46:09', 'admin', '2026-01-26 19:38:17', '202317129', '4', 66.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017245835745860600', 'admin', '2026-01-26 09:38:27', 'admin', '2026-01-26 16:29:27', '202483631', '6', 95.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017245918455333000', 'admin', '2026-01-26 05:35:54', 'admin', '2026-01-26 12:56:39', '202448949', '3', 58.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017246344258102800', 'admin', '2026-01-26 20:06:47', 'admin', '2026-01-26 23:50:05', '202443212', '8', 65.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017246771586841300', 'admin', '2026-01-26 00:20:34', 'admin', '2026-01-26 21:44:21', '202281456', '5', 65.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017247437294363600', 'admin', '2026-01-26 01:14:19', 'admin', '2026-01-26 23:12:47', '202232648', '5', 91.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017247644059357400', 'admin', '2026-01-26 13:28:51', 'admin', '2026-01-26 22:19:45', '202401449', '2', 52.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017247921245371600', 'admin', '2026-01-26 22:19:09', 'admin', '2026-01-26 22:52:20', '202351284', '7', 94.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017248285903895000', 'admin', '2026-01-26 07:45:00', 'admin', '2026-01-26 09:32:09', '202248728', '6', 66.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017248408318937900', 'admin', '2026-01-26 05:48:31', 'admin', '2026-01-26 10:42:58', '202419548', '4', 60.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017248947968171300', 'admin', '2026-01-26 18:18:06', 'admin', '2026-01-26 23:48:02', '202447615', '6', 91.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017249104204362000', 'admin', '2026-01-26 04:40:16', 'admin', '2026-01-26 14:10:05', '202247435', '4', 86.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017249287688105700', 'admin', '2026-01-26 00:16:02', 'admin', '2026-01-26 03:57:50', '202401242', '7', 65.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017250096202446000', 'admin', '2026-01-26 20:07:05', 'admin', '2026-01-26 23:24:23', '202285770', '7', 93.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017250285515549000', 'admin', '2026-01-26 06:22:53', 'admin', '2026-01-26 09:45:59', '202355110', '6', 70.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017250810826242000', 'admin', '2026-01-26 10:38:21', 'admin', '2026-01-26 16:37:48', '202436209', '7', 65.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017250968989217500', 'admin', '2026-01-26 22:41:56', 'admin', '2026-01-26 22:54:28', '202478723', '8', 85.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017251053444690700', 'admin', '2026-01-26 23:22:39', 'admin', '2026-01-26 23:53:31', '202485636', '6', 68.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017251671734573600', 'admin', '2026-01-26 00:19:57', 'admin', '2026-01-26 05:37:19', '202419548', '2', 80.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017252872289769000', 'admin', '2026-01-26 08:52:21', 'admin', '2026-01-26 12:22:22', '202480140', '4', 76.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017252962039135500', 'admin', '2026-01-26 23:38:34', 'admin', '2026-01-26 23:58:47', '202489317', '4', 78.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017253391804421600', 'admin', '2026-01-26 11:30:32', 'admin', '2026-01-26 11:58:30', '202496015', '1', 78.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017255441061254000', 'admin', '2026-01-26 02:12:35', 'admin', '2026-01-26 17:00:57', '202314497', '7', 75.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017255469094690600', 'admin', '2026-01-26 05:25:52', 'admin', '2026-01-26 07:33:03', '202222138', '3', 87.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017255800328828000', 'admin', '2026-01-26 06:56:33', 'admin', '2026-01-26 19:58:53', '202432223', '6', 88.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017257135953816800', 'admin', '2026-01-26 22:25:00', 'admin', '2026-01-26 23:54:16', '202219396', '5', 83.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017257850474713000', 'admin', '2026-01-26 12:58:06', 'admin', '2026-01-26 19:24:47', '202210649', '3', 57.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017258673587676700', 'admin', '2026-01-26 04:02:12', 'admin', '2026-01-26 09:13:19', '202467723', '5', 67.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017259259746043600', 'admin', '2026-01-26 06:43:06', 'admin', '2026-01-26 19:57:14', '202458628', '7', 73.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017259390791878700', 'admin', '2026-01-26 11:21:58', 'admin', '2026-01-26 21:37:49', '202273590', '4', 53.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017259670423134500', 'admin', '2026-01-26 15:16:39', 'admin', '2026-01-26 18:41:27', '202233601', '5', 93.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017259826797292800', 'admin', '2026-01-26 17:06:14', 'admin', '2026-01-26 22:14:51', '202222369', '3', 89.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017261470881391000', 'admin', '2026-01-26 03:48:24', 'admin', '2026-01-26 12:01:16', '202244872', '6', 85.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017261795615447800', 'admin', '2026-01-26 00:44:17', 'admin', '2026-01-26 05:21:24', '202495494', '2', 66.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017262095642602500', 'admin', '2026-01-26 12:37:34', 'admin', '2026-01-26 16:39:53', '202348320', '8', 84.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017263502080027400', 'admin', '2026-01-26 23:08:14', 'admin', '2026-01-26 23:42:38', '202290230', '2', 64.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017263693774415000', 'admin', '2026-01-26 07:38:23', 'admin', '2026-01-26 11:47:09', '202303627', '5', 58.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017264572776484400', 'admin', '2026-01-26 12:38:43', 'admin', '2026-01-26 13:19:16', '202402888', '4', 67.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017266202840289500', 'admin', '2026-01-26 02:53:06', 'admin', '2026-01-26 14:43:58', '202315584', '1', 52.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017266403936205600', 'admin', '2026-01-26 21:50:28', 'admin', '2026-01-26 22:28:57', '202407007', '3', 77.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017266420123211800', 'admin', '2026-01-26 03:46:54', 'admin', '2026-01-26 22:28:34', '202433505', '3', 78.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017266983098202400', 'admin', '2026-01-26 18:07:20', 'admin', '2026-01-26 19:42:25', '202208106', '2', 61.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017267047793022200', 'admin', '2026-01-26 04:58:57', 'admin', '2026-01-26 22:57:17', '202203366', '8', 97.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017267126861876200', 'admin', '2026-01-26 03:30:29', 'admin', '2026-01-26 05:25:18', '202451697', '6', 94.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017267233550678800', 'admin', '2026-01-26 16:29:23', 'admin', '2026-01-26 19:51:03', '202279729', '1', 71.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017267326929938200', 'admin', '2026-01-26 09:06:30', 'admin', '2026-01-26 13:21:38', '202481739', '6', 98.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017267406200530200', 'admin', '2026-01-26 20:40:41', 'admin', '2026-01-26 21:22:20', '202488807', '2', 94.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017267562293241900', 'admin', '2026-01-26 14:57:37', 'admin', '2026-01-26 20:10:37', '202458161', '6', 75.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017267735012811000', 'admin', '2026-01-26 02:47:17', 'admin', '2026-01-26 06:02:15', '202478723', '5', 71.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017268149061187600', 'admin', '2026-01-26 07:13:52', 'admin', '2026-01-26 11:57:43', '202207643', '4', 50.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017268787725003800', 'admin', '2026-01-26 04:51:56', 'admin', '2026-01-26 20:31:46', '202465991', '2', 76.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017269384045392100', 'admin', '2026-01-26 07:37:24', 'admin', '2026-01-26 19:10:16', '202430396', '3', 63.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017269450226829800', 'admin', '2026-01-26 05:18:44', 'admin', '2026-01-26 18:30:07', '202211164', '6', 89.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017269547935820500', 'admin', '2026-01-26 20:28:45', 'admin', '2026-01-26 20:56:03', '202448364', '8', 97.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017271951871596000', 'admin', '2026-01-26 19:19:48', 'admin', '2026-01-26 23:15:28', '202454945', '3', 88.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017272608705076500', 'admin', '2026-01-26 06:59:49', 'admin', '2026-01-26 09:11:09', '202212673', '3', 95.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017272801231564300', 'admin', '2026-01-26 17:13:28', 'admin', '2026-01-26 22:30:12', '202448364', '2', 93.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017273216165698600', 'admin', '2026-01-26 11:11:18', 'admin', '2026-01-26 15:17:18', '202245371', '2', 58.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017273866874632000', 'admin', '2026-01-26 22:37:10', 'admin', '2026-01-26 23:53:44', '202480140', '7', 85.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017273998426856400', 'admin', '2026-01-26 14:07:39', 'admin', '2026-01-26 18:28:24', '202457263', '6', 64.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017274234073316000', 'admin', '2026-01-26 20:19:58', 'admin', '2026-01-26 22:56:00', '202496015', '4', 76.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017276915870498300', 'admin', '2026-01-26 01:04:19', 'admin', '2026-01-26 15:17:34', '202411163', '7', 54.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017277794209860400', 'admin', '2026-01-26 13:17:28', 'admin', '2026-01-26 17:24:49', '202414154', '4', 69.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017278027543339500', 'admin', '2026-01-26 04:18:56', 'admin', '2026-01-26 20:17:00', '202489317', '1', 98.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017279407729800400', 'admin', '2026-01-26 07:52:02', 'admin', '2026-01-26 11:18:34', '202485640', '3', 81.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017279538249211600', 'admin', '2026-01-26 05:24:16', 'admin', '2026-01-26 18:05:10', '202422827', '5', 60.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017279834399853600', 'admin', '2026-01-26 10:01:09', 'admin', '2026-01-26 14:11:20', '202379866', '4', 56.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017279958309279700', 'admin', '2026-01-26 11:31:47', 'admin', '2026-01-26 12:25:38', '202272524', '4', 92.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017280529151425300', 'admin', '2026-01-26 13:42:35', 'admin', '2026-01-26 17:59:44', '202298253', '6', 50.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017281031985699600', 'admin', '2026-01-26 17:08:18', 'admin', '2026-01-26 22:16:14', '202423341', '5', 60.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017281425818828500', 'admin', '2026-01-26 05:15:21', 'admin', '2026-01-26 16:04:23', '202488807', '6', 95.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017281481729735700', 'admin', '2026-01-26 19:25:11', 'admin', '2026-01-26 21:59:31', '202439370', '7', 65.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017281855679170600', 'admin', '2026-01-26 11:11:51', 'admin', '2026-01-26 16:26:56', '202282081', '5', 91.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017283414109600000', 'admin', '2026-01-26 15:48:32', 'admin', '2026-01-26 19:56:43', '202330572', '3', 98.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017284141319163100', 'admin', '2026-01-26 10:43:02', 'admin', '2026-01-26 19:28:54', '202435673', '6', 95.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017284584481124000', 'admin', '2026-01-26 04:26:48', 'admin', '2026-01-26 20:55:14', '202368280', '2', 61.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017285040765334800', 'admin', '2026-01-26 11:45:11', 'admin', '2026-01-26 12:27:34', '202337557', '6', 86.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017287211673392000', 'admin', '2026-01-26 10:40:00', 'admin', '2026-01-26 19:14:06', '202354633', '1', 93.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017287486378914800', 'admin', '2026-01-26 17:43:33', 'admin', '2026-01-26 22:58:08', '202229615', '2', 91.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017287700905352400', 'admin', '2026-01-26 15:27:50', 'admin', '2026-01-26 18:26:31', '202252408', '4', 52.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017287706949538300', 'admin', '2026-01-26 13:52:27', 'admin', '2026-01-26 17:22:56', '202495050', '2', 53.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017288016025967600', 'admin', '2026-01-26 21:18:36', 'admin', '2026-01-26 23:29:14', '202411163', '2', 53.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017288104222994200', 'admin', '2026-01-26 17:38:50', 'admin', '2026-01-26 21:22:13', '202480140', '1', 63.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017288414357304000', 'admin', '2026-01-26 17:42:30', 'admin', '2026-01-26 20:45:22', '202393358', '6', 76.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017288761018243000', 'admin', '2026-01-26 00:39:15', 'admin', '2026-01-26 19:15:13', '202241855', '7', 95.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017288851013448700', 'admin', '2026-01-26 08:36:59', 'admin', '2026-01-26 22:12:39', '202376600', '5', 56.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017288919461294800', 'admin', '2026-01-26 13:03:08', 'admin', '2026-01-26 22:49:02', '202281387', '3', 82.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017288939491526700', 'admin', '2026-01-26 08:06:54', 'admin', '2026-01-26 13:19:26', '202481739', '3', 55.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017289690740378000', 'admin', '2026-01-26 13:45:56', 'admin', '2026-01-26 18:25:58', '202494261', '5', 79.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017290118067727400', 'admin', '2026-01-26 04:29:50', 'admin', '2026-01-26 22:06:59', '202280982', '5', 92.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017290882509479700', 'admin', '2026-01-26 10:11:13', 'admin', '2026-01-26 22:02:26', '202397320', '3', 73.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017291022709794600', 'admin', '2026-01-26 18:49:42', 'admin', '2026-01-26 18:56:35', '202362201', '5', 92.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017291190199122200', 'admin', '2026-01-26 12:26:07', 'admin', '2026-01-26 19:22:03', '202211853', '3', 71.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017291300637752300', 'admin', '2026-01-26 07:43:10', 'admin', '2026-01-26 08:33:43', '202359486', '7', 83.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017291732206897700', 'admin', '2026-01-26 04:40:23', 'admin', '2026-01-26 11:57:25', '202448667', '3', 53.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017291762908853200', 'admin', '2026-01-26 21:26:16', 'admin', '2026-01-26 23:51:36', '202364563', '7', 51.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017292730437894700', 'admin', '2026-01-26 04:46:27', 'admin', '2026-01-26 12:42:02', '202228454', '7', 63.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017293103936807400', 'admin', '2026-01-26 08:13:58', 'admin', '2026-01-26 19:10:55', '202367706', '4', 86.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017294110284136000', 'admin', '2026-01-26 06:52:25', 'admin', '2026-01-26 21:11:16', '202258540', '5', 77.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017294442466154500', 'admin', '2026-01-26 12:01:31', 'admin', '2026-01-26 21:08:07', '202390264', '2', 56.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017294613397411000', 'admin', '2026-01-26 13:16:16', 'admin', '2026-01-26 21:54:29', '202478493', '8', 58.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017294715887837700', 'admin', '2026-01-26 18:54:50', 'admin', '2026-01-26 23:27:44', '202367905', '6', 93.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017295060014212000', 'admin', '2026-01-26 05:19:42', 'admin', '2026-01-26 15:10:15', '202453871', '3', 56.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017296196848757200', 'admin', '2026-01-26 07:30:32', 'admin', '2026-01-26 12:28:03', '202407007', '7', 57.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017296241464484900', 'admin', '2026-01-26 08:15:46', 'admin', '2026-01-26 10:22:24', '202210279', '6', 74.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017296768108900600', 'admin', '2026-01-26 04:07:55', 'admin', '2026-01-26 21:05:15', '202359486', '6', 91.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017297083238617000', 'admin', '2026-01-26 01:41:50', 'admin', '2026-01-26 21:19:13', '202437356', '2', 79.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017297138800307500', 'admin', '2026-01-26 17:20:10', 'admin', '2026-01-26 18:28:05', '202353666', '8', 79.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017297367388582700', 'admin', '2026-01-26 23:42:58', 'admin', '2026-01-26 23:43:44', '202334944', '1', 76.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017297781650338800', 'admin', '2026-01-26 01:49:34', 'admin', '2026-01-26 10:36:44', '202386448', '7', 71.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017297804481226800', 'admin', '2026-01-26 07:10:42', 'admin', '2026-01-26 21:06:18', '202447615', '7', 72.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017299621668836900', 'admin', '2026-01-26 16:16:46', 'admin', '2026-01-26 19:23:45', '202348320', '6', 50.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017299775634416600', 'admin', '2026-01-26 10:16:17', 'admin', '2026-01-26 17:07:59', '202447883', '5', 54.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017300232056344300', 'admin', '2026-01-26 15:12:31', 'admin', '2026-01-26 20:02:35', '202424454', '4', 70.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017300255835595300', 'admin', '2026-01-26 00:54:31', 'admin', '2026-01-26 21:06:54', '202280466', '6', 77.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017300305776269800', 'admin', '2026-01-26 15:26:56', 'admin', '2026-01-26 21:05:15', '202239571', '3', 66.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017300354276649000', 'admin', '2026-01-26 06:37:12', 'admin', '2026-01-26 15:45:11', '202267445', '1', 55.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017301217237961200', 'admin', '2026-01-26 10:48:45', 'admin', '2026-01-26 16:43:29', '202287615', '2', 85.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017301349118567400', 'admin', '2026-01-26 02:47:07', 'admin', '2026-01-26 05:36:26', '202229615', '4', 94.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017301924080118000', 'admin', '2026-01-26 04:25:53', 'admin', '2026-01-26 07:14:08', '202440589', '6', 83.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017302594879040800', 'admin', '2026-01-26 08:20:47', 'admin', '2026-01-26 08:33:58', '202273868', '2', 56.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017302674188852000', 'admin', '2026-01-26 14:16:27', 'admin', '2026-01-26 23:07:27', '202406754', '6', 72.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017302780857422600', 'admin', '2026-01-26 20:43:57', 'admin', '2026-01-26 22:39:33', '202330572', '4', 61.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017303459087468800', 'admin', '2026-01-26 04:00:11', 'admin', '2026-01-26 16:12:37', '202298660', '2', 53.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017303514061906200', 'admin', '2026-01-26 19:09:54', 'admin', '2026-01-26 21:42:55', '202217406', '7', 96.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017303863514578000', 'admin', '2026-01-26 17:34:58', 'admin', '2026-01-26 18:29:45', '202271316', '6', 65.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017303877693529900', 'admin', '2026-01-26 08:42:05', 'admin', '2026-01-26 23:01:01', '202337557', '7', 53.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017303923017354000', 'admin', '2026-01-26 16:33:56', 'admin', '2026-01-26 18:04:13', '202231454', '4', 61.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017304687177239800', 'admin', '2026-01-26 18:15:08', 'admin', '2026-01-26 21:06:44', '202285287', '8', 67.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017304818660932900', 'admin', '2026-01-26 17:22:31', 'admin', '2026-01-26 18:47:43', '202458628', '6', 74.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017305724818680600', 'admin', '2026-01-26 09:14:46', 'admin', '2026-01-26 11:56:05', '202404996', '7', 96.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017305960973875500', 'admin', '2026-01-26 04:13:09', 'admin', '2026-01-26 23:23:21', '202485539', '5', 51.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017306160173766400', 'admin', '2026-01-26 21:04:40', 'admin', '2026-01-26 21:55:14', '202448949', '6', 80.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017306283314950400', 'admin', '2026-01-26 23:39:44', 'admin', '2026-01-26 23:52:01', '202364475', '4', 67.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017307076515599000', 'admin', '2026-01-26 11:58:24', 'admin', '2026-01-26 12:13:56', '202448743', '6', 58.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017307799020415200', 'admin', '2026-01-26 21:34:11', 'admin', '2026-01-26 23:53:37', '202454505', '2', 63.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017308005733576000', 'admin', '2026-01-26 19:36:04', 'admin', '2026-01-26 20:59:59', '202418074', '6', 75.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017308311812307200', 'admin', '2026-01-26 00:01:27', 'admin', '2026-01-26 18:57:48', '202379230', '1', 81.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017308370348957000', 'admin', '2026-01-26 15:42:16', 'admin', '2026-01-26 22:46:50', '202361642', '8', 79.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017308668262651600', 'admin', '2026-01-26 10:15:34', 'admin', '2026-01-26 21:50:36', '202410419', '6', 62.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017308845383911000', 'admin', '2026-01-26 05:51:18', 'admin', '2026-01-26 13:58:29', '202458632', '4', 77.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017309494461417700', 'admin', '2026-01-26 04:25:49', 'admin', '2026-01-26 23:11:47', '202326029', '3', 50.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017309632582962000', 'admin', '2026-01-26 01:01:30', 'admin', '2026-01-26 20:54:39', '202298149', '3', 62.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017309722252345000', 'admin', '2026-01-26 12:54:01', 'admin', '2026-01-26 14:53:48', '202469792', '1', 70.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017310113709261800', 'admin', '2026-01-26 00:24:26', 'admin', '2026-01-26 17:16:54', '202240720', '4', 83.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017310498484123000', 'admin', '2026-01-26 12:39:04', 'admin', '2026-01-26 21:57:49', '202300154', '6', 70.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017310871209834000', 'admin', '2026-01-26 10:26:08', 'admin', '2026-01-26 10:59:25', '202294260', '3', 53.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017310935628943000', 'admin', '2026-01-26 18:13:06', 'admin', '2026-01-26 19:21:39', '202466537', '2', 75.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017312963448040400', 'admin', '2026-01-26 19:22:29', 'admin', '2026-01-26 21:52:35', '202231454', '2', 62.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017313695320856300', 'admin', '2026-01-26 05:58:15', 'admin', '2026-01-26 13:43:17', '202324521', '7', 99.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017313748638729200', 'admin', '2026-01-26 22:04:19', 'admin', '2026-01-26 22:08:21', '202217406', '8', 82.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017314263468581000', 'admin', '2026-01-26 10:47:34', 'admin', '2026-01-26 22:04:17', '202298402', '5', 61.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017315151121041700', 'admin', '2026-01-26 12:29:46', 'admin', '2026-01-26 22:07:55', '202267100', '3', 79.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017315534868926000', 'admin', '2026-01-26 15:29:46', 'admin', '2026-01-26 16:04:58', '202241855', '1', 75.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017315583940158500', 'admin', '2026-01-26 06:56:31', 'admin', '2026-01-26 17:02:34', '202329090', '6', 88.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017315671497790700', 'admin', '2026-01-26 23:01:39', 'admin', '2026-01-26 23:48:18', '202201712', '4', 56.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017315896523633000', 'admin', '2026-01-26 15:06:07', 'admin', '2026-01-26 18:28:35', '202267515', '1', 81.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017315971408086800', 'admin', '2026-01-26 01:21:11', 'admin', '2026-01-26 14:48:39', '202342061', '6', 91.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017315985602860500', 'admin', '2026-01-26 07:52:55', 'admin', '2026-01-26 23:15:54', '202265646', '5', 84.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017316654878389800', 'admin', '2026-01-26 09:35:34', 'admin', '2026-01-26 23:10:09', '202397320', '5', 87.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017316783950840300', 'admin', '2026-01-26 08:56:03', 'admin', '2026-01-26 12:34:40', '202398306', '2', 63.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017316948144386300', 'admin', '2026-01-26 09:29:37', 'admin', '2026-01-26 13:14:26', '202438356', '6', 77.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017317235390598700', 'admin', '2026-01-26 09:38:36', 'admin', '2026-01-26 22:56:01', '202404983', '4', 83.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017317463290407000', 'admin', '2026-01-26 21:48:20', 'admin', '2026-01-26 23:12:21', '202208837', '8', 85.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017318219412043300', 'admin', '2026-01-26 14:14:17', 'admin', '2026-01-26 17:06:19', '202263438', '4', 57.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017318499020235800', 'admin', '2026-01-26 05:46:24', 'admin', '2026-01-26 17:25:31', '202293347', '7', 93.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017318714972172800', 'admin', '2026-01-26 12:36:51', 'admin', '2026-01-26 13:00:26', '202298124', '7', 56.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017319381368088300', 'admin', '2026-01-26 07:38:28', 'admin', '2026-01-26 12:57:45', '202424647', '5', 57.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017319594889507300', 'admin', '2026-01-26 19:42:23', 'admin', '2026-01-26 22:39:42', '202281387', '5', 86.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017320502102855000', 'admin', '2026-01-26 03:16:40', 'admin', '2026-01-26 19:09:21', '202499467', '5', 76.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017320895873703400', 'admin', '2026-01-26 11:20:18', 'admin', '2026-01-26 17:08:19', '202312765', '7', 72.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017321015569158100', 'admin', '2026-01-26 19:16:08', 'admin', '2026-01-26 23:27:07', '202213478', '6', 80.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017321272911909400', 'admin', '2026-01-26 09:48:05', 'admin', '2026-01-26 17:01:57', '202444199', '6', 82.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017322120109379000', 'admin', '2026-01-26 03:50:03', 'admin', '2026-01-26 08:54:24', '202344751', '5', 77.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017322502592689400', 'admin', '2026-01-26 15:51:59', 'admin', '2026-01-26 17:05:02', '202351284', '4', 96.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017322563688336400', 'admin', '2026-01-26 00:09:08', 'admin', '2026-01-26 20:10:25', '202478493', '1', 63.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017322596422442800', 'admin', '2026-01-26 00:50:32', 'admin', '2026-01-26 04:56:21', '202219396', '7', 89.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017322957720848100', 'admin', '2026-01-26 05:14:49', 'admin', '2026-01-26 05:56:39', '202359119', '8', 78.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017323825547958300', 'admin', '2026-01-26 13:40:40', 'admin', '2026-01-26 16:45:18', '202459608', '5', 68.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017324375026061600', 'admin', '2026-01-26 06:23:42', 'admin', '2026-01-26 18:04:07', '202361314', '7', 69.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017324948969791000', 'admin', '2026-01-26 12:46:40', 'admin', '2026-01-26 17:11:40', '202254898', '5', 73.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017325918672946200', 'admin', '2026-01-26 03:52:37', 'admin', '2026-01-26 16:34:20', '202416134', '8', 83.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017326197712117800', 'admin', '2026-01-26 19:33:29', 'admin', '2026-01-26 23:36:50', '202281387', '6', 94.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017326625325615600', 'admin', '2026-01-26 09:27:06', 'admin', '2026-01-26 21:56:52', '202367797', '6', 55.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017326892180490000', 'admin', '2026-01-26 23:58:38', 'admin', '2026-01-26 23:59:44', '202495050', '8', 76.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017326965279226000', 'admin', '2026-01-26 02:12:01', 'admin', '2026-01-26 22:53:32', '202260869', '3', 61.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017327105728241000', 'admin', '2026-01-26 04:46:35', 'admin', '2026-01-26 23:04:56', '202348280', '4', 79.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017327346725034800', 'admin', '2026-01-26 07:20:05', 'admin', '2026-01-26 23:39:22', '202230374', '3', 79.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017327701374119700', 'admin', '2026-01-26 00:05:21', 'admin', '2026-01-26 12:13:13', '202453871', '5', 94.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017328008414308000', 'admin', '2026-01-26 17:01:40', 'admin', '2026-01-26 17:58:30', '202232200', '7', 80.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017328726114317000', 'admin', '2026-01-26 14:37:27', 'admin', '2026-01-26 17:04:04', '202309922', '7', 60.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017329171460113700', 'admin', '2026-01-26 22:27:46', 'admin', '2026-01-26 23:19:04', '202460201', '2', 73.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017329481138054700', 'admin', '2026-01-26 09:19:08', 'admin', '2026-01-26 15:55:10', '202320932', '6', 53.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017330204637302800', 'admin', '2026-01-26 02:13:58', 'admin', '2026-01-26 09:28:05', '202231454', '7', 57.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017330346419012600', 'admin', '2026-01-26 19:45:13', 'admin', '2026-01-26 22:02:34', '202419548', '1', 52.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017331914233734000', 'admin', '2026-01-26 18:55:02', 'admin', '2026-01-26 19:45:31', '202406356', '2', 96.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017332117071779800', 'admin', '2026-01-26 20:21:19', 'admin', '2026-01-26 20:52:04', '202386114', '3', 85.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017332584369662200', 'admin', '2026-01-26 15:10:00', 'admin', '2026-01-26 17:12:21', '202285287', '5', 74.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017332784933180200', 'admin', '2026-01-26 00:03:18', 'admin', '2026-01-26 00:13:50', '202422720', '4', 60.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017333175404343000', 'admin', '2026-01-26 02:44:22', 'admin', '2026-01-26 02:58:07', '202338876', '7', 51.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017333640692844500', 'admin', '2026-01-26 17:50:01', 'admin', '2026-01-26 19:55:23', '202208837', '4', 78.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017334596083698000', 'admin', '2026-01-26 23:59:31', 'admin', '2026-01-26 23:59:47', '202326651', '3', 85.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017335449594622000', 'admin', '2026-01-26 09:58:18', 'admin', '2026-01-26 12:10:04', '202436895', '6', 89.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017335960394942700', 'admin', '2026-01-26 07:04:52', 'admin', '2026-01-26 10:35:57', '202366709', '3', 51.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017336929798957600', 'admin', '2026-01-26 02:08:12', 'admin', '2026-01-26 12:30:13', '202376600', '7', 57.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017337060889197300', 'admin', '2026-01-26 10:39:12', 'admin', '2026-01-26 22:22:00', '202223272', '4', 96.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017337788913069300', 'admin', '2026-01-26 18:33:45', 'admin', '2026-01-26 19:53:40', '202431205', '3', 94.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017337816388787500', 'admin', '2026-01-26 23:44:46', 'admin', '2026-01-26 23:48:06', '202384453', '6', 65.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017338664751051300', 'admin', '2026-01-26 13:15:05', 'admin', '2026-01-26 16:08:27', '202431625', '6', 83.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017338962541539000', 'admin', '2026-01-26 10:53:24', 'admin', '2026-01-26 11:07:10', '202296748', '7', 59.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017339166321825500', 'admin', '2026-01-26 20:54:28', 'admin', '2026-01-26 23:23:39', '202244650', '8', 71.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017339199993876200', 'admin', '2026-01-26 09:23:15', 'admin', '2026-01-26 10:48:58', '202210868', '2', 81.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017339893328093000', 'admin', '2026-01-26 15:19:50', 'admin', '2026-01-26 17:43:21', '202294029', '1', 77.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017339978971427800', 'admin', '2026-01-26 11:14:04', 'admin', '2026-01-26 18:36:49', '202347401', '7', 81.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017341033033443800', 'admin', '2026-01-26 23:01:21', 'admin', '2026-01-26 23:58:52', '202271316', '4', 78.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017341141974946000', 'admin', '2026-01-26 00:47:26', 'admin', '2026-01-26 09:53:16', '202492633', '4', 73.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017341808572728600', 'admin', '2026-01-26 17:00:12', 'admin', '2026-01-26 19:54:10', '202481071', '4', 56.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017342088992849400', 'admin', '2026-01-26 17:49:39', 'admin', '2026-01-26 18:20:07', '202241168', '3', 98.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017342621049541600', 'admin', '2026-01-26 04:43:41', 'admin', '2026-01-26 14:41:12', '202415031', '6', 54.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017343520203494400', 'admin', '2026-01-26 02:27:40', 'admin', '2026-01-26 05:44:40', '202389569', '3', 55.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017343563545919000', 'admin', '2026-01-26 03:33:29', 'admin', '2026-01-26 20:49:04', '202454288', '1', 80.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017344231199667700', 'admin', '2026-01-26 05:13:23', 'admin', '2026-01-26 12:47:07', '202336240', '6', 64.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017344312104184000', 'admin', '2026-01-26 21:24:34', 'admin', '2026-01-26 22:28:26', '202453591', '4', 75.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017344396973725000', 'admin', '2026-01-26 07:33:28', 'admin', '2026-01-26 17:15:48', '202320420', '1', 96.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017344866687374300', 'admin', '2026-01-26 01:31:59', 'admin', '2026-01-26 14:26:39', '202210193', '3', 80.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017344906229914000', 'admin', '2026-01-26 02:17:59', 'admin', '2026-01-26 05:20:15', '202210649', '6', 94.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017346159051696600', 'admin', '2026-01-26 04:29:39', 'admin', '2026-01-26 15:49:29', '202372784', '6', 96.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017346550167728600', 'admin', '2026-01-26 10:25:40', 'admin', '2026-01-26 21:13:44', '202267515', '4', 65.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017347339413196000', 'admin', '2026-01-26 13:02:51', 'admin', '2026-01-26 13:15:03', '202388833', '2', 74.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017347705093873700', 'admin', '2026-01-26 15:04:06', 'admin', '2026-01-26 20:58:44', '202485640', '8', 81.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017348316600953900', 'admin', '2026-01-26 07:12:42', 'admin', '2026-01-26 11:58:32', '202267704', '6', 65.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017349374880534800', 'admin', '2026-01-26 15:23:17', 'admin', '2026-01-26 18:13:57', '202371299', '4', 68.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017349510171411000', 'admin', '2026-01-26 23:43:41', 'admin', '2026-01-26 23:50:44', '202313856', '1', 90.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017349984429819600', 'admin', '2026-01-26 01:30:53', 'admin', '2026-01-26 19:39:58', '202391518', '3', 90.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017350015619324700', 'admin', '2026-01-26 04:41:50', 'admin', '2026-01-26 23:16:36', '202420652', '4', 82.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017350512061196000', 'admin', '2026-01-26 06:53:05', 'admin', '2026-01-26 20:48:37', '202470324', '2', 82.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017350682035671000', 'admin', '2026-01-26 19:19:03', 'admin', '2026-01-26 20:11:39', '202479651', '7', 79.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017351082841367300', 'admin', '2026-01-26 02:07:52', 'admin', '2026-01-26 05:39:30', '202200665', '1', 57.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017351232630650400', 'admin', '2026-01-26 11:41:00', 'admin', '2026-01-26 16:45:12', '202230374', '4', 73.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017351265258323500', 'admin', '2026-01-26 14:15:25', 'admin', '2026-01-26 19:10:04', '202291584', '3', 85.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017351795891223300', 'admin', '2026-01-26 05:24:46', 'admin', '2026-01-26 09:23:34', '202231102', '8', 91.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017353008633587000', 'admin', '2026-01-26 09:34:40', 'admin', '2026-01-26 21:14:13', '202348320', '3', 57.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017354257069773600', 'admin', '2026-01-26 03:53:50', 'admin', '2026-01-26 16:58:46', '202267445', '4', 93.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017354369477739800', 'admin', '2026-01-26 20:51:20', 'admin', '2026-01-26 21:49:08', '202336240', '2', 88.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017355146909468000', 'admin', '2026-01-26 11:29:08', 'admin', '2026-01-26 18:39:53', '202337557', '8', 84.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017355474873716700', 'admin', '2026-01-26 03:26:23', 'admin', '2026-01-26 04:11:26', '202344751', '7', 78.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017356146082263800', 'admin', '2026-01-26 08:16:45', 'admin', '2026-01-26 12:10:05', '202479651', '5', 64.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017356573964454100', 'admin', '2026-01-26 14:05:32', 'admin', '2026-01-26 16:25:38', '202343738', '6', 68.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017356765740864500', 'admin', '2026-01-26 07:15:17', 'admin', '2026-01-26 15:46:38', '202254833', '7', 64.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017358824272055800', 'admin', '2026-01-26 15:28:27', 'admin', '2026-01-26 17:14:16', '202429920', '5', 82.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017358913612276000', 'admin', '2026-01-26 16:21:58', 'admin', '2026-01-26 21:11:24', '202481071', '5', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017360460114869800', 'admin', '2026-01-26 07:58:23', 'admin', '2026-01-26 23:20:26', '202260869', '4', 76.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017360650453362000', 'admin', '2026-01-26 04:27:41', 'admin', '2026-01-26 15:59:40', '202415031', '8', 97.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017361314543594800', 'admin', '2026-01-26 11:20:29', 'admin', '2026-01-26 23:53:03', '202278458', '1', 74.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017362543182111200', 'admin', '2026-01-26 12:23:03', 'admin', '2026-01-26 20:38:09', '202208106', '7', 67.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017363265347923200', 'admin', '2026-01-26 17:31:40', 'admin', '2026-01-26 17:39:08', '202483602', '1', 67.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017363578022513000', 'admin', '2026-01-26 13:50:46', 'admin', '2026-01-26 23:30:30', '202308544', '2', 97.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017364358803989000', 'admin', '2026-01-26 14:54:47', 'admin', '2026-01-26 22:59:23', '202354633', '3', 68.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017364598851005200', 'admin', '2026-01-26 09:57:06', 'admin', '2026-01-26 19:58:15', '202410765', '3', 68.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017364642537628000', 'admin', '2026-01-26 16:27:15', 'admin', '2026-01-26 21:33:18', '202404983', '2', 57.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017365100069171200', 'admin', '2026-01-26 13:37:26', 'admin', '2026-01-26 14:42:04', '202271682', '6', 98.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017366500506950100', 'admin', '2026-01-26 08:36:52', 'admin', '2026-01-26 14:55:51', '202448667', '5', 96.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017370143334845700', 'admin', '2026-01-26 22:24:18', 'admin', '2026-01-26 22:30:29', '202288272', '8', 69.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017370245078752300', 'admin', '2026-01-26 21:41:18', 'admin', '2026-01-26 22:59:30', '202486753', '7', 56.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017370759205665500', 'admin', '2026-01-26 10:02:42', 'admin', '2026-01-26 18:01:33', '202443212', '3', 61.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017372527273355000', 'admin', '2026-01-26 12:01:39', 'admin', '2026-01-26 20:06:02', '202367706', '5', 90.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017372947452209000', 'admin', '2026-01-26 22:13:51', 'admin', '2026-01-26 22:48:51', '202379991', '8', 58.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017373116228460300', 'admin', '2026-01-26 22:37:41', 'admin', '2026-01-26 23:19:29', '202496015', '6', 79.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017373491331026400', 'admin', '2026-01-26 07:01:33', 'admin', '2026-01-26 07:42:57', '202273590', '2', 86.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017374022744683800', 'admin', '2026-01-26 21:15:18', 'admin', '2026-01-26 21:36:53', '202416134', '6', 61.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017374672251011800', 'admin', '2026-01-26 07:17:40', 'admin', '2026-01-26 16:40:23', '202320420', '7', 62.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017375122796564700', 'admin', '2026-01-26 23:13:32', 'admin', '2026-01-26 23:39:25', '202327406', '8', 59.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017375778799517000', 'admin', '2026-01-26 20:48:11', 'admin', '2026-01-26 21:43:44', '202381155', '7', 51.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017376217871189800', 'admin', '2026-01-26 22:44:29', 'admin', '2026-01-26 23:24:13', '202317962', '6', 97.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017376458539795700', 'admin', '2026-01-26 14:21:55', 'admin', '2026-01-26 17:10:31', '202284383', '2', 96.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017376690221587200', 'admin', '2026-01-26 09:47:49', 'admin', '2026-01-26 13:50:59', '202287615', '8', 79.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017376728765918500', 'admin', '2026-01-26 21:03:58', 'admin', '2026-01-26 21:10:19', '202484662', '5', 97.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017376926779196000', 'admin', '2026-01-26 08:12:45', 'admin', '2026-01-26 08:29:35', '202253268', '3', 66.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017377209626311700', 'admin', '2026-01-26 04:03:52', 'admin', '2026-01-26 06:42:40', '202287899', '2', 64.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017377218469880600', 'admin', '2026-01-26 05:46:40', 'admin', '2026-01-26 18:34:53', '202359486', '2', 82.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017378979054681900', 'admin', '2026-01-26 00:01:54', 'admin', '2026-01-26 05:24:41', '202374166', '4', 57.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017379671709508600', 'admin', '2026-01-26 21:41:04', 'admin', '2026-01-26 22:17:48', '202229615', '6', 85.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017380396042121000', 'admin', '2026-01-26 03:33:25', 'admin', '2026-01-26 05:05:35', '202254898', '7', 79.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017380781256812000', 'admin', '2026-01-26 00:37:46', 'admin', '2026-01-26 17:39:32', '202406600', '4', 89.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017381328439698400', 'admin', '2026-01-26 16:37:56', 'admin', '2026-01-26 21:30:03', '202453871', '6', 67.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017381972147054300', 'admin', '2026-01-26 22:36:40', 'admin', '2026-01-26 23:47:43', '202313856', '4', 72.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017383011190220000', 'admin', '2026-01-26 17:22:46', 'admin', '2026-01-26 23:07:17', '202244872', '1', 73.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017383262617974300', 'admin', '2026-01-26 22:50:42', 'admin', '2026-01-26 23:00:33', '202359119', '1', 53.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017383462649152300', 'admin', '2026-01-26 00:51:17', 'admin', '2026-01-26 09:11:56', '202401449', '1', 80.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017385823397227500', 'admin', '2026-01-26 12:16:33', 'admin', '2026-01-26 21:29:45', '202258540', '4', 57.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017387286374427000', 'admin', '2026-01-26 09:34:52', 'admin', '2026-01-26 11:48:19', '202326099', '6', 59.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017387902957425000', 'admin', '2026-01-26 10:35:37', 'admin', '2026-01-26 17:54:33', '202450214', '2', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017388088595683800', 'admin', '2026-01-26 13:08:15', 'admin', '2026-01-26 23:47:36', '202367026', '4', 76.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017388092761913300', 'admin', '2026-01-26 09:01:56', 'admin', '2026-01-26 20:38:27', '202373252', '3', 74.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017388436170283800', 'admin', '2026-01-26 02:26:46', 'admin', '2026-01-26 09:44:18', '202231102', '6', 93.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017388504456579800', 'admin', '2026-01-26 00:35:55', 'admin', '2026-01-26 22:48:38', '202484662', '7', 56.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017388613239730200', 'admin', '2026-01-26 11:29:20', 'admin', '2026-01-26 22:26:55', '202430172', '4', 58.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017389124867977000', 'admin', '2026-01-26 02:52:34', 'admin', '2026-01-26 15:23:45', '202261895', '1', 94.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017389295579005700', 'admin', '2026-01-26 21:10:01', 'admin', '2026-01-26 23:43:42', '202290899', '4', 76.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017389458616326400', 'admin', '2026-01-26 13:44:59', 'admin', '2026-01-26 13:52:23', '202287242', '7', 84.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017389519044536800', 'admin', '2026-01-26 12:27:51', 'admin', '2026-01-26 15:49:50', '202285770', '5', 97.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017392256395152400', 'admin', '2026-01-26 21:14:55', 'admin', '2026-01-26 21:34:54', '202475027', '3', 64.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017392803255954000', 'admin', '2026-01-26 15:19:22', 'admin', '2026-01-26 18:57:36', '202278662', '7', 98.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017393079751491000', 'admin', '2026-01-26 21:33:09', 'admin', '2026-01-26 22:18:39', '202320932', '7', 69.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017393599081139200', 'admin', '2026-01-26 23:25:10', 'admin', '2026-01-26 23:30:22', '202422146', '2', 66.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017394552401912000', 'admin', '2026-01-26 17:31:01', 'admin', '2026-01-26 20:37:49', '202279729', '2', 78.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017394720051745000', 'admin', '2026-01-26 01:30:38', 'admin', '2026-01-26 07:57:23', '202386080', '2', 52.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017395205550518800', 'admin', '2026-01-26 00:19:24', 'admin', '2026-01-26 14:12:21', '202450214', '5', 61.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017395555556754000', 'admin', '2026-01-26 09:52:39', 'admin', '2026-01-26 19:50:44', '202393358', '1', 97.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017395874843067600', 'admin', '2026-01-26 12:10:40', 'admin', '2026-01-26 21:24:59', '202466468', '1', 98.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017397179154842600', 'admin', '2026-01-26 01:29:06', 'admin', '2026-01-26 21:25:58', '202326099', '8', 97.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017398726195406000', 'admin', '2026-01-26 11:49:19', 'admin', '2026-01-26 14:29:53', '202378418', '3', 90.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017398779126343000', 'admin', '2026-01-26 20:48:01', 'admin', '2026-01-26 23:58:53', '202415031', '5', 51.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017398841024882000', 'admin', '2026-01-26 14:53:57', 'admin', '2026-01-26 15:14:07', '202320606', '5', 75.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017399127092583200', 'admin', '2026-01-26 18:41:17', 'admin', '2026-01-26 23:07:11', '202256926', '8', 92.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017399268223583200', 'admin', '2026-01-26 04:28:06', 'admin', '2026-01-26 07:19:27', '202395684', '2', 61.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017402045797228500', 'admin', '2026-01-26 03:11:44', 'admin', '2026-01-26 20:34:07', '202243044', '2', 88.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017402506216969700', 'admin', '2026-01-26 21:44:13', 'admin', '2026-01-26 22:20:00', '202201712', '1', 50.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017402807974564900', 'admin', '2026-01-26 04:37:21', 'admin', '2026-01-26 09:50:28', '202426952', '7', 86.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017403281750727200', 'admin', '2026-01-26 00:19:27', 'admin', '2026-01-26 14:00:09', '202329090', '3', 90.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017403485249973200', 'admin', '2026-01-26 02:14:08', 'admin', '2026-01-26 18:53:07', '202365957', '3', 65.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017404010253511400', 'admin', '2026-01-26 23:30:57', 'admin', '2026-01-26 23:43:22', '202226477', '5', 68.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017404209590673200', 'admin', '2026-01-26 23:54:56', 'admin', '2026-01-26 23:58:04', '202219396', '4', 72.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017404658088839700', 'admin', '2026-01-26 23:18:55', 'admin', '2026-01-26 23:45:07', '202481739', '7', 58.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017405049677573400', 'admin', '2026-01-26 06:26:45', 'admin', '2026-01-26 16:23:31', '202382105', '1', 52.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017405094086766800', 'admin', '2026-01-26 14:29:34', 'admin', '2026-01-26 21:35:50', '202360674', '2', 64.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017405249332852700', 'admin', '2026-01-26 21:07:16', 'admin', '2026-01-26 22:12:03', '202264864', '2', 51.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017405292894224000', 'admin', '2026-01-26 09:24:27', 'admin', '2026-01-26 16:15:08', '202402888', '8', 85.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017405396962222600', 'admin', '2026-01-26 10:54:15', 'admin', '2026-01-26 13:07:53', '202274797', '6', 98.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017405404238186500', 'admin', '2026-01-26 19:29:30', 'admin', '2026-01-26 21:38:23', '202485539', '4', 66.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017406117879903700', 'admin', '2026-01-26 23:05:49', 'admin', '2026-01-26 23:43:02', '202275048', '2', 71.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017406885539636000', 'admin', '2026-01-26 11:18:20', 'admin', '2026-01-26 21:35:54', '202310362', '4', 68.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017407780602962200', 'admin', '2026-01-26 11:15:31', 'admin', '2026-01-26 15:56:01', '202451881', '3', 53.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017408105835606800', 'admin', '2026-01-26 23:37:56', 'admin', '2026-01-26 23:47:18', '202397631', '3', 50.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017409238533293800', 'admin', '2026-01-26 15:34:08', 'admin', '2026-01-26 18:29:10', '202365100', '1', 77.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017410014071845600', 'admin', '2026-01-26 09:58:26', 'admin', '2026-01-26 14:44:15', '202231870', '2', 82.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017411373384870100', 'admin', '2026-01-26 03:09:45', 'admin', '2026-01-26 07:17:32', '202379991', '4', 96.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017411464226796500', 'admin', '2026-01-26 10:09:51', 'admin', '2026-01-26 18:15:51', '202347401', '5', 68.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017411600247336200', 'admin', '2026-01-26 07:19:03', 'admin', '2026-01-26 15:51:58', '202277035', '1', 97.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017412056606517500', 'admin', '2026-01-26 23:13:04', 'admin', '2026-01-26 23:47:54', '202384326', '1', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017412640324481500', 'admin', '2026-01-26 17:55:55', 'admin', '2026-01-26 17:56:42', '202290230', '5', 63.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017413394164515300', 'admin', '2026-01-26 21:26:02', 'admin', '2026-01-26 23:46:38', '202459935', '8', 72.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017413627400921000', 'admin', '2026-01-26 18:17:04', 'admin', '2026-01-26 21:54:13', '202271791', '5', 64.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017413778555833000', 'admin', '2026-01-26 02:37:52', 'admin', '2026-01-26 16:00:29', '202451697', '3', 87.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017413903826408400', 'admin', '2026-01-26 20:48:26', 'admin', '2026-01-26 23:13:29', '202212232', '3', 67.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017416495859651800', 'admin', '2026-01-26 01:44:05', 'admin', '2026-01-26 17:41:49', '202386080', '6', 77.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017416831401448200', 'admin', '2026-01-26 01:22:25', 'admin', '2026-01-26 12:17:30', '202372784', '2', 77.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017416936892065800', 'admin', '2026-01-26 14:35:22', 'admin', '2026-01-26 17:08:33', '202398689', '2', 95.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017417070183513600', 'admin', '2026-01-26 09:09:41', 'admin', '2026-01-26 20:44:37', '202373002', '8', 88.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017417134984937200', 'admin', '2026-01-26 05:08:48', 'admin', '2026-01-26 13:39:33', '202391438', '8', 90.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017417282380049700', 'admin', '2026-01-26 14:49:48', 'admin', '2026-01-26 20:37:34', '202462609', '4', 68.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017417314458275800', 'admin', '2026-01-26 21:22:37', 'admin', '2026-01-26 21:51:16', '202305151', '1', 74.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017417402021295900', 'admin', '2026-01-26 14:37:28', 'admin', '2026-01-26 19:33:38', '202320932', '4', 64.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017417484411467800', 'admin', '2026-01-26 14:10:30', 'admin', '2026-01-26 20:59:11', '202460404', '2', 55.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017417919708896300', 'admin', '2026-01-26 11:25:40', 'admin', '2026-01-26 16:58:29', '202421578', '6', 57.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017418691941285600', 'admin', '2026-01-26 03:21:24', 'admin', '2026-01-26 03:45:15', '202281635', '7', 95.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017420126495381800', 'admin', '2026-01-26 03:00:22', 'admin', '2026-01-26 19:40:14', '202465337', '8', 68.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017420679160096300', 'admin', '2026-01-26 15:08:09', 'admin', '2026-01-26 23:48:37', '202454288', '5', 51.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017421671281179400', 'admin', '2026-01-26 14:25:05', 'admin', '2026-01-26 16:47:05', '202432974', '2', 76.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017421766028962800', 'admin', '2026-01-26 11:49:15', 'admin', '2026-01-26 22:40:16', '202367905', '8', 58.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017422041640496400', 'admin', '2026-01-26 14:58:57', 'admin', '2026-01-26 21:42:56', '202447615', '3', 55.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017423057572007400', 'admin', '2026-01-26 00:45:14', 'admin', '2026-01-26 14:57:09', '202393355', '3', 72.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017423818015538700', 'admin', '2026-01-26 09:09:18', 'admin', '2026-01-26 21:59:30', '202299779', '2', 73.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017424338664786000', 'admin', '2026-01-26 18:41:44', 'admin', '2026-01-26 20:02:27', '202296860', '8', 85.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017424750055897300', 'admin', '2026-01-26 04:19:08', 'admin', '2026-01-26 18:27:49', '202481369', '3', 53.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017425040555938000', 'admin', '2026-01-26 21:59:28', 'admin', '2026-01-26 22:48:14', '202406600', '1', 69.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017425475056850400', 'admin', '2026-01-26 10:20:28', 'admin', '2026-01-26 12:19:35', '202306841', '6', 59.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017427061794443500', 'admin', '2026-01-26 21:10:20', 'admin', '2026-01-26 22:45:36', '202239571', '5', 57.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017428151452167000', 'admin', '2026-01-26 07:09:50', 'admin', '2026-01-26 11:28:56', '202226477', '6', 70.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017428652013469400', 'admin', '2026-01-26 02:05:00', 'admin', '2026-01-26 19:07:38', '202329090', '4', 96.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017428741776358000', 'admin', '2026-01-26 01:05:52', 'admin', '2026-01-26 18:21:57', '202339685', '7', 81.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017428860910677200', 'admin', '2026-01-26 15:26:32', 'admin', '2026-01-26 23:34:39', '202469792', '5', 71.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017429377986262500', 'admin', '2026-01-26 15:06:59', 'admin', '2026-01-26 22:13:54', '202465887', '2', 76.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017429694988838400', 'admin', '2026-01-26 17:29:59', 'admin', '2026-01-26 21:43:49', '202261009', '5', 85.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017429733907143400', 'admin', '2026-01-26 23:20:11', 'admin', '2026-01-26 23:21:11', '202318209', '5', 76.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017430728020127000', 'admin', '2026-01-26 12:13:46', 'admin', '2026-01-26 14:10:51', '202225452', '3', 90.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017431037614670600', 'admin', '2026-01-26 06:35:32', 'admin', '2026-01-26 11:21:57', '202353271', '2', 82.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017431513233633500', 'admin', '2026-01-26 06:19:56', 'admin', '2026-01-26 23:59:42', '202381155', '5', 66.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017432392059191600', 'admin', '2026-01-26 20:30:02', 'admin', '2026-01-26 21:17:05', '202398689', '6', 79.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017432557525809200', 'admin', '2026-01-26 03:57:35', 'admin', '2026-01-26 19:20:21', '202401242', '3', 79.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017433381560810200', 'admin', '2026-01-26 04:22:07', 'admin', '2026-01-26 08:36:56', '202207764', '5', 74.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017433610419059700', 'admin', '2026-01-26 12:10:30', 'admin', '2026-01-26 21:50:20', '202374558', '7', 67.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017433650221398000', 'admin', '2026-01-26 10:11:38', 'admin', '2026-01-26 20:45:30', '202413193', '3', 96.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017433658251902700', 'admin', '2026-01-26 17:28:53', 'admin', '2026-01-26 20:16:54', '202350599', '5', 80.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017433679119076000', 'admin', '2026-01-26 14:24:05', 'admin', '2026-01-26 22:40:28', '202364475', '6', 77.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017433743306872800', 'admin', '2026-01-26 01:55:38', 'admin', '2026-01-26 06:09:50', '202384453', '1', 64.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017434750878717700', 'admin', '2026-01-26 09:43:18', 'admin', '2026-01-26 13:38:10', '202232898', '2', 87.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017435568247084300', 'admin', '2026-01-26 18:19:46', 'admin', '2026-01-26 18:28:30', '202258434', '3', 70.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017435596706606800', 'admin', '2026-01-26 00:16:11', 'admin', '2026-01-26 10:11:09', '202242916', '3', 55.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017435622433261000', 'admin', '2026-01-26 00:07:13', 'admin', '2026-01-26 04:03:37', '202466468', '5', 72.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017435669528272000', 'admin', '2026-01-26 23:56:30', 'admin', '2026-01-26 23:59:13', '202478723', '4', 77.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017435778860552200', 'admin', '2026-01-26 05:23:35', 'admin', '2026-01-26 15:44:32', '202300154', '3', 78.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017435859463395600', 'admin', '2026-01-26 09:50:39', 'admin', '2026-01-26 21:15:49', '202406600', '5', 75.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017436107967889700', 'admin', '2026-01-26 14:36:16', 'admin', '2026-01-26 17:15:58', '202258585', '4', 70.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017437108968642800', 'admin', '2026-01-26 00:29:14', 'admin', '2026-01-26 07:51:05', '202454288', '3', 63.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017437847934897000', 'admin', '2026-01-26 04:28:34', 'admin', '2026-01-26 12:37:58', '202222369', '5', 83.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017437951926971600', 'admin', '2026-01-26 19:48:25', 'admin', '2026-01-26 22:29:40', '202441106', '7', 57.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017438367911335700', 'admin', '2026-01-26 04:22:00', 'admin', '2026-01-26 07:47:58', '202479651', '8', 61.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017438409457578000', 'admin', '2026-01-26 01:07:50', 'admin', '2026-01-26 04:29:24', '202476173', '1', 66.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017438594462048500', 'admin', '2026-01-26 22:17:25', 'admin', '2026-01-26 23:03:19', '202248728', '4', 85.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017439589438999000', 'admin', '2026-01-26 07:57:07', 'admin', '2026-01-26 16:56:58', '202351284', '3', 97.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017440287404347400', 'admin', '2026-01-26 01:38:57', 'admin', '2026-01-26 08:57:01', '202416886', '2', 94.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017440465845971200', 'admin', '2026-01-26 00:28:59', 'admin', '2026-01-26 03:04:48', '202468343', '6', 88.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017440538085454600', 'admin', '2026-01-26 07:19:55', 'admin', '2026-01-26 22:14:14', '202227294', '2', 94.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017441322260241400', 'admin', '2026-01-26 17:14:21', 'admin', '2026-01-26 19:54:03', '202386448', '6', 76.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017441348569495800', 'admin', '2026-01-26 15:22:35', 'admin', '2026-01-26 20:33:58', '202448743', '1', 66.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017441525924409300', 'admin', '2026-01-26 14:31:29', 'admin', '2026-01-26 18:56:44', '202303627', '2', 74.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017441572673945300', 'admin', '2026-01-26 06:08:48', 'admin', '2026-01-26 18:01:36', '202458161', '2', 78.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017442100768361500', 'admin', '2026-01-26 09:33:06', 'admin', '2026-01-26 18:40:31', '202356601', '7', 82.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017442427944960500', 'admin', '2026-01-26 14:15:44', 'admin', '2026-01-26 17:11:09', '202438356', '7', 95.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017442668688988000', 'admin', '2026-01-26 23:41:49', 'admin', '2026-01-26 23:51:45', '202298149', '5', 95.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017444686553362700', 'admin', '2026-01-26 12:50:20', 'admin', '2026-01-26 14:59:47', '202342061', '1', 63.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017445149515505400', 'admin', '2026-01-26 09:43:37', 'admin', '2026-01-26 20:15:52', '202398689', '5', 52.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017445767102455800', 'admin', '2026-01-26 10:26:32', 'admin', '2026-01-26 21:34:56', '202406798', '2', 85.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017446165130653000', 'admin', '2026-01-26 14:58:03', 'admin', '2026-01-26 18:38:40', '202398306', '7', 63.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017447022153663000', 'admin', '2026-01-26 10:34:03', 'admin', '2026-01-26 12:41:16', '202213478', '7', 65.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017447493022676700', 'admin', '2026-01-26 03:10:59', 'admin', '2026-01-26 17:46:04', '202210868', '8', 68.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017447928327295200', 'admin', '2026-01-26 04:52:44', 'admin', '2026-01-26 05:01:05', '202203366', '2', 97.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017448424254610700', 'admin', '2026-01-26 19:04:29', 'admin', '2026-01-26 22:09:29', '202289365', '4', 84.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017448635798015200', 'admin', '2026-01-26 15:51:46', 'admin', '2026-01-26 21:36:19', '202455308', '2', 72.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017448696069492700', 'admin', '2026-01-26 02:59:23', 'admin', '2026-01-26 11:26:45', '202207764', '6', 89.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017449092555092200', 'admin', '2026-01-26 11:29:07', 'admin', '2026-01-26 11:59:30', '202289258', '2', 68.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017449456998410200', 'admin', '2026-01-26 01:22:23', 'admin', '2026-01-26 12:12:41', '202401296', '3', 70.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017450316022701000', 'admin', '2026-01-26 19:25:54', 'admin', '2026-01-26 23:49:25', '202450103', '4', 87.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017450639190861300', 'admin', '2026-01-26 21:35:38', 'admin', '2026-01-26 21:46:14', '202430396', '4', 73.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017450681835311000', 'admin', '2026-01-26 20:13:02', 'admin', '2026-01-26 20:33:47', '202464467', '5', 60.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017451374486667300', 'admin', '2026-01-26 03:09:42', 'admin', '2026-01-26 11:53:44', '202422146', '4', 95.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017451870393278200', 'admin', '2026-01-26 02:49:52', 'admin', '2026-01-26 18:15:20', '202416886', '6', 71.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017452870423748400', 'admin', '2026-01-26 10:45:45', 'admin', '2026-01-26 22:11:02', '202397631', '2', 52.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017453374306239000', 'admin', '2026-01-26 03:33:10', 'admin', '2026-01-26 05:04:25', '202233601', '8', 75.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017453434530816800', 'admin', '2026-01-26 04:22:01', 'admin', '2026-01-26 22:25:14', '202448667', '4', 75.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017453881569967400', 'admin', '2026-01-26 17:51:10', 'admin', '2026-01-26 18:08:08', '202208106', '5', 52.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017454485214561300', 'admin', '2026-01-26 19:41:08', 'admin', '2026-01-26 22:22:18', '202309349', '6', 96.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017454704804001300', 'admin', '2026-01-26 20:32:02', 'admin', '2026-01-26 22:57:32', '202277984', '2', 83.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017455075032873700', 'admin', '2026-01-26 06:45:36', 'admin', '2026-01-26 07:09:50', '202465991', '3', 78.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017455135672317700', 'admin', '2026-01-26 07:14:12', 'admin', '2026-01-26 15:12:03', '202219104', '1', 71.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017455374570387000', 'admin', '2026-01-26 14:22:41', 'admin', '2026-01-26 18:52:20', '202400731', '4', 56.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017455898740124000', 'admin', '2026-01-26 19:37:08', 'admin', '2026-01-26 21:50:57', '202324521', '6', 61.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017457267967406300', 'admin', '2026-01-26 19:16:19', 'admin', '2026-01-26 19:52:21', '202466537', '7', 69.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017457389924481500', 'admin', '2026-01-26 17:46:04', 'admin', '2026-01-26 20:56:50', '202391438', '1', 55.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017457600809718300', 'admin', '2026-01-26 00:46:22', 'admin', '2026-01-26 21:18:53', '202489559', '1', 95.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017457736321912300', 'admin', '2026-01-26 18:44:42', 'admin', '2026-01-26 22:07:26', '202420652', '2', 51.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017458037170335500', 'admin', '2026-01-26 06:49:13', 'admin', '2026-01-26 18:22:22', '202439928', '7', 74.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017458922649183500', 'admin', '2026-01-26 00:45:28', 'admin', '2026-01-26 18:41:47', '202373689', '6', 65.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017460578281440300', 'admin', '2026-01-26 17:50:03', 'admin', '2026-01-26 23:17:29', '202213478', '2', 62.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017460811280884500', 'admin', '2026-01-26 17:15:51', 'admin', '2026-01-26 20:30:17', '202346454', '1', 98.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017462108544858600', 'admin', '2026-01-26 19:59:05', 'admin', '2026-01-26 21:20:04', '202335867', '2', 87.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017462243984502800', 'admin', '2026-01-26 10:21:35', 'admin', '2026-01-26 20:50:43', '202297507', '3', 95.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017462939424768800', 'admin', '2026-01-26 10:15:00', 'admin', '2026-01-26 10:28:31', '202265646', '2', 93.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017463153463529700', 'admin', '2026-01-26 07:34:35', 'admin', '2026-01-26 18:17:15', '202379991', '5', 72.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017463253011817200', 'admin', '2026-01-26 05:02:20', 'admin', '2026-01-26 18:13:16', '202422720', '6', 76.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017464860885233400', 'admin', '2026-01-26 03:17:30', 'admin', '2026-01-26 05:28:30', '202278662', '5', 93.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017465108831285500', 'admin', '2026-01-26 13:37:29', 'admin', '2026-01-26 19:16:02', '202231102', '4', 96.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017465800344047900', 'admin', '2026-01-26 06:54:04', 'admin', '2026-01-26 09:05:25', '202469792', '7', 76.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017465944765896000', 'admin', '2026-01-26 22:34:10', 'admin', '2026-01-26 23:44:43', '202318047', '5', 83.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017466069216347100', 'admin', '2026-01-26 10:50:22', 'admin', '2026-01-26 15:45:57', '202430522', '6', 50.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017467435178410800', 'admin', '2026-01-26 14:36:14', 'admin', '2026-01-26 17:03:44', '202298402', '2', 56.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017468538987953700', 'admin', '2026-01-26 20:50:52', 'admin', '2026-01-26 22:17:32', '202285770', '6', 90.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017468729524928500', 'admin', '2026-01-26 20:09:26', 'admin', '2026-01-26 20:18:35', '202371246', '7', 78.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017468945869302300', 'admin', '2026-01-26 06:36:14', 'admin', '2026-01-26 14:24:42', '202222500', '5', 79.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017468996741400300', 'admin', '2026-01-26 16:31:58', 'admin', '2026-01-26 16:51:40', '202395684', '3', 63.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017469315104169500', 'admin', '2026-01-26 06:42:55', 'admin', '2026-01-26 10:48:20', '202481071', '2', 69.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017469526500080400', 'admin', '2026-01-26 12:18:57', 'admin', '2026-01-26 23:36:01', '202261895', '2', 89.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017469548797857000', 'admin', '2026-01-26 16:06:20', 'admin', '2026-01-26 21:56:47', '202256926', '7', 95.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017469743278792000', 'admin', '2026-01-26 16:50:52', 'admin', '2026-01-26 23:54:17', '202201555', '4', 94.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017469950497213200', 'admin', '2026-01-26 12:30:43', 'admin', '2026-01-26 16:01:35', '202495494', '4', 85.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017470622578773500', 'admin', '2026-01-26 01:04:07', 'admin', '2026-01-26 17:54:23', '202465337', '2', 91.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017470624315390000', 'admin', '2026-01-26 08:22:45', 'admin', '2026-01-26 16:44:45', '202325050', '6', 58.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017470754237467100', 'admin', '2026-01-26 05:50:49', 'admin', '2026-01-26 18:52:30', '202447615', '8', 88.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017471723574486800', 'admin', '2026-01-26 03:34:53', 'admin', '2026-01-26 19:43:40', '202432974', '8', 60.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017472412726002400', 'admin', '2026-01-26 00:33:04', 'admin', '2026-01-26 16:54:35', '202432528', '4', 70.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017472725344096300', 'admin', '2026-01-26 13:28:25', 'admin', '2026-01-26 14:14:53', '202229615', '5', 78.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017472912689233200', 'admin', '2026-01-26 05:59:38', 'admin', '2026-01-26 14:31:01', '202373355', '2', 90.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017473426389540000', 'admin', '2026-01-26 09:22:36', 'admin', '2026-01-26 10:55:55', '202217406', '3', 89.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017473642059153400', 'admin', '2026-01-26 14:41:58', 'admin', '2026-01-26 23:57:37', '202441106', '6', 58.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017474401518800100', 'admin', '2026-01-26 08:34:59', 'admin', '2026-01-26 16:48:41', '202223272', '8', 67.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017474969661644000', 'admin', '2026-01-26 12:29:41', 'admin', '2026-01-26 23:48:30', '202448667', '2', 54.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017475522384814600', 'admin', '2026-01-26 20:43:30', 'admin', '2026-01-26 22:06:34', '202457501', '5', 60.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017475714781205500', 'admin', '2026-01-26 06:48:41', 'admin', '2026-01-26 09:22:07', '202343402', '8', 76.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017475844329175800', 'admin', '2026-01-26 20:25:21', 'admin', '2026-01-26 22:55:31', '202285760', '6', 81.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017475993261929200', 'admin', '2026-01-26 05:58:45', 'admin', '2026-01-26 09:00:22', '202224607', '2', 93.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017476891661996500', 'admin', '2026-01-26 23:07:53', 'admin', '2026-01-26 23:16:45', '202364475', '7', 59.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017477393854392800', 'admin', '2026-01-26 20:49:19', 'admin', '2026-01-26 21:02:37', '202232898', '4', 58.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017477704480998000', 'admin', '2026-01-26 23:51:34', 'admin', '2026-01-26 23:53:39', '202335406', '3', 65.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017478038272780300', 'admin', '2026-01-26 17:52:32', 'admin', '2026-01-26 18:16:30', '202483207', '3', 84.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017478885984457500', 'admin', '2026-01-26 10:33:35', 'admin', '2026-01-26 13:26:23', '202353666', '5', 94.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017479210843656400', 'admin', '2026-01-26 00:23:26', 'admin', '2026-01-26 11:57:12', '202318292', '5', 57.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017479379967177200', 'admin', '2026-01-26 23:48:46', 'admin', '2026-01-26 23:52:46', '202225070', '3', 52.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017479526463705600', 'admin', '2026-01-26 21:33:02', 'admin', '2026-01-26 22:30:25', '202410765', '4', 76.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017480659883717400', 'admin', '2026-01-26 05:34:36', 'admin', '2026-01-26 17:07:27', '202485640', '5', 98.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017481226921446100', 'admin', '2026-01-26 18:04:19', 'admin', '2026-01-26 18:34:52', '202482350', '4', 89.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017481551744119300', 'admin', '2026-01-26 17:54:25', 'admin', '2026-01-26 23:00:32', '202339955', '4', 97.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017481806814686700', 'admin', '2026-01-26 16:04:29', 'admin', '2026-01-26 21:34:49', '202485636', '7', 97.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017481865513425000', 'admin', '2026-01-26 13:14:39', 'admin', '2026-01-26 15:13:25', '202326936', '7', 65.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017481979381392000', 'admin', '2026-01-26 06:06:31', 'admin', '2026-01-26 06:50:49', '202293347', '4', 80.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017482188182472000', 'admin', '2026-01-26 21:58:12', 'admin', '2026-01-26 22:24:50', '202347401', '1', 77.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017483447556443000', 'admin', '2026-01-26 14:29:23', 'admin', '2026-01-26 21:22:30', '202457263', '4', 97.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017483474766761700', 'admin', '2026-01-26 16:32:12', 'admin', '2026-01-26 19:26:20', '202225070', '6', 58.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017483720769545700', 'admin', '2026-01-26 11:28:43', 'admin', '2026-01-26 16:10:43', '202408719', '4', 52.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017483838198305000', 'admin', '2026-01-26 05:49:58', 'admin', '2026-01-26 15:15:41', '202441106', '4', 71.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017484627766447900', 'admin', '2026-01-26 03:19:16', 'admin', '2026-01-26 17:30:48', '202459720', '7', 63.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017485116433668600', 'admin', '2026-01-26 00:09:05', 'admin', '2026-01-26 21:45:30', '202225817', '5', 98.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017485183651420700', 'admin', '2026-01-26 16:04:13', 'admin', '2026-01-26 22:50:51', '202451388', '2', 84.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017485488362347800', 'admin', '2026-01-26 08:03:05', 'admin', '2026-01-26 20:37:40', '202285287', '3', 53.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017486032406799000', 'admin', '2026-01-26 03:22:10', 'admin', '2026-01-26 05:48:31', '202253268', '4', 69.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017486414144192300', 'admin', '2026-01-26 19:41:59', 'admin', '2026-01-26 21:53:09', '202241855', '6', 65.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017486600363178500', 'admin', '2026-01-26 20:01:46', 'admin', '2026-01-26 22:48:34', '202333628', '3', 72.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017486676811505700', 'admin', '2026-01-26 13:11:12', 'admin', '2026-01-26 20:33:04', '202225452', '4', 68.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017488617714347300', 'admin', '2026-01-26 03:08:40', 'admin', '2026-01-26 18:42:44', '202202818', '3', 50.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017488758370552000', 'admin', '2026-01-26 19:56:20', 'admin', '2026-01-26 22:00:11', '202327406', '2', 68.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017488872079608300', 'admin', '2026-01-26 05:15:02', 'admin', '2026-01-26 17:50:30', '202411163', '4', 77.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017489077491399400', 'admin', '2026-01-26 20:55:32', 'admin', '2026-01-26 22:40:40', '202462466', '8', 95.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017489396148824000', 'admin', '2026-01-26 13:31:24', 'admin', '2026-01-26 14:26:58', '202232648', '6', 67.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017489656950293000', 'admin', '2026-01-26 19:23:44', 'admin', '2026-01-26 23:41:45', '202434303', '6', 57.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017489850920992000', 'admin', '2026-01-26 20:22:21', 'admin', '2026-01-26 21:53:06', '202203366', '3', 59.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017489894672637700', 'admin', '2026-01-26 22:52:38', 'admin', '2026-01-26 23:07:56', '202402888', '6', 54.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017490340417388800', 'admin', '2026-01-26 02:32:59', 'admin', '2026-01-26 14:16:11', '202258434', '4', 67.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017490418006210300', 'admin', '2026-01-26 05:42:41', 'admin', '2026-01-26 22:47:00', '202450103', '3', 68.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017490437498870300', 'admin', '2026-01-26 18:54:04', 'admin', '2026-01-26 23:48:22', '202231127', '3', 57.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017490640975751200', 'admin', '2026-01-26 05:17:41', 'admin', '2026-01-26 05:21:58', '202239800', '7', 70.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017490717239364900', 'admin', '2026-01-26 04:43:42', 'admin', '2026-01-26 19:18:25', '202334944', '7', 56.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017491668261757700', 'admin', '2026-01-26 17:14:42', 'admin', '2026-01-26 19:17:45', '202337727', '7', 87.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017491758192393000', 'admin', '2026-01-26 19:22:40', 'admin', '2026-01-26 23:07:40', '202329090', '8', 75.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017492067550334000', 'admin', '2026-01-26 14:24:37', 'admin', '2026-01-26 15:21:56', '202406356', '5', 80.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017492218346147600', 'admin', '2026-01-26 08:27:45', 'admin', '2026-01-26 13:36:19', '202450252', '2', 59.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017492533642391000', 'admin', '2026-01-26 09:31:10', 'admin', '2026-01-26 18:41:07', '202431625', '1', 61.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017492894492690000', 'admin', '2026-01-26 10:58:33', 'admin', '2026-01-26 12:47:03', '202386448', '3', 72.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017493997749979000', 'admin', '2026-01-26 13:44:47', 'admin', '2026-01-26 14:55:55', '202325050', '2', 95.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017494268819711000', 'admin', '2026-01-26 21:06:58', 'admin', '2026-01-26 22:30:00', '202448509', '3', 51.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017494304635184000', 'admin', '2026-01-26 11:36:38', 'admin', '2026-01-26 14:53:25', '202468343', '7', 86.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017495074578595600', 'admin', '2026-01-26 04:15:40', 'admin', '2026-01-26 22:54:21', '202367797', '2', 84.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017495476878637800', 'admin', '2026-01-26 07:01:38', 'admin', '2026-01-26 12:11:41', '202401449', '6', 58.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017495606793515500', 'admin', '2026-01-26 07:16:45', 'admin', '2026-01-26 08:54:59', '202210649', '7', 51.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017495801131883000', 'admin', '2026-01-26 10:17:22', 'admin', '2026-01-26 15:26:12', '202310231', '5', 67.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017496159645367600', 'admin', '2026-01-26 07:28:23', 'admin', '2026-01-26 17:29:30', '202472082', '8', 62.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017496209101963800', 'admin', '2026-01-26 19:41:15', 'admin', '2026-01-26 23:20:56', '202437933', '4', 70.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017496631087246300', 'admin', '2026-01-26 14:23:25', 'admin', '2026-01-26 22:01:33', '202437356', '4', 89.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017498188772795100', 'admin', '2026-01-26 12:11:47', 'admin', '2026-01-26 17:53:27', '202245666', '1', 84.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017498607777801500', 'admin', '2026-01-26 19:50:11', 'admin', '2026-01-26 22:00:32', '202299437', '2', 93.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017498873615031300', 'admin', '2026-01-26 08:05:27', 'admin', '2026-01-26 13:34:50', '202267445', '5', 80.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017499667847248100', 'admin', '2026-01-26 11:32:50', 'admin', '2026-01-26 11:40:33', '202248930', '3', 68.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017501755361545200', 'admin', '2026-01-26 22:46:31', 'admin', '2026-01-26 23:38:20', '202232648', '2', 82.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017501861500006000', 'admin', '2026-01-26 16:16:20', 'admin', '2026-01-26 16:16:30', '202406055', '1', 94.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017502338311963400', 'admin', '2026-01-26 16:07:56', 'admin', '2026-01-26 21:08:45', '202316369', '4', 54.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017503145768539000', 'admin', '2026-01-26 08:12:05', 'admin', '2026-01-26 18:20:07', '202467723', '4', 60.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017504152792492800', 'admin', '2026-01-26 01:51:23', 'admin', '2026-01-26 12:25:24', '202361642', '6', 86.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017504440834064000', 'admin', '2026-01-26 09:40:09', 'admin', '2026-01-26 22:01:25', '202432974', '5', 58.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017504810598350300', 'admin', '2026-01-26 13:44:06', 'admin', '2026-01-26 15:29:43', '202428598', '4', 83.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017504974801196800', 'admin', '2026-01-26 01:20:05', 'admin', '2026-01-26 11:21:13', '202406754', '4', 53.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017505077254582000', 'admin', '2026-01-26 09:43:20', 'admin', '2026-01-26 14:23:02', '202329317', '7', 51.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017505268273208800', 'admin', '2026-01-26 01:17:30', 'admin', '2026-01-26 19:35:30', '202241168', '2', 71.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017505765126515700', 'admin', '2026-01-26 21:49:38', 'admin', '2026-01-26 21:56:45', '202226477', '3', 68.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017506183988420400', 'admin', '2026-01-26 03:21:18', 'admin', '2026-01-26 07:03:07', '202241168', '5', 53.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017506417302474200', 'admin', '2026-01-26 09:46:34', 'admin', '2026-01-26 10:19:57', '202416134', '7', 77.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017506816988297200', 'admin', '2026-01-26 13:22:13', 'admin', '2026-01-26 15:29:40', '202398689', '8', 64.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017506923435198500', 'admin', '2026-01-26 15:32:35', 'admin', '2026-01-26 22:10:53', '202427457', '7', 88.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017507342437965300', 'admin', '2026-01-26 07:07:35', 'admin', '2026-01-26 10:06:09', '202388833', '3', 71.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017507389529904000', 'admin', '2026-01-26 09:35:58', 'admin', '2026-01-26 16:49:07', '202354633', '6', 69.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017507765900299500', 'admin', '2026-01-26 22:29:41', 'admin', '2026-01-26 23:35:26', '202450252', '4', 63.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017508229581386000', 'admin', '2026-01-26 23:53:23', 'admin', '2026-01-26 23:57:48', '202257930', '3', 56.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017508364759090400', 'admin', '2026-01-26 18:03:22', 'admin', '2026-01-26 19:58:59', '202254898', '6', 54.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017508695308272600', 'admin', '2026-01-26 23:46:52', 'admin', '2026-01-26 23:51:15', '202484873', '7', 77.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017509945721613600', 'admin', '2026-01-26 18:06:52', 'admin', '2026-01-26 22:18:00', '202485539', '7', 81.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017510749579101400', 'admin', '2026-01-26 19:36:30', 'admin', '2026-01-26 20:29:55', '202304675', '7', 60.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017510938197401600', 'admin', '2026-01-26 00:29:50', 'admin', '2026-01-26 10:39:00', '202420652', '5', 73.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017511262259249200', 'admin', '2026-01-26 17:58:59', 'admin', '2026-01-26 19:06:42', '202261009', '4', 91.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017513281648103000', 'admin', '2026-01-26 00:52:40', 'admin', '2026-01-26 12:01:42', '202326029', '4', 66.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017514461291857000', 'admin', '2026-01-26 09:21:35', 'admin', '2026-01-26 10:35:44', '202365957', '6', 98.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017514684562774500', 'admin', '2026-01-26 19:49:51', 'admin', '2026-01-26 23:16:19', '202278662', '2', 79.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017514968228557800', 'admin', '2026-01-26 15:35:34', 'admin', '2026-01-26 18:43:26', '202484662', '2', 67.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017515946593840000', 'admin', '2026-01-26 08:25:26', 'admin', '2026-01-26 14:40:01', '202257930', '7', 55.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017516434328915500', 'admin', '2026-01-26 03:38:36', 'admin', '2026-01-26 12:14:20', '202379866', '6', 74.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017516603469176300', 'admin', '2026-01-26 09:14:40', 'admin', '2026-01-26 17:32:17', '202386448', '2', 51.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017517935485200600', 'admin', '2026-01-26 16:13:24', 'admin', '2026-01-26 19:01:48', '202325050', '5', 77.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017518598925422300', 'admin', '2026-01-26 11:43:28', 'admin', '2026-01-26 12:15:09', '202275048', '7', 87.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017518975318773000', 'admin', '2026-01-26 19:10:45', 'admin', '2026-01-26 19:12:29', '202363614', '5', 91.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017519351567216400', 'admin', '2026-01-26 15:06:48', 'admin', '2026-01-26 16:35:16', '202344751', '6', 90.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017519794451037400', 'admin', '2026-01-26 22:12:30', 'admin', '2026-01-26 23:53:03', '202305151', '7', 72.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017520002792128800', 'admin', '2026-01-26 00:29:48', 'admin', '2026-01-26 01:09:16', '202431984', '7', 93.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017520087334987300', 'admin', '2026-01-26 03:33:01', 'admin', '2026-01-26 22:06:35', '202306841', '3', 74.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017520092446130700', 'admin', '2026-01-26 20:39:26', 'admin', '2026-01-26 21:50:09', '202346454', '2', 83.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017520638604182500', 'admin', '2026-01-26 17:52:15', 'admin', '2026-01-26 20:31:06', '202201555', '8', 66.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017520761479153700', 'admin', '2026-01-26 15:16:03', 'admin', '2026-01-26 15:18:00', '202400731', '2', 88.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017520899590529300', 'admin', '2026-01-26 05:02:36', 'admin', '2026-01-26 14:43:33', '202483207', '4', 69.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017520942207938000', 'admin', '2026-01-26 22:35:16', 'admin', '2026-01-26 22:35:49', '202455308', '4', 85.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017521348156550400', 'admin', '2026-01-26 02:31:40', 'admin', '2026-01-26 14:07:23', '202345753', '3', 85.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017522578021987000', 'admin', '2026-01-26 03:49:24', 'admin', '2026-01-26 07:27:21', '202321278', '6', 96.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017522630093532700', 'admin', '2026-01-26 19:48:35', 'admin', '2026-01-26 22:54:47', '202407850', '6', 77.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017522928253140200', 'admin', '2026-01-26 12:13:59', 'admin', '2026-01-26 14:17:37', '202304675', '2', 67.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017522982723462000', 'admin', '2026-01-26 00:23:14', 'admin', '2026-01-26 17:53:34', '202288752', '5', 62.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017523236052227800', 'admin', '2026-01-26 06:26:56', 'admin', '2026-01-26 10:35:51', '202426491', '8', 72.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017523785624055600', 'admin', '2026-01-26 16:24:01', 'admin', '2026-01-26 16:27:26', '202230374', '5', 53.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017523883578941400', 'admin', '2026-01-26 00:16:17', 'admin', '2026-01-26 12:32:37', '202225817', '2', 78.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017524516368790300', 'admin', '2026-01-26 18:33:49', 'admin', '2026-01-26 23:31:40', '202481369', '5', 85.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017524776673401000', 'admin', '2026-01-26 07:45:37', 'admin', '2026-01-26 21:55:57', '202393355', '5', 83.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017526100897161000', 'admin', '2026-01-26 05:58:22', 'admin', '2026-01-26 10:21:08', '202270473', '8', 94.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017527887854271700', 'admin', '2026-01-26 18:36:07', 'admin', '2026-01-26 19:33:44', '202326029', '5', 67.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017528038562607600', 'admin', '2026-01-26 02:17:50', 'admin', '2026-01-26 07:19:55', '202281456', '7', 81.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017528699226451000', 'admin', '2026-01-26 20:04:42', 'admin', '2026-01-26 22:38:31', '202298788', '1', 68.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017530056660545800', 'admin', '2026-01-26 09:31:42', 'admin', '2026-01-26 16:46:45', '202278662', '4', 64.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017530338726033700', 'admin', '2026-01-26 04:08:33', 'admin', '2026-01-26 21:01:18', '202454505', '7', 92.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017530571299401500', 'admin', '2026-01-26 10:14:41', 'admin', '2026-01-26 23:59:15', '202426491', '5', 80.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017530628463062000', 'admin', '2026-01-26 19:39:27', 'admin', '2026-01-26 23:19:44', '202290230', '7', 53.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017530857004045000', 'admin', '2026-01-26 20:56:53', 'admin', '2026-01-26 23:10:04', '202494971', '6', 59.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017531626886291200', 'admin', '2026-01-26 05:38:13', 'admin', '2026-01-26 08:25:50', '202380680', '6', 92.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017531998366019000', 'admin', '2026-01-26 13:55:42', 'admin', '2026-01-26 14:47:44', '202465337', '3', 67.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017532370304576800', 'admin', '2026-01-26 10:11:23', 'admin', '2026-01-26 11:33:03', '202320895', '2', 56.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017532967016373000', 'admin', '2026-01-26 16:25:15', 'admin', '2026-01-26 18:20:47', '202464418', '2', 87.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017533309115709700', 'admin', '2026-01-26 11:03:57', 'admin', '2026-01-26 13:12:33', '202318047', '8', 77.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017534208648552200', 'admin', '2026-01-26 12:48:08', 'admin', '2026-01-26 19:44:28', '202426491', '7', 86.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017535167695575600', 'admin', '2026-01-26 05:06:56', 'admin', '2026-01-26 23:23:11', '202484873', '4', 72.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017535419207548200', 'admin', '2026-01-26 09:44:29', 'admin', '2026-01-26 13:41:39', '202333742', '2', 98.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017535499361775000', 'admin', '2026-01-26 22:08:45', 'admin', '2026-01-26 22:27:14', '202367026', '1', 91.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017536792130737400', 'admin', '2026-01-26 11:04:26', 'admin', '2026-01-26 22:49:01', '202308544', '1', 57.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017536869536994000', 'admin', '2026-01-26 01:07:19', 'admin', '2026-01-26 23:30:04', '202314497', '3', 83.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017536989387247000', 'admin', '2026-01-26 11:20:33', 'admin', '2026-01-26 18:35:43', '202216602', '4', 88.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017537088093354500', 'admin', '2026-01-26 05:09:04', 'admin', '2026-01-26 21:01:45', '202438100', '2', 95.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017537894389753300', 'admin', '2026-01-26 22:30:24', 'admin', '2026-01-26 22:49:54', '202374166', '6', 85.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017537955940772600', 'admin', '2026-01-26 07:55:09', 'admin', '2026-01-26 22:34:47', '202298759', '7', 60.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017537979054009000', 'admin', '2026-01-26 05:56:01', 'admin', '2026-01-26 08:32:33', '202478723', '7', 94.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017538236999131000', 'admin', '2026-01-26 05:30:53', 'admin', '2026-01-26 16:20:05', '202345753', '8', 78.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017539010724279600', 'admin', '2026-01-26 05:18:29', 'admin', '2026-01-26 14:02:46', '202203130', '1', 53.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017539374823040800', 'admin', '2026-01-26 05:03:55', 'admin', '2026-01-26 18:39:40', '202247141', '6', 85.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017539443355503000', 'admin', '2026-01-26 14:55:42', 'admin', '2026-01-26 19:09:40', '202414154', '3', 69.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017540051645018000', 'admin', '2026-01-26 17:25:11', 'admin', '2026-01-26 18:09:55', '202261051', '5', 88.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017540477321389600', 'admin', '2026-01-26 09:32:12', 'admin', '2026-01-26 17:57:31', '202371246', '4', 94.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017541027014644700', 'admin', '2026-01-26 06:14:58', 'admin', '2026-01-26 17:48:04', '202421518', '7', 56.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017543665028674300', 'admin', '2026-01-26 09:43:37', 'admin', '2026-01-26 22:25:09', '202261051', '2', 64.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017544169088353800', 'admin', '2026-01-26 07:06:02', 'admin', '2026-01-26 21:20:41', '202442638', '6', 69.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017544501052093400', 'admin', '2026-01-26 16:57:18', 'admin', '2026-01-26 17:18:50', '202413193', '4', 95.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017544593997738200', 'admin', '2026-01-26 10:22:34', 'admin', '2026-01-26 21:36:11', '202278662', '8', 83.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017544698114789000', 'admin', '2026-01-26 09:08:31', 'admin', '2026-01-26 23:58:45', '202443315', '2', 73.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017545538267177200', 'admin', '2026-01-26 07:39:23', 'admin', '2026-01-26 12:39:45', '202326936', '1', 74.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017545945631596300', 'admin', '2026-01-26 14:15:12', 'admin', '2026-01-26 15:54:09', '202390264', '3', 98.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017546615563364000', 'admin', '2026-01-26 18:23:34', 'admin', '2026-01-26 21:49:31', '202406055', '2', 69.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017547033456413400', 'admin', '2026-01-26 09:09:50', 'admin', '2026-01-26 13:48:07', '202406600', '3', 65.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017547118443607800', 'admin', '2026-01-26 23:00:42', 'admin', '2026-01-26 23:13:31', '202453591', '7', 76.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017547258765649700', 'admin', '2026-01-26 09:56:21', 'admin', '2026-01-26 19:17:16', '202298660', '1', 85.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017547927291496400', 'admin', '2026-01-26 06:02:00', 'admin', '2026-01-26 12:30:27', '202485640', '7', 66.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017548006253203000', 'admin', '2026-01-26 20:37:20', 'admin', '2026-01-26 21:25:07', '202287242', '2', 87.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017548123306734300', 'admin', '2026-01-26 14:42:27', 'admin', '2026-01-26 18:13:39', '202359330', '5', 68.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017548341408302000', 'admin', '2026-01-26 04:36:54', 'admin', '2026-01-26 11:38:19', '202229134', '3', 85.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017548441065843000', 'admin', '2026-01-26 13:01:53', 'admin', '2026-01-26 19:20:31', '202462609', '7', 95.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017548554974235000', 'admin', '2026-01-26 01:21:18', 'admin', '2026-01-26 03:53:50', '202229615', '7', 82.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017548804964963300', 'admin', '2026-01-26 00:11:44', 'admin', '2026-01-26 08:48:35', '202397320', '4', 84.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017549120504403700', 'admin', '2026-01-26 23:37:41', 'admin', '2026-01-26 23:45:21', '202381155', '2', 77.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017549194922493700', 'admin', '2026-01-26 16:51:42', 'admin', '2026-01-26 19:22:11', '202209735', '3', 83.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017549198486842600', 'admin', '2026-01-26 15:31:41', 'admin', '2026-01-26 17:52:18', '202293347', '1', 54.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017549647517119700', 'admin', '2026-01-26 22:42:01', 'admin', '2026-01-26 22:56:46', '202430396', '8', 54.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017549820998893600', 'admin', '2026-01-26 18:26:50', 'admin', '2026-01-26 21:28:24', '202346454', '6', 91.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017550013144485600', 'admin', '2026-01-26 22:15:32', 'admin', '2026-01-26 23:53:08', '202287615', '3', 81.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017550096224827100', 'admin', '2026-01-26 11:09:06', 'admin', '2026-01-26 14:17:47', '202458161', '3', 83.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017550308792165000', 'admin', '2026-01-26 00:56:24', 'admin', '2026-01-26 09:23:25', '202422720', '3', 70.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017550358739439600', 'admin', '2026-01-26 19:19:39', 'admin', '2026-01-26 20:29:22', '202406600', '2', 85.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017551762858219300', 'admin', '2026-01-26 07:41:17', 'admin', '2026-01-26 20:20:18', '202388729', '4', 68.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017551995527810300', 'admin', '2026-01-26 04:33:52', 'admin', '2026-01-26 15:23:49', '202458818', '4', 69.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017553083242577700', 'admin', '2026-01-26 08:58:25', 'admin', '2026-01-26 16:31:45', '202346196', '5', 55.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017553605339970300', 'admin', '2026-01-26 22:08:13', 'admin', '2026-01-26 23:21:16', '202397631', '7', 87.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017553844397261300', 'admin', '2026-01-26 23:42:21', 'admin', '2026-01-26 23:49:02', '202407007', '8', 81.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017554291468726300', 'admin', '2026-01-26 20:27:18', 'admin', '2026-01-26 23:09:38', '202232200', '1', 57.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017555247867092500', 'admin', '2026-01-26 10:48:23', 'admin', '2026-01-26 17:51:20', '202260973', '2', 92.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017555983488628000', 'admin', '2026-01-26 19:15:52', 'admin', '2026-01-26 23:24:24', '202388729', '6', 88.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017556155437608400', 'admin', '2026-01-26 00:35:17', 'admin', '2026-01-26 17:48:32', '202348280', '6', 82.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017557898280825300', 'admin', '2026-01-26 02:10:43', 'admin', '2026-01-26 11:34:27', '202245666', '7', 90.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017557922130224000', 'admin', '2026-01-26 04:23:18', 'admin', '2026-01-26 08:02:56', '202329317', '3', 85.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017558053369834800', 'admin', '2026-01-26 11:40:56', 'admin', '2026-01-26 12:31:22', '202337727', '5', 51.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017558228238678800', 'admin', '2026-01-26 03:46:01', 'admin', '2026-01-26 14:15:12', '202241168', '1', 75.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017559455623524000', 'admin', '2026-01-26 10:16:28', 'admin', '2026-01-26 22:04:14', '202324521', '2', 77.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017559881577094100', 'admin', '2026-01-26 05:22:26', 'admin', '2026-01-26 13:43:32', '202285770', '3', 98.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017560066736678000', 'admin', '2026-01-26 03:52:45', 'admin', '2026-01-26 12:01:21', '202476173', '7', 62.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017560141928193800', 'admin', '2026-01-26 16:54:43', 'admin', '2026-01-26 23:10:21', '202258585', '2', 97.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017561772092917800', 'admin', '2026-01-26 23:56:50', 'admin', '2026-01-26 23:57:31', '202397320', '8', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017561800990913000', 'admin', '2026-01-26 07:12:26', 'admin', '2026-01-26 09:55:47', '202294029', '5', 78.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017562072091225000', 'admin', '2026-01-26 23:12:09', 'admin', '2026-01-26 23:20:44', '202309030', '4', 96.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017562468682743000', 'admin', '2026-01-26 23:06:36', 'admin', '2026-01-26 23:42:39', '202438356', '2', 92.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017562574453072600', 'admin', '2026-01-26 00:00:48', 'admin', '2026-01-26 17:27:38', '202287242', '6', 88.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017562738852707600', 'admin', '2026-01-26 13:57:30', 'admin', '2026-01-26 17:07:16', '202210868', '7', 88.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017562911554449400', 'admin', '2026-01-26 07:14:09', 'admin', '2026-01-26 08:42:44', '202435989', '2', 52.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017564636899437000', 'admin', '2026-01-26 12:32:03', 'admin', '2026-01-26 13:43:49', '202326099', '2', 94.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017565415641216300', 'admin', '2026-01-26 10:24:00', 'admin', '2026-01-26 20:16:09', '202432295', '5', 89.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017565885702929000', 'admin', '2026-01-26 10:39:33', 'admin', '2026-01-26 18:15:24', '202433505', '4', 53.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017565937645165300', 'admin', '2026-01-26 09:35:29', 'admin', '2026-01-26 21:00:21', '202395684', '7', 95.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017566239174333200', 'admin', '2026-01-26 14:00:13', 'admin', '2026-01-26 19:37:57', '202364563', '6', 66.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017566685599022800', 'admin', '2026-01-26 06:32:55', 'admin', '2026-01-26 10:38:37', '202333742', '5', 98.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017567438851278600', 'admin', '2026-01-26 23:47:39', 'admin', '2026-01-26 23:58:13', '202411880', '2', 64.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017568361569533200', 'admin', '2026-01-26 21:58:05', 'admin', '2026-01-26 22:51:29', '202245371', '5', 69.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017568563501500700', 'admin', '2026-01-26 22:19:11', 'admin', '2026-01-26 23:36:36', '202201228', '4', 63.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017568927513578800', 'admin', '2026-01-26 08:27:30', 'admin', '2026-01-26 11:34:11', '202231454', '5', 60.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017569031961970700', 'admin', '2026-01-26 23:00:48', 'admin', '2026-01-26 23:21:43', '202360451', '7', 92.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017569154121190100', 'admin', '2026-01-26 14:42:13', 'admin', '2026-01-26 23:02:44', '202309349', '8', 91.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017569330636375800', 'admin', '2026-01-26 01:49:38', 'admin', '2026-01-26 18:36:00', '202233601', '7', 55.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017569584622727000', 'admin', '2026-01-26 22:43:42', 'admin', '2026-01-26 22:56:47', '202382105', '7', 69.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017570418744575500', 'admin', '2026-01-26 04:37:49', 'admin', '2026-01-26 21:49:28', '202270473', '3', 84.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017571079818631700', 'admin', '2026-01-26 07:20:55', 'admin', '2026-01-26 22:17:35', '202440589', '3', 73.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017571494820095000', 'admin', '2026-01-26 09:14:18', 'admin', '2026-01-26 20:32:36', '202494261', '6', 91.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017571916182548000', 'admin', '2026-01-26 13:56:57', 'admin', '2026-01-26 23:22:30', '202273590', '3', 65.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017573797050000600', 'admin', '2026-01-26 14:40:05', 'admin', '2026-01-26 22:43:52', '202411880', '1', 98.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017574031201400600', 'admin', '2026-01-26 08:10:00', 'admin', '2026-01-26 14:49:53', '202367797', '4', 92.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017574647699570000', 'admin', '2026-01-26 21:26:09', 'admin', '2026-01-26 22:18:29', '202351284', '8', 55.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017574649983943000', 'admin', '2026-01-26 03:41:54', 'admin', '2026-01-26 17:02:56', '202225452', '2', 63.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017575377668098800', 'admin', '2026-01-26 10:49:17', 'admin', '2026-01-26 21:04:17', '202202916', '4', 85.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017575559081013800', 'admin', '2026-01-26 18:20:32', 'admin', '2026-01-26 18:37:27', '202245666', '2', 52.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017580345487715600', 'admin', '2026-01-26 06:45:08', 'admin', '2026-01-26 06:45:18', '202446027', '7', 60.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017580505296204800', 'admin', '2026-01-26 04:00:12', 'admin', '2026-01-26 14:11:07', '202464418', '6', 60.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017581531756618800', 'admin', '2026-01-26 10:24:50', 'admin', '2026-01-26 20:52:15', '202325825', '4', 83.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017581915797450000', 'admin', '2026-01-26 17:26:14', 'admin', '2026-01-26 23:42:27', '202422720', '5', 82.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017582195325890300', 'admin', '2026-01-26 17:48:43', 'admin', '2026-01-26 18:51:55', '202482468', '8', 77.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017582417003198700', 'admin', '2026-01-26 05:53:14', 'admin', '2026-01-26 16:07:18', '202342061', '5', 84.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017582791770322700', 'admin', '2026-01-26 11:39:31', 'admin', '2026-01-26 19:20:50', '202413193', '2', 66.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017583263923462700', 'admin', '2026-01-26 22:05:14', 'admin', '2026-01-26 22:31:17', '202492083', '7', 66.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017583999259996400', 'admin', '2026-01-26 20:02:05', 'admin', '2026-01-26 23:19:29', '202459935', '6', 73.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017584094615129000', 'admin', '2026-01-26 19:50:56', 'admin', '2026-01-26 21:10:27', '202499467', '1', 79.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017584705112238000', 'admin', '2026-01-26 10:27:30', 'admin', '2026-01-26 12:55:14', '202212673', '2', 79.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017585254656782000', 'admin', '2026-01-26 23:26:49', 'admin', '2026-01-26 23:44:07', '202332697', '2', 59.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017585313078334200', 'admin', '2026-01-26 21:45:56', 'admin', '2026-01-26 22:45:13', '202239800', '3', 53.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017586240098187800', 'admin', '2026-01-26 07:32:08', 'admin', '2026-01-26 12:44:54', '202245666', '4', 57.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017586375382454800', 'admin', '2026-01-26 21:26:15', 'admin', '2026-01-26 22:17:14', '202451385', '3', 74.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017586483687391000', 'admin', '2026-01-26 23:47:42', 'admin', '2026-01-26 23:54:41', '202445699', '6', 97.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017587779540170500', 'admin', '2026-01-26 22:38:44', 'admin', '2026-01-26 23:11:48', '202457263', '5', 75.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017587817662292200', 'admin', '2026-01-26 18:46:35', 'admin', '2026-01-26 19:34:07', '202466468', '4', 65.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017588090302942700', 'admin', '2026-01-26 12:52:56', 'admin', '2026-01-26 23:53:35', '202448364', '7', 71.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017589303452238800', 'admin', '2026-01-26 20:33:03', 'admin', '2026-01-26 22:54:48', '202224607', '5', 52.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017591194328545300', 'admin', '2026-01-26 04:33:45', 'admin', '2026-01-26 05:43:52', '202418074', '5', 83.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017591981704155000', 'admin', '2026-01-26 03:01:16', 'admin', '2026-01-26 14:45:15', '202337557', '2', 92.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017592216540934400', 'admin', '2026-01-26 20:25:03', 'admin', '2026-01-26 21:41:11', '202495050', '4', 94.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017592342402633200', 'admin', '2026-01-26 17:22:45', 'admin', '2026-01-26 21:20:40', '202318209', '3', 61.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017592395848037600', 'admin', '2026-01-26 23:22:06', 'admin', '2026-01-26 23:49:11', '202321278', '5', 66.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017592734952730600', 'admin', '2026-01-26 11:44:34', 'admin', '2026-01-26 18:49:23', '202309349', '4', 69.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017592944201108000', 'admin', '2026-01-26 03:53:01', 'admin', '2026-01-26 10:41:46', '202316369', '6', 83.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017593579454538200', 'admin', '2026-01-26 06:48:26', 'admin', '2026-01-26 13:31:51', '202309030', '5', 70.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017594053525128400', 'admin', '2026-01-26 08:50:15', 'admin', '2026-01-26 17:09:11', '202245666', '6', 70.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017594823163225300', 'admin', '2026-01-26 23:48:28', 'admin', '2026-01-26 23:52:13', '202379475', '8', 80.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017596268464526300', 'admin', '2026-01-26 03:47:22', 'admin', '2026-01-26 21:16:38', '202224607', '6', 75.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017597546566297900', 'admin', '2026-01-26 15:15:33', 'admin', '2026-01-26 16:04:54', '202354633', '4', 88.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017598163636762000', 'admin', '2026-01-26 10:14:02', 'admin', '2026-01-26 12:31:51', '202273868', '4', 69.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017598500287068000', 'admin', '2026-01-26 19:47:41', 'admin', '2026-01-26 20:26:18', '202322261', '7', 59.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017599287771451100', 'admin', '2026-01-26 09:11:54', 'admin', '2026-01-26 10:12:09', '202476173', '4', 57.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017599869201266700', 'admin', '2026-01-26 12:41:45', 'admin', '2026-01-26 18:11:42', '202259372', '2', 53.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017600359791809000', 'admin', '2026-01-26 15:54:08', 'admin', '2026-01-26 17:00:29', '202332895', '1', 50.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017601275486170600', 'admin', '2026-01-26 15:31:40', 'admin', '2026-01-26 18:37:02', '202333742', '8', 54.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017601909965520400', 'admin', '2026-01-26 06:47:08', 'admin', '2026-01-26 14:44:10', '202346553', '6', 85.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017602181584205600', 'admin', '2026-01-26 13:59:18', 'admin', '2026-01-26 17:58:56', '202424647', '4', 73.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017604281027153400', 'admin', '2026-01-26 10:58:48', 'admin', '2026-01-26 13:27:15', '202287899', '5', 93.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017604735242404600', 'admin', '2026-01-26 03:21:27', 'admin', '2026-01-26 18:55:02', '202493852', '2', 68.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017604745400544500', 'admin', '2026-01-26 14:08:30', 'admin', '2026-01-26 21:44:29', '202431625', '5', 75.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017605042768316700', 'admin', '2026-01-26 11:12:12', 'admin', '2026-01-26 14:56:24', '202222138', '7', 50.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017605086811368400', 'admin', '2026-01-26 19:27:55', 'admin', '2026-01-26 23:57:31', '202391518', '2', 93.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017605933903887600', 'admin', '2026-01-26 12:46:03', 'admin', '2026-01-26 16:23:47', '202482299', '7', 84.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017606501772104200', 'admin', '2026-01-26 02:22:48', 'admin', '2026-01-26 08:02:24', '202430522', '5', 87.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017606509004889000', 'admin', '2026-01-26 00:14:45', 'admin', '2026-01-26 04:39:29', '202310231', '7', 57.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017608088948877300', 'admin', '2026-01-26 01:54:26', 'admin', '2026-01-26 10:12:08', '202358988', '1', 81.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017608479817372000', 'admin', '2026-01-26 17:30:48', 'admin', '2026-01-26 22:21:32', '202281635', '4', 71.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017609134685387300', 'admin', '2026-01-26 03:48:31', 'admin', '2026-01-26 16:12:46', '202411880', '6', 98.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017610060866121200', 'admin', '2026-01-26 04:15:10', 'admin', '2026-01-26 08:04:22', '202434381', '8', 73.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017610216058403000', 'admin', '2026-01-26 23:39:08', 'admin', '2026-01-26 23:56:02', '202364563', '3', 97.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017611259626444500', 'admin', '2026-01-26 05:43:00', 'admin', '2026-01-26 17:36:52', '202320932', '5', 75.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017611573025599200', 'admin', '2026-01-26 19:25:52', 'admin', '2026-01-26 20:08:55', '202360451', '5', 86.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017611862477814000', 'admin', '2026-01-26 13:38:00', 'admin', '2026-01-26 13:59:18', '202318083', '4', 78.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017611995179094300', 'admin', '2026-01-26 03:47:19', 'admin', '2026-01-26 06:17:39', '202492083', '3', 69.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017612173182720800', 'admin', '2026-01-26 09:16:34', 'admin', '2026-01-26 18:01:44', '202373002', '6', 89.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017612702617190100', 'admin', '2026-01-26 09:16:00', 'admin', '2026-01-26 15:06:17', '202487378', '7', 54.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017612978526254000', 'admin', '2026-01-26 21:16:46', 'admin', '2026-01-26 22:23:29', '202373355', '6', 97.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017613010218790000', 'admin', '2026-01-26 00:15:41', 'admin', '2026-01-26 07:14:41', '202393577', '5', 52.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017614416189228800', 'admin', '2026-01-26 02:09:31', 'admin', '2026-01-26 17:38:07', '202271682', '2', 88.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017614820394790700', 'admin', '2026-01-26 04:23:39', 'admin', '2026-01-26 12:29:19', '202451886', '1', 65.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017615692260034300', 'admin', '2026-01-26 19:37:00', 'admin', '2026-01-26 20:35:25', '202337727', '6', 86.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017616949265050400', 'admin', '2026-01-26 13:29:01', 'admin', '2026-01-26 21:37:25', '202432528', '2', 91.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017617407783767600', 'admin', '2026-01-26 18:00:19', 'admin', '2026-01-26 18:19:46', '202448743', '3', 73.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017617736322717700', 'admin', '2026-01-26 02:27:12', 'admin', '2026-01-26 07:34:42', '202247141', '2', 65.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017617864288184800', 'admin', '2026-01-26 18:23:10', 'admin', '2026-01-26 20:36:38', '202222500', '3', 92.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017618045314092300', 'admin', '2026-01-26 09:00:00', 'admin', '2026-01-26 15:10:54', '202426491', '6', 92.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017618535508628500', 'admin', '2026-01-26 23:35:23', 'admin', '2026-01-26 23:56:02', '202478493', '4', 91.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017618615541410800', 'admin', '2026-01-26 06:56:58', 'admin', '2026-01-26 15:38:04', '202231127', '2', 66.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017618805136455700', 'admin', '2026-01-26 21:53:24', 'admin', '2026-01-26 21:55:10', '202308737', '5', 50.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017619360849462800', 'admin', '2026-01-26 22:32:27', 'admin', '2026-01-26 23:01:27', '202488807', '5', 75.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017619748293564200', 'admin', '2026-01-26 13:13:03', 'admin', '2026-01-26 18:37:28', '202450300', '5', 55.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017619910485117200', 'admin', '2026-01-26 03:39:43', 'admin', '2026-01-26 03:52:29', '202427457', '8', 67.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017620039879904300', 'admin', '2026-01-26 08:06:00', 'admin', '2026-01-26 21:54:11', '202216637', '1', 67.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017620378894553900', 'admin', '2026-01-26 18:30:07', 'admin', '2026-01-26 18:47:39', '202432528', '5', 67.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017620481079193000', 'admin', '2026-01-26 02:49:34', 'admin', '2026-01-26 15:52:29', '202335609', '1', 82.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017620880648449000', 'admin', '2026-01-26 08:20:41', 'admin', '2026-01-26 22:04:25', '202459935', '4', 98.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017621483418652200', 'admin', '2026-01-26 01:54:28', 'admin', '2026-01-26 11:01:29', '202343738', '4', 85.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017621971542196000', 'admin', '2026-01-26 17:48:13', 'admin', '2026-01-26 23:05:26', '202404983', '5', 69.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017622340074139100', 'admin', '2026-01-26 06:12:43', 'admin', '2026-01-26 13:19:56', '202411880', '5', 82.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017622496491488800', 'admin', '2026-01-26 21:30:53', 'admin', '2026-01-26 22:18:41', '202348280', '1', 66.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017622698210409200', 'admin', '2026-01-26 03:39:35', 'admin', '2026-01-26 11:09:56', '202450103', '6', 83.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017623251789982200', 'admin', '2026-01-26 13:44:54', 'admin', '2026-01-26 16:01:01', '202450300', '4', 63.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017623617753590500', 'admin', '2026-01-26 14:30:36', 'admin', '2026-01-26 20:25:02', '202367026', '6', 58.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017624869803788800', 'admin', '2026-01-26 23:29:19', 'admin', '2026-01-26 23:53:38', '202448743', '2', 64.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017624880961642800', 'admin', '2026-01-26 10:29:50', 'admin', '2026-01-26 20:52:11', '202306841', '7', 53.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017625014707612000', 'admin', '2026-01-26 19:28:36', 'admin', '2026-01-26 21:30:21', '202201228', '6', 96.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017625210768469200', 'admin', '2026-01-26 17:58:22', 'admin', '2026-01-26 18:14:08', '202222500', '1', 77.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017625886984211500', 'admin', '2026-01-26 17:55:28', 'admin', '2026-01-26 19:15:36', '202231870', '3', 63.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017625901384052000', 'admin', '2026-01-26 11:44:44', 'admin', '2026-01-26 12:57:01', '202318083', '5', 90.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017626346463304400', 'admin', '2026-01-26 12:19:12', 'admin', '2026-01-26 14:48:33', '202481071', '1', 83.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017626504598041900', 'admin', '2026-01-26 01:15:41', 'admin', '2026-01-26 19:50:12', '202439370', '5', 77.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017626507551596300', 'admin', '2026-01-26 08:07:38', 'admin', '2026-01-26 19:49:46', '202244650', '5', 86.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017626826082826000', 'admin', '2026-01-26 05:00:56', 'admin', '2026-01-26 18:55:20', '202201712', '6', 53.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017626831780294000', 'admin', '2026-01-26 15:59:03', 'admin', '2026-01-26 18:30:01', '202309922', '4', 87.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017628554155984100', 'admin', '2026-01-26 18:34:35', 'admin', '2026-01-26 20:09:14', '202298124', '8', 54.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017628770280725200', 'admin', '2026-01-26 14:18:01', 'admin', '2026-01-26 20:27:18', '202306588', '7', 81.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017629267286923500', 'admin', '2026-01-26 07:31:11', 'admin', '2026-01-26 12:35:57', '202406754', '2', 84.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017629423050200000', 'admin', '2026-01-26 07:25:26', 'admin', '2026-01-26 10:55:03', '202288477', '4', 72.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017629466160894500', 'admin', '2026-01-26 16:14:40', 'admin', '2026-01-26 18:01:22', '202339955', '5', 95.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017631221892475000', 'admin', '2026-01-26 17:04:48', 'admin', '2026-01-26 20:04:29', '202367026', '3', 95.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017631948845462000', 'admin', '2026-01-26 09:48:53', 'admin', '2026-01-26 17:03:53', '202404996', '6', 93.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017632253288438000', 'admin', '2026-01-26 23:02:51', 'admin', '2026-01-26 23:30:53', '202280466', '2', 91.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017632531190020900', 'admin', '2026-01-26 12:05:13', 'admin', '2026-01-26 12:51:33', '202338876', '5', 90.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017632562598042400', 'admin', '2026-01-26 18:30:39', 'admin', '2026-01-26 19:57:10', '202407850', '7', 89.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017632563886099200', 'admin', '2026-01-26 06:53:01', 'admin', '2026-01-26 19:21:05', '202346553', '3', 62.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017634387557090800', 'admin', '2026-01-26 01:13:51', 'admin', '2026-01-26 13:33:25', '202426952', '2', 74.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017634827826674000', 'admin', '2026-01-26 04:28:32', 'admin', '2026-01-26 11:12:42', '202299437', '8', 93.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017635689226604800', 'admin', '2026-01-26 22:01:50', 'admin', '2026-01-26 23:00:23', '202481369', '4', 51.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017635857793184000', 'admin', '2026-01-26 10:31:16', 'admin', '2026-01-26 20:26:41', '202241168', '6', 67.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017636582747995000', 'admin', '2026-01-26 22:19:25', 'admin', '2026-01-26 22:41:26', '202448509', '6', 82.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017636769885893600', 'admin', '2026-01-26 00:39:06', 'admin', '2026-01-26 14:23:57', '202498469', '8', 94.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017638376049221000', 'admin', '2026-01-26 23:02:05', 'admin', '2026-01-26 23:38:21', '202482299', '6', 72.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017638398707481900', 'admin', '2026-01-26 20:11:17', 'admin', '2026-01-26 20:31:28', '202458632', '2', 87.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017639905765392600', 'admin', '2026-01-26 13:42:29', 'admin', '2026-01-26 18:12:08', '202207764', '7', 81.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017641820264747800', 'admin', '2026-01-26 17:06:41', 'admin', '2026-01-26 19:07:58', '202388833', '5', 80.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017642087328472300', 'admin', '2026-01-26 07:22:32', 'admin', '2026-01-26 19:55:44', '202368280', '7', 52.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017642560135094500', 'admin', '2026-01-26 12:23:03', 'admin', '2026-01-26 14:25:25', '202408132', '4', 68.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017643774291405800', 'admin', '2026-01-26 12:42:42', 'admin', '2026-01-26 18:35:30', '202426992', '4', 62.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017643802614650400', 'admin', '2026-01-26 15:29:39', 'admin', '2026-01-26 15:34:04', '202225817', '3', 65.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017645759813101600', 'admin', '2026-01-26 18:27:13', 'admin', '2026-01-26 19:19:39', '202378536', '5', 59.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017647368117897500', 'admin', '2026-01-26 04:42:10', 'admin', '2026-01-26 22:39:30', '202324521', '8', 75.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017648024240710400', 'admin', '2026-01-26 20:08:29', 'admin', '2026-01-26 21:39:24', '202332697', '5', 65.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017648639133504800', 'admin', '2026-01-26 16:16:24', 'admin', '2026-01-26 19:51:40', '202489559', '2', 75.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017649427827802400', 'admin', '2026-01-26 06:25:42', 'admin', '2026-01-26 19:58:30', '202343738', '1', 94.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017649675359730700', 'admin', '2026-01-26 05:08:26', 'admin', '2026-01-26 08:04:01', '202347200', '3', 75.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017649922473690400', 'admin', '2026-01-26 23:51:27', 'admin', '2026-01-26 23:54:24', '202418074', '2', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017651051066687700', 'admin', '2026-01-26 18:28:10', 'admin', '2026-01-26 22:57:37', '202456092', '6', 75.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017651487543957200', 'admin', '2026-01-26 23:16:38', 'admin', '2026-01-26 23:19:27', '202472108', '4', 74.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017651596733163500', 'admin', '2026-01-26 06:10:32', 'admin', '2026-01-26 15:42:23', '202426952', '8', 55.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017651959276627700', 'admin', '2026-01-26 18:34:16', 'admin', '2026-01-26 20:32:31', '202290899', '2', 85.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017652054508658400', 'admin', '2026-01-26 07:32:26', 'admin', '2026-01-26 11:25:16', '202482350', '5', 64.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017652328874494700', 'admin', '2026-01-26 22:05:22', 'admin', '2026-01-26 23:11:49', '202458628', '1', 97.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017652856145335300', 'admin', '2026-01-26 00:48:08', 'admin', '2026-01-26 19:21:59', '202367706', '3', 89.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017653675201104100', 'admin', '2026-01-26 04:00:28', 'admin', '2026-01-26 06:09:09', '202212833', '3', 81.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017654480167595300', 'admin', '2026-01-26 11:06:31', 'admin', '2026-01-26 22:12:24', '202371299', '2', 91.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017655130519674000', 'admin', '2026-01-26 06:32:05', 'admin', '2026-01-26 18:56:58', '202416886', '8', 66.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017655587046639600', 'admin', '2026-01-26 15:28:00', 'admin', '2026-01-26 18:45:23', '202212826', '4', 72.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017656034933938200', 'admin', '2026-01-26 03:23:07', 'admin', '2026-01-26 08:58:10', '202438356', '5', 61.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017656182545379800', 'admin', '2026-01-26 13:31:15', 'admin', '2026-01-26 20:53:53', '202494971', '4', 91.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017657114741260300', 'admin', '2026-01-26 20:04:34', 'admin', '2026-01-26 20:22:16', '202309639', '4', 91.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017657479900139000', 'admin', '2026-01-26 14:21:15', 'admin', '2026-01-26 18:36:15', '202337557', '4', 53.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017657782659095600', 'admin', '2026-01-26 08:14:19', 'admin', '2026-01-26 20:33:29', '202409676', '5', 85.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017659786216820000', 'admin', '2026-01-26 06:20:22', 'admin', '2026-01-26 13:08:02', '202430522', '8', 79.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017660581853071000', 'admin', '2026-01-26 22:10:23', 'admin', '2026-01-26 23:34:00', '202460201', '5', 91.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017661121937631000', 'admin', '2026-01-26 23:57:08', 'admin', '2026-01-26 23:58:00', '202313856', '5', 86.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017661257696912100', 'admin', '2026-01-26 17:41:49', 'admin', '2026-01-26 19:33:49', '202393577', '4', 93.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017661695817044000', 'admin', '2026-01-26 06:41:35', 'admin', '2026-01-26 17:26:14', '202298124', '4', 95.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017661985188583400', 'admin', '2026-01-26 01:46:22', 'admin', '2026-01-26 17:34:15', '202241004', '4', 81.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017662462942802700', 'admin', '2026-01-26 20:39:53', 'admin', '2026-01-26 21:26:32', '202439928', '2', 61.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017662848164375000', 'admin', '2026-01-26 20:20:33', 'admin', '2026-01-26 21:50:32', '202368822', '3', 81.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017664218908677000', 'admin', '2026-01-26 21:37:37', 'admin', '2026-01-26 22:41:15', '202347200', '7', 78.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017664853027605200', 'admin', '2026-01-26 13:44:26', 'admin', '2026-01-26 23:00:51', '202303653', '7', 51.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017665322233086000', 'admin', '2026-01-26 13:39:18', 'admin', '2026-01-26 21:09:15', '202335609', '2', 61.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017666334957516500', 'admin', '2026-01-26 04:07:26', 'admin', '2026-01-26 13:42:05', '202291584', '7', 86.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017666578967959000', 'admin', '2026-01-26 15:04:06', 'admin', '2026-01-26 22:17:35', '202225452', '5', 98.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017666764758271500', 'admin', '2026-01-26 08:32:14', 'admin', '2026-01-26 10:01:37', '202390688', '8', 63.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017667112514870500', 'admin', '2026-01-26 08:38:38', 'admin', '2026-01-26 14:20:28', '202308544', '7', 98.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017667327371088600', 'admin', '2026-01-26 18:24:00', 'admin', '2026-01-26 20:34:43', '202466537', '4', 83.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017667945962054000', 'admin', '2026-01-26 12:56:35', 'admin', '2026-01-26 23:05:59', '202298124', '3', 83.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017668005411771100', 'admin', '2026-01-26 04:45:51', 'admin', '2026-01-26 11:06:31', '202232200', '2', 78.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017668379113024800', 'admin', '2026-01-26 10:02:26', 'admin', '2026-01-26 21:58:46', '202422827', '3', 52.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017669104095618000', 'admin', '2026-01-26 17:11:53', 'admin', '2026-01-26 22:19:17', '202280466', '8', 58.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017670664217587700', 'admin', '2026-01-26 01:57:05', 'admin', '2026-01-26 05:38:05', '202410419', '2', 79.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017670693488811000', 'admin', '2026-01-26 23:10:19', 'admin', '2026-01-26 23:43:01', '202247435', '2', 50.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017671189403048000', 'admin', '2026-01-26 08:47:41', 'admin', '2026-01-26 11:19:29', '202359330', '7', 77.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017671233522677500', 'admin', '2026-01-26 14:36:57', 'admin', '2026-01-26 19:05:37', '202308544', '5', 56.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017671439929461800', 'admin', '2026-01-26 05:19:50', 'admin', '2026-01-26 15:50:20', '202298660', '5', 70.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017671669521406700', 'admin', '2026-01-26 08:16:47', 'admin', '2026-01-26 22:46:36', '202459720', '6', 59.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017671947827801300', 'admin', '2026-01-26 02:43:08', 'admin', '2026-01-26 07:23:51', '202489317', '6', 87.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017672312432907800', 'admin', '2026-01-26 02:16:26', 'admin', '2026-01-26 16:33:39', '202279672', '6', 98.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017672322942605600', 'admin', '2026-01-26 21:16:24', 'admin', '2026-01-26 21:17:14', '202364296', '2', 83.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017674674840182000', 'admin', '2026-01-26 19:13:22', 'admin', '2026-01-26 21:29:28', '202431984', '1', 80.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017674962295570200', 'admin', '2026-01-26 18:16:12', 'admin', '2026-01-26 18:20:15', '202365957', '2', 64.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017675766143169300', 'admin', '2026-01-26 10:53:58', 'admin', '2026-01-26 16:46:44', '202421518', '5', 65.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017676111971320800', 'admin', '2026-01-26 09:33:00', 'admin', '2026-01-26 13:24:48', '202326651', '1', 72.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017676416321201000', 'admin', '2026-01-26 05:26:59', 'admin', '2026-01-26 05:49:01', '202485636', '2', 76.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017676495160955100', 'admin', '2026-01-26 05:04:58', 'admin', '2026-01-26 10:24:40', '202409023', '4', 88.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017677835675317800', 'admin', '2026-01-26 19:04:22', 'admin', '2026-01-26 23:45:57', '202359119', '7', 90.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017678202404196900', 'admin', '2026-01-26 13:43:30', 'admin', '2026-01-26 19:36:10', '202429920', '6', 88.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017678669601347600', 'admin', '2026-01-26 19:44:45', 'admin', '2026-01-26 21:18:16', '202282081', '6', 68.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017679190408764700', 'admin', '2026-01-26 01:55:18', 'admin', '2026-01-26 17:11:57', '202453591', '8', 94.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017679596810547200', 'admin', '2026-01-26 10:15:41', 'admin', '2026-01-26 18:36:50', '202381155', '3', 78.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017679613492592600', 'admin', '2026-01-26 03:35:44', 'admin', '2026-01-26 07:01:35', '202265876', '3', 59.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017681010934980600', 'admin', '2026-01-26 09:10:01', 'admin', '2026-01-26 19:01:08', '202303627', '1', 65.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017681486207918800', 'admin', '2026-01-26 06:48:52', 'admin', '2026-01-26 20:45:12', '202489559', '6', 50.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017681514028849200', 'admin', '2026-01-26 09:10:52', 'admin', '2026-01-26 19:20:59', '202459935', '7', 79.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017681609660797200', 'admin', '2026-01-26 00:36:54', 'admin', '2026-01-26 01:47:59', '202466537', '3', 50.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017682606883470000', 'admin', '2026-01-26 02:03:15', 'admin', '2026-01-26 07:08:45', '202317129', '5', 60.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017683720146726100', 'admin', '2026-01-26 08:20:13', 'admin', '2026-01-26 09:27:53', '202303627', '7', 94.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017684031832138800', 'admin', '2026-01-26 15:17:05', 'admin', '2026-01-26 17:40:38', '202485640', '6', 97.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017684180652546800', 'admin', '2026-01-26 22:07:54', 'admin', '2026-01-26 23:34:39', '202292626', '8', 52.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017684500372382200', 'admin', '2026-01-26 22:04:44', 'admin', '2026-01-26 22:27:28', '202231776', '5', 72.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017684841720254700', 'admin', '2026-01-26 17:05:36', 'admin', '2026-01-26 21:05:47', '202465337', '5', 54.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017688998906440400', 'admin', '2026-01-26 06:26:48', 'admin', '2026-01-26 08:39:28', '202348280', '5', 57.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017689232568214300', 'admin', '2026-01-26 05:36:37', 'admin', '2026-01-26 20:16:03', '202367026', '5', 82.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017689803740576500', 'admin', '2026-01-26 08:45:20', 'admin', '2026-01-26 22:52:55', '202391186', '3', 78.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017690664150039000', 'admin', '2026-01-26 09:47:47', 'admin', '2026-01-26 15:15:06', '202355110', '7', 68.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017691377656707600', 'admin', '2026-01-26 14:26:43', 'admin', '2026-01-26 20:48:19', '202432528', '8', 71.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017691626984725200', 'admin', '2026-01-26 13:21:33', 'admin', '2026-01-26 16:35:27', '202391438', '3', 76.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017691630760994000', 'admin', '2026-01-26 06:09:45', 'admin', '2026-01-26 10:49:15', '202344790', '8', 70.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017691975813462800', 'admin', '2026-01-26 10:57:14', 'admin', '2026-01-26 13:22:59', '202307314', '5', 80.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017692035386265300', 'admin', '2026-01-26 11:55:25', 'admin', '2026-01-26 13:37:15', '202304675', '3', 56.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017692184860120600', 'admin', '2026-01-26 03:52:16', 'admin', '2026-01-26 17:18:22', '202332895', '2', 68.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017692661358195700', 'admin', '2026-01-26 20:02:08', 'admin', '2026-01-26 21:42:34', '202318292', '6', 55.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017692734207750700', 'admin', '2026-01-26 07:18:44', 'admin', '2026-01-26 17:52:45', '202320932', '2', 94.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017692740591158000', 'admin', '2026-01-26 06:49:55', 'admin', '2026-01-26 12:58:46', '202386480', '2', 88.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017693284256064000', 'admin', '2026-01-26 00:45:00', 'admin', '2026-01-26 20:19:19', '202244872', '3', 92.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017693316157841200', 'admin', '2026-01-26 02:55:53', 'admin', '2026-01-26 14:38:27', '202459608', '4', 71.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017693505686181400', 'admin', '2026-01-26 18:12:48', 'admin', '2026-01-26 22:33:25', '202287242', '1', 51.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017694041279778800', 'admin', '2026-01-26 18:10:54', 'admin', '2026-01-26 21:32:01', '202480013', '1', 70.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017694956150103600', 'admin', '2026-01-26 04:17:52', 'admin', '2026-01-26 06:03:03', '202458632', '5', 80.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017695124851307500', 'admin', '2026-01-26 05:36:58', 'admin', '2026-01-26 19:36:56', '202308298', '7', 69.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017695552782431500', 'admin', '2026-01-26 16:57:34', 'admin', '2026-01-26 23:49:01', '202316191', '2', 69.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017695608482901800', 'admin', '2026-01-26 17:03:29', 'admin', '2026-01-26 18:06:21', '202391186', '8', 88.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017695825872802000', 'admin', '2026-01-26 07:55:06', 'admin', '2026-01-26 20:11:46', '202393355', '2', 51.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017696619108103200', 'admin', '2026-01-26 17:31:00', 'admin', '2026-01-26 18:18:46', '202357600', '5', 98.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017696952240887000', 'admin', '2026-01-26 13:45:15', 'admin', '2026-01-26 21:07:57', '202346808', '5', 82.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017697464605492200', 'admin', '2026-01-26 02:19:56', 'admin', '2026-01-26 17:35:09', '202365100', '2', 69.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017698419264631800', 'admin', '2026-01-26 06:40:13', 'admin', '2026-01-26 22:44:54', '202273190', '3', 72.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017698578179704300', 'admin', '2026-01-26 17:22:56', 'admin', '2026-01-26 23:56:16', '202401449', '7', 96.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017698939528156200', 'admin', '2026-01-26 17:24:05', 'admin', '2026-01-26 19:13:30', '202459935', '2', 68.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017699962733385700', 'admin', '2026-01-26 12:13:24', 'admin', '2026-01-26 18:39:16', '202420500', '7', 98.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017700197145044500', 'admin', '2026-01-26 03:21:29', 'admin', '2026-01-26 09:40:36', '202317129', '3', 54.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017700353724506000', 'admin', '2026-01-26 06:09:25', 'admin', '2026-01-26 12:18:27', '202210649', '8', 57.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017700702748413700', 'admin', '2026-01-26 07:10:13', 'admin', '2026-01-26 16:43:45', '202407850', '3', 92.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017700742062480100', 'admin', '2026-01-26 18:00:56', 'admin', '2026-01-26 20:22:29', '202469792', '6', 62.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017701756590065400', 'admin', '2026-01-26 16:14:22', 'admin', '2026-01-26 22:14:15', '202496015', '7', 95.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017701894770997200', 'admin', '2026-01-26 17:55:52', 'admin', '2026-01-26 20:44:00', '202210279', '3', 55.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017702124562784300', 'admin', '2026-01-26 22:50:33', 'admin', '2026-01-26 22:58:29', '202361642', '7', 91.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017702382684525000', 'admin', '2026-01-26 06:43:39', 'admin', '2026-01-26 12:57:51', '202203366', '5', 52.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017702851214895600', 'admin', '2026-01-26 16:30:49', 'admin', '2026-01-26 18:01:25', '202256926', '4', 81.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017703056673985800', 'admin', '2026-01-26 21:36:34', 'admin', '2026-01-26 22:25:57', '202258434', '2', 94.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017704031825277700', 'admin', '2026-01-26 10:27:19', 'admin', '2026-01-26 23:02:56', '202217406', '5', 95.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017704214421257000', 'admin', '2026-01-26 07:50:47', 'admin', '2026-01-26 12:24:37', '202318083', '7', 64.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017704268821740300', 'admin', '2026-01-26 07:39:15', 'admin', '2026-01-26 12:55:52', '202346454', '4', 71.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017704838445330700', 'admin', '2026-01-26 07:32:13', 'admin', '2026-01-26 21:32:17', '202277035', '6', 74.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017705109179929600', 'admin', '2026-01-26 03:37:12', 'admin', '2026-01-26 09:39:45', '202427232', '5', 87.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017705320046374400', 'admin', '2026-01-26 22:53:50', 'admin', '2026-01-26 23:14:56', '202451697', '1', 70.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017705434512156200', 'admin', '2026-01-26 07:08:40', 'admin', '2026-01-26 17:06:46', '202341879', '5', 93.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017705452017436000', 'admin', '2026-01-26 00:10:30', 'admin', '2026-01-26 09:46:02', '202318083', '1', 50.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017706954586869000', 'admin', '2026-01-26 14:42:10', 'admin', '2026-01-26 20:06:55', '202415031', '2', 76.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017707116922848800', 'admin', '2026-01-26 13:46:57', 'admin', '2026-01-26 20:11:05', '202480013', '4', 54.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017707830683387400', 'admin', '2026-01-26 03:59:54', 'admin', '2026-01-26 14:24:06', '202312765', '6', 84.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017708507196981500', 'admin', '2026-01-26 12:55:46', 'admin', '2026-01-26 14:13:52', '202431625', '2', 65.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017708779313310000', 'admin', '2026-01-26 19:09:36', 'admin', '2026-01-26 23:02:03', '202307314', '6', 52.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017708991171468500', 'admin', '2026-01-26 02:01:26', 'admin', '2026-01-26 10:04:37', '202333628', '7', 59.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017709679861428000', 'admin', '2026-01-26 03:34:46', 'admin', '2026-01-26 14:43:22', '202304206', '6', 55.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017709859748543700', 'admin', '2026-01-26 00:02:44', 'admin', '2026-01-26 04:54:21', '202297773', '1', 90.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017710009443816000', 'admin', '2026-01-26 15:24:33', 'admin', '2026-01-26 22:30:41', '202394667', '5', 50.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017710227252895500', 'admin', '2026-01-26 02:55:42', 'admin', '2026-01-26 05:32:22', '202291584', '6', 58.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017710643673599200', 'admin', '2026-01-26 20:21:39', 'admin', '2026-01-26 22:10:42', '202446027', '6', 55.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017711569274720800', 'admin', '2026-01-26 08:16:26', 'admin', '2026-01-26 19:19:11', '202379866', '7', 74.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017711781040159200', 'admin', '2026-01-26 16:15:41', 'admin', '2026-01-26 22:57:32', '202397631', '8', 94.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017711827987915500', 'admin', '2026-01-26 01:38:33', 'admin', '2026-01-26 08:31:00', '202320606', '2', 55.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017712547030909400', 'admin', '2026-01-26 21:31:23', 'admin', '2026-01-26 22:08:33', '202435989', '3', 56.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017712731731756000', 'admin', '2026-01-26 06:51:25', 'admin', '2026-01-26 21:50:20', '202434381', '5', 97.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017713531518792400', 'admin', '2026-01-26 21:08:48', 'admin', '2026-01-26 21:28:56', '202335406', '6', 76.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017713685354095400', 'admin', '2026-01-26 16:48:46', 'admin', '2026-01-26 23:40:58', '202384453', '2', 58.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017714723482755000', 'admin', '2026-01-26 14:35:48', 'admin', '2026-01-26 18:26:23', '202496075', '5', 69.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017715116617878300', 'admin', '2026-01-26 17:34:05', 'admin', '2026-01-26 20:28:40', '202465337', '1', 59.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017715341682026000', 'admin', '2026-01-26 14:35:07', 'admin', '2026-01-26 22:46:59', '202229134', '7', 59.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017715893946952000', 'admin', '2026-01-26 17:48:03', 'admin', '2026-01-26 23:51:32', '202318292', '4', 56.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017715975385751600', 'admin', '2026-01-26 19:51:28', 'admin', '2026-01-26 21:34:45', '202420500', '8', 68.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017716447073565700', 'admin', '2026-01-26 10:20:15', 'admin', '2026-01-26 13:56:15', '202332654', '2', 86.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017716841686440700', 'admin', '2026-01-26 06:18:28', 'admin', '2026-01-26 23:19:56', '202231870', '6', 87.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017717801537894100', 'admin', '2026-01-26 16:54:20', 'admin', '2026-01-26 20:41:19', '202330572', '2', 94.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017717863528874800', 'admin', '2026-01-26 05:13:49', 'admin', '2026-01-26 11:41:02', '202482299', '8', 92.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017718288981779200', 'admin', '2026-01-26 07:37:42', 'admin', '2026-01-26 17:37:21', '202464418', '7', 61.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017718339498932200', 'admin', '2026-01-26 14:16:16', 'admin', '2026-01-26 19:47:00', '202252607', '1', 66.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017718615195331000', 'admin', '2026-01-26 23:44:50', 'admin', '2026-01-26 23:45:13', '202210193', '2', 67.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017719443221349600', 'admin', '2026-01-26 17:33:18', 'admin', '2026-01-26 22:40:06', '202222138', '6', 85.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017719909324865500', 'admin', '2026-01-26 12:25:09', 'admin', '2026-01-26 20:21:31', '202453591', '2', 54.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017720514687513900', 'admin', '2026-01-26 18:07:54', 'admin', '2026-01-26 19:12:12', '202342061', '7', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017722139693651200', 'admin', '2026-01-26 14:00:27', 'admin', '2026-01-26 20:55:59', '202318047', '4', 72.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017724089384719000', 'admin', '2026-01-26 01:45:26', 'admin', '2026-01-26 22:30:37', '202335609', '4', 93.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017724324624905200', 'admin', '2026-01-26 03:27:33', 'admin', '2026-01-26 17:46:54', '202448361', '5', 72.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017724353230969900', 'admin', '2026-01-26 05:52:18', 'admin', '2026-01-26 19:50:55', '202274797', '7', 62.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017725598491003600', 'admin', '2026-01-26 18:50:10', 'admin', '2026-01-26 18:57:09', '202404983', '8', 54.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017725989090467000', 'admin', '2026-01-26 08:43:50', 'admin', '2026-01-26 23:10:35', '202258585', '7', 56.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017726258168678700', 'admin', '2026-01-26 09:05:11', 'admin', '2026-01-26 21:15:46', '202333628', '2', 50.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017727177847320300', 'admin', '2026-01-26 14:17:09', 'admin', '2026-01-26 21:59:28', '202444199', '4', 76.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017729734093161700', 'admin', '2026-01-26 18:24:48', 'admin', '2026-01-26 23:54:32', '202401242', '1', 65.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017730110119445800', 'admin', '2026-01-26 06:46:54', 'admin', '2026-01-26 23:14:11', '202379230', '6', 82.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017730117776966000', 'admin', '2026-01-26 12:33:07', 'admin', '2026-01-26 18:15:32', '202421578', '7', 78.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017730899715582500', 'admin', '2026-01-26 19:10:17', 'admin', '2026-01-26 21:18:28', '202463123', '8', 89.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017731341858723000', 'admin', '2026-01-26 14:35:58', 'admin', '2026-01-26 23:36:00', '202330572', '7', 57.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017731724633378000', 'admin', '2026-01-26 03:36:19', 'admin', '2026-01-26 22:54:04', '202285287', '6', 59.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017731769940909800', 'admin', '2026-01-26 16:00:26', 'admin', '2026-01-26 19:35:11', '202462466', '1', 98.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017732288763101200', 'admin', '2026-01-26 18:41:35', 'admin', '2026-01-26 23:39:27', '202458161', '5', 58.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017732528459836400', 'admin', '2026-01-26 02:47:28', 'admin', '2026-01-26 07:12:05', '202298253', '5', 87.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017732571043212500', 'admin', '2026-01-26 06:24:08', 'admin', '2026-01-26 23:16:31', '202436895', '3', 90.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017733033044121000', 'admin', '2026-01-26 10:53:51', 'admin', '2026-01-26 23:02:31', '202352116', '6', 55.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017733298155240000', 'admin', '2026-01-26 14:05:43', 'admin', '2026-01-26 17:20:32', '202306588', '3', 52.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017733721929507600', 'admin', '2026-01-26 04:42:40', 'admin', '2026-01-26 08:52:13', '202448949', '1', 65.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017733939159635200', 'admin', '2026-01-26 11:20:08', 'admin', '2026-01-26 15:02:45', '202315584', '2', 58.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017734171454515500', 'admin', '2026-01-26 02:53:36', 'admin', '2026-01-26 04:06:55', '202447883', '6', 52.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017735327031639300', 'admin', '2026-01-26 08:17:20', 'admin', '2026-01-26 16:48:03', '202431205', '1', 66.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017735657835516000', 'admin', '2026-01-26 21:21:55', 'admin', '2026-01-26 22:29:40', '202422827', '6', 54.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017736802302334500', 'admin', '2026-01-26 00:12:28', 'admin', '2026-01-26 20:40:58', '202492083', '6', 67.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017737131639610000', 'admin', '2026-01-26 19:18:04', 'admin', '2026-01-26 21:43:36', '202288477', '7', 51.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017737490906152700', 'admin', '2026-01-26 03:39:47', 'admin', '2026-01-26 16:52:59', '202460201', '3', 84.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017737677448190200', 'admin', '2026-01-26 02:11:37', 'admin', '2026-01-26 14:01:03', '202222500', '2', 74.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017737853089145900', 'admin', '2026-01-26 07:13:07', 'admin', '2026-01-26 11:05:56', '202306425', '6', 97.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017737914067622400', 'admin', '2026-01-26 19:23:35', 'admin', '2026-01-26 23:08:09', '202458818', '5', 57.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017739198745054500', 'admin', '2026-01-26 08:41:31', 'admin', '2026-01-26 22:07:36', '202367021', '5', 57.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017739576619921700', 'admin', '2026-01-26 08:36:56', 'admin', '2026-01-26 11:48:26', '202371246', '1', 75.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017740313224851500', 'admin', '2026-01-26 09:02:38', 'admin', '2026-01-26 19:28:46', '202201712', '8', 76.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017740545963012400', 'admin', '2026-01-26 18:20:34', 'admin', '2026-01-26 20:41:26', '202482299', '3', 81.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017741904975601000', 'admin', '2026-01-26 02:41:15', 'admin', '2026-01-26 18:10:21', '202291584', '4', 62.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017741944659445500', 'admin', '2026-01-26 19:52:01', 'admin', '2026-01-26 22:44:31', '202257356', '6', 53.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017744085364585500', 'admin', '2026-01-26 07:25:56', 'admin', '2026-01-26 13:42:35', '202335406', '4', 70.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017744207607263500', 'admin', '2026-01-26 22:29:12', 'admin', '2026-01-26 23:45:28', '202224607', '8', 97.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017744647933665000', 'admin', '2026-01-26 20:42:24', 'admin', '2026-01-26 23:30:13', '202239571', '6', 98.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017745364869757200', 'admin', '2026-01-26 21:29:28', 'admin', '2026-01-26 21:53:14', '202384326', '2', 90.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017745827348586000', 'admin', '2026-01-26 05:41:16', 'admin', '2026-01-26 09:02:51', '202428598', '2', 92.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017745914938381800', 'admin', '2026-01-26 03:53:37', 'admin', '2026-01-26 09:32:21', '202450103', '8', 78.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017746180012699000', 'admin', '2026-01-26 02:06:33', 'admin', '2026-01-26 12:40:13', '202201712', '2', 66.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017746277777813200', 'admin', '2026-01-26 23:56:28', 'admin', '2026-01-26 23:58:54', '202326029', '2', 80.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017746928150226000', 'admin', '2026-01-26 03:38:54', 'admin', '2026-01-26 21:03:02', '202231454', '6', 65.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017746951379142000', 'admin', '2026-01-26 03:55:16', 'admin', '2026-01-26 17:56:09', '202362201', '8', 71.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017747194363401700', 'admin', '2026-01-26 07:51:29', 'admin', '2026-01-26 17:42:31', '202296748', '4', 99.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017747523060018200', 'admin', '2026-01-26 09:35:21', 'admin', '2026-01-26 09:43:25', '202448667', '6', 93.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017748217942895900', 'admin', '2026-01-26 22:04:44', 'admin', '2026-01-26 22:05:18', '202327137', '3', 67.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017749242015782000', 'admin', '2026-01-26 00:17:21', 'admin', '2026-01-26 19:31:50', '202289258', '7', 73.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017749585537592000', 'admin', '2026-01-26 00:31:31', 'admin', '2026-01-26 08:39:11', '202213478', '5', 71.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017751288220145200', 'admin', '2026-01-26 16:37:30', 'admin', '2026-01-26 22:09:31', '202431205', '7', 79.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017751574348599300', 'admin', '2026-01-26 21:54:51', 'admin', '2026-01-26 22:07:48', '202454945', '2', 80.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017751699597933800', 'admin', '2026-01-26 10:17:20', 'admin', '2026-01-26 22:12:43', '202434381', '7', 88.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017751840829390600', 'admin', '2026-01-26 12:04:59', 'admin', '2026-01-26 17:53:08', '202307314', '1', 80.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017751854244941600', 'admin', '2026-01-26 02:02:18', 'admin', '2026-01-26 23:57:23', '202227294', '4', 51.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017752066756368100', 'admin', '2026-01-26 21:54:33', 'admin', '2026-01-26 23:27:36', '202242916', '6', 86.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017752442169108200', 'admin', '2026-01-26 07:29:39', 'admin', '2026-01-26 07:51:10', '202240720', '7', 56.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017753003839916300', 'admin', '2026-01-26 00:43:14', 'admin', '2026-01-26 22:27:10', '202371299', '8', 97.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017753492108628200', 'admin', '2026-01-26 02:12:35', 'admin', '2026-01-26 20:25:43', '202271791', '2', 82.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017755163159333400', 'admin', '2026-01-26 12:11:28', 'admin', '2026-01-26 17:38:14', '202398689', '1', 77.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017755205302137600', 'admin', '2026-01-26 06:44:44', 'admin', '2026-01-26 13:18:18', '202306588', '2', 66.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017756623392164400', 'admin', '2026-01-26 02:45:25', 'admin', '2026-01-26 13:36:56', '202481369', '7', 90.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017757115880663600', 'admin', '2026-01-26 19:08:51', 'admin', '2026-01-26 22:21:48', '202353271', '7', 90.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017757119416826000', 'admin', '2026-01-26 08:57:40', 'admin', '2026-01-26 15:59:33', '202298402', '6', 60.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017757746431740200', 'admin', '2026-01-26 06:21:17', 'admin', '2026-01-26 14:44:52', '202309030', '6', 64.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017758277131226400', 'admin', '2026-01-26 16:35:29', 'admin', '2026-01-26 18:28:15', '202210279', '1', 56.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017758507272737500', 'admin', '2026-01-26 13:52:43', 'admin', '2026-01-26 23:56:14', '202398306', '8', 56.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017759561283887600', 'admin', '2026-01-26 21:43:05', 'admin', '2026-01-26 22:34:13', '202339685', '2', 73.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017759850697899000', 'admin', '2026-01-26 20:27:03', 'admin', '2026-01-26 21:10:09', '202329090', '1', 66.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017761318483864600', 'admin', '2026-01-26 07:18:35', 'admin', '2026-01-26 17:08:48', '202482009', '3', 92.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017761884797135600', 'admin', '2026-01-26 15:41:41', 'admin', '2026-01-26 22:06:56', '202257356', '5', 75.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017762595873929500', 'admin', '2026-01-26 05:05:22', 'admin', '2026-01-26 13:40:20', '202247846', '5', 94.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017763856811287600', 'admin', '2026-01-26 00:10:09', 'admin', '2026-01-26 19:31:57', '202334944', '5', 76.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017763867075857000', 'admin', '2026-01-26 17:02:18', 'admin', '2026-01-26 21:26:26', '202240720', '2', 88.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017764196122881000', 'admin', '2026-01-26 11:16:40', 'admin', '2026-01-26 20:30:57', '202279672', '3', 66.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017764813587847400', 'admin', '2026-01-26 05:02:59', 'admin', '2026-01-26 07:19:37', '202312765', '2', 67.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017768110464828200', 'admin', '2026-01-26 17:40:43', 'admin', '2026-01-26 20:33:33', '202277984', '4', 63.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017768698263473700', 'admin', '2026-01-26 14:53:29', 'admin', '2026-01-26 19:44:07', '202415031', '7', 73.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017768768840608000', 'admin', '2026-01-26 19:35:02', 'admin', '2026-01-26 20:13:59', '202309030', '8', 96.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017769495449044500', 'admin', '2026-01-26 05:45:15', 'admin', '2026-01-26 20:33:15', '202450300', '3', 85.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017770130895188200', 'admin', '2026-01-26 05:46:19', 'admin', '2026-01-26 22:57:12', '202454505', '3', 65.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017770198738462000', 'admin', '2026-01-26 22:38:13', 'admin', '2026-01-26 22:39:22', '202261895', '4', 72.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017773105765333200', 'admin', '2026-01-26 02:56:27', 'admin', '2026-01-26 13:43:55', '202391186', '6', 95.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017773323417442600', 'admin', '2026-01-26 23:54:43', 'admin', '2026-01-26 23:56:34', '202441106', '5', 73.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017773478833426700', 'admin', '2026-01-26 13:54:19', 'admin', '2026-01-26 18:40:20', '202320895', '7', 81.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017773843606667800', 'admin', '2026-01-26 12:48:02', 'admin', '2026-01-26 16:46:35', '202487648', '3', 78.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017773966330442500', 'admin', '2026-01-26 09:34:32', 'admin', '2026-01-26 13:58:27', '202339685', '3', 92.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017774179396006400', 'admin', '2026-01-26 04:06:42', 'admin', '2026-01-26 04:48:21', '202379475', '6', 59.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017774190526514700', 'admin', '2026-01-26 11:13:19', 'admin', '2026-01-26 21:59:59', '202241168', '7', 91.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017774271200735200', 'admin', '2026-01-26 18:05:38', 'admin', '2026-01-26 19:37:06', '202211853', '2', 62.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017774390379172900', 'admin', '2026-01-26 05:03:49', 'admin', '2026-01-26 16:17:13', '202424647', '3', 50.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017774494530626600', 'admin', '2026-01-26 18:02:29', 'admin', '2026-01-26 18:16:02', '202411880', '7', 75.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017774580708045600', 'admin', '2026-01-26 20:09:38', 'admin', '2026-01-26 22:18:14', '202320420', '4', 50.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017774834712073200', 'admin', '2026-01-26 02:55:27', 'admin', '2026-01-26 04:47:48', '202384453', '7', 51.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017774884543936000', 'admin', '2026-01-26 02:39:07', 'admin', '2026-01-26 18:32:33', '202386080', '7', 88.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017776004760311300', 'admin', '2026-01-26 00:11:18', 'admin', '2026-01-26 10:11:02', '202345753', '6', 81.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017776257342462500', 'admin', '2026-01-26 01:58:55', 'admin', '2026-01-26 19:35:32', '202407405', '5', 63.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017776379546085400', 'admin', '2026-01-26 16:46:58', 'admin', '2026-01-26 17:38:22', '202365600', '3', 98.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017776781126019000', 'admin', '2026-01-26 13:26:49', 'admin', '2026-01-26 15:35:21', '202307094', '7', 69.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017777205764009200', 'admin', '2026-01-26 23:38:25', 'admin', '2026-01-26 23:41:31', '202484873', '5', 66.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017777791081638400', 'admin', '2026-01-26 17:33:53', 'admin', '2026-01-26 22:23:38', '202380680', '8', 90.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017778473623561500', 'admin', '2026-01-26 09:42:14', 'admin', '2026-01-26 16:02:00', '202406356', '7', 98.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017779007354477300', 'admin', '2026-01-26 10:53:59', 'admin', '2026-01-26 20:31:26', '202435989', '8', 53.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017779492133813800', 'admin', '2026-01-26 03:52:12', 'admin', '2026-01-26 21:00:25', '202482350', '2', 62.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017780205099072800', 'admin', '2026-01-26 02:52:28', 'admin', '2026-01-26 20:57:42', '202401296', '5', 69.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017780230665360400', 'admin', '2026-01-26 10:48:45', 'admin', '2026-01-26 17:51:16', '202248930', '7', 97.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017780896961465300', 'admin', '2026-01-26 16:18:16', 'admin', '2026-01-26 21:06:39', '202414952', '3', 55.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017782192638162200', 'admin', '2026-01-26 21:45:08', 'admin', '2026-01-26 22:18:30', '202426952', '5', 56.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017784114845113000', 'admin', '2026-01-26 15:16:41', 'admin', '2026-01-26 15:44:29', '202451886', '3', 93.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017784343071414300', 'admin', '2026-01-26 04:02:27', 'admin', '2026-01-26 09:15:24', '202230374', '2', 85.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017785426615295700', 'admin', '2026-01-26 14:48:21', 'admin', '2026-01-26 20:40:59', '202466537', '6', 96.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017786457418267100', 'admin', '2026-01-26 17:54:14', 'admin', '2026-01-26 18:11:00', '202427232', '4', 89.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017786554987475500', 'admin', '2026-01-26 04:31:20', 'admin', '2026-01-26 15:37:26', '202379991', '2', 92.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017786848399754200', 'admin', '2026-01-26 00:14:07', 'admin', '2026-01-26 11:51:09', '202275048', '6', 90.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017786958329878000', 'admin', '2026-01-26 14:39:21', 'admin', '2026-01-26 23:36:25', '202200665', '6', 88.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017786988612555000', 'admin', '2026-01-26 23:25:58', 'admin', '2026-01-26 23:56:25', '202485539', '1', 78.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017786991830579200', 'admin', '2026-01-26 01:36:14', 'admin', '2026-01-26 01:39:24', '202258434', '5', 50.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017787949769943300', 'admin', '2026-01-26 08:49:41', 'admin', '2026-01-26 22:37:36', '202388833', '6', 78.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017788492864652000', 'admin', '2026-01-26 18:29:21', 'admin', '2026-01-26 21:51:18', '202282081', '7', 85.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017788875924553200', 'admin', '2026-01-26 07:32:20', 'admin', '2026-01-26 08:15:18', '202498469', '5', 72.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017788980513985500', 'admin', '2026-01-26 13:27:27', 'admin', '2026-01-26 14:54:55', '202281387', '2', 61.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017789599773840600', 'admin', '2026-01-26 13:39:54', 'admin', '2026-01-26 21:55:03', '202435989', '6', 51.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017790072999972400', 'admin', '2026-01-26 19:29:06', 'admin', '2026-01-26 22:45:44', '202381155', '6', 91.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017790195251617000', 'admin', '2026-01-26 08:15:56', 'admin', '2026-01-26 11:08:38', '202415031', '3', 72.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017790362075510800', 'admin', '2026-01-26 23:52:46', 'admin', '2026-01-26 23:55:41', '202483631', '2', 74.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017790500052238000', 'admin', '2026-01-26 15:09:40', 'admin', '2026-01-26 19:15:55', '202454945', '7', 94.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017790631981845800', 'admin', '2026-01-26 03:03:16', 'admin', '2026-01-26 22:55:25', '202374166', '7', 87.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017791725216845300', 'admin', '2026-01-26 08:12:47', 'admin', '2026-01-26 11:09:16', '202464467', '2', 79.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017791836386939600', 'admin', '2026-01-26 04:43:59', 'admin', '2026-01-26 12:43:08', '202359330', '8', 68.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017791937702826000', 'admin', '2026-01-26 22:26:03', 'admin', '2026-01-26 23:53:28', '202353666', '2', 86.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017792118134254000', 'admin', '2026-01-26 07:12:35', 'admin', '2026-01-26 14:54:47', '202364475', '5', 66.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017792363707593500', 'admin', '2026-01-26 00:34:38', 'admin', '2026-01-26 21:00:46', '202475027', '8', 93.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017792580827426300', 'admin', '2026-01-26 12:43:56', 'admin', '2026-01-26 21:13:56', '202420652', '1', 74.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017792639289192200', 'admin', '2026-01-26 17:24:28', 'admin', '2026-01-26 18:28:18', '202332654', '1', 86.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017792707937811700', 'admin', '2026-01-26 08:57:24', 'admin', '2026-01-26 16:29:33', '202376600', '8', 86.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017792888540889000', 'admin', '2026-01-26 07:08:35', 'admin', '2026-01-26 10:29:52', '202408719', '2', 81.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017793519316848600', 'admin', '2026-01-26 18:29:34', 'admin', '2026-01-26 22:20:47', '202367797', '3', 54.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017793568373792500', 'admin', '2026-01-26 23:16:58', 'admin', '2026-01-26 23:54:43', '202330572', '5', 82.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017794423132667600', 'admin', '2026-01-26 02:14:39', 'admin', '2026-01-26 09:43:53', '202472082', '4', 95.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017795132520642000', 'admin', '2026-01-26 15:21:18', 'admin', '2026-01-26 16:31:45', '202263438', '5', 92.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017795506452994600', 'admin', '2026-01-26 15:33:03', 'admin', '2026-01-26 22:48:30', '202347401', '3', 82.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017797210795204400', 'admin', '2026-01-26 07:04:01', 'admin', '2026-01-26 17:17:19', '202420500', '3', 90.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017797826937324500', 'admin', '2026-01-26 04:31:49', 'admin', '2026-01-26 07:26:39', '202212833', '8', 88.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017797859629586400', 'admin', '2026-01-26 09:10:08', 'admin', '2026-01-26 21:38:19', '202457501', '3', 95.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017797935680070000', 'admin', '2026-01-26 20:50:37', 'admin', '2026-01-26 21:37:18', '202366709', '6', 58.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017798090131216100', 'admin', '2026-01-26 01:50:21', 'admin', '2026-01-26 23:34:11', '202424454', '2', 67.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017798107477102000', 'admin', '2026-01-26 13:40:48', 'admin', '2026-01-26 18:36:43', '202209339', '4', 84.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017798109407334000', 'admin', '2026-01-26 09:42:55', 'admin', '2026-01-26 18:06:30', '202461502', '7', 67.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017798155849312800', 'admin', '2026-01-26 21:18:06', 'admin', '2026-01-26 22:14:48', '202450300', '2', 82.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017798489653527600', 'admin', '2026-01-26 22:30:30', 'admin', '2026-01-26 22:41:56', '202242916', '4', 55.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017798635370648000', 'admin', '2026-01-26 06:50:28', 'admin', '2026-01-26 08:31:59', '202221877', '8', 61.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017799179512163000', 'admin', '2026-01-26 03:13:38', 'admin', '2026-01-26 06:14:05', '202326029', '8', 94.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017800566692195600', 'admin', '2026-01-26 18:21:38', 'admin', '2026-01-26 19:33:34', '202226477', '2', 82.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017801668452870700', 'admin', '2026-01-26 08:45:52', 'admin', '2026-01-26 09:35:16', '202453871', '7', 53.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017801737846315000', 'admin', '2026-01-26 02:22:21', 'admin', '2026-01-26 13:08:07', '202299437', '5', 80.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017802287674066200', 'admin', '2026-01-26 07:13:02', 'admin', '2026-01-26 12:02:59', '202426992', '3', 68.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017803431181441800', 'admin', '2026-01-26 08:09:43', 'admin', '2026-01-26 14:57:41', '202271791', '1', 62.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017803702791102000', 'admin', '2026-01-26 07:10:57', 'admin', '2026-01-26 14:15:06', '202410611', '4', 93.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017804051249242000', 'admin', '2026-01-26 01:15:52', 'admin', '2026-01-26 17:45:58', '202367026', '7', 50.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017806370342835700', 'admin', '2026-01-26 03:45:44', 'admin', '2026-01-26 22:21:16', '202241004', '6', 64.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017806868353964500', 'admin', '2026-01-26 15:57:36', 'admin', '2026-01-26 16:37:21', '202397320', '7', 63.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017807114119089400', 'admin', '2026-01-26 10:41:45', 'admin', '2026-01-26 10:51:37', '202450300', '6', 96.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017807488535693300', 'admin', '2026-01-26 02:45:35', 'admin', '2026-01-26 11:51:12', '202212833', '4', 64.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017808165675641000', 'admin', '2026-01-26 08:52:18', 'admin', '2026-01-26 10:17:53', '202231870', '7', 50.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017809286570231300', 'admin', '2026-01-26 04:02:05', 'admin', '2026-01-26 15:50:19', '202438100', '4', 56.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017809659375414500', 'admin', '2026-01-26 12:03:44', 'admin', '2026-01-26 18:30:01', '202297773', '5', 87.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017809994289427700', 'admin', '2026-01-26 15:45:10', 'admin', '2026-01-26 16:48:39', '202364296', '6', 75.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017810395828134000', 'admin', '2026-01-26 20:41:19', 'admin', '2026-01-26 20:50:04', '202304206', '7', 65.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017810920151597300', 'admin', '2026-01-26 16:05:35', 'admin', '2026-01-26 17:26:27', '202372784', '3', 60.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017812080955434800', 'admin', '2026-01-26 18:05:57', 'admin', '2026-01-26 21:59:30', '202364563', '4', 86.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017812827171974100', 'admin', '2026-01-26 11:15:21', 'admin', '2026-01-26 12:23:08', '202401296', '4', 84.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017813226420938000', 'admin', '2026-01-26 11:46:15', 'admin', '2026-01-26 22:17:56', '202433505', '2', 71.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017814377619626000', 'admin', '2026-01-26 03:59:29', 'admin', '2026-01-26 19:00:44', '202463123', '4', 74.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017815210641468000', 'admin', '2026-01-26 18:10:39', 'admin', '2026-01-26 20:10:32', '202308298', '8', 59.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017815250406287000', 'admin', '2026-01-26 05:49:45', 'admin', '2026-01-26 14:36:12', '202374778', '5', 59.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017815398646790700', 'admin', '2026-01-26 04:39:56', 'admin', '2026-01-26 08:40:48', '202227294', '3', 69.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017815720038940000', 'admin', '2026-01-26 05:06:11', 'admin', '2026-01-26 05:22:37', '202223272', '6', 91.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017816730861062700', 'admin', '2026-01-26 12:08:18', 'admin', '2026-01-26 20:24:33', '202428598', '3', 98.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017816801501731600', 'admin', '2026-01-26 03:11:18', 'admin', '2026-01-26 08:52:50', '202267515', '3', 69.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017817063561856800', 'admin', '2026-01-26 00:58:28', 'admin', '2026-01-26 01:17:57', '202306841', '2', 84.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017817232439051000', 'admin', '2026-01-26 08:23:08', 'admin', '2026-01-26 13:03:53', '202243044', '3', 89.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017817354377115000', 'admin', '2026-01-26 12:21:00', 'admin', '2026-01-26 23:56:51', '202285760', '3', 64.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017817454768095000', 'admin', '2026-01-26 14:43:23', 'admin', '2026-01-26 15:32:46', '202219104', '4', 99.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017817538704188000', 'admin', '2026-01-26 22:03:32', 'admin', '2026-01-26 22:22:58', '202373689', '4', 55.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017818046798056700', 'admin', '2026-01-26 18:23:09', 'admin', '2026-01-26 20:47:13', '202439370', '4', 50.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017818927462740000', 'admin', '2026-01-26 11:36:20', 'admin', '2026-01-26 23:10:44', '202404983', '7', 83.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017819556376717800', 'admin', '2026-01-26 17:26:42', 'admin', '2026-01-26 19:41:12', '202364296', '4', 71.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017819784910750000', 'admin', '2026-01-26 21:33:06', 'admin', '2026-01-26 22:46:09', '202365600', '2', 76.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017821095292136000', 'admin', '2026-01-26 05:25:30', 'admin', '2026-01-26 21:28:28', '202281456', '2', 97.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017822373780742400', 'admin', '2026-01-26 21:00:36', 'admin', '2026-01-26 23:03:24', '202228454', '3', 62.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017824036146151700', 'admin', '2026-01-26 13:23:38', 'admin', '2026-01-26 20:11:26', '202439370', '6', 68.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017825149495427300', 'admin', '2026-01-26 02:01:11', 'admin', '2026-01-26 04:55:34', '202371299', '7', 76.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017825839009349000', 'admin', '2026-01-26 01:17:19', 'admin', '2026-01-26 12:59:00', '202309922', '2', 71.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017826491724247000', 'admin', '2026-01-26 03:00:33', 'admin', '2026-01-26 23:00:27', '202424647', '6', 51.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017826632949158700', 'admin', '2026-01-26 00:45:16', 'admin', '2026-01-26 02:52:37', '202306425', '5', 96.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017827033988036000', 'admin', '2026-01-26 14:47:19', 'admin', '2026-01-26 17:07:03', '202225070', '2', 65.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017827068527380000', 'admin', '2026-01-26 17:03:52', 'admin', '2026-01-26 22:38:43', '202375029', '1', 57.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017827160496521500', 'admin', '2026-01-26 15:20:55', 'admin', '2026-01-26 18:43:51', '202475027', '1', 74.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017828930417815300', 'admin', '2026-01-26 13:38:26', 'admin', '2026-01-26 15:51:33', '202379991', '1', 53.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017828941047186000', 'admin', '2026-01-26 06:56:32', 'admin', '2026-01-26 19:00:56', '202468343', '3', 65.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017829770962635000', 'admin', '2026-01-26 19:28:04', 'admin', '2026-01-26 22:32:28', '202492083', '1', 60.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017830223472599300', 'admin', '2026-01-26 23:42:06', 'admin', '2026-01-26 23:45:22', '202227294', '7', 54.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017830899501257000', 'admin', '2026-01-26 22:41:32', 'admin', '2026-01-26 23:28:14', '202375029', '5', 92.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017831366273884000', 'admin', '2026-01-26 21:14:05', 'admin', '2026-01-26 23:57:18', '202299779', '7', 65.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017831396086122800', 'admin', '2026-01-26 23:22:19', 'admin', '2026-01-26 23:40:23', '202386114', '8', 86.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017831537174188500', 'admin', '2026-01-26 15:42:17', 'admin', '2026-01-26 20:45:42', '202379991', '6', 61.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017831690755359000', 'admin', '2026-01-26 09:00:32', 'admin', '2026-01-26 10:42:12', '202493852', '6', 51.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017832122062627600', 'admin', '2026-01-26 03:21:06', 'admin', '2026-01-26 20:13:37', '202316191', '3', 82.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017832510249807600', 'admin', '2026-01-26 00:59:01', 'admin', '2026-01-26 05:39:05', '202308737', '2', 92.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017832944574353700', 'admin', '2026-01-26 13:23:31', 'admin', '2026-01-26 16:25:01', '202465887', '7', 94.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017833069880084200', 'admin', '2026-01-26 15:04:10', 'admin', '2026-01-26 19:58:05', '202243044', '4', 57.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017834296876129000', 'admin', '2026-01-26 21:35:58', 'admin', '2026-01-26 22:17:56', '202360451', '4', 61.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017834394486953000', 'admin', '2026-01-26 21:37:53', 'admin', '2026-01-26 22:32:07', '202231776', '1', 71.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017834920278696000', 'admin', '2026-01-26 12:17:15', 'admin', '2026-01-26 22:31:12', '202492633', '1', 50.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017835207534911500', 'admin', '2026-01-26 11:05:00', 'admin', '2026-01-26 17:32:17', '202371299', '1', 90.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017835492045485800', 'admin', '2026-01-26 15:33:06', 'admin', '2026-01-26 17:25:50', '202475027', '5', 97.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017836155485243400', 'admin', '2026-01-26 08:11:33', 'admin', '2026-01-26 09:45:30', '202429920', '7', 81.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017836370377505300', 'admin', '2026-01-26 07:38:03', 'admin', '2026-01-26 08:18:21', '202356398', '1', 92.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017836596299394800', 'admin', '2026-01-26 09:15:04', 'admin', '2026-01-26 11:30:50', '202388729', '7', 79.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017837064224032300', 'admin', '2026-01-26 03:58:30', 'admin', '2026-01-26 08:45:21', '202320606', '1', 58.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017837266702942700', 'admin', '2026-01-26 00:29:15', 'admin', '2026-01-26 12:27:14', '202203130', '7', 84.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017837448403579400', 'admin', '2026-01-26 00:29:18', 'admin', '2026-01-26 13:46:08', '202448509', '7', 57.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017838526659196000', 'admin', '2026-01-26 04:36:38', 'admin', '2026-01-26 21:34:55', '202270473', '4', 69.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017839038262178600', 'admin', '2026-01-26 06:13:30', 'admin', '2026-01-26 13:42:30', '202361642', '1', 97.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017839371681942000', 'admin', '2026-01-26 17:04:57', 'admin', '2026-01-26 18:57:32', '202228454', '2', 76.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017840312675709000', 'admin', '2026-01-26 08:13:48', 'admin', '2026-01-26 15:01:12', '202306425', '7', 83.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017842052659622100', 'admin', '2026-01-26 23:07:17', 'admin', '2026-01-26 23:43:06', '202487378', '8', 52.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017842434698804500', 'admin', '2026-01-26 16:09:48', 'admin', '2026-01-26 19:43:36', '202464467', '7', 64.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017843138152021200', 'admin', '2026-01-26 02:41:11', 'admin', '2026-01-26 14:40:43', '202347401', '4', 90.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017843160081884200', 'admin', '2026-01-26 06:56:19', 'admin', '2026-01-26 22:36:25', '202208106', '3', 81.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017843762054952000', 'admin', '2026-01-26 04:34:23', 'admin', '2026-01-26 12:35:12', '202459608', '7', 91.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017843797838375000', 'admin', '2026-01-26 14:17:21', 'admin', '2026-01-26 15:39:29', '202261895', '5', 55.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017844201487309000', 'admin', '2026-01-26 08:22:43', 'admin', '2026-01-26 20:43:27', '202410419', '4', 62.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017845380594097000', 'admin', '2026-01-26 06:53:23', 'admin', '2026-01-26 20:15:27', '202207764', '2', 60.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017845804846257200', 'admin', '2026-01-26 10:37:11', 'admin', '2026-01-26 13:18:48', '202415031', '4', 86.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017846845078214400', 'admin', '2026-01-26 15:07:38', 'admin', '2026-01-26 18:03:59', '202341879', '4', 78.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017848954287009800', 'admin', '2026-01-26 21:28:12', 'admin', '2026-01-26 21:50:28', '202483602', '6', 66.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017849270223967200', 'admin', '2026-01-26 15:03:48', 'admin', '2026-01-26 15:46:35', '202244650', '7', 79.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017849857638040000', 'admin', '2026-01-26 06:02:48', 'admin', '2026-01-26 19:54:37', '202219396', '3', 52.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017850385006022700', 'admin', '2026-01-26 15:48:51', 'admin', '2026-01-26 22:51:44', '202418074', '7', 67.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017851351806026200', 'admin', '2026-01-26 21:38:12', 'admin', '2026-01-26 23:38:59', '202211164', '3', 78.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017851869775256300', 'admin', '2026-01-26 07:09:15', 'admin', '2026-01-26 17:41:15', '202462466', '5', 83.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017852884082348500', 'admin', '2026-01-26 02:36:34', 'admin', '2026-01-26 21:01:54', '202432223', '2', 93.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017853894415481900', 'admin', '2026-01-26 09:03:04', 'admin', '2026-01-26 17:25:40', '202404983', '6', 93.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017854074741178600', 'admin', '2026-01-26 05:43:46', 'admin', '2026-01-26 07:17:29', '202469792', '2', 85.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017854140182430000', 'admin', '2026-01-26 20:01:06', 'admin', '2026-01-26 20:19:48', '202325050', '7', 68.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017855441424277800', 'admin', '2026-01-26 10:25:54', 'admin', '2026-01-26 19:31:58', '202367905', '2', 88.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017856109588843300', 'admin', '2026-01-26 17:45:01', 'admin', '2026-01-26 17:45:09', '202393577', '2', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017856290920264400', 'admin', '2026-01-26 11:52:01', 'admin', '2026-01-26 14:21:15', '202226477', '4', 58.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017856746401842200', 'admin', '2026-01-26 15:17:23', 'admin', '2026-01-26 17:06:22', '202223272', '3', 66.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017856963208806400', 'admin', '2026-01-26 16:43:21', 'admin', '2026-01-26 20:07:27', '202470324', '6', 86.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017857165377593600', 'admin', '2026-01-26 11:00:44', 'admin', '2026-01-26 13:23:12', '202435673', '1', 71.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017857179002411300', 'admin', '2026-01-26 10:06:41', 'admin', '2026-01-26 18:04:51', '202353666', '4', 88.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017857287408915200', 'admin', '2026-01-26 08:47:20', 'admin', '2026-01-26 23:36:16', '202413193', '5', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017857492927490000', 'admin', '2026-01-26 20:50:14', 'admin', '2026-01-26 21:01:07', '202406055', '6', 57.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017857759599883300', 'admin', '2026-01-26 11:47:42', 'admin', '2026-01-26 22:39:37', '202231776', '7', 71.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017857934439301400', 'admin', '2026-01-26 09:05:53', 'admin', '2026-01-26 12:39:23', '202339955', '7', 80.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017859083629259800', 'admin', '2026-01-26 07:45:59', 'admin', '2026-01-26 20:14:41', '202278458', '6', 75.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017860804719549700', 'admin', '2026-01-26 10:01:00', 'admin', '2026-01-26 11:42:51', '202375029', '4', 62.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017861727229434600', 'admin', '2026-01-26 15:42:14', 'admin', '2026-01-26 17:48:05', '202479852', '5', 93.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017862391201467000', 'admin', '2026-01-26 07:31:39', 'admin', '2026-01-26 23:04:16', '202327137', '1', 82.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017862949047183000', 'admin', '2026-01-26 15:13:52', 'admin', '2026-01-26 20:18:16', '202378418', '5', 85.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017862959816462300', 'admin', '2026-01-26 10:26:25', 'admin', '2026-01-26 22:30:24', '202327178', '4', 51.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017863561503976000', 'admin', '2026-01-26 16:52:06', 'admin', '2026-01-26 21:16:42', '202401242', '6', 52.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017863573416392200', 'admin', '2026-01-26 19:35:56', 'admin', '2026-01-26 23:38:10', '202347200', '2', 82.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017863784457084200', 'admin', '2026-01-26 15:09:45', 'admin', '2026-01-26 17:25:54', '202368822', '7', 67.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017864129887932200', 'admin', '2026-01-26 22:20:37', 'admin', '2026-01-26 22:36:08', '202386480', '6', 72.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017864171525790700', 'admin', '2026-01-26 05:56:13', 'admin', '2026-01-26 23:11:31', '202435673', '8', 77.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017864404430216000', 'admin', '2026-01-26 13:46:47', 'admin', '2026-01-26 13:50:31', '202450252', '6', 77.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017864582615145500', 'admin', '2026-01-26 12:30:17', 'admin', '2026-01-26 13:50:09', '202300154', '8', 94.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017864631692367400', 'admin', '2026-01-26 17:55:53', 'admin', '2026-01-26 23:02:51', '202217406', '6', 83.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017864649295377400', 'admin', '2026-01-26 02:11:49', 'admin', '2026-01-26 21:13:13', '202267100', '4', 87.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017865075904768000', 'admin', '2026-01-26 22:20:31', 'admin', '2026-01-26 22:33:17', '202316191', '5', 81.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017865309637892900', 'admin', '2026-01-26 18:48:12', 'admin', '2026-01-26 20:54:53', '202219104', '2', 92.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017865500363629000', 'admin', '2026-01-26 13:33:43', 'admin', '2026-01-26 18:59:29', '202419548', '5', 73.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017865702094769400', 'admin', '2026-01-26 12:45:24', 'admin', '2026-01-26 22:43:14', '202480013', '7', 95.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017865798012143000', 'admin', '2026-01-26 19:40:34', 'admin', '2026-01-26 21:06:37', '202393355', '7', 83.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017866774015414800', 'admin', '2026-01-26 18:02:45', 'admin', '2026-01-26 18:57:48', '202434381', '2', 83.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017866812709563100', 'admin', '2026-01-26 06:37:22', 'admin', '2026-01-26 13:06:31', '202348320', '1', 91.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017867294786868000', 'admin', '2026-01-26 18:46:26', 'admin', '2026-01-26 22:06:41', '202288477', '2', 83.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017867562855195400', 'admin', '2026-01-26 00:41:59', 'admin', '2026-01-26 22:51:13', '202499467', '8', 83.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017867818905182700', 'admin', '2026-01-26 09:14:24', 'admin', '2026-01-26 11:14:25', '202308298', '6', 87.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017869616542708000', 'admin', '2026-01-26 03:11:52', 'admin', '2026-01-26 09:33:11', '202346196', '7', 79.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017870347463662600', 'admin', '2026-01-26 22:25:32', 'admin', '2026-01-26 23:53:31', '202386114', '2', 75.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017870891295019000', 'admin', '2026-01-26 20:31:59', 'admin', '2026-01-26 22:42:22', '202288845', '3', 74.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017871085065490000', 'admin', '2026-01-26 06:44:34', 'admin', '2026-01-26 22:37:09', '202410419', '8', 84.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017871610726869800', 'admin', '2026-01-26 21:30:53', 'admin', '2026-01-26 23:35:23', '202416134', '5', 74.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017872043288878000', 'admin', '2026-01-26 15:42:50', 'admin', '2026-01-26 16:15:18', '202365100', '7', 68.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017872180220438000', 'admin', '2026-01-26 15:37:30', 'admin', '2026-01-26 17:11:45', '202374778', '1', 88.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017872308067180800', 'admin', '2026-01-26 12:10:39', 'admin', '2026-01-26 13:00:40', '202391438', '2', 87.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017873986030099200', 'admin', '2026-01-26 05:22:49', 'admin', '2026-01-26 19:43:11', '202245371', '7', 97.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017874016493660400', 'admin', '2026-01-26 10:11:19', 'admin', '2026-01-26 16:55:39', '202373002', '2', 69.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017874072271752000', 'admin', '2026-01-26 04:41:10', 'admin', '2026-01-26 09:32:39', '202298124', '5', 77.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017874531252563000', 'admin', '2026-01-26 20:43:46', 'admin', '2026-01-26 23:40:32', '202487648', '7', 58.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017875314293907200', 'admin', '2026-01-26 07:12:39', 'admin', '2026-01-26 07:38:51', '202489559', '4', 55.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017875606649126400', 'admin', '2026-01-26 23:53:30', 'admin', '2026-01-26 23:57:36', '202395894', '2', 61.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017875779750279700', 'admin', '2026-01-26 09:06:51', 'admin', '2026-01-26 12:46:36', '202408719', '6', 90.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017876175676659700', 'admin', '2026-01-26 19:05:18', 'admin', '2026-01-26 20:51:17', '202437834', '5', 88.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017876662500927700', 'admin', '2026-01-26 08:08:15', 'admin', '2026-01-26 12:47:14', '202288752', '6', 95.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017877060414681300', 'admin', '2026-01-26 10:21:32', 'admin', '2026-01-26 16:04:27', '202204034', '1', 84.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017878235399003600', 'admin', '2026-01-26 04:48:43', 'admin', '2026-01-26 16:52:21', '202325825', '3', 82.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017878977394906600', 'admin', '2026-01-26 10:14:57', 'admin', '2026-01-26 16:33:00', '202410765', '6', 51.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017879172821177300', 'admin', '2026-01-26 14:12:56', 'admin', '2026-01-26 15:43:55', '202357600', '7', 72.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017879557370847700', 'admin', '2026-01-26 06:58:52', 'admin', '2026-01-26 22:08:18', '202346196', '2', 62.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017879860524477200', 'admin', '2026-01-26 04:59:42', 'admin', '2026-01-26 14:03:19', '202279729', '6', 89.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017880584938039600', 'admin', '2026-01-26 19:30:19', 'admin', '2026-01-26 22:20:33', '202327406', '5', 93.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017880619414203400', 'admin', '2026-01-26 09:08:03', 'admin', '2026-01-26 09:23:28', '202224607', '4', 65.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017881114620627200', 'admin', '2026-01-26 18:22:03', 'admin', '2026-01-26 20:25:32', '202480013', '3', 68.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017881139077941000', 'admin', '2026-01-26 01:59:26', 'admin', '2026-01-26 03:20:02', '202309030', '7', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017881315679998700', 'admin', '2026-01-26 18:43:35', 'admin', '2026-01-26 23:16:55', '202386448', '4', 84.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017882424393987600', 'admin', '2026-01-26 19:02:14', 'admin', '2026-01-26 20:09:33', '202257356', '7', 82.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017882651114969600', 'admin', '2026-01-26 00:09:27', 'admin', '2026-01-26 13:32:09', '202279729', '5', 79.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017882996432326000', 'admin', '2026-01-26 23:02:58', 'admin', '2026-01-26 23:25:43', '202401449', '5', 52.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017883204568773600', 'admin', '2026-01-26 08:31:16', 'admin', '2026-01-26 22:35:19', '202448364', '4', 56.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017883561461990100', 'admin', '2026-01-26 10:12:25', 'admin', '2026-01-26 10:25:29', '202307094', '4', 80.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017884715445631000', 'admin', '2026-01-26 02:53:00', 'admin', '2026-01-26 05:56:42', '202454945', '6', 84.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017884768524671500', 'admin', '2026-01-26 15:47:45', 'admin', '2026-01-26 16:43:56', '202333628', '1', 77.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017884987005262600', 'admin', '2026-01-26 21:59:42', 'admin', '2026-01-26 23:13:31', '202378418', '4', 87.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017886146415176700', 'admin', '2026-01-26 15:37:29', 'admin', '2026-01-26 21:50:32', '202260973', '8', 86.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017886569921663200', 'admin', '2026-01-26 10:35:02', 'admin', '2026-01-26 15:54:26', '202210649', '1', 51.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017886788316202000', 'admin', '2026-01-26 02:31:23', 'admin', '2026-01-26 23:24:55', '202367706', '7', 61.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017887213444039000', 'admin', '2026-01-26 14:44:17', 'admin', '2026-01-26 19:29:20', '202306841', '5', 79.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017887230747831000', 'admin', '2026-01-26 12:08:28', 'admin', '2026-01-26 14:30:25', '202384453', '4', 65.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017887620692589800', 'admin', '2026-01-26 12:23:18', 'admin', '2026-01-26 17:29:43', '202496075', '4', 90.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017888035275985200', 'admin', '2026-01-26 23:25:23', 'admin', '2026-01-26 23:56:59', '202484873', '6', 54.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017888571724297200', 'admin', '2026-01-26 19:27:13', 'admin', '2026-01-26 20:08:05', '202338876', '3', 62.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017889074642279000', 'admin', '2026-01-26 03:59:36', 'admin', '2026-01-26 13:15:38', '202325825', '1', 74.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017890550545885200', 'admin', '2026-01-26 08:40:27', 'admin', '2026-01-26 23:03:15', '202258585', '5', 72.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017891051708966100', 'admin', '2026-01-26 14:35:07', 'admin', '2026-01-26 23:38:26', '202247846', '6', 54.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017891607326332000', 'admin', '2026-01-26 06:32:37', 'admin', '2026-01-26 12:06:46', '202315584', '5', 65.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017891821941479000', 'admin', '2026-01-26 01:46:16', 'admin', '2026-01-26 19:54:24', '202451881', '7', 78.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017892739229867000', 'admin', '2026-01-26 01:32:08', 'admin', '2026-01-26 20:24:16', '202402888', '3', 96.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017894375826901500', 'admin', '2026-01-26 16:26:44', 'admin', '2026-01-26 19:34:07', '202288845', '2', 88.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017895058259427300', 'admin', '2026-01-26 06:32:56', 'admin', '2026-01-26 17:21:42', '202201228', '7', 53.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017895625969008600', 'admin', '2026-01-26 11:01:45', 'admin', '2026-01-26 12:53:31', '202267704', '4', 74.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017896126507625700', 'admin', '2026-01-26 19:19:38', 'admin', '2026-01-26 23:50:30', '202468343', '4', 62.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017896168044350200', 'admin', '2026-01-26 22:20:22', 'admin', '2026-01-26 23:43:12', '202329317', '2', 84.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017896422024066800', 'admin', '2026-01-26 14:49:02', 'admin', '2026-01-26 15:34:38', '202486753', '4', 71.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017896737707271000', 'admin', '2026-01-26 06:09:16', 'admin', '2026-01-26 09:15:22', '202359119', '2', 56.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017897587638120200', 'admin', '2026-01-26 13:06:26', 'admin', '2026-01-26 13:37:25', '202252607', '6', 98.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017897817195472100', 'admin', '2026-01-26 16:48:21', 'admin', '2026-01-26 18:30:58', '202408132', '1', 86.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017897902282584600', 'admin', '2026-01-26 12:51:58', 'admin', '2026-01-26 13:44:53', '202298759', '8', 62.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017898690606409500', 'admin', '2026-01-26 19:17:41', 'admin', '2026-01-26 22:50:58', '202208589', '3', 92.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017899713066200800', 'admin', '2026-01-26 00:14:41', 'admin', '2026-01-26 21:31:07', '202416134', '2', 65.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017899752274379000', 'admin', '2026-01-26 06:44:58', 'admin', '2026-01-26 16:42:50', '202318047', '2', 63.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017899815182701300', 'admin', '2026-01-26 09:25:53', 'admin', '2026-01-26 17:11:23', '202335609', '7', 55.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017900039393277000', 'admin', '2026-01-26 17:15:19', 'admin', '2026-01-26 17:55:09', '202298788', '4', 88.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017902347309562400', 'admin', '2026-01-26 01:50:16', 'admin', '2026-01-26 06:17:10', '202447615', '2', 69.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017902642634416600', 'admin', '2026-01-26 23:17:30', 'admin', '2026-01-26 23:25:12', '202495050', '3', 87.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017903747812505900', 'admin', '2026-01-26 06:30:31', 'admin', '2026-01-26 16:39:54', '202372784', '1', 65.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017903934636245500', 'admin', '2026-01-26 15:02:14', 'admin', '2026-01-26 21:18:00', '202248930', '1', 84.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017904276755756000', 'admin', '2026-01-26 10:29:24', 'admin', '2026-01-26 14:08:57', '202265876', '5', 73.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017904384435627500', 'admin', '2026-01-26 02:48:25', 'admin', '2026-01-26 14:27:33', '202466468', '3', 69.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017904668937432000', 'admin', '2026-01-26 16:11:33', 'admin', '2026-01-26 19:37:34', '202465991', '7', 82.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017905591328256300', 'admin', '2026-01-26 15:57:51', 'admin', '2026-01-26 16:59:45', '202457501', '1', 95.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017905839494437400', 'admin', '2026-01-26 10:10:00', 'admin', '2026-01-26 22:00:30', '202451697', '8', 91.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017906274901346000', 'admin', '2026-01-26 19:50:18', 'admin', '2026-01-26 20:58:39', '202335867', '8', 84.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017906378724572000', 'admin', '2026-01-26 06:25:03', 'admin', '2026-01-26 17:18:52', '202298788', '6', 55.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017906478782879500', 'admin', '2026-01-26 13:25:49', 'admin', '2026-01-26 19:18:56', '202391518', '8', 69.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017907666101488000', 'admin', '2026-01-26 22:52:04', 'admin', '2026-01-26 23:36:20', '202281456', '1', 67.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017909050172358100', 'admin', '2026-01-26 19:58:47', 'admin', '2026-01-26 23:36:20', '202278458', '2', 86.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017910361390521300', 'admin', '2026-01-26 02:07:02', 'admin', '2026-01-26 03:15:07', '202344751', '2', 55.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017910749831912700', 'admin', '2026-01-26 21:29:35', 'admin', '2026-01-26 21:43:38', '202298124', '1', 91.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017911428236878600', 'admin', '2026-01-26 03:39:55', 'admin', '2026-01-26 21:42:54', '202390688', '5', 71.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017911970712366800', 'admin', '2026-01-26 18:56:25', 'admin', '2026-01-26 19:14:45', '202293347', '3', 98.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017913016638343700', 'admin', '2026-01-26 02:14:33', 'admin', '2026-01-26 04:30:40', '202428598', '1', 53.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017913209801784300', 'admin', '2026-01-26 22:57:20', 'admin', '2026-01-26 23:13:51', '202390688', '1', 92.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017914629090597600', 'admin', '2026-01-26 09:40:45', 'admin', '2026-01-26 17:12:59', '202279672', '4', 75.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017914749585696300', 'admin', '2026-01-26 22:12:36', 'admin', '2026-01-26 22:55:20', '202373252', '2', 91.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017914806388498700', 'admin', '2026-01-26 03:12:10', 'admin', '2026-01-26 17:07:32', '202203366', '7', 98.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017915303789750000', 'admin', '2026-01-26 22:07:36', 'admin', '2026-01-26 22:33:42', '202303627', '6', 71.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017915957379258000', 'admin', '2026-01-26 23:03:51', 'admin', '2026-01-26 23:38:36', '202408132', '3', 65.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017916373399188500', 'admin', '2026-01-26 17:43:34', 'admin', '2026-01-26 19:38:24', '202322298', '1', 95.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017916570320925200', 'admin', '2026-01-26 16:56:56', 'admin', '2026-01-26 21:29:52', '202326936', '6', 68.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017916675355623700', 'admin', '2026-01-26 17:12:08', 'admin', '2026-01-26 19:53:46', '202277035', '3', 84.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017917743331567000', 'admin', '2026-01-26 04:37:17', 'admin', '2026-01-26 06:34:17', '202492633', '7', 82.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017917856982549000', 'admin', '2026-01-26 15:36:42', 'admin', '2026-01-26 23:07:16', '202375029', '2', 59.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017918057129019100', 'admin', '2026-01-26 19:56:57', 'admin', '2026-01-26 22:18:13', '202458818', '7', 80.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017918156167240700', 'admin', '2026-01-26 18:49:33', 'admin', '2026-01-26 20:38:43', '202495494', '6', 69.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017919072868695300', 'admin', '2026-01-26 20:43:15', 'admin', '2026-01-26 21:50:13', '202395684', '5', 71.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017919305471173000', 'admin', '2026-01-26 11:53:47', 'admin', '2026-01-26 14:54:48', '202278458', '7', 65.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017919441332735700', 'admin', '2026-01-26 09:26:57', 'admin', '2026-01-26 14:41:03', '202326651', '8', 83.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017920092173485300', 'admin', '2026-01-26 02:18:08', 'admin', '2026-01-26 06:03:07', '202443315', '4', 52.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017920699958018600', 'admin', '2026-01-26 05:30:06', 'admin', '2026-01-26 23:54:58', '202432223', '1', 57.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017921239855407400', 'admin', '2026-01-26 02:35:34', 'admin', '2026-01-26 21:06:56', '202225817', '1', 95.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017922400698562000', 'admin', '2026-01-26 07:15:14', 'admin', '2026-01-26 09:33:47', '202443212', '2', 62.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017922704047773700', 'admin', '2026-01-26 23:31:20', 'admin', '2026-01-26 23:35:42', '202373355', '4', 65.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017922738027652000', 'admin', '2026-01-26 08:31:32', 'admin', '2026-01-26 08:35:22', '202486753', '3', 61.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017923139198419500', 'admin', '2026-01-26 21:42:24', 'admin', '2026-01-26 23:10:22', '202432295', '4', 75.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017923181925471200', 'admin', '2026-01-26 08:01:56', 'admin', '2026-01-26 18:09:07', '202247846', '1', 65.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017923587295963600', 'admin', '2026-01-26 14:21:21', 'admin', '2026-01-26 21:21:50', '202448743', '7', 57.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017924250962919400', 'admin', '2026-01-26 11:08:14', 'admin', '2026-01-26 16:31:30', '202229325', '3', 68.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017924489590464000', 'admin', '2026-01-26 13:57:06', 'admin', '2026-01-26 20:19:46', '202470324', '4', 82.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017925219153224200', 'admin', '2026-01-26 20:21:23', 'admin', '2026-01-26 21:38:12', '202254833', '8', 51.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017925437190232300', 'admin', '2026-01-26 01:59:26', 'admin', '2026-01-26 12:43:09', '202431625', '8', 83.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017925899777765000', 'admin', '2026-01-26 03:22:06', 'admin', '2026-01-26 20:23:07', '202307094', '6', 52.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017925952112973000', 'admin', '2026-01-26 14:53:20', 'admin', '2026-01-26 20:23:47', '202259372', '7', 57.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017926302227803100', 'admin', '2026-01-26 10:03:32', 'admin', '2026-01-26 16:17:40', '202221877', '6', 93.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017926882795236400', 'admin', '2026-01-26 09:40:31', 'admin', '2026-01-26 21:04:03', '202324521', '3', 77.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017927270863275300', 'admin', '2026-01-26 17:23:52', 'admin', '2026-01-26 18:34:44', '202406754', '3', 82.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017927393100150800', 'admin', '2026-01-26 00:52:13', 'admin', '2026-01-26 14:17:06', '202389569', '5', 88.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017927626906951000', 'admin', '2026-01-26 01:08:13', 'admin', '2026-01-26 21:29:28', '202348280', '2', 93.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017928552672072000', 'admin', '2026-01-26 17:49:48', 'admin', '2026-01-26 23:33:30', '202284383', '4', 95.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017928724156099600', 'admin', '2026-01-26 06:45:50', 'admin', '2026-01-26 22:44:38', '202365100', '4', 74.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017928825849128700', 'admin', '2026-01-26 05:41:26', 'admin', '2026-01-26 17:42:07', '202386480', '3', 89.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017928860131256300', 'admin', '2026-01-26 17:17:34', 'admin', '2026-01-26 22:39:19', '202421518', '8', 71.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017930152451883300', 'admin', '2026-01-26 23:10:46', 'admin', '2026-01-26 23:36:08', '202254833', '5', 74.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017930257548752400', 'admin', '2026-01-26 13:34:33', 'admin', '2026-01-26 13:41:39', '202409676', '1', 91.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017930594128872700', 'admin', '2026-01-26 10:23:37', 'admin', '2026-01-26 20:54:24', '202460404', '5', 57.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017930713003878700', 'admin', '2026-01-26 10:56:55', 'admin', '2026-01-26 23:05:59', '202281387', '4', 90.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017931229316244200', 'admin', '2026-01-26 09:49:45', 'admin', '2026-01-26 17:55:02', '202298660', '4', 97.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017931259709941200', 'admin', '2026-01-26 23:03:46', 'admin', '2026-01-26 23:10:49', '202247141', '3', 79.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017931316163185700', 'admin', '2026-01-26 16:57:52', 'admin', '2026-01-26 22:18:51', '202313856', '6', 95.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017932369703299300', 'admin', '2026-01-26 22:57:03', 'admin', '2026-01-26 23:23:08', '202420652', '8', 54.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017933210426984000', 'admin', '2026-01-26 05:26:09', 'admin', '2026-01-26 21:42:33', '202451388', '5', 76.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017934444554438700', 'admin', '2026-01-26 02:57:17', 'admin', '2026-01-26 11:22:56', '202216210', '2', 94.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017934816850844400', 'admin', '2026-01-26 10:22:15', 'admin', '2026-01-26 22:31:44', '202451886', '4', 69.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017935111694506500', 'admin', '2026-01-26 17:49:12', 'admin', '2026-01-26 20:54:40', '202298253', '1', 74.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017935596736529700', 'admin', '2026-01-26 16:20:49', 'admin', '2026-01-26 16:52:47', '202263438', '3', 77.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017935830302428200', 'admin', '2026-01-26 07:33:02', 'admin', '2026-01-26 10:13:30', '202479852', '3', 97.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017936127017532700', 'admin', '2026-01-26 01:21:28', 'admin', '2026-01-26 12:49:29', '202388833', '4', 97.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017936583758724000', 'admin', '2026-01-26 16:50:47', 'admin', '2026-01-26 20:04:45', '202442638', '8', 57.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017936651077472300', 'admin', '2026-01-26 09:53:48', 'admin', '2026-01-26 12:21:26', '202233601', '1', 57.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017937148935267000', 'admin', '2026-01-26 13:17:45', 'admin', '2026-01-26 20:31:26', '202231127', '1', 51.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017937553832820000', 'admin', '2026-01-26 15:19:18', 'admin', '2026-01-26 21:26:48', '202248728', '8', 56.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017938567094532600', 'admin', '2026-01-26 22:30:21', 'admin', '2026-01-26 23:53:18', '202216210', '1', 70.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017938682870907100', 'admin', '2026-01-26 19:57:36', 'admin', '2026-01-26 23:28:05', '202407405', '2', 95.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017938805147301600', 'admin', '2026-01-26 18:24:25', 'admin', '2026-01-26 19:34:26', '202428598', '6', 77.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017940144826561800', 'admin', '2026-01-26 19:40:39', 'admin', '2026-01-26 23:59:10', '202292626', '3', 86.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017941076477796000', 'admin', '2026-01-26 06:38:49', 'admin', '2026-01-26 08:54:30', '202342061', '2', 96.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017941096493293300', 'admin', '2026-01-26 07:25:25', 'admin', '2026-01-26 21:06:49', '202437933', '6', 98.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017941261946252300', 'admin', '2026-01-26 06:35:45', 'admin', '2026-01-26 23:03:59', '202223272', '2', 74.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017941574076991200', 'admin', '2026-01-26 04:18:44', 'admin', '2026-01-26 07:50:04', '202298788', '2', 64.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017942322923575300', 'admin', '2026-01-26 14:27:32', 'admin', '2026-01-26 23:30:11', '202204034', '5', 55.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017942377068841500', 'admin', '2026-01-26 01:25:03', 'admin', '2026-01-26 11:44:21', '202317129', '2', 91.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017942418291801600', 'admin', '2026-01-26 22:22:28', 'admin', '2026-01-26 22:49:57', '202441496', '6', 98.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017942461017914600', 'admin', '2026-01-26 07:15:46', 'admin', '2026-01-26 07:15:47', '202404996', '4', 71.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017942695039212000', 'admin', '2026-01-26 01:39:22', 'admin', '2026-01-26 18:56:24', '202488807', '7', 65.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017942706678455600', 'admin', '2026-01-26 08:07:30', 'admin', '2026-01-26 12:40:36', '202359330', '4', 82.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017942756474568400', 'admin', '2026-01-26 07:28:54', 'admin', '2026-01-26 09:31:16', '202431984', '8', 58.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017942881173403000', 'admin', '2026-01-26 21:46:09', 'admin', '2026-01-26 22:48:26', '202483207', '2', 60.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017943192747445500', 'admin', '2026-01-26 16:18:20', 'admin', '2026-01-26 18:42:12', '202430522', '2', 87.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017943362245558800', 'admin', '2026-01-26 23:43:28', 'admin', '2026-01-26 23:57:39', '202229325', '4', 72.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017943393328971500', 'admin', '2026-01-26 06:57:28', 'admin', '2026-01-26 17:16:27', '202285287', '7', 71.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017944569998065700', 'admin', '2026-01-26 04:58:11', 'admin', '2026-01-26 17:11:42', '202435470', '8', 58.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017945203985856300', 'admin', '2026-01-26 11:38:34', 'admin', '2026-01-26 13:38:46', '202288477', '6', 89.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017945261146998800', 'admin', '2026-01-26 06:59:31', 'admin', '2026-01-26 14:19:36', '202462466', '6', 93.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017945482161504500', 'admin', '2026-01-26 04:30:35', 'admin', '2026-01-26 10:24:32', '202207643', '3', 81.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017945593541640400', 'admin', '2026-01-26 08:42:57', 'admin', '2026-01-26 17:50:06', '202232200', '4', 71.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017946320122406000', 'admin', '2026-01-26 01:41:20', 'admin', '2026-01-26 03:38:04', '202367706', '2', 77.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017946433797175000', 'admin', '2026-01-26 05:48:55', 'admin', '2026-01-26 12:07:16', '202407007', '6', 92.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017947152342486300', 'admin', '2026-01-26 10:18:22', 'admin', '2026-01-26 11:05:05', '202224904', '7', 62.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017948015929584600', 'admin', '2026-01-26 06:19:05', 'admin', '2026-01-26 19:39:07', '202285760', '5', 84.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017948077267604200', 'admin', '2026-01-26 10:12:48', 'admin', '2026-01-26 12:17:12', '202332697', '7', 61.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017948945860609800', 'admin', '2026-01-26 23:48:33', 'admin', '2026-01-26 23:57:20', '202407850', '5', 94.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017949043091368000', 'admin', '2026-01-26 19:53:31', 'admin', '2026-01-26 23:00:56', '202208837', '2', 87.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017949670221564200', 'admin', '2026-01-26 07:02:18', 'admin', '2026-01-26 19:26:35', '202360674', '3', 87.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017950383532515600', 'admin', '2026-01-26 22:37:28', 'admin', '2026-01-26 23:06:08', '202461502', '4', 88.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017950554128448800', 'admin', '2026-01-26 03:18:20', 'admin', '2026-01-26 14:18:07', '202460404', '1', 84.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017952428500619000', 'admin', '2026-01-26 06:11:17', 'admin', '2026-01-26 09:42:14', '202430172', '8', 74.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017953332711401000', 'admin', '2026-01-26 05:08:13', 'admin', '2026-01-26 08:07:17', '202463123', '3', 69.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017953474595639600', 'admin', '2026-01-26 13:40:11', 'admin', '2026-01-26 19:28:05', '202265876', '8', 62.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017954072585841200', 'admin', '2026-01-26 02:44:21', 'admin', '2026-01-26 10:26:17', '202357600', '6', 86.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017954201740607200', 'admin', '2026-01-26 00:58:17', 'admin', '2026-01-26 13:41:23', '202467723', '2', 53.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017956145943291000', 'admin', '2026-01-26 22:49:16', 'admin', '2026-01-26 23:40:39', '202322544', '4', 79.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017956730464220400', 'admin', '2026-01-26 03:41:04', 'admin', '2026-01-26 11:15:46', '202443315', '3', 92.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017957397210891300', 'admin', '2026-01-26 19:50:41', 'admin', '2026-01-26 23:43:41', '202348320', '5', 97.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017958085387116000', 'admin', '2026-01-26 20:49:37', 'admin', '2026-01-26 22:12:16', '202482350', '6', 90.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017958412055743700', 'admin', '2026-01-26 15:37:55', 'admin', '2026-01-26 19:29:32', '202281387', '7', 59.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017958929438793700', 'admin', '2026-01-26 02:46:56', 'admin', '2026-01-26 09:31:21', '202312765', '5', 98.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017959348072152300', 'admin', '2026-01-26 20:57:29', 'admin', '2026-01-26 21:48:07', '202460404', '3', 80.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017959422931940600', 'admin', '2026-01-26 00:48:27', 'admin', '2026-01-26 20:29:49', '202401242', '4', 53.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017959558238090200', 'admin', '2026-01-26 13:18:53', 'admin', '2026-01-26 23:41:20', '202244650', '4', 63.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017959897327379200', 'admin', '2026-01-26 12:09:34', 'admin', '2026-01-26 20:37:09', '202201555', '5', 74.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017960174105748700', 'admin', '2026-01-26 10:33:27', 'admin', '2026-01-26 21:27:17', '202382105', '2', 62.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017960338090600200', 'admin', '2026-01-26 00:13:43', 'admin', '2026-01-26 05:11:56', '202411163', '5', 97.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017961239147868700', 'admin', '2026-01-26 14:54:38', 'admin', '2026-01-26 15:58:38', '202440589', '5', 73.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017961314550634000', 'admin', '2026-01-26 17:20:44', 'admin', '2026-01-26 23:07:29', '202273590', '6', 52.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017961410324746000', 'admin', '2026-01-26 03:48:16', 'admin', '2026-01-26 14:19:53', '202213478', '1', 68.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017962335071327200', 'admin', '2026-01-26 16:22:15', 'admin', '2026-01-26 18:30:40', '202327178', '7', 74.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017962611194664000', 'admin', '2026-01-26 01:24:18', 'admin', '2026-01-26 12:40:13', '202495050', '5', 88.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017963385672103200', 'admin', '2026-01-26 14:54:05', 'admin', '2026-01-26 17:44:56', '202395894', '3', 79.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017964119520999400', 'admin', '2026-01-26 01:44:38', 'admin', '2026-01-26 19:27:05', '202322298', '6', 76.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017964960785122600', 'admin', '2026-01-26 01:38:27', 'admin', '2026-01-26 04:33:50', '202309639', '2', 57.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017964999536277000', 'admin', '2026-01-26 11:49:51', 'admin', '2026-01-26 17:03:34', '202447883', '4', 90.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017965432262994000', 'admin', '2026-01-26 18:38:28', 'admin', '2026-01-26 23:53:18', '202390264', '6', 92.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017966641360406300', 'admin', '2026-01-26 13:43:51', 'admin', '2026-01-26 22:03:05', '202280466', '4', 62.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017966652758262500', 'admin', '2026-01-26 04:52:49', 'admin', '2026-01-26 18:53:57', '202431205', '5', 96.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017967108407968300', 'admin', '2026-01-26 05:26:26', 'admin', '2026-01-26 18:57:11', '202231127', '7', 72.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017967338326438100', 'admin', '2026-01-26 17:11:52', 'admin', '2026-01-26 18:53:27', '202212826', '2', 62.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017967695446550300', 'admin', '2026-01-26 00:30:19', 'admin', '2026-01-26 22:58:06', '202414952', '1', 54.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017968542127189200', 'admin', '2026-01-26 20:34:28', 'admin', '2026-01-26 21:11:07', '202401296', '1', 86.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017969101854392600', 'admin', '2026-01-26 22:11:06', 'admin', '2026-01-26 23:32:04', '202298759', '2', 87.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017969851396190500', 'admin', '2026-01-26 11:14:47', 'admin', '2026-01-26 13:45:24', '202379475', '7', 96.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017970019228056800', 'admin', '2026-01-26 22:54:07', 'admin', '2026-01-26 23:23:01', '202231870', '8', 73.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017970205272383500', 'admin', '2026-01-26 20:37:44', 'admin', '2026-01-26 21:35:06', '202451886', '7', 62.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017971411259150600', 'admin', '2026-01-26 15:57:56', 'admin', '2026-01-26 20:58:52', '202343402', '6', 72.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017971470295806500', 'admin', '2026-01-26 21:23:37', 'admin', '2026-01-26 23:56:45', '202409676', '7', 66.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017971543706503700', 'admin', '2026-01-26 05:52:51', 'admin', '2026-01-26 06:26:41', '202430172', '7', 97.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017972161949886200', 'admin', '2026-01-26 04:19:44', 'admin', '2026-01-26 09:56:19', '202271316', '3', 93.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017972999364527600', 'admin', '2026-01-26 15:11:24', 'admin', '2026-01-26 20:27:48', '202285287', '4', 52.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017973984922244900', 'admin', '2026-01-26 07:21:14', 'admin', '2026-01-26 15:57:57', '202219104', '3', 53.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017976137419002000', 'admin', '2026-01-26 21:10:28', 'admin', '2026-01-26 21:10:32', '202280466', '3', 77.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017976591954350800', 'admin', '2026-01-26 15:42:02', 'admin', '2026-01-26 15:46:50', '202337727', '2', 56.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017976864516560000', 'admin', '2026-01-26 00:35:20', 'admin', '2026-01-26 10:27:36', '202476173', '6', 72.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017977066090211800', 'admin', '2026-01-26 07:28:29', 'admin', '2026-01-26 07:57:06', '202420500', '2', 96.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017977870131969500', 'admin', '2026-01-26 03:39:34', 'admin', '2026-01-26 22:36:52', '202451388', '1', 69.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017978317719274000', 'admin', '2026-01-26 13:35:55', 'admin', '2026-01-26 20:24:35', '202432295', '6', 75.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017978704877023700', 'admin', '2026-01-26 04:16:41', 'admin', '2026-01-26 08:14:38', '202201555', '3', 70.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017978753564003800', 'admin', '2026-01-26 09:05:20', 'admin', '2026-01-26 21:55:47', '202485636', '4', 84.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017979121972569900', 'admin', '2026-01-26 20:30:24', 'admin', '2026-01-26 23:15:11', '202475027', '6', 90.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017979426218992600', 'admin', '2026-01-26 22:15:14', 'admin', '2026-01-26 22:58:36', '202400731', '3', 75.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017979539418349800', 'admin', '2026-01-26 14:39:48', 'admin', '2026-01-26 16:30:43', '202228454', '5', 72.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017979548025631500', 'admin', '2026-01-26 17:05:29', 'admin', '2026-01-26 19:37:41', '202439370', '2', 91.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017980031574196200', 'admin', '2026-01-26 11:51:00', 'admin', '2026-01-26 12:57:35', '202397320', '6', 92.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017981622897798700', 'admin', '2026-01-26 14:58:47', 'admin', '2026-01-26 17:06:09', '202373689', '8', 58.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017981635819703000', 'admin', '2026-01-26 13:00:26', 'admin', '2026-01-26 17:21:36', '202401242', '2', 96.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017982098436482300', 'admin', '2026-01-26 07:25:01', 'admin', '2026-01-26 17:36:13', '202460404', '7', 58.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017982773484624400', 'admin', '2026-01-26 11:26:49', 'admin', '2026-01-26 16:26:52', '202388729', '3', 70.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017982871772163000', 'admin', '2026-01-26 02:55:01', 'admin', '2026-01-26 15:39:37', '202219396', '2', 76.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017983718681809000', 'admin', '2026-01-26 15:51:50', 'admin', '2026-01-26 16:10:10', '202333628', '5', 85.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017984391688309000', 'admin', '2026-01-26 22:40:20', 'admin', '2026-01-26 23:00:14', '202435673', '2', 94.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017985829476490000', 'admin', '2026-01-26 13:16:11', 'admin', '2026-01-26 16:27:03', '202374558', '1', 81.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017986303971431700', 'admin', '2026-01-26 10:15:08', 'admin', '2026-01-26 20:59:45', '202288845', '4', 57.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017987018384014800', 'admin', '2026-01-26 19:56:27', 'admin', '2026-01-26 20:08:46', '202248930', '5', 66.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017987399848806000', 'admin', '2026-01-26 02:07:00', 'admin', '2026-01-26 11:24:02', '202258434', '8', 63.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017987674728351000', 'admin', '2026-01-26 18:33:32', 'admin', '2026-01-26 20:25:02', '202468343', '1', 83.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017987705768448300', 'admin', '2026-01-26 09:05:23', 'admin', '2026-01-26 19:51:26', '202439928', '6', 51.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017988148734623700', 'admin', '2026-01-26 09:47:43', 'admin', '2026-01-26 10:22:01', '202346553', '2', 93.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017988264262866000', 'admin', '2026-01-26 16:34:51', 'admin', '2026-01-26 18:37:57', '202308298', '3', 89.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017988289009096700', 'admin', '2026-01-26 13:26:52', 'admin', '2026-01-26 20:19:09', '202232898', '3', 70.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017988740845777200', 'admin', '2026-01-26 15:26:04', 'admin', '2026-01-26 19:07:34', '202374558', '3', 90.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017989292633459700', 'admin', '2026-01-26 21:32:15', 'admin', '2026-01-26 22:33:22', '202358988', '4', 83.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017989912942631700', 'admin', '2026-01-26 15:03:43', 'admin', '2026-01-26 17:30:44', '202277035', '7', 72.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017990309017345300', 'admin', '2026-01-26 16:28:00', 'admin', '2026-01-26 20:56:00', '202322544', '5', 78.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017991306169810200', 'admin', '2026-01-26 23:03:47', 'admin', '2026-01-26 23:28:42', '202416134', '3', 59.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017992668719827700', 'admin', '2026-01-26 20:15:58', 'admin', '2026-01-26 23:04:31', '202225452', '8', 93.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017992896630788000', 'admin', '2026-01-26 03:59:46', 'admin', '2026-01-26 04:50:06', '202284383', '6', 96.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017993161628723000', 'admin', '2026-01-26 21:05:09', 'admin', '2026-01-26 21:05:32', '202224904', '5', 84.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017994870779119400', 'admin', '2026-01-26 01:56:04', 'admin', '2026-01-26 13:09:32', '202419548', '3', 77.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017995176531676200', 'admin', '2026-01-26 09:29:38', 'admin', '2026-01-26 13:00:25', '202453871', '1', 94.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017995966521784000', 'admin', '2026-01-26 19:53:06', 'admin', '2026-01-26 23:06:04', '202257356', '1', 90.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017996463644022000', 'admin', '2026-01-26 22:38:39', 'admin', '2026-01-26 23:58:31', '202281456', '3', 88.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017997146028440000', 'admin', '2026-01-26 09:48:00', 'admin', '2026-01-26 10:39:44', '202279672', '2', 60.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017998031265260300', 'admin', '2026-01-26 18:02:37', 'admin', '2026-01-26 19:39:08', '202307094', '2', 98.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017998124212359000', 'admin', '2026-01-26 08:54:29', 'admin', '2026-01-26 16:20:48', '202467723', '6', 74.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017999356770588400', 'admin', '2026-01-26 09:42:38', 'admin', '2026-01-26 12:40:15', '202472108', '5', 76.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017999629219492000', 'admin', '2026-01-26 07:10:55', 'admin', '2026-01-26 10:24:12', '202488493', '7', 89.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2017999901536540200', 'admin', '2026-01-26 21:06:58', 'admin', '2026-01-26 23:48:56', '202406600', '6', 94.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018000219211329300', 'admin', '2026-01-26 10:54:38', 'admin', '2026-01-26 17:52:51', '202493852', '8', 61.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018000401639700200', 'admin', '2026-01-26 07:52:57', 'admin', '2026-01-26 20:37:19', '202414952', '6', 59.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018001278539274800', 'admin', '2026-01-26 15:19:56', 'admin', '2026-01-26 20:07:01', '202278458', '5', 81.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018001752698360800', 'admin', '2026-01-26 01:33:38', 'admin', '2026-01-26 18:57:00', '202335406', '7', 57.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018002532398268000', 'admin', '2026-01-26 05:32:49', 'admin', '2026-01-26 20:58:01', '202320420', '2', 91.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018003689954059800', 'admin', '2026-01-26 04:51:36', 'admin', '2026-01-26 10:40:24', '202333628', '4', 51.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018004224588610300', 'admin', '2026-01-26 07:43:15', 'admin', '2026-01-26 11:35:00', '202408719', '5', 81.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018004808364886000', 'admin', '2026-01-26 22:26:42', 'admin', '2026-01-26 23:11:49', '202478493', '2', 51.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018005386372221000', 'admin', '2026-01-26 07:30:52', 'admin', '2026-01-26 10:54:52', '202372784', '5', 88.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018005654720964400', 'admin', '2026-01-26 16:13:36', 'admin', '2026-01-26 22:48:28', '202303653', '2', 92.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018005878105045800', 'admin', '2026-01-26 16:23:00', 'admin', '2026-01-26 23:17:58', '202258585', '3', 72.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018007614323850500', 'admin', '2026-01-26 07:28:14', 'admin', '2026-01-26 23:24:28', '202462609', '1', 76.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018007797148128300', 'admin', '2026-01-26 06:35:25', 'admin', '2026-01-26 15:30:51', '202290230', '3', 94.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018007817851945200', 'admin', '2026-01-26 13:47:04', 'admin', '2026-01-26 20:38:56', '202228454', '6', 88.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018008703340896000', 'admin', '2026-01-26 16:38:52', 'admin', '2026-01-26 18:56:52', '202203130', '2', 58.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018010100093318400', 'admin', '2026-01-26 19:22:23', 'admin', '2026-01-26 21:54:17', '202258540', '3', 98.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018010133036903200', 'admin', '2026-01-26 08:59:54', 'admin', '2026-01-26 20:42:35', '202216602', '7', 87.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018010509483228400', 'admin', '2026-01-26 06:39:30', 'admin', '2026-01-26 20:22:50', '202252607', '2', 70.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018010878727038000', 'admin', '2026-01-26 23:45:59', 'admin', '2026-01-26 23:52:17', '202209339', '6', 53.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018011033004964600', 'admin', '2026-01-26 15:02:42', 'admin', '2026-01-26 19:54:25', '202300154', '5', 56.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018011208243620900', 'admin', '2026-01-26 04:15:53', 'admin', '2026-01-26 13:43:30', '202354633', '5', 80.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018011676268672500', 'admin', '2026-01-26 18:01:21', 'admin', '2026-01-26 22:28:31', '202279672', '5', 71.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018012308494593500', 'admin', '2026-01-26 03:21:16', 'admin', '2026-01-26 15:48:25', '202297507', '5', 55.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018012906060611300', 'admin', '2026-01-26 22:26:19', 'admin', '2026-01-26 23:59:58', '202204034', '8', 85.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018013113539800800', 'admin', '2026-01-26 08:27:30', 'admin', '2026-01-26 15:05:03', '202267704', '5', 57.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018013156373478400', 'admin', '2026-01-26 08:29:22', 'admin', '2026-01-26 18:13:40', '202308298', '4', 96.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018013464440644000', 'admin', '2026-01-26 12:43:37', 'admin', '2026-01-26 17:04:48', '202448361', '2', 93.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018014022047991800', 'admin', '2026-01-26 05:53:32', 'admin', '2026-01-26 16:35:50', '202380680', '7', 60.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018014034027051300', 'admin', '2026-01-26 22:49:31', 'admin', '2026-01-26 23:28:37', '202274797', '1', 91.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018014457822931200', 'admin', '2026-01-26 23:48:59', 'admin', '2026-01-26 23:56:49', '202352116', '1', 66.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018015671620875000', 'admin', '2026-01-26 17:28:44', 'admin', '2026-01-26 19:27:09', '202277984', '1', 90.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018015749977578500', 'admin', '2026-01-26 23:33:59', 'admin', '2026-01-26 23:36:19', '202278662', '3', 59.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018017325438735600', 'admin', '2026-01-26 23:25:37', 'admin', '2026-01-26 23:35:23', '202420652', '7', 56.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018019320094634800', 'admin', '2026-01-26 08:54:29', 'admin', '2026-01-26 12:02:59', '202318083', '3', 93.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018019531919022800', 'admin', '2026-01-26 12:54:18', 'admin', '2026-01-26 16:21:15', '202327406', '3', 77.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018019941730432800', 'admin', '2026-01-26 21:06:22', 'admin', '2026-01-26 22:57:36', '202427232', '2', 91.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018020472894765000', 'admin', '2026-01-26 23:43:51', 'admin', '2026-01-26 23:50:24', '202222500', '4', 54.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018021102300854000', 'admin', '2026-01-26 19:10:06', 'admin', '2026-01-26 21:28:20', '202208837', '7', 85.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018021215434414300', 'admin', '2026-01-26 03:29:31', 'admin', '2026-01-26 05:00:12', '202280466', '5', 55.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018021833548571000', 'admin', '2026-01-26 07:58:54', 'admin', '2026-01-26 19:10:25', '202400731', '5', 81.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018023845085204200', 'admin', '2026-01-26 14:26:12', 'admin', '2026-01-26 23:35:45', '202379866', '3', 54.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018024246633142300', 'admin', '2026-01-26 04:40:10', 'admin', '2026-01-26 17:11:45', '202362201', '2', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018024521386339600', 'admin', '2026-01-26 19:36:26', 'admin', '2026-01-26 23:59:53', '202451697', '5', 96.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018025540656279800', 'admin', '2026-01-26 13:47:46', 'admin', '2026-01-26 21:26:26', '202367021', '4', 91.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018026523392506000', 'admin', '2026-01-26 14:17:10', 'admin', '2026-01-26 16:51:50', '202479852', '6', 50.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018026998987692800', 'admin', '2026-01-26 11:52:57', 'admin', '2026-01-26 21:28:46', '202294260', '1', 82.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018027394011643000', 'admin', '2026-01-26 18:15:10', 'admin', '2026-01-26 19:27:54', '202327178', '3', 54.80);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018028064345012000', 'admin', '2026-01-26 01:41:32', 'admin', '2026-01-26 18:54:10', '202478723', '2', 55.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018028182108492500', 'admin', '2026-01-26 13:29:13', 'admin', '2026-01-26 23:11:49', '202440589', '4', 53.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018028267225948200', 'admin', '2026-01-26 11:36:51', 'admin', '2026-01-26 17:20:02', '202393577', '7', 65.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018028559418246700', 'admin', '2026-01-26 02:55:59', 'admin', '2026-01-26 05:55:53', '202306425', '1', 77.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018028639511058000', 'admin', '2026-01-26 18:52:59', 'admin', '2026-01-26 21:57:11', '202226477', '7', 62.00);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018028942163134000', 'admin', '2026-01-26 10:31:20', 'admin', '2026-01-26 17:51:09', '202451388', '7', 94.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018029397709879800', 'admin', '2026-01-26 17:33:36', 'admin', '2026-01-26 19:10:21', '202397631', '4', 63.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018030937399488500', 'admin', '2026-01-26 16:03:15', 'admin', '2026-01-26 20:51:22', '202483602', '7', 61.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018031044608943400', 'admin', '2026-01-26 19:22:53', 'admin', '2026-01-26 23:15:55', '202315584', '8', 61.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018032534356616700', 'admin', '2026-01-26 01:53:21', 'admin', '2026-01-26 06:33:13', '202472108', '2', 76.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018032882238872300', 'admin', '2026-01-26 08:26:32', 'admin', '2026-01-26 09:09:53', '202299779', '1', 62.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018033244121002800', 'admin', '2026-01-26 05:55:31', 'admin', '2026-01-26 09:31:53', '202478493', '7', 77.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018034049702677200', 'admin', '2026-01-26 01:38:04', 'admin', '2026-01-26 15:35:20', '202378536', '3', 97.70);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018034676335786200', 'admin', '2026-01-26 14:15:48', 'admin', '2026-01-26 16:53:07', '202202916', '3', 87.50);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018035154308491300', 'admin', '2026-01-26 13:48:45', 'admin', '2026-01-26 18:53:13', '202360451', '1', 65.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018035271012814000', 'admin', '2026-01-26 06:08:35', 'admin', '2026-01-26 06:47:18', '202474282', '6', 65.10);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018036164897581000', 'admin', '2026-01-26 03:30:57', 'admin', '2026-01-26 04:38:32', '202458818', '8', 90.90);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018036170748196400', 'admin', '2026-01-26 12:22:46', 'admin', '2026-01-26 14:51:46', '202447615', '5', 60.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018037004341354800', 'admin', '2026-01-26 22:42:41', 'admin', '2026-01-26 23:31:53', '202216637', '6', 68.60);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018037408087822300', 'admin', '2026-01-26 12:18:37', 'admin', '2026-01-26 13:48:11', '202310231', '3', 95.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018037447805935400', 'admin', '2026-01-26 11:50:45', 'admin', '2026-01-26 14:55:05', '202216602', '3', 89.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018037473324338000', 'admin', '2026-01-26 08:04:10', 'admin', '2026-01-26 21:07:13', '202358988', '6', 96.20);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018037839346777900', 'admin', '2026-01-26 00:13:17', 'admin', '2026-01-26 12:17:22', '202256926', '2', 55.40);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018039550558968600', 'admin', '2026-01-26 22:50:20', 'admin', '2026-01-26 23:55:42', '202280982', '7', 62.30);
+INSERT INTO `student_grade` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `course`, `score`) VALUES
+	('2018041022113674800', 'admin', '2026-01-26 02:18:18', 'admin', '2026-01-26 09:41:56', '202457263', '2', 65.10);
+
+-- 导出  表 jeecgai.student_info 结构
+CREATE TABLE IF NOT EXISTS `student_info` (
+  `id` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '主键',
+  `create_by` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_by` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新日期',
+  `student_no` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '学号',
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '姓名',
+  `sex` int DEFAULT NULL COMMENT '性别 (1:男 2:女)',
+  `birthday` date DEFAULT NULL COMMENT '出生日期',
+  `major` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '专业',
+  `class_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '班级',
+  `year` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '年级',
+  `phone` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '手机号',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `uk_student_info_student_no` (`student_no`) USING BTREE,
+  UNIQUE KEY `uk_student_info_phone` (`phone`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='学生信息';
+
+-- 正在导出表  jeecgai.student_info 的数据：~500 rows (大约)
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016046286195230500', 'admin', '2026-01-26 03:51:34', 'admin', '2026-01-26 15:00:49', '202271316', '张淑威', 1, '2006-07-17', '4', '1', '2022', '1560745221');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016051131282226200', 'admin', '2026-01-26 08:43:50', 'admin', '2026-01-26 10:39:04', '202466468', '林建良', 2, '2006-03-21', '4', '7', '2024', '17070355741');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016056758677829400', 'admin', '2026-01-26 08:36:53', 'admin', '2026-01-26 08:43:39', '202364475', '王雅奇', 1, '2007-09-23', '3', '2', '2024', '18076936984');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016057702313694200', 'admin', '2026-01-26 08:43:48', 'admin', '2026-01-26 19:07:29', '202482299', '邱宜芳', 2, '2005-05-20', '2', '5', '2023', '15594783826');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016066144300602600', 'admin', '2026-01-26 09:16:43', 'admin', '2026-01-26 12:28:25', '202414154', '陈怡春', 2, '2006-11-28', '5', '4', '2023', '1823189205');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016069487740754700', 'admin', '2026-01-26 06:22:34', 'admin', '2026-01-26 11:19:19', '202432974', '卢晓达', 1, '2006-02-09', '2', '8', '2022', '1331053618');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016071983678794000', 'admin', '2026-01-26 18:39:17', 'admin', '2026-01-26 23:53:13', '202496015', '姚景惟', 2, '2005-03-28', '4', '2', '2024', '15016770435');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016073642553516800', 'admin', '2026-01-26 03:03:47', 'admin', '2026-01-26 03:15:54', '202334944', '林志新', 2, '2005-11-13', '3', '3', '2024', '18899810521');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016074473246783200', 'admin', '2026-01-26 19:25:53', 'admin', '2026-01-26 20:14:19', '202461502', '萧雅韦', 1, '2007-12-23', '5', '4', '2023', '18039643179');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016075977307279000', 'admin', '2026-01-26 07:07:03', 'admin', '2026-01-26 09:30:17', '202273590', '李雅婷', 2, '2006-01-28', '3', '3', '2024', '17879407250');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016080215478482200', 'admin', '2026-01-26 01:33:00', 'admin', '2026-01-26 18:07:32', '202239571', '段奇汉', 1, '2006-08-22', '4', '5', '2023', '1861219364');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016080882439769000', 'admin', '2026-01-26 00:42:27', 'admin', '2026-01-26 03:48:19', '202207764', '林虹季', 1, '2007-09-14', '2', '8', '2024', '13796180614');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016081747611798300', 'admin', '2026-01-26 11:30:40', 'admin', '2026-01-26 16:26:06', '202227294', '吕雅萍', 1, '2006-04-23', '4', '6', '2023', '1373638877');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016085647844483000', 'admin', '2026-01-26 09:36:49', 'admin', '2026-01-26 19:43:14', '202474282', '高彦宏', 2, '2005-05-07', '1', '2', '2023', '15243135479');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016089403803494100', 'admin', '2026-01-26 06:31:18', 'admin', '2026-01-26 14:34:27', '202443212', '邱俊威', 1, '2007-10-18', '3', '4', '2023', '15862764025');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016091706196732000', 'admin', '2026-01-26 11:14:38', 'admin', '2026-01-26 16:24:18', '202201712', '赖光颖', 2, '2007-10-17', '3', '7', '2024', '13037573752');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016093501175036700', 'admin', '2026-01-26 23:42:45', 'admin', '2026-01-26 23:53:54', '202299779', '颜豪燕', 1, '2006-02-10', '4', '3', '2023', '15343614483');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016101621864647000', 'admin', '2026-01-26 07:18:54', 'admin', '2026-01-26 14:24:52', '202360451', '袁宗翰', 2, '2005-03-11', '1', '1', '2023', '13158009287');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016102142112989000', 'admin', '2026-01-26 11:17:41', 'admin', '2026-01-26 18:18:25', '202310362', '陈秋萍', 1, '2005-06-13', '4', '7', '2022', '13693038679');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016102265137842000', 'admin', '2026-01-26 00:14:50', 'admin', '2026-01-26 03:22:39', '202440589', '张建宏', 2, '2005-07-03', '2', '5', '2023', '13317431880');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016106070845326600', 'admin', '2026-01-26 16:54:51', 'admin', '2026-01-26 22:48:51', '202416134', '刘建福', 2, '2005-02-05', '2', '5', '2024', '13597730061');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016106501457075700', 'admin', '2026-01-26 07:52:22', 'admin', '2026-01-26 07:54:38', '202321278', '崔凤宜', 2, '2005-11-14', '4', '5', '2024', '18098848607');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016107821150886000', 'admin', '2026-01-26 00:38:33', 'admin', '2026-01-26 13:32:14', '202267704', '夏尚苹', 1, '2007-01-22', '2', '4', '2022', '15996638534');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016109574466944000', 'admin', '2026-01-26 16:08:50', 'admin', '2026-01-26 23:45:52', '202298660', '杨雅雯', 1, '2006-02-26', '1', '1', '2023', '18615647122');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016111527643672600', 'admin', '2026-01-26 21:37:25', 'admin', '2026-01-26 22:43:02', '202339685', '韩晓萍', 2, '2007-04-18', '2', '5', '2022', '18285678919');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016112387754732300', 'admin', '2026-01-26 21:05:38', 'admin', '2026-01-26 23:44:16', '202487378', '邓筱婷', 2, '2006-12-20', '4', '6', '2024', '17752635530');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016114596647645700', 'admin', '2026-01-26 20:58:05', 'admin', '2026-01-26 22:15:39', '202222500', '陈昱仁', 2, '2006-02-11', '3', '2', '2023', '13324948375');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016114673600438500', 'admin', '2026-01-26 21:03:27', 'admin', '2026-01-26 21:56:19', '202410765', '陈金昀', 1, '2005-06-24', '2', '5', '2023', '15294912428');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016116323264691200', 'admin', '2026-01-26 04:45:11', 'admin', '2026-01-26 12:09:54', '202365957', '谢承翰', 2, '2007-08-12', '2', '4', '2023', '13051086074');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016118257377723100', 'admin', '2026-01-26 13:52:01', 'admin', '2026-01-26 14:44:09', '202325050', '蔡宜珍', 2, '2007-02-05', '3', '4', '2023', '15798142534');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016119240225529000', 'admin', '2026-01-26 03:07:24', 'admin', '2026-01-26 07:26:45', '202308298', '郭湘儒', 1, '2005-11-09', '4', '2', '2023', '13119673350');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016121799392823600', 'admin', '2026-01-26 04:49:36', 'admin', '2026-01-26 20:17:04', '202298149', '黄淑辉', 2, '2007-06-27', '3', '7', '2024', '18788824432');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016122555936055800', 'admin', '2026-01-26 15:43:23', 'admin', '2026-01-26 21:42:21', '202239800', '巫佳纯', 1, '2005-05-04', '2', '6', '2022', '15065873420');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016123067460060700', 'admin', '2026-01-26 11:07:26', 'admin', '2026-01-26 19:52:08', '202400731', '陈敏松', 2, '2007-11-19', '2', '5', '2022', '17852673874');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016124875076087600', 'admin', '2026-01-26 02:22:14', 'admin', '2026-01-26 15:10:49', '202441106', '黄建妃', 2, '2006-09-09', '4', '5', '2022', '15324536570');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016125245787539500', 'admin', '2026-01-26 08:32:05', 'admin', '2026-01-26 18:17:46', '202451388', '袁昌毓', 1, '2007-11-06', '5', '5', '2024', '17693879342');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016127855713384400', 'admin', '2026-01-26 02:02:29', 'admin', '2026-01-26 20:05:31', '202280466', '李人添', 2, '2006-08-11', '2', '3', '2024', '13797099468');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016130501927972600', 'admin', '2026-01-26 18:42:42', 'admin', '2026-01-26 23:16:16', '202406356', '张雅萍', 2, '2006-01-20', '1', '2', '2022', '13133274979');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016131270437046800', 'admin', '2026-01-26 19:36:23', 'admin', '2026-01-26 22:09:12', '202419548', '曹雅芬', 2, '2007-09-20', '2', '3', '2023', '15644171823');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016133332652300500', 'admin', '2026-01-26 06:04:37', 'admin', '2026-01-26 13:43:30', '202289258', '曾馨仪', 2, '2005-11-29', '5', '2', '2024', '1564728829');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016134050095582000', 'admin', '2026-01-26 22:43:02', 'admin', '2026-01-26 23:55:08', '202300154', '李淑真', 1, '2006-06-27', '1', '5', '2023', '15996896246');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016134827501565700', 'admin', '2026-01-26 03:59:06', 'admin', '2026-01-26 09:28:26', '202346808', '林志群', 1, '2005-03-09', '4', '7', '2022', '18330646149');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016137031212120600', 'admin', '2026-01-26 16:12:21', 'admin', '2026-01-26 16:17:38', '202398306', '吴淑媛', 2, '2006-05-03', '4', '3', '2023', '17764038850');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016143230432358100', 'admin', '2026-01-26 10:22:14', 'admin', '2026-01-26 21:59:30', '202435989', '谢怡文', 2, '2006-04-01', '2', '8', '2022', '18260251104');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016145554315112000', 'admin', '2026-01-26 05:04:40', 'admin', '2026-01-26 08:08:49', '202233601', '林轩豪', 2, '2005-02-23', '1', '7', '2023', '15171223290');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016147050847545600', 'admin', '2026-01-26 11:08:21', 'admin', '2026-01-26 14:41:34', '202407850', '蔡乔盈', 1, '2005-08-22', '1', '7', '2022', '18977441153');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016147989467875300', 'admin', '2026-01-26 06:53:13', 'admin', '2026-01-26 18:13:34', '202288477', '金思妤', 2, '2006-10-19', '4', '3', '2022', '15139790473');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016147991596706300', 'admin', '2026-01-26 17:49:16', 'admin', '2026-01-26 22:25:48', '202480140', '杨昆月', 2, '2006-08-08', '1', '2', '2022', '15248446475');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016148146271046000', 'admin', '2026-01-26 07:23:13', 'admin', '2026-01-26 11:24:27', '202354633', '林爱妤', 1, '2007-10-11', '5', '3', '2022', '17658196042');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016148745369237000', 'admin', '2026-01-26 06:57:02', 'admin', '2026-01-26 09:41:24', '202445699', '林佩毓', 2, '2006-09-12', '2', '7', '2022', '18389707121');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016150855210738400', 'admin', '2026-01-26 00:14:15', 'admin', '2026-01-26 21:52:02', '202359486', '蔡明杰', 2, '2007-07-04', '4', '1', '2023', '15555247675');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016151085252848000', 'admin', '2026-01-26 13:49:53', 'admin', '2026-01-26 20:07:25', '202273868', '张静怡', 1, '2005-06-25', '2', '1', '2022', '15749608888');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016151678722184200', 'admin', '2026-01-26 17:52:47', 'admin', '2026-01-26 22:40:22', '202472082', '沈君祯', 1, '2006-08-14', '2', '5', '2022', '15637713038');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016153812606987300', 'admin', '2026-01-26 06:48:14', 'admin', '2026-01-26 11:18:04', '202373252', '郑馨仪', 1, '2006-12-18', '4', '4', '2024', '15558221897');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016154762178203400', 'admin', '2026-01-26 15:34:13', 'admin', '2026-01-26 19:27:48', '202210279', '赖嘉鸿', 1, '2007-04-18', '2', '3', '2024', '13038617776');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016156826801854200', 'admin', '2026-01-26 02:18:59', 'admin', '2026-01-26 21:10:46', '202448743', '谢宜容', 2, '2007-02-07', '4', '6', '2022', '18548775666');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016156955560938200', 'admin', '2026-01-26 08:54:35', 'admin', '2026-01-26 19:52:53', '202304206', '姜沛羽', 1, '2005-02-08', '2', '6', '2023', '17818432387');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016159840915076400', 'admin', '2026-01-26 21:57:19', 'admin', '2026-01-26 23:52:37', '202277035', '黄怡如', 2, '2005-08-19', '3', '3', '2022', '13962713862');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016161020346844200', 'admin', '2026-01-26 00:31:03', 'admin', '2026-01-26 16:12:45', '202404996', '潘耀瑶', 1, '2007-01-03', '4', '3', '2023', '18675544823');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016162049613772800', 'admin', '2026-01-26 12:20:15', 'admin', '2026-01-26 18:21:37', '202468343', '王美娟', 2, '2007-05-18', '2', '6', '2022', '15213497125');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016162519640660000', 'admin', '2026-01-26 08:51:19', 'admin', '2026-01-26 20:40:57', '202447883', '陈诗轩', 2, '2005-09-20', '2', '4', '2022', '13856310862');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016164001923652900', 'admin', '2026-01-26 11:42:27', 'admin', '2026-01-26 18:56:20', '202380680', '杨雅雯', 2, '2007-08-08', '4', '8', '2022', '13461010899');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016170167408850700', 'admin', '2026-01-26 06:59:12', 'admin', '2026-01-26 21:33:24', '202367026', '翁人白', 2, '2006-06-11', '2', '6', '2024', '15722434255');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016170766347798300', 'admin', '2026-01-26 18:00:10', 'admin', '2026-01-26 18:27:00', '202306841', '潘彦博', 1, '2005-09-24', '1', '4', '2023', '1825115658');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016171623121043000', 'admin', '2026-01-26 22:17:55', 'admin', '2026-01-26 23:55:35', '202410419', '黄玉均', 2, '2005-02-06', '4', '6', '2024', '1525585946');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016173006545419300', 'admin', '2026-01-26 08:26:24', 'admin', '2026-01-26 10:01:00', '202320420', '刘映新', 1, '2005-06-11', '3', '2', '2023', '18941192971');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016173216049140000', 'admin', '2026-01-26 12:21:38', 'admin', '2026-01-26 20:00:25', '202232898', '许协花', 2, '2006-07-08', '4', '6', '2022', '17830741145');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016173510580640500', 'admin', '2026-01-26 20:24:01', 'admin', '2026-01-26 20:48:12', '202298759', '连思婷', 2, '2007-01-28', '3', '7', '2024', '18649427962');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016173701145146000', 'admin', '2026-01-26 04:15:29', 'admin', '2026-01-26 14:48:35', '202363614', '曹信宏', 2, '2005-09-23', '3', '5', '2023', '18569500066');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016175110593753900', 'admin', '2026-01-26 13:13:04', 'admin', '2026-01-26 22:57:50', '202209339', '谢若沛', 1, '2007-07-16', '3', '4', '2022', '18948573500');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016177629357118200', 'admin', '2026-01-26 21:31:39', 'admin', '2026-01-26 22:23:03', '202258434', '李宜珠', 2, '2006-01-11', '4', '2', '2024', '13592870159');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016178045411392500', 'admin', '2026-01-26 08:25:22', 'admin', '2026-01-26 12:49:34', '202444199', '黎朝祥', 2, '2007-04-07', '2', '4', '2024', '17056666891');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016181129633152300', 'admin', '2026-01-26 16:19:08', 'admin', '2026-01-26 18:34:09', '202278458', '刘俊吉', 1, '2005-07-08', '4', '7', '2023', '18832346029');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016182722076996400', 'admin', '2026-01-26 14:17:09', 'admin', '2026-01-26 17:45:18', '202265646', '李怡臻', 2, '2007-08-04', '4', '4', '2023', '18368378569');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016183201546430700', 'admin', '2026-01-26 11:38:00', 'admin', '2026-01-26 22:46:49', '202229325', '赖伊茂', 1, '2006-10-27', '3', '2', '2023', '15992938093');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016184798105016000', 'admin', '2026-01-26 04:03:54', 'admin', '2026-01-26 18:34:44', '202401449', '张坚昌', 1, '2005-03-16', '2', '1', '2023', '1314854038');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016187327393034500', 'admin', '2026-01-26 03:36:05', 'admin', '2026-01-26 09:23:23', '202482468', '许昌沛', 1, '2007-06-08', '4', '8', '2023', '13980349562');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016188590470604800', 'admin', '2026-01-26 21:36:37', 'admin', '2026-01-26 22:10:17', '202231102', '蔡靖雯', 1, '2007-04-06', '2', '7', '2022', '13046397014');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016189403005513500', 'admin', '2026-01-26 11:06:08', 'admin', '2026-01-26 21:39:05', '202481369', '张永修', 2, '2007-02-28', '2', '5', '2022', '15950936325');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016189792052067600', 'admin', '2026-01-26 09:04:49', 'admin', '2026-01-26 16:50:00', '202260973', '罗翔宝', 1, '2005-04-01', '4', '7', '2022', '18147527552');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016190422622398700', 'admin', '2026-01-26 05:18:45', 'admin', '2026-01-26 22:03:29', '202465337', '杨佳蓉', 1, '2007-07-02', '3', '2', '2023', '13260289059');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016196622522459600', 'admin', '2026-01-26 09:11:02', 'admin', '2026-01-26 17:00:10', '202309639', '杨孟伦', 2, '2006-05-29', '2', '3', '2024', '13867048665');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016197379397005300', 'admin', '2026-01-26 12:12:26', 'admin', '2026-01-26 18:43:59', '202306588', '李常芷', 2, '2007-09-13', '3', '4', '2023', '18445599788');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016199170293595100', 'admin', '2026-01-26 15:56:46', 'admin', '2026-01-26 22:27:59', '202484662', '萧嘉玲', 2, '2007-07-25', '3', '8', '2023', '1564639258');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016209456363396000', 'admin', '2026-01-26 22:11:37', 'admin', '2026-01-26 22:31:19', '202407007', '林雅惠', 2, '2007-01-17', '5', '1', '2023', '18879776340');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016210235578636500', 'admin', '2026-01-26 18:30:50', 'admin', '2026-01-26 21:56:23', '202210868', '郭佑霖', 1, '2006-02-14', '1', '4', '2024', '17716887748');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016214693369408500', 'admin', '2026-01-26 01:18:07', 'admin', '2026-01-26 23:23:54', '202212826', '林心怡', 2, '2007-08-08', '2', '4', '2022', '15185206262');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016214821630865700', 'admin', '2026-01-26 15:54:48', 'admin', '2026-01-26 17:37:54', '202315584', '吴宛南', 2, '2005-03-02', '3', '7', '2023', '18849389213');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016215448799149800', 'admin', '2026-01-26 06:17:35', 'admin', '2026-01-26 12:48:51', '202202818', '陈长季', 2, '2007-07-18', '4', '6', '2023', '17736178705');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016219304987645700', 'admin', '2026-01-26 08:47:39', 'admin', '2026-01-26 10:19:27', '202368822', '陈莹雨', 2, '2005-08-17', '4', '3', '2024', '13599966641');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016219742783385000', 'admin', '2026-01-26 19:02:20', 'admin', '2026-01-26 21:01:40', '202257356', '钱希康', 2, '2006-10-24', '2', '7', '2022', '18542025758');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016219929430733600', 'admin', '2026-01-26 10:33:34', 'admin', '2026-01-26 18:13:59', '202208837', '张钰奇', 1, '2007-06-11', '4', '3', '2024', '1524674530');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016219976503521000', 'admin', '2026-01-26 06:20:39', 'admin', '2026-01-26 14:14:51', '202279729', '周玮伦', 1, '2005-10-05', '2', '3', '2023', '15210292678');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016221246600179500', 'admin', '2026-01-26 05:21:52', 'admin', '2026-01-26 19:17:33', '202450103', '萧怡雯', 2, '2005-04-14', '4', '3', '2024', '18386993220');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016223948510002400', 'admin', '2026-01-26 17:51:03', 'admin', '2026-01-26 23:52:23', '202352116', '王杰君', 1, '2006-04-22', '4', '4', '2022', '13313375327');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016225315711655200', 'admin', '2026-01-26 23:44:20', 'admin', '2026-01-26 23:49:02', '202244872', '高光慈', 2, '2007-04-14', '1', '5', '2022', '15176339391');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016226616418877200', 'admin', '2026-01-26 10:46:11', 'admin', '2026-01-26 16:47:45', '202359330', '王玮婷', 1, '2006-08-19', '3', '8', '2023', '13250672111');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016234466029209000', 'admin', '2026-01-26 09:38:35', 'admin', '2026-01-26 15:33:21', '202495494', '郑雅宇', 2, '2007-08-14', '2', '4', '2022', '15165157897');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016236928678736400', 'admin', '2026-01-26 16:57:33', 'admin', '2026-01-26 23:14:13', '202216637', '吴洁虹', 1, '2007-05-27', '2', '3', '2024', '15526469415');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016239459188675000', 'admin', '2026-01-26 12:10:58', 'admin', '2026-01-26 21:02:29', '202421518', '刘凤淳', 1, '2007-11-29', '5', '5', '2023', '15863763273');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016241258896948000', 'admin', '2026-01-26 13:41:58', 'admin', '2026-01-26 18:37:02', '202457263', '蔡金桂', 1, '2005-04-27', '2', '1', '2024', '15547253092');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016241624842167000', 'admin', '2026-01-26 23:22:41', 'admin', '2026-01-26 23:53:35', '202448509', '林定忠', 2, '2006-01-31', '4', '5', '2024', '15137801043');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016246593292267300', 'admin', '2026-01-26 07:28:54', 'admin', '2026-01-26 09:23:57', '202485640', '林文宏', 2, '2006-12-04', '4', '8', '2023', '18259795094');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016247675991687700', 'admin', '2026-01-26 23:31:10', 'admin', '2026-01-26 23:40:00', '202463123', '徐佩君', 1, '2006-10-07', '2', '2', '2023', '13497782848');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016250645147258400', 'admin', '2026-01-26 12:24:41', 'admin', '2026-01-26 18:19:14', '202483207', '吴伊婷', 2, '2005-06-30', '5', '3', '2024', '1833014739');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016251662549728500', 'admin', '2026-01-26 10:38:26', 'admin', '2026-01-26 12:44:29', '202298124', '陈子贞', 2, '2005-07-06', '3', '8', '2022', '13661551646');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016252430850325500', 'admin', '2026-01-26 13:42:48', 'admin', '2026-01-26 17:00:59', '202376600', '郑玲冰', 1, '2007-04-29', '4', '4', '2022', '13886378303');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016253032035133200', 'admin', '2026-01-26 10:15:18', 'admin', '2026-01-26 16:28:22', '202386114', '桂家玮', 1, '2006-11-17', '3', '5', '2024', '13556864915');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016253625071058000', 'admin', '2026-01-26 07:17:16', 'admin', '2026-01-26 08:55:42', '202364296', '高英杰', 2, '2007-10-30', '3', '2', '2024', '1381465831');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016255111974945800', 'admin', '2026-01-26 04:24:35', 'admin', '2026-01-26 08:04:04', '202326651', '陈秀娟', 2, '2005-04-09', '5', '6', '2023', '17792761557');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016258771464318000', 'admin', '2026-01-26 22:01:46', 'admin', '2026-01-26 23:27:25', '202222138', '林瑜淳', 1, '2007-12-08', '4', '6', '2024', '15072391576');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016259282767581200', 'admin', '2026-01-26 01:57:49', 'admin', '2026-01-26 04:26:27', '202329317', '吴嘉秋', 2, '2005-05-24', '4', '6', '2022', '15281073932');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016262378393443600', 'admin', '2026-01-26 19:35:48', 'admin', '2026-01-26 23:20:15', '202219104', '陈明宜', 2, '2005-09-11', '1', '3', '2024', '15641309055');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016262742342562300', 'admin', '2026-01-26 13:53:06', 'admin', '2026-01-26 21:50:57', '202418074', '陈明义', 1, '2005-06-19', '5', '4', '2023', '18935797470');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016263638491520800', 'admin', '2026-01-26 15:51:01', 'admin', '2026-01-26 18:10:11', '202488493', '廖秋扬', 2, '2006-10-29', '4', '7', '2024', '17826456598');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016265205357230300', 'admin', '2026-01-26 14:10:37', 'admin', '2026-01-26 23:58:38', '202247435', '王淑娟', 2, '2007-07-24', '3', '8', '2024', '15924707364');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016274817065960400', 'admin', '2026-01-26 19:59:15', 'admin', '2026-01-26 21:10:36', '202298402', '陈子一', 2, '2006-09-11', '2', '1', '2023', '17830665859');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016274863389145600', 'admin', '2026-01-26 13:59:02', 'admin', '2026-01-26 23:01:05', '202307314', '陈慧妤', 1, '2006-02-13', '2', '7', '2023', '13260225256');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016275321789465000', 'admin', '2026-01-26 19:35:22', 'admin', '2026-01-26 20:25:23', '202288845', '刘雅原', 1, '2005-05-20', '3', '4', '2022', '15853472790');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016276781821624600', 'admin', '2026-01-26 23:51:25', 'admin', '2026-01-26 23:59:31', '202460404', '梁家豪', 1, '2005-05-22', '5', '3', '2024', '1822673145');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016277512905145300', 'admin', '2026-01-26 05:02:06', 'admin', '2026-01-26 22:34:26', '202402888', '陈子贞', 2, '2006-03-08', '5', '2', '2024', '13271869578');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016278081407023400', 'admin', '2026-01-26 04:50:58', 'admin', '2026-01-26 23:13:06', '202411163', '宋育维', 1, '2007-05-18', '4', '6', '2024', '18195178098');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016280451239384000', 'admin', '2026-01-26 15:15:21', 'admin', '2026-01-26 18:00:24', '202330572', '陈俊仪', 1, '2006-07-15', '2', '3', '2022', '18791935011');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016281474188385000', 'admin', '2026-01-26 17:49:17', 'admin', '2026-01-26 23:29:28', '202395894', '陈子欣', 1, '2005-02-23', '3', '4', '2022', '13638241143');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016284264447725800', 'admin', '2026-01-26 21:22:02', 'admin', '2026-01-26 22:04:13', '202272524', '林郁萍', 1, '2006-11-28', '4', '6', '2022', '15893747778');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016285696326924300', 'admin', '2026-01-26 22:04:55', 'admin', '2026-01-26 23:27:03', '202306425', '姚志明', 2, '2007-07-26', '3', '4', '2022', '15935269035');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016287717482560500', 'admin', '2026-01-26 19:53:26', 'admin', '2026-01-26 23:26:50', '202318047', '柳家齐', 1, '2005-12-04', '2', '5', '2022', '18571321900');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016288255866468600', 'admin', '2026-01-26 16:26:31', 'admin', '2026-01-26 16:46:22', '202485636', '甘彦君', 2, '2005-08-05', '2', '1', '2023', '13154581174');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016289568262400800', 'admin', '2026-01-26 00:23:17', 'admin', '2026-01-26 01:21:59', '202298253', '李欣怡', 1, '2005-03-21', '4', '2', '2024', '18286461825');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016290037109982000', 'admin', '2026-01-26 20:21:26', 'admin', '2026-01-26 22:19:47', '202201555', '李仕莹', 1, '2006-01-09', '4', '7', '2024', '17664648919');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016298604444579000', 'admin', '2026-01-26 11:26:23', 'admin', '2026-01-26 11:45:41', '202211164', '林圣如', 2, '2005-06-18', '5', '7', '2022', '1359727261');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016300895742663400', 'admin', '2026-01-26 10:32:41', 'admin', '2026-01-26 16:54:59', '202429920', '吴和俊', 1, '2007-02-08', '2', '7', '2022', '15537065051');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016301389694584600', 'admin', '2026-01-26 18:24:08', 'admin', '2026-01-26 20:57:09', '202435470', '黄竣纶', 1, '2007-09-02', '4', '6', '2023', '13440220539');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016301711512369400', 'admin', '2026-01-26 09:39:54', 'admin', '2026-01-26 13:10:43', '202208589', '黄孝绍', 2, '2005-09-28', '2', '6', '2024', '1356613460');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016303985814345000', 'admin', '2026-01-26 03:11:44', 'admin', '2026-01-26 09:19:58', '202391186', '张坚昌', 1, '2006-01-21', '5', '1', '2023', '1812152975');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016304004754773000', 'admin', '2026-01-26 04:55:41', 'admin', '2026-01-26 16:38:05', '202427232', '徐睿汉', 2, '2007-08-01', '2', '6', '2024', '13244018375');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016305449248645400', 'admin', '2026-01-26 13:15:44', 'admin', '2026-01-26 19:01:58', '202367905', '陈秀娟', 2, '2007-07-01', '3', '8', '2022', '15166957056');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016308276076675000', 'admin', '2026-01-26 01:32:15', 'admin', '2026-01-26 14:07:57', '202374166', '张静怡', 2, '2005-07-11', '2', '6', '2023', '13647082703');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016308387008803000', 'admin', '2026-01-26 21:07:14', 'admin', '2026-01-26 22:24:21', '202483631', '王诗映', 2, '2007-12-03', '3', '3', '2023', '13366232557');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016316650833973800', 'admin', '2026-01-26 21:31:22', 'admin', '2026-01-26 23:49:27', '202325825', '林冠玟', 1, '2005-02-18', '4', '6', '2022', '18229324294');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016318243917113600', 'admin', '2026-01-26 06:59:10', 'admin', '2026-01-26 11:39:55', '202436209', '赖家宏', 2, '2005-09-21', '4', '8', '2023', '15231735256');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016318491211478500', 'admin', '2026-01-26 09:14:39', 'admin', '2026-01-26 18:23:57', '202216602', '黄儒原', 2, '2005-11-16', '4', '4', '2022', '13683110440');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016319802019496000', 'admin', '2026-01-26 12:08:26', 'admin', '2026-01-26 23:37:08', '202247846', '林圣如', 1, '2005-04-02', '3', '1', '2022', '15794186358');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016320397838112000', 'admin', '2026-01-26 05:46:47', 'admin', '2026-01-26 10:20:00', '202293347', '陈志琇', 1, '2005-09-30', '2', '5', '2024', '13276448887');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016324751027668700', 'admin', '2026-01-26 21:48:09', 'admin', '2026-01-26 22:42:28', '202478723', '邱建彰', 1, '2007-05-15', '1', '1', '2023', '13859337601');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016324808892310500', 'admin', '2026-01-26 13:19:31', 'admin', '2026-01-26 20:48:09', '202316191', '林爱妤', 1, '2005-07-02', '5', '2', '2023', '13486469039');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016324849107827500', 'admin', '2026-01-26 13:29:35', 'admin', '2026-01-26 18:21:47', '202445998', '李安霖', 1, '2006-05-05', '3', '7', '2024', '13833741692');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016327014579180500', 'admin', '2026-01-26 10:44:07', 'admin', '2026-01-26 21:15:42', '202291584', '林惠珍', 1, '2007-01-24', '4', '5', '2022', '15233363710');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016331056072428300', 'admin', '2026-01-26 08:36:46', 'admin', '2026-01-26 14:19:24', '202221877', '邓季仪', 1, '2005-12-12', '5', '1', '2022', '17735213937');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016331722706913800', 'admin', '2026-01-26 08:59:26', 'admin', '2026-01-26 19:28:45', '202458161', '奚立桦', 2, '2006-01-05', '5', '5', '2024', '15991514411');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016333883181300200', 'admin', '2026-01-26 18:13:42', 'admin', '2026-01-26 18:48:50', '202373689', '林圣杰', 1, '2005-06-13', '2', '5', '2022', '18566604787');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016335310209506800', 'admin', '2026-01-26 03:22:05', 'admin', '2026-01-26 16:28:23', '202340934', '周淑芬', 1, '2006-06-04', '4', '7', '2023', '1774595394');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016335435107730400', 'admin', '2026-01-26 16:19:57', 'admin', '2026-01-26 16:26:36', '202432528', '张亦辰', 2, '2007-06-21', '3', '5', '2023', '18740882238');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016338709758958000', 'admin', '2026-01-26 22:01:54', 'admin', '2026-01-26 23:10:21', '202406055', '杨定娥', 1, '2007-08-18', '3', '2', '2023', '1572621740');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016339020502344000', 'admin', '2026-01-26 04:40:51', 'admin', '2026-01-26 05:52:53', '202296748', '李诗来', 2, '2005-02-16', '4', '7', '2022', '13556023781');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016343022722080000', 'admin', '2026-01-26 12:19:28', 'admin', '2026-01-26 19:45:03', '202281456', '朱怡婷', 2, '2005-04-10', '2', '2', '2023', '15154177545');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016343119117817300', 'admin', '2026-01-26 21:56:56', 'admin', '2026-01-26 22:09:19', '202347200', '詹冠廷', 2, '2007-12-08', '1', '6', '2023', '13027234667');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016343189010567000', 'admin', '2026-01-26 17:48:00', 'admin', '2026-01-26 19:19:14', '202313856', '林育星', 2, '2005-03-01', '4', '8', '2023', '18957769053');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016344964130271500', 'admin', '2026-01-26 16:58:32', 'admin', '2026-01-26 17:59:53', '202448361', '柳儒茜', 1, '2007-12-24', '2', '5', '2024', '18555461599');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016353090461680400', 'admin', '2026-01-26 23:55:46', 'admin', '2026-01-26 23:56:51', '202465991', '叶惠美', 2, '2007-05-06', '3', '6', '2022', '13613385651');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016356400512981200', 'admin', '2026-01-26 23:40:55', 'admin', '2026-01-26 23:57:12', '202248930', '唐筠茂', 1, '2006-04-10', '2', '1', '2024', '15918045880');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016358564057371100', 'admin', '2026-01-26 09:53:50', 'admin', '2026-01-26 10:18:39', '202273190', '冯欣怡', 2, '2005-11-29', '4', '5', '2024', '15229158396');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016360479405143300', 'admin', '2026-01-26 07:47:08', 'admin', '2026-01-26 16:35:56', '202217406', '萧建中', 2, '2006-04-20', '2', '5', '2022', '13818140206');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016363452748314400', 'admin', '2026-01-26 01:36:00', 'admin', '2026-01-26 02:45:55', '202464418', '张佑爱', 1, '2006-07-21', '1', '2', '2022', '17767181010');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016363668574704600', 'admin', '2026-01-26 08:20:25', 'admin', '2026-01-26 15:43:36', '202245666', '陈雨喜', 1, '2007-07-14', '3', '7', '2024', '1800066771');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016365458583637000', 'admin', '2026-01-26 13:54:55', 'admin', '2026-01-26 21:31:57', '202207643', '王名吟', 2, '2006-01-25', '4', '3', '2023', '18576501847');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016365832623073800', 'admin', '2026-01-26 21:32:09', 'admin', '2026-01-26 22:31:59', '202459608', '许舒宜', 1, '2007-05-22', '2', '4', '2024', '18013824274');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016366693498927900', 'admin', '2026-01-26 16:49:21', 'admin', '2026-01-26 20:27:11', '202348280', '赵家玮', 2, '2006-08-18', '4', '4', '2024', '13629956319');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016372899769440800', 'admin', '2026-01-26 01:55:34', 'admin', '2026-01-26 12:21:16', '202288752', '吴佳奇', 2, '2005-02-21', '3', '6', '2024', '15312639062');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016373841353351200', 'admin', '2026-01-26 18:25:33', 'admin', '2026-01-26 18:42:25', '202322544', '刘家念', 1, '2007-10-05', '3', '5', '2024', '13126878346');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016374119808917000', 'admin', '2026-01-26 23:37:01', 'admin', '2026-01-26 23:58:37', '202231870', '林奕雯', 2, '2005-02-03', '3', '2', '2022', '18810720851');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016376074385711600', 'admin', '2026-01-26 21:44:02', 'admin', '2026-01-26 22:44:25', '202282081', '黄雅玲', 2, '2005-02-14', '3', '6', '2022', '13841010032');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016377551729339400', 'admin', '2026-01-26 00:16:06', 'admin', '2026-01-26 09:31:40', '202285770', '胡忆书', 2, '2006-09-29', '3', '6', '2023', '17757587590');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016379462663176200', 'admin', '2026-01-26 20:42:33', 'admin', '2026-01-26 21:20:09', '202456092', '陈淑芬', 1, '2007-03-10', '1', '2', '2024', '15111473168');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016380832756004400', 'admin', '2026-01-26 00:03:09', 'admin', '2026-01-26 15:17:48', '202435673', '蔡承吟', 1, '2007-07-31', '2', '7', '2023', '18046808323');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016381264848654800', 'admin', '2026-01-26 11:48:25', 'admin', '2026-01-26 12:05:38', '202481071', '史志玮', 2, '2005-07-22', '5', '2', '2022', '17720593050');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016382919811057000', 'admin', '2026-01-26 12:46:53', 'admin', '2026-01-26 19:49:21', '202489559', '詹瑜月', 2, '2006-03-22', '4', '7', '2022', '15983629797');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016386263046061600', 'admin', '2026-01-26 13:29:22', 'admin', '2026-01-26 20:48:06', '202290899', '吴美淑', 1, '2006-01-18', '2', '6', '2024', '17672486192');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016386805126307300', 'admin', '2026-01-26 16:00:28', 'admin', '2026-01-26 16:08:46', '202393358', '蔡静霖', 2, '2006-08-13', '5', '4', '2023', '13540881684');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016387738006066700', 'admin', '2026-01-26 04:45:46', 'admin', '2026-01-26 13:25:52', '202360674', '赵琼名', 2, '2005-03-20', '2', '4', '2023', '15262073870');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016389532837544000', 'admin', '2026-01-26 15:02:43', 'admin', '2026-01-26 15:37:31', '202389569', '黄武行', 2, '2006-09-06', '3', '7', '2024', '18483991724');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016391005398638000', 'admin', '2026-01-26 08:58:39', 'admin', '2026-01-26 12:28:31', '202367706', '朱诗涵', 2, '2005-09-08', '2', '6', '2024', '15872291796');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016391018973803800', 'admin', '2026-01-26 16:11:25', 'admin', '2026-01-26 21:09:14', '202407405', '赖圣杰', 1, '2006-11-15', '2', '4', '2022', '13770323935');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016393480362220500', 'admin', '2026-01-26 06:30:33', 'admin', '2026-01-26 19:48:35', '202335867', '李乔慧', 1, '2007-04-20', '3', '3', '2024', '18350020827');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016393575866930400', 'admin', '2026-01-26 03:09:27', 'admin', '2026-01-26 15:42:41', '202271682', '杨世豪', 1, '2005-03-25', '4', '6', '2024', '18365645920');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016394809223101700', 'admin', '2026-01-26 19:21:31', 'admin', '2026-01-26 23:17:11', '202240720', '吴钰君', 1, '2005-10-02', '5', '2', '2023', '18877042593');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016396081460611300', 'admin', '2026-01-26 13:25:44', 'admin', '2026-01-26 16:35:31', '202390688', '冷原南', 2, '2007-02-28', '3', '1', '2022', '1301548026');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016397332421551900', 'admin', '2026-01-26 10:03:38', 'admin', '2026-01-26 22:16:03', '202230374', '黄与倩', 2, '2007-03-04', '3', '3', '2023', '13074971078');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016398268022492000', 'admin', '2026-01-26 22:30:54', 'admin', '2026-01-26 23:12:14', '202287615', '刘尚佳', 2, '2006-04-22', '4', '2', '2022', '15226558346');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016398582345673200', 'admin', '2026-01-26 18:53:45', 'admin', '2026-01-26 23:39:14', '202493852', '王竣佩', 2, '2007-03-02', '4', '4', '2024', '13086873728');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016398720434341600', 'admin', '2026-01-26 00:11:02', 'admin', '2026-01-26 18:14:53', '202210193', '魏欢钰', 2, '2005-05-19', '3', '4', '2023', '15098282581');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016399200285092900', 'admin', '2026-01-26 17:25:44', 'admin', '2026-01-26 17:49:54', '202441496', '路宛贤', 1, '2006-05-06', '4', '4', '2022', '13292213310');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016401607543262000', 'admin', '2026-01-26 13:02:07', 'admin', '2026-01-26 16:09:37', '202466537', '李民学', 2, '2007-12-01', '3', '5', '2023', '1332885128');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016402184954724600', 'admin', '2026-01-26 20:28:12', 'admin', '2026-01-26 22:04:16', '202335406', '吴泰恭', 2, '2007-01-06', '4', '1', '2024', '13873809189');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016405279289202400', 'admin', '2026-01-26 17:14:59', 'admin', '2026-01-26 17:53:09', '202373355', '曹紫玫', 2, '2005-09-17', '2', '3', '2022', '15544314358');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016408509163880700', 'admin', '2026-01-26 03:13:17', 'admin', '2026-01-26 17:56:24', '202439928', '林俊琬', 2, '2006-07-20', '5', '8', '2022', '15688201741');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016409234669520000', 'admin', '2026-01-26 17:15:16', 'admin', '2026-01-26 17:36:35', '202485539', '卞佑芸', 1, '2005-02-18', '3', '3', '2024', '13716324324');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016409396695153000', 'admin', '2026-01-26 03:38:52', 'admin', '2026-01-26 13:18:02', '202256926', '曾雅如', 1, '2006-12-25', '3', '6', '2023', '15166627191');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016411662126705700', 'admin', '2026-01-26 03:08:16', 'admin', '2026-01-26 06:19:27', '202259372', '李佩芳', 1, '2006-09-28', '2', '3', '2023', '15566280229');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016412697296570000', 'admin', '2026-01-26 11:58:30', 'admin', '2026-01-26 22:46:52', '202287899', '蔡俊安', 1, '2005-12-23', '3', '2', '2024', '18290774996');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016412951374957600', 'admin', '2026-01-26 03:13:08', 'admin', '2026-01-26 11:35:46', '202409023', '曾宁宜', 2, '2006-09-16', '1', '8', '2022', '18037365749');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016414582787051500', 'admin', '2026-01-26 23:34:14', 'admin', '2026-01-26 23:47:12', '202426992', '杭佳弘', 1, '2007-09-18', '1', '4', '2022', '13950708545');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016417757088185000', 'admin', '2026-01-26 09:10:12', 'admin', '2026-01-26 21:31:48', '202388833', '郑紫智', 2, '2006-09-12', '3', '8', '2024', '1774523755');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016418165219719700', 'admin', '2026-01-26 21:37:56', 'admin', '2026-01-26 23:46:54', '202332654', '郑又全', 2, '2007-10-02', '2', '3', '2022', '13947235781');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016420124470976800', 'admin', '2026-01-26 02:45:31', 'admin', '2026-01-26 12:42:15', '202229134', '张彦均', 2, '2005-05-22', '2', '4', '2024', '15097959634');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016420566494013400', 'admin', '2026-01-26 04:27:24', 'admin', '2026-01-26 20:39:56', '202343738', '萧建中', 1, '2007-12-19', '4', '1', '2024', '18848462127');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016422037359884300', 'admin', '2026-01-26 04:56:10', 'admin', '2026-01-26 17:17:23', '202448949', '张慧敏', 2, '2005-03-20', '4', '8', '2024', '18588910264');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016422383409408300', 'admin', '2026-01-26 14:54:30', 'admin', '2026-01-26 15:01:50', '202422827', '陈心怡', 2, '2005-12-04', '2', '3', '2023', '13073878760');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016424723301353500', 'admin', '2026-01-26 10:37:37', 'admin', '2026-01-26 21:47:58', '202343402', '郭俊德', 1, '2005-09-01', '4', '2', '2023', '17677460519');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016429958948092700', 'admin', '2026-01-26 06:16:45', 'admin', '2026-01-26 11:52:04', '202309349', '姚岳康', 2, '2005-02-17', '2', '7', '2022', '1502693732');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016430046291886600', 'admin', '2026-01-26 05:40:18', 'admin', '2026-01-26 10:48:29', '202365600', '林政辛', 1, '2007-07-17', '5', '3', '2024', '15070130819');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016430560253697500', 'admin', '2026-01-26 16:51:37', 'admin', '2026-01-26 17:37:20', '202465887', '林梦萍', 2, '2007-08-16', '4', '7', '2022', '18244315637');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016432857285421000', 'admin', '2026-01-26 05:43:05', 'admin', '2026-01-26 15:05:02', '202265876', '宋淑君', 1, '2007-12-15', '4', '6', '2023', '15612984065');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016434062328630000', 'admin', '2026-01-26 12:35:29', 'admin', '2026-01-26 13:44:58', '202434381', '林郁文', 2, '2007-01-13', '4', '2', '2024', '13613127548');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016435317883088100', 'admin', '2026-01-26 17:23:43', 'admin', '2026-01-26 23:55:42', '202422146', '刘绮云', 1, '2005-03-25', '2', '6', '2024', '15194706346');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016435419889778700', 'admin', '2026-01-26 05:41:53', 'admin', '2026-01-26 20:23:26', '202326936', '王法圣', 1, '2005-05-02', '4', '6', '2024', '15590860356');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016436589995627300', 'admin', '2026-01-26 21:04:17', 'admin', '2026-01-26 22:28:12', '202303653', '姜东中', 1, '2006-01-28', '3', '3', '2024', '1869197503');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016442116448577000', 'admin', '2026-01-26 15:37:40', 'admin', '2026-01-26 18:24:49', '202337557', '蔡镇幸', 1, '2007-03-19', '1', '7', '2023', '13134717384');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016443129136772000', 'admin', '2026-01-26 05:48:53', 'admin', '2026-01-26 15:44:56', '202430396', '张建辉', 2, '2007-05-14', '1', '7', '2023', '18393855656');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016443228390972200', 'admin', '2026-01-26 10:00:59', 'admin', '2026-01-26 19:14:41', '202314497', '连家莹', 2, '2006-09-30', '4', '7', '2024', '1838168736');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016450229912250600', 'admin', '2026-01-26 04:05:35', 'admin', '2026-01-26 17:11:41', '202470324', '赖懿文', 2, '2006-03-30', '1', '3', '2022', '18034579364');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016450532682837800', 'admin', '2026-01-26 21:39:49', 'admin', '2026-01-26 22:39:04', '202288272', '刘盈君', 1, '2005-04-24', '5', '6', '2023', '18844700951');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016450722984627500', 'admin', '2026-01-26 06:08:15', 'admin', '2026-01-26 13:41:30', '202406798', '陈诗昌', 1, '2005-04-28', '5', '2', '2024', '15947353513');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016450732669243400', 'admin', '2026-01-26 04:07:11', 'admin', '2026-01-26 18:15:28', '202320895', '陈雅慧', 2, '2006-08-11', '3', '1', '2023', '18315037572');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016450814490908200', 'admin', '2026-01-26 08:48:31', 'admin', '2026-01-26 23:52:14', '202426952', '强伟婷', 1, '2006-09-13', '2', '3', '2022', '1378977292');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016452930608138500', 'admin', '2026-01-26 03:02:28', 'admin', '2026-01-26 08:50:47', '202430522', '陈彦劭', 2, '2006-03-10', '2', '4', '2022', '15395857421');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016453038869565700', 'admin', '2026-01-26 09:26:54', 'admin', '2026-01-26 16:24:00', '202437356', '陈伊婷', 1, '2006-04-26', '1', '3', '2023', '18131759759');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016453342327615700', 'admin', '2026-01-26 03:41:38', 'admin', '2026-01-26 16:13:31', '202476173', '林瑜淳', 2, '2006-09-01', '2', '2', '2023', '15717412059');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016456392981130500', 'admin', '2026-01-26 01:24:57', 'admin', '2026-01-26 12:08:38', '202263438', '阮思珊', 2, '2006-03-11', '3', '5', '2022', '15891729135');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016459022653773800', 'admin', '2026-01-26 20:15:10', 'admin', '2026-01-26 20:41:56', '202398689', '姜孟君', 1, '2006-04-14', '4', '1', '2022', '13370282686');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016463981550901000', 'admin', '2026-01-26 23:55:59', 'admin', '2026-01-26 23:57:59', '202338876', '林宜苹', 1, '2006-04-02', '3', '7', '2022', '13943033368');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016464829744557300', 'admin', '2026-01-26 01:11:20', 'admin', '2026-01-26 03:03:49', '202318209', '萧白惟', 1, '2006-01-06', '5', '4', '2022', '15378584425');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016468404084853500', 'admin', '2026-01-26 23:08:22', 'admin', '2026-01-26 23:39:14', '202316369', '乔逸凡', 1, '2007-03-30', '2', '3', '2022', '17616556817');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016475253282710500', 'admin', '2026-01-26 15:49:11', 'admin', '2026-01-26 21:48:36', '202451886', '林宜新', 1, '2006-08-14', '3', '3', '2022', '18612712123');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016475458335215000', 'admin', '2026-01-26 01:13:56', 'admin', '2026-01-26 02:57:17', '202326099', '潘彦博', 1, '2006-01-16', '1', '6', '2022', '15823806298');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016476884695834400', 'admin', '2026-01-26 00:56:09', 'admin', '2026-01-26 16:46:24', '202274797', '阮旭麟', 1, '2006-06-26', '3', '7', '2024', '18534893418');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016481270246228700', 'admin', '2026-01-26 00:59:17', 'admin', '2026-01-26 07:42:55', '202212833', '傅裕仁', 2, '2006-06-30', '2', '5', '2023', '13035425096');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016482203117328600', 'admin', '2026-01-26 11:25:43', 'admin', '2026-01-26 17:42:38', '202464467', '简宝喜', 1, '2006-07-31', '5', '7', '2024', '18662713692');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016482245066686500', 'admin', '2026-01-26 18:18:08', 'admin', '2026-01-26 22:29:10', '202327178', '张书沛', 2, '2006-02-22', '3', '4', '2022', '18437174739');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016482348579217000', 'admin', '2026-01-26 18:54:53', 'admin', '2026-01-26 23:53:13', '202365100', '程安珠', 2, '2005-09-17', '1', '7', '2023', '15936433547');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016482785753267200', 'admin', '2026-01-26 20:41:07', 'admin', '2026-01-26 22:54:17', '202231776', '连芸以', 2, '2007-08-05', '1', '6', '2023', '13629819565');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016483318458756000', 'admin', '2026-01-26 23:57:00', 'admin', '2026-01-26 23:58:35', '202339955', '吴旻云', 1, '2007-09-30', '1', '6', '2023', '17078483537');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016484272507366000', 'admin', '2026-01-26 10:07:54', 'admin', '2026-01-26 20:15:20', '202472108', '王志卿', 1, '2007-04-19', '3', '1', '2023', '13239446871');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016489090555216600', 'admin', '2026-01-26 02:17:00', 'admin', '2026-01-26 09:36:49', '202406754', '胡俊贤', 2, '2005-09-03', '5', '2', '2024', '13595965722');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016490385133480700', 'admin', '2026-01-26 20:22:17', 'admin', '2026-01-26 21:11:36', '202424454', '寇欢宣', 1, '2005-10-31', '3', '1', '2022', '18239727166');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016495857303343600', 'admin', '2026-01-26 16:22:31', 'admin', '2026-01-26 19:42:48', '202305151', '吕宜洁', 2, '2006-09-02', '2', '4', '2023', '1895592666');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016498560164011000', 'admin', '2026-01-26 21:23:15', 'admin', '2026-01-26 22:56:08', '202384453', '林诗隆', 1, '2006-06-05', '3', '2', '2024', '18115561876');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016499257297891600', 'admin', '2026-01-26 21:29:41', 'admin', '2026-01-26 22:59:48', '202212232', '邱枝廷', 2, '2005-05-29', '2', '4', '2024', '15373482831');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016499582547054600', 'admin', '2026-01-26 16:39:41', 'admin', '2026-01-26 22:32:49', '202267445', '冯欢秋', 2, '2007-02-19', '2', '7', '2023', '18218418177');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016503818264024800', 'admin', '2026-01-26 18:41:06', 'admin', '2026-01-26 19:19:43', '202317129', '舒皓富', 1, '2006-04-20', '1', '3', '2024', '18389793232');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016504591774785000', 'admin', '2026-01-26 23:40:32', 'admin', '2026-01-26 23:51:00', '202333628', '昝淑婷', 2, '2005-12-18', '2', '7', '2022', '1345532204');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016508630578107000', 'admin', '2026-01-26 11:07:38', 'admin', '2026-01-26 21:30:41', '202231454', '余纬绮', 1, '2007-02-19', '1', '6', '2023', '13850484238');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016508639533263600', 'admin', '2026-01-26 23:56:47', 'admin', '2026-01-26 23:58:05', '202216210', '陈彦治', 2, '2006-08-03', '1', '8', '2022', '18112595344');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016511375438890800', 'admin', '2026-01-26 17:10:04', 'admin', '2026-01-26 19:22:51', '202292626', '陈珍荣', 1, '2005-11-01', '5', '7', '2022', '18322520104');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016512178993726700', 'admin', '2026-01-26 08:49:23', 'admin', '2026-01-26 19:43:35', '202467723', '陈淑侑', 1, '2006-10-02', '1', '2', '2023', '18697980905');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016513650493299500', 'admin', '2026-01-26 22:39:18', 'admin', '2026-01-26 23:38:25', '202229615', '张家辰', 2, '2007-12-20', '4', '4', '2024', '17830356426');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016517414930157600', 'admin', '2026-01-26 19:37:48', 'admin', '2026-01-26 20:49:41', '202241168', '徐伟纶', 2, '2006-02-20', '3', '7', '2024', '13419473986');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016518296759068400', 'admin', '2026-01-26 07:30:35', 'admin', '2026-01-26 10:47:52', '202204034', '姚凯婷', 1, '2006-07-06', '2', '2', '2024', '15541800241');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016519162591882500', 'admin', '2026-01-26 22:07:49', 'admin', '2026-01-26 23:16:46', '202353666', '陈颖元', 2, '2007-03-04', '2', '3', '2023', '13275948272');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016519601300625700', 'admin', '2026-01-26 20:33:57', 'admin', '2026-01-26 23:12:30', '202351284', '胡财东', 1, '2006-12-01', '4', '3', '2023', '13554335068');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016520169241181400', 'admin', '2026-01-26 02:03:20', 'admin', '2026-01-26 03:18:05', '202443315', '郭常群', 2, '2007-05-24', '5', '3', '2023', '15211157265');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016521325516799000', 'admin', '2026-01-26 15:24:59', 'admin', '2026-01-26 22:41:39', '202309922', '张嘉珍', 1, '2007-12-25', '1', '6', '2022', '18121298556');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016522484883318300', 'admin', '2026-01-26 17:06:18', 'admin', '2026-01-26 20:27:08', '202241004', '林雅琳', 1, '2005-08-14', '5', '2', '2022', '17876577133');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016523218307208400', 'admin', '2026-01-26 23:56:27', 'admin', '2026-01-26 23:56:39', '202290230', '曹欣怡', 1, '2005-04-05', '4', '7', '2022', '13093562700');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016526756862307600', 'admin', '2026-01-26 20:56:36', 'admin', '2026-01-26 23:20:38', '202258540', '王俞吟', 1, '2007-05-18', '2', '6', '2024', '18676953775');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016528431375581700', 'admin', '2026-01-26 10:33:21', 'admin', '2026-01-26 23:56:28', '202212673', '林慧勋', 1, '2007-01-28', '3', '2', '2024', '13486308342');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016530712014012200', 'admin', '2026-01-26 03:40:19', 'admin', '2026-01-26 19:00:34', '202356601', '许家芷', 2, '2007-10-20', '4', '2', '2022', '15891733535');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016530915836234500', 'admin', '2026-01-26 15:21:19', 'admin', '2026-01-26 23:19:16', '202201228', '平哲孝', 1, '2005-10-13', '1', '1', '2024', '13836381551');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016532800380888600', 'admin', '2026-01-26 19:54:50', 'admin', '2026-01-26 23:38:45', '202424647', '林淑娟', 1, '2006-09-02', '4', '4', '2023', '13277963721');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016536474303405300', 'admin', '2026-01-26 09:11:20', 'admin', '2026-01-26 15:06:45', '202232200', '冯佳宏', 2, '2006-03-29', '4', '7', '2022', '17744206214');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016536474873387300', 'admin', '2026-01-26 01:46:51', 'admin', '2026-01-26 21:47:18', '202478493', '詹瑜月', 2, '2007-09-22', '2', '8', '2023', '1785291318');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016537015985117000', 'admin', '2026-01-26 05:30:28', 'admin', '2026-01-26 23:24:34', '202422720', '苏奕翔', 1, '2006-03-20', '2', '8', '2023', '15241588189');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016541268800105700', 'admin', '2026-01-26 18:28:49', 'admin', '2026-01-26 21:46:11', '202225070', '宋欣桦', 2, '2005-09-03', '3', '7', '2024', '18085537814');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016543261750934300', 'admin', '2026-01-26 01:39:17', 'admin', '2026-01-26 07:34:17', '202454945', '皇甫芳仪', 1, '2007-09-07', '2', '5', '2024', '17775616228');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016546265535900200', 'admin', '2026-01-26 21:38:14', 'admin', '2026-01-26 23:56:21', '202423341', '陈明义', 1, '2005-09-13', '5', '7', '2024', '18968653680');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016547352925546000', 'admin', '2026-01-26 20:48:32', 'admin', '2026-01-26 21:12:11', '202279672', '吴振菁', 2, '2005-11-26', '5', '1', '2022', '15329848403');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016547436045886500', 'admin', '2026-01-26 17:54:29', 'admin', '2026-01-26 23:19:59', '202447615', '陈胜泉', 1, '2007-03-19', '1', '7', '2023', '15595461853');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016547576619735300', 'admin', '2026-01-26 05:04:30', 'admin', '2026-01-26 06:09:18', '202379991', '蔡宛旭', 1, '2006-08-24', '1', '3', '2022', '13787695052');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016548953645582800', 'admin', '2026-01-26 18:23:52', 'admin', '2026-01-26 21:48:39', '202245371', '余哲维', 2, '2007-09-20', '3', '4', '2023', '15781325394');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016551761430775000', 'admin', '2026-01-26 13:40:05', 'admin', '2026-01-26 23:42:22', '202451881', '贲万维', 1, '2006-08-31', '2', '2', '2023', '15142147507');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016552697480160500', 'admin', '2026-01-26 06:26:04', 'admin', '2026-01-26 13:43:03', '202209735', '刘郁紫', 1, '2007-07-09', '4', '2', '2024', '18850681365');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016554780603834000', 'admin', '2026-01-26 18:21:31', 'admin', '2026-01-26 18:44:44', '202482350', '关怡婷', 2, '2005-07-31', '3', '7', '2024', '18940419581');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016555870303548400', 'admin', '2026-01-26 01:12:34', 'admin', '2026-01-26 09:18:32', '202374778', '蔡俊安', 2, '2007-04-19', '4', '6', '2022', '13070568768');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016555937810472200', 'admin', '2026-01-26 17:34:41', 'admin', '2026-01-26 21:14:21', '202257930', '温信虹', 2, '2006-06-26', '4', '1', '2023', '18728443643');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016557801072024300', 'admin', '2026-01-26 04:44:54', 'admin', '2026-01-26 17:11:51', '202280982', '汪兴白', 2, '2005-10-15', '2', '3', '2024', '13986348940');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016561730540328000', 'admin', '2026-01-26 23:38:59', 'admin', '2026-01-26 23:42:41', '202496075', '陈韵仁', 2, '2005-07-25', '4', '6', '2023', '15735853660');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016564824554523000', 'admin', '2026-01-26 03:20:00', 'admin', '2026-01-26 22:40:40', '202287242', '潘耀瑶', 2, '2006-05-13', '4', '5', '2024', '1325057128');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016568374388192500', 'admin', '2026-01-26 15:06:47', 'admin', '2026-01-26 21:21:45', '202431625', '蔡湘婷', 2, '2005-06-25', '3', '6', '2024', '13934495430');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016569171462875600', 'admin', '2026-01-26 22:09:55', 'admin', '2026-01-26 23:26:57', '202469792', '张智法', 1, '2005-08-29', '3', '2', '2024', '15561256999');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016572293546441700', 'admin', '2026-01-26 03:11:49', 'admin', '2026-01-26 04:38:08', '202482009', '钱玫沛', 2, '2006-04-28', '2', '7', '2024', '15331618936');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016572559045275000', 'admin', '2026-01-26 03:04:45', 'admin', '2026-01-26 12:59:51', '202395684', '叶弘月', 2, '2007-01-27', '3', '7', '2023', '13760751605');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016574901358703400', 'admin', '2026-01-26 07:36:17', 'admin', '2026-01-26 12:11:12', '202484873', '郑台山', 1, '2007-01-14', '2', '6', '2024', '13640059948');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016579909358878700', 'admin', '2026-01-26 20:21:33', 'admin', '2026-01-26 20:55:41', '202344751', '沈美玉', 2, '2007-06-15', '3', '6', '2023', '13390190290');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016584486869721900', 'admin', '2026-01-26 08:53:30', 'admin', '2026-01-26 21:07:54', '202420500', '许育莲', 1, '2005-11-09', '3', '5', '2022', '18857480593');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016585897701220400', 'admin', '2026-01-26 09:02:43', 'admin', '2026-01-26 15:33:01', '202254833', '黄馨士', 1, '2007-03-24', '5', '4', '2024', '13127995969');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016586579279763500', 'admin', '2026-01-26 11:50:20', 'admin', '2026-01-26 20:56:44', '202462609', '张友鸿', 1, '2005-09-03', '4', '4', '2022', '15378530459');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016591917118039800', 'admin', '2026-01-26 13:42:28', 'admin', '2026-01-26 17:39:17', '202390264', '陈建吉', 1, '2007-07-18', '4', '7', '2022', '1810456915');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016595098574988300', 'admin', '2026-01-26 15:31:39', 'admin', '2026-01-26 17:59:39', '202446027', '杨淑筠', 2, '2006-12-19', '5', '7', '2024', '18693214065');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016595665936443600', 'admin', '2026-01-26 12:53:11', 'admin', '2026-01-26 14:36:04', '202367797', '郑怡婷', 1, '2006-10-15', '4', '3', '2022', '13872185984');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016595783359122000', 'admin', '2026-01-26 13:53:31', 'admin', '2026-01-26 22:19:30', '202442638', '李雅慧', 2, '2007-04-27', '4', '8', '2023', '17668256891');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016596443900299000', 'admin', '2026-01-26 02:28:14', 'admin', '2026-01-26 07:03:01', '202224607', '陈长季', 1, '2007-05-02', '1', '1', '2022', '17728879037');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016596712560654000', 'admin', '2026-01-26 16:51:37', 'admin', '2026-01-26 21:40:37', '202213478', '陈皇昆', 1, '2005-04-29', '3', '7', '2022', '1705913655');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016596970081896200', 'admin', '2026-01-26 00:37:55', 'admin', '2026-01-26 16:41:05', '202373002', '宋育维', 2, '2007-01-05', '2', '4', '2024', '15965828029');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016597440732369700', 'admin', '2026-01-26 13:58:02', 'admin', '2026-01-26 23:38:16', '202361642', '栾文杰', 2, '2007-07-17', '4', '3', '2023', '15818199641');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016601263145361700', 'admin', '2026-01-26 15:09:24', 'admin', '2026-01-26 23:09:36', '202460201', '陈韦成', 1, '2005-05-04', '5', '7', '2023', '15774530559');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016606077782255900', 'admin', '2026-01-26 11:04:11', 'admin', '2026-01-26 17:33:05', '202451697', '巫皓法', 1, '2007-07-08', '2', '7', '2024', '15320364949');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016609725473859300', 'admin', '2026-01-26 08:46:29', 'admin', '2026-01-26 20:31:36', '202358988', '解梦祯', 2, '2006-01-01', '5', '5', '2024', '15930233032');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016615137225291800', 'admin', '2026-01-26 01:08:13', 'admin', '2026-01-26 04:53:27', '202219396', '皇甫芳仪', 2, '2005-01-29', '3', '7', '2022', '18251954013');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016615675376518400', 'admin', '2026-01-26 03:35:28', 'admin', '2026-01-26 17:27:13', '202437933', '曹俊茹', 1, '2005-05-12', '3', '4', '2022', '18797872289');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016619726867427300', 'admin', '2026-01-26 17:18:40', 'admin', '2026-01-26 23:16:16', '202281635', '许惠俊', 2, '2006-08-17', '1', '5', '2023', '15069761761');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016620107678244400', 'admin', '2026-01-26 15:11:36', 'admin', '2026-01-26 23:23:31', '202428598', '陈富水', 1, '2007-07-13', '4', '6', '2024', '18183713292');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016622274076377300', 'admin', '2026-01-26 07:00:35', 'admin', '2026-01-26 20:34:03', '202299437', '阮素珮', 1, '2005-04-01', '2', '4', '2022', '15168981171');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016623010881838800', 'admin', '2026-01-26 17:39:34', 'admin', '2026-01-26 22:23:50', '202346454', '李宜绍', 2, '2005-07-23', '2', '4', '2024', '13347062501');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016628803826803700', 'admin', '2026-01-26 22:53:01', 'admin', '2026-01-26 23:32:01', '202318083', '何左薇', 1, '2006-10-25', '2', '1', '2024', '15563420908');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016632553375343900', 'admin', '2026-01-26 20:37:05', 'admin', '2026-01-26 21:09:48', '202345753', '夏尚苹', 2, '2006-05-13', '2', '5', '2024', '17046781163');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016634273067498000', 'admin', '2026-01-26 10:38:15', 'admin', '2026-01-26 22:04:46', '202303627', '戴玉玮', 1, '2006-12-21', '4', '6', '2024', '15110901631');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016638172918543400', 'admin', '2026-01-26 16:53:17', 'admin', '2026-01-26 20:20:33', '202410611', '赵上达', 1, '2005-11-26', '4', '4', '2024', '1520480177');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016638179639534000', 'admin', '2026-01-26 03:39:48', 'admin', '2026-01-26 14:06:01', '202243044', '施启岳', 1, '2007-08-14', '3', '4', '2023', '15151247653');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016639801391974700', 'admin', '2026-01-26 02:03:46', 'admin', '2026-01-26 15:47:22', '202462466', '李怡杰', 2, '2005-04-14', '5', '6', '2022', '15540439196');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016642978349937400', 'admin', '2026-01-26 12:30:44', 'admin', '2026-01-26 22:20:32', '202324521', '杜筱涵', 1, '2007-02-01', '2', '1', '2023', '18158709026');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016643628433705500', 'admin', '2026-01-26 22:34:37', 'admin', '2026-01-26 23:49:07', '202312765', '林志安', 1, '2005-08-12', '3', '6', '2024', '18615548316');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016645645353642800', 'admin', '2026-01-26 15:32:43', 'admin', '2026-01-26 19:39:05', '202381155', '黄若贞', 1, '2005-04-10', '1', '2', '2023', '1780748665');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016646517261925600', 'admin', '2026-01-26 00:14:54', 'admin', '2026-01-26 04:19:00', '202414952', '王志卿', 2, '2007-12-08', '4', '2', '2022', '18429837111');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016647158551782100', 'admin', '2026-01-26 18:48:40', 'admin', '2026-01-26 19:20:22', '202346196', '彭欣桦', 1, '2005-12-12', '3', '5', '2024', '15830534049');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016647302400193800', 'admin', '2026-01-26 17:19:29', 'admin', '2026-01-26 20:46:30', '202498469', '陈信中', 1, '2006-02-02', '5', '6', '2022', '15180203190');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016651598290551000', 'admin', '2026-01-26 04:59:38', 'admin', '2026-01-26 13:24:08', '202475027', '林宜真', 2, '2006-03-14', '4', '7', '2024', '15280456402');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016651817080768800', 'admin', '2026-01-26 23:26:58', 'admin', '2026-01-26 23:33:59', '202394667', '朱俊杰', 2, '2006-09-19', '3', '5', '2024', '13611285297');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016655018844523800', 'admin', '2026-01-26 15:07:23', 'admin', '2026-01-26 17:11:18', '202488807', '黄亚弘', 1, '2007-06-12', '1', '2', '2024', '18054891772');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016655631376049200', 'admin', '2026-01-26 12:29:11', 'admin', '2026-01-26 17:58:31', '202264864', '杜政哲', 1, '2006-07-06', '3', '6', '2024', '13011917215');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016657136329038600', 'admin', '2026-01-26 10:58:37', 'admin', '2026-01-26 13:46:03', '202350599', '蒋世昌', 1, '2007-04-26', '2', '4', '2023', '13865919875');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016657545433705200', 'admin', '2026-01-26 10:41:21', 'admin', '2026-01-26 17:15:47', '202408719', '黎长娇', 1, '2005-02-23', '4', '1', '2023', '13363021147');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016668968584918300', 'admin', '2026-01-26 19:49:18', 'admin', '2026-01-26 23:32:41', '202397631', '曹雅晴', 2, '2007-05-26', '2', '1', '2022', '17087210937');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016673011837283000', 'admin', '2026-01-26 19:16:02', 'admin', '2026-01-26 22:38:52', '202401242', '吴佩珊', 1, '2006-12-30', '1', '5', '2024', '15828765422');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016674336601114600', 'admin', '2026-01-26 11:45:14', 'admin', '2026-01-26 23:32:40', '202281387', '李秋贵', 1, '2005-07-30', '2', '2', '2022', '13425860282');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016674913385406500', 'admin', '2026-01-26 19:50:10', 'admin', '2026-01-26 22:24:11', '202481739', '林淑琦', 2, '2005-06-21', '2', '4', '2024', '13023033687');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016676321827394000', 'admin', '2026-01-26 10:48:58', 'admin', '2026-01-26 14:32:06', '202371299', '赖政宏', 2, '2007-03-31', '4', '7', '2022', '17787003452');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016678664566066000', 'admin', '2026-01-26 21:40:28', 'admin', '2026-01-26 23:18:19', '202450214', '赖政宏', 1, '2006-12-17', '3', '7', '2023', '15044176786');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016681724226492400', 'admin', '2026-01-26 12:15:56', 'admin', '2026-01-26 16:22:21', '202270473', '张和柔', 1, '2005-12-07', '2', '4', '2022', '1307451675');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016685554370481400', 'admin', '2026-01-26 21:34:47', 'admin', '2026-01-26 23:39:48', '202308118', '林佩芬', 2, '2006-10-15', '4', '7', '2023', '13826010755');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016685637554058200', 'admin', '2026-01-26 08:52:59', 'admin', '2026-01-26 17:35:37', '202261051', '刘敏修', 1, '2007-09-04', '2', '6', '2022', '13151086703');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016688729037212700', 'admin', '2026-01-26 05:12:35', 'admin', '2026-01-26 19:40:47', '202479852', '林宜幸', 2, '2005-04-06', '3', '2', '2023', '15914449746');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016692461991758600', 'admin', '2026-01-26 04:46:19', 'admin', '2026-01-26 17:37:31', '202267100', '陈建菁', 2, '2007-11-16', '1', '5', '2024', '15010328862');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016698154414022100', 'admin', '2026-01-26 17:22:59', 'admin', '2026-01-26 19:02:09', '202408132', '冷育萱', 2, '2007-06-01', '4', '6', '2023', '18284697391');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016699888214711800', 'admin', '2026-01-26 13:15:44', 'admin', '2026-01-26 20:58:10', '202202916', '张亭康', 2, '2005-05-03', '4', '6', '2024', '1847479803');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016701119748740600', 'admin', '2026-01-26 16:08:26', 'admin', '2026-01-26 18:58:45', '202492633', '陈丽勋', 2, '2006-07-18', '4', '4', '2022', '18452040347');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016702288001931300', 'admin', '2026-01-26 05:26:06', 'admin', '2026-01-26 16:24:39', '202289365', '王志鸿', 2, '2007-12-19', '2', '4', '2024', '18887975722');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016702707931422700', 'admin', '2026-01-26 10:25:16', 'admin', '2026-01-26 15:23:15', '202397320', '林志安', 2, '2005-05-04', '3', '6', '2024', '1314538326');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016703912041081900', 'admin', '2026-01-26 02:41:01', 'admin', '2026-01-26 20:32:09', '202391518', '陈振娟', 2, '2005-09-01', '5', '1', '2023', '15267962228');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016704587679339000', 'admin', '2026-01-26 04:31:27', 'admin', '2026-01-26 06:18:54', '202411880', '吴志伟', 2, '2007-02-18', '5', '4', '2024', '15127653070');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016704638993053700', 'admin', '2026-01-26 10:59:05', 'admin', '2026-01-26 17:10:10', '202494971', '樊泰妹', 2, '2005-10-05', '3', '5', '2022', '1510063772');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016707969038260000', 'admin', '2026-01-26 04:00:50', 'admin', '2026-01-26 22:14:26', '202359119', '胡俊贤', 1, '2005-06-07', '2', '8', '2023', '17077203207');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016710063440527000', 'admin', '2026-01-26 16:53:16', 'admin', '2026-01-26 22:17:19', '202284383', '吴冠中', 2, '2005-10-02', '2', '5', '2023', '18195031074');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016710425651444200', 'admin', '2026-01-26 19:37:35', 'admin', '2026-01-26 20:44:57', '202375029', '张志婷', 1, '2007-12-16', '3', '3', '2022', '17630934227');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016710951426311000', 'admin', '2026-01-26 15:50:02', 'admin', '2026-01-26 17:12:37', '202426491', '刘郁紫', 1, '2007-12-23', '3', '4', '2023', '13310688749');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016712048228583700', 'admin', '2026-01-26 16:14:32', 'admin', '2026-01-26 22:04:52', '202368280', '毛伟智', 2, '2005-06-10', '3', '7', '2023', '17732185431');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016713783549529600', 'admin', '2026-01-26 19:51:09', 'admin', '2026-01-26 20:40:53', '202361314', '赖旻瑞', 1, '2007-07-05', '3', '5', '2024', '13210962205');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016720249885663200', 'admin', '2026-01-26 13:04:26', 'admin', '2026-01-26 19:35:30', '202378418', '颜豪燕', 2, '2005-05-28', '4', '5', '2023', '15339931191');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016723938920654800', 'admin', '2026-01-26 06:21:09', 'admin', '2026-01-26 17:55:43', '202307094', '唐筠茂', 2, '2007-04-22', '2', '7', '2023', '17082601240');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016724729178021400', 'admin', '2026-01-26 14:06:05', 'admin', '2026-01-26 22:20:46', '202261009', '孙思洁', 1, '2007-10-10', '2', '6', '2022', '13040440841');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016731604544750600', 'admin', '2026-01-26 17:31:44', 'admin', '2026-01-26 21:41:48', '202332895', '刘皇元', 2, '2007-05-29', '1', '7', '2022', '15961520110');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016733198390001400', 'admin', '2026-01-26 10:08:50', 'admin', '2026-01-26 12:15:32', '202224904', '林怡筠', 2, '2006-05-13', '2', '7', '2023', '13948406995');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016734987786529000', 'admin', '2026-01-26 16:55:33', 'admin', '2026-01-26 20:58:59', '202322261', '陈富友', 2, '2005-07-28', '1', '7', '2023', '15182020363');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016735895877323000', 'admin', '2026-01-26 20:39:47', 'admin', '2026-01-26 22:08:01', '202458818', '陈信天', 2, '2006-02-16', '4', '1', '2024', '13713444468');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016739400478002000', 'admin', '2026-01-26 18:20:41', 'admin', '2026-01-26 23:26:56', '202297507', '姜沛羽', 1, '2005-08-02', '3', '3', '2022', '18820600772');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016743635779242500', 'admin', '2026-01-26 19:38:16', 'admin', '2026-01-26 21:47:27', '202436895', '倪孟勋', 2, '2005-10-24', '1', '7', '2023', '18245380087');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016744536533115600', 'admin', '2026-01-26 22:54:06', 'admin', '2026-01-26 23:08:54', '202355110', '黄孝绍', 1, '2007-09-16', '2', '3', '2023', '18924881226');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016745822682183400', 'admin', '2026-01-26 05:46:54', 'admin', '2026-01-26 06:08:04', '202357600', '赵月俐', 1, '2007-05-07', '3', '2', '2022', '13730308052');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016748579710479600', 'admin', '2026-01-26 21:19:45', 'admin', '2026-01-26 22:21:58', '202386480', '谢柏毅', 1, '2005-04-15', '1', '2', '2024', '18195935101');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016748769754254300', 'admin', '2026-01-26 14:01:32', 'admin', '2026-01-26 23:50:48', '202356398', '张宛真', 1, '2005-09-18', '4', '1', '2024', '17628532406');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016748925497259000', 'admin', '2026-01-26 15:40:57', 'admin', '2026-01-26 23:43:23', '202413193', '曾绿蕙', 1, '2006-10-13', '3', '4', '2023', '13360195954');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016750420951780900', 'admin', '2026-01-26 13:52:21', 'admin', '2026-01-26 22:01:14', '202211853', '涂育霖', 1, '2007-02-15', '4', '4', '2024', '17741660431');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016751636934808000', 'admin', '2026-01-26 21:27:30', 'admin', '2026-01-26 23:51:30', '202310231', '梁慧娟', 2, '2006-10-26', '3', '6', '2023', '15978555756');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016753751724180000', 'admin', '2026-01-26 16:03:22', 'admin', '2026-01-26 16:45:26', '202341879', '林家弘', 1, '2006-07-26', '5', '3', '2024', '13385590737');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016753984301309400', 'admin', '2026-01-26 01:05:47', 'admin', '2026-01-26 21:41:57', '202278662', '陈诗轩', 1, '2007-05-11', '2', '4', '2022', '1877874598');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016754861251836400', 'admin', '2026-01-26 09:06:22', 'admin', '2026-01-26 10:10:38', '202258585', '屈新珠', 1, '2006-09-28', '2', '5', '2023', '17821958607');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016755857877735000', 'admin', '2026-01-26 07:37:00', 'admin', '2026-01-26 10:32:03', '202388729', '宋信礼', 1, '2005-10-05', '1', '4', '2023', '13998702759');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016758426373067300', 'admin', '2026-01-26 21:49:38', 'admin', '2026-01-26 23:12:33', '202317962', '钱玫沛', 2, '2006-05-20', '2', '6', '2023', '15224912470');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016758869018384600', 'admin', '2026-01-26 23:19:41', 'admin', '2026-01-26 23:51:18', '202231127', '林宗雅', 1, '2006-09-17', '1', '5', '2022', '15120358045');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016759300768333800', 'admin', '2026-01-26 00:50:55', 'admin', '2026-01-26 05:43:18', '202421578', '黄雅惠', 2, '2007-09-17', '3', '1', '2022', '18364152140');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016760694444175600', 'admin', '2026-01-26 21:17:57', 'admin', '2026-01-26 22:30:07', '202261895', '陈秀娟', 2, '2007-03-29', '5', '7', '2024', '18489568666');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016761990916883500', 'admin', '2026-01-26 11:39:57', 'admin', '2026-01-26 12:43:30', '202384326', '吴钧帆', 2, '2007-05-12', '1', '4', '2022', '15163654435');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016764604553104000', 'admin', '2026-01-26 17:56:31', 'admin', '2026-01-26 19:10:45', '202453591', '陈盈伦', 1, '2005-10-20', '2', '7', '2023', '15855485001');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016768473627133400', 'admin', '2026-01-26 02:05:33', 'admin', '2026-01-26 20:18:51', '202308544', '朱景维', 2, '2006-10-04', '3', '6', '2022', '18872665273');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016769950504032000', 'admin', '2026-01-26 07:37:11', 'admin', '2026-01-26 18:46:02', '202223272', '张珮珊', 1, '2007-01-03', '5', '6', '2023', '15557954904');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016773641902924000', 'admin', '2026-01-26 01:10:43', 'admin', '2026-01-26 05:42:55', '202458628', '谢和奇', 2, '2005-03-14', '1', '7', '2023', '15058841501');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016776161703624000', 'admin', '2026-01-26 13:30:09', 'admin', '2026-01-26 22:07:01', '202247141', '戴右儒', 1, '2007-04-02', '2', '2', '2023', '15518832352');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016782260841017300', 'admin', '2026-01-26 06:01:01', 'admin', '2026-01-26 13:05:18', '202371246', '吴惠君', 2, '2005-12-13', '2', '6', '2023', '13512423925');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016783943991242500', 'admin', '2026-01-26 04:42:24', 'admin', '2026-01-26 13:54:26', '202242916', '郑雅雯', 2, '2007-01-01', '4', '2', '2023', '15868461645');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016784041312704500', 'admin', '2026-01-26 09:42:18', 'admin', '2026-01-26 18:20:54', '202241855', '冯伟伦', 2, '2006-01-07', '3', '3', '2023', '13684904643');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016784342385494800', 'admin', '2026-01-26 15:15:30', 'admin', '2026-01-26 23:38:05', '202337727', '黄原霞', 1, '2006-05-04', '2', '5', '2023', '18541692228');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016789837748044500', 'admin', '2026-01-26 13:18:10', 'admin', '2026-01-26 17:11:20', '202346553', '陈凯正', 1, '2006-08-06', '1', '3', '2023', '15117003481');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016792954368480000', 'admin', '2026-01-26 22:48:53', 'admin', '2026-01-26 23:07:00', '202386448', '孙莉雯', 2, '2005-05-19', '3', '4', '2023', '15769921828');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016793000801877800', 'admin', '2026-01-26 07:52:11', 'admin', '2026-01-26 12:29:58', '202379475', '童淑如', 2, '2006-12-10', '2', '6', '2023', '15063097069');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016796562466618400', 'admin', '2026-01-26 06:47:31', 'admin', '2026-01-26 06:48:20', '202320932', '张怡如', 1, '2007-02-08', '3', '5', '2022', '18155542250');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016797687499383600', 'admin', '2026-01-26 11:01:48', 'admin', '2026-01-26 13:26:42', '202454505', '胡永升', 2, '2006-04-14', '4', '2', '2024', '17626581641');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016799231987747800', 'admin', '2026-01-26 09:17:16', 'admin', '2026-01-26 21:29:48', '202459935', '陈辰瑶', 1, '2006-12-01', '1', '6', '2023', '13378868649');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016801222450934300', 'admin', '2026-01-26 20:18:21', 'admin', '2026-01-26 20:27:33', '202267515', '王惟君', 2, '2006-09-30', '5', '4', '2024', '18356805266');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016802471542265900', 'admin', '2026-01-26 11:56:43', 'admin', '2026-01-26 20:38:30', '202433505', '周嘉玲', 2, '2005-06-05', '1', '8', '2022', '15536188624');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016811529483862800', 'admin', '2026-01-26 15:45:16', 'admin', '2026-01-26 17:35:21', '202348320', '幸威芳', 2, '2007-10-02', '2', '3', '2024', '1859413285');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016812457391598000', 'admin', '2026-01-26 02:00:20', 'admin', '2026-01-26 06:42:25', '202332697', '邓惟妃', 1, '2005-09-02', '1', '7', '2024', '15994864343');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016814454853663500', 'admin', '2026-01-26 09:01:06', 'admin', '2026-01-26 21:06:19', '202379230', '黄秋吉', 1, '2005-09-28', '4', '5', '2024', '15541056747');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016815948518679300', 'admin', '2026-01-26 16:16:13', 'admin', '2026-01-26 20:07:18', '202489317', '梁佳蓉', 1, '2007-03-31', '2', '4', '2023', '18195334244');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016816905394767400', 'admin', '2026-01-26 21:51:52', 'admin', '2026-01-26 23:12:53', '202225817', '陈秀兴', 2, '2006-02-08', '2', '2', '2024', '13211682145');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016818903233191000', 'admin', '2026-01-26 06:41:22', 'admin', '2026-01-26 23:50:07', '202322298', '黄士勋', 2, '2006-02-21', '2', '8', '2023', '13679899250');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016819168741006000', 'admin', '2026-01-26 12:43:23', 'admin', '2026-01-26 19:51:14', '202244650', '陈欣宜', 1, '2005-03-11', '5', '3', '2024', '15971564825');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016823895982930000', 'admin', '2026-01-26 14:51:52', 'admin', '2026-01-26 22:21:52', '202210649', '林婉季', 2, '2006-10-05', '4', '6', '2023', '13695018398');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016824567979360300', 'admin', '2026-01-26 04:03:55', 'admin', '2026-01-26 23:29:06', '202374558', '陈喜雯', 2, '2005-04-22', '1', '2', '2023', '15692859048');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016825890194840000', 'admin', '2026-01-26 03:31:48', 'admin', '2026-01-26 07:51:58', '202386080', '张佳荣', 2, '2006-11-29', '2', '7', '2022', '1318278844');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016827054796222700', 'admin', '2026-01-26 05:04:15', 'admin', '2026-01-26 16:10:04', '202329090', '林士贤', 1, '2006-11-13', '3', '7', '2024', '13512231809');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016827629118878000', 'admin', '2026-01-26 21:46:51', 'admin', '2026-01-26 22:45:34', '202450252', '詹威如', 1, '2005-12-02', '1', '5', '2022', '13060970835');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016829505669894000', 'admin', '2026-01-26 01:44:49', 'admin', '2026-01-26 09:59:49', '202492083', '王家齐', 1, '2005-02-26', '2', '8', '2023', '1321322725');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016830540913442300', 'admin', '2026-01-26 20:37:52', 'admin', '2026-01-26 23:40:51', '202285287', '苏君如', 1, '2007-11-11', '4', '4', '2024', '17697795438');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016832036261148000', 'admin', '2026-01-26 08:50:53', 'admin', '2026-01-26 15:23:45', '202438100', '郑雅婷', 2, '2006-06-19', '5', '6', '2024', '15255251603');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016832077712346600', 'admin', '2026-01-26 09:26:39', 'admin', '2026-01-26 14:30:24', '202434303', '林柏青', 2, '2007-05-27', '4', '3', '2022', '15138794253');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016832137171934000', 'admin', '2026-01-26 22:18:38', 'admin', '2026-01-26 23:18:52', '202372784', '赖如德', 2, '2006-04-24', '3', '3', '2024', '13418359104');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016835496470130000', 'admin', '2026-01-26 23:54:44', 'admin', '2026-01-26 23:56:50', '202294029', '谢承翰', 1, '2006-11-10', '5', '8', '2022', '1535263205');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016837782483436500', 'admin', '2026-01-26 17:18:55', 'admin', '2026-01-26 22:55:49', '202248728', '吴冠纶', 1, '2007-09-03', '1', '5', '2024', '13635976075');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016837903224261400', 'admin', '2026-01-26 15:26:47', 'admin', '2026-01-26 21:19:04', '202455308', '王玮昀', 2, '2005-05-17', '2', '1', '2024', '18944214568');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016842672773037000', 'admin', '2026-01-26 15:14:00', 'admin', '2026-01-26 21:10:20', '202495050', '赖伟铭', 1, '2006-09-14', '4', '3', '2024', '18324835021');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016843935499127800', 'admin', '2026-01-26 17:25:56', 'admin', '2026-01-26 22:57:30', '202344790', '李佩平', 1, '2007-09-08', '1', '4', '2024', '15229113146');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016845683622576000', 'admin', '2026-01-26 23:54:41', 'admin', '2026-01-26 23:56:50', '202347401', '金采湖', 2, '2006-08-04', '1', '2', '2022', '13295248486');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016846748679907800', 'admin', '2026-01-26 10:36:33', 'admin', '2026-01-26 18:54:50', '202432223', '杨舒宁', 1, '2007-07-30', '5', '5', '2022', '18279703116');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016849039567705900', 'admin', '2026-01-26 09:45:09', 'admin', '2026-01-26 20:02:10', '202252607', '冯欣怡', 2, '2005-05-07', '3', '3', '2024', '15196443235');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016849258688926500', 'admin', '2026-01-26 06:01:54', 'admin', '2026-01-26 11:09:51', '202454288', '倪兆昌', 1, '2006-11-24', '4', '5', '2024', '15078406155');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016854006718612700', 'admin', '2026-01-26 19:37:05', 'admin', '2026-01-26 20:53:22', '202448667', '黄山民', 1, '2006-04-10', '1', '5', '2023', '15067915913');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016855009509127000', 'admin', '2026-01-26 00:50:04', 'admin', '2026-01-26 21:13:04', '202318292', '曾泰松', 2, '2006-08-12', '3', '6', '2022', '18075632200');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016857899522935800', 'admin', '2026-01-26 06:38:10', 'admin', '2026-01-26 23:23:08', '202298788', '吴宛雯', 1, '2007-10-14', '3', '3', '2022', '15917921201');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016858989640750800', 'admin', '2026-01-26 23:58:11', 'admin', '2026-01-26 23:59:59', '202297773', '李静云', 1, '2006-09-23', '4', '8', '2023', '1307159793');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016860114479268400', 'admin', '2026-01-26 16:19:36', 'admin', '2026-01-26 17:01:39', '202203366', '林意卿', 1, '2007-04-30', '3', '4', '2022', '13057012584');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016860621690736000', 'admin', '2026-01-26 03:13:57', 'admin', '2026-01-26 12:09:19', '202200665', '陈昭宪', 2, '2005-04-28', '4', '6', '2024', '13045336294');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016863188845565000', 'admin', '2026-01-26 12:49:58', 'admin', '2026-01-26 22:13:10', '202379866', '张宝柏', 1, '2007-09-18', '3', '4', '2024', '13298388091');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016866969541017900', 'admin', '2026-01-26 17:28:03', 'admin', '2026-01-26 20:50:30', '202453871', '李佑郁', 2, '2006-06-11', '3', '3', '2024', '15275512240');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016866979717108200', 'admin', '2026-01-26 12:30:51', 'admin', '2026-01-26 21:51:11', '202366709', '黄添圣', 2, '2006-06-20', '3', '1', '2022', '15795980102');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016870837365313000', 'admin', '2026-01-26 13:22:07', 'admin', '2026-01-26 19:15:05', '202277984', '陈秀娟', 1, '2005-10-31', '2', '5', '2023', '1389251023');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016871636591498000', 'admin', '2026-01-26 21:15:45', 'admin', '2026-01-26 23:16:06', '202342061', '连怡伶', 1, '2007-01-28', '3', '8', '2023', '18567227798');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016872537338914000', 'admin', '2026-01-26 05:47:21', 'admin', '2026-01-26 18:34:26', '202327137', '林惠如', 2, '2007-04-13', '2', '2', '2023', '13328170961');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016873399585514200', 'admin', '2026-01-26 21:30:43', 'admin', '2026-01-26 23:52:26', '202437834', '夏又娇', 2, '2006-07-14', '1', '5', '2022', '15248504828');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016876726638956800', 'admin', '2026-01-26 05:15:02', 'admin', '2026-01-26 10:55:16', '202406600', '吴家良', 2, '2007-05-07', '5', '1', '2022', '15967708050');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016879202175349500', 'admin', '2026-01-26 03:42:10', 'admin', '2026-01-26 22:09:54', '202335609', '阮睿奇', 2, '2006-05-21', '4', '6', '2022', '13749628287');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016881684517863000', 'admin', '2026-01-26 22:53:59', 'admin', '2026-01-26 23:42:39', '202432295', '赖宇蓉', 2, '2007-07-30', '4', '6', '2023', '15820306669');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016884678141167400', 'admin', '2026-01-26 08:10:16', 'admin', '2026-01-26 08:19:53', '202232648', '蓝惠婷', 2, '2005-03-01', '2', '7', '2022', '17747327797');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016887016609596700', 'admin', '2026-01-26 08:13:32', 'admin', '2026-01-26 20:23:39', '202304675', '张慧娟', 2, '2006-11-19', '4', '5', '2023', '18245824094');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016887086911322600', 'admin', '2026-01-26 07:29:53', 'admin', '2026-01-26 08:05:29', '202308737', '胡万旭', 2, '2007-06-12', '3', '3', '2024', '18417712802');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016897892271926800', 'admin', '2026-01-26 10:41:02', 'admin', '2026-01-26 22:21:45', '202486753', '赖怡君', 2, '2005-05-17', '4', '7', '2024', '17733231299');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016907377503081500', 'admin', '2026-01-26 13:13:11', 'admin', '2026-01-26 13:55:39', '202296860', '林嘉丰', 2, '2006-01-08', '3', '1', '2022', '15041816745');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016908887491639600', 'admin', '2026-01-26 11:01:45', 'admin', '2026-01-26 13:03:37', '202494261', '黄如娇', 2, '2006-02-28', '2', '1', '2022', '18525649288');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016909940985080000', 'admin', '2026-01-26 23:35:30', 'admin', '2026-01-26 23:54:51', '202222369', '陈登芳', 1, '2005-06-14', '4', '3', '2022', '15947566225');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016910549843449000', 'admin', '2026-01-26 13:52:41', 'admin', '2026-01-26 21:34:37', '202416886', '李书玮', 2, '2005-03-22', '3', '7', '2024', '13032821991');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016912289832707600', 'admin', '2026-01-26 03:58:55', 'admin', '2026-01-26 07:37:57', '202393577', '杨佳蓉', 1, '2007-06-28', '2', '5', '2023', '13728721850');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016913306625969000', 'admin', '2026-01-26 04:27:51', 'admin', '2026-01-26 16:32:27', '202385190', '陈重蓁', 1, '2006-04-19', '3', '3', '2024', '18796446364');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016913346997740800', 'admin', '2026-01-26 10:02:43', 'admin', '2026-01-26 15:55:16', '202271791', '乔逸凡', 1, '2007-11-08', '5', '7', '2022', '13613243209');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016915290880967000', 'admin', '2026-01-26 17:12:38', 'admin', '2026-01-26 19:34:11', '202448364', '陈佳静', 1, '2007-11-17', '3', '1', '2024', '15565734822');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016917532787497700', 'admin', '2026-01-26 11:21:29', 'admin', '2026-01-26 22:46:44', '202225452', '陈茂吟', 2, '2006-08-26', '4', '7', '2024', '13071694042');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016918565497732600', 'admin', '2026-01-26 02:12:49', 'admin', '2026-01-26 06:59:38', '202285760', '林志安', 1, '2005-08-28', '4', '8', '2024', '18725373005');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016919978315759900', 'admin', '2026-01-26 23:48:20', 'admin', '2026-01-26 23:57:00', '202226477', '陈雅顺', 2, '2007-09-17', '3', '6', '2024', '18499540227');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016920573100054500', 'admin', '2026-01-26 11:38:08', 'admin', '2026-01-26 13:28:29', '202252408', '王嘉旭', 2, '2005-11-29', '3', '5', '2024', '18961095296');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016923932412675800', 'admin', '2026-01-26 22:39:33', 'admin', '2026-01-26 23:58:37', '202326029', '林玫勇', 1, '2006-04-19', '4', '4', '2022', '15287957146');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016924479734786600', 'admin', '2026-01-26 09:27:30', 'admin', '2026-01-26 14:54:53', '202254898', '林辛慈', 1, '2006-06-29', '2', '3', '2024', '18840843986');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016926398574853000', 'admin', '2026-01-26 01:36:54', 'admin', '2026-01-26 18:20:29', '202431984', '蔡政昆', 1, '2007-04-21', '3', '3', '2024', '18113772784');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016926827420365300', 'admin', '2026-01-26 19:58:19', 'admin', '2026-01-26 20:59:54', '202333742', '林志群', 1, '2007-02-28', '2', '2', '2022', '18913115288');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016927805201977900', 'admin', '2026-01-26 05:56:43', 'admin', '2026-01-26 16:51:24', '202401296', '林宜臻', 1, '2007-08-02', '2', '7', '2022', '13645266066');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016929997186623200', 'admin', '2026-01-26 18:53:29', 'admin', '2026-01-26 21:58:27', '202378536', '陈怡婷', 2, '2005-03-23', '2', '5', '2023', '17856973792');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016930718723298600', 'admin', '2026-01-26 23:28:42', 'admin', '2026-01-26 23:49:27', '202364563', '陈彦霞', 1, '2005-08-12', '3', '4', '2022', '13462022523');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016931388851542800', 'admin', '2026-01-26 15:53:27', 'admin', '2026-01-26 20:37:01', '202451385', '王雪玲', 1, '2005-05-12', '4', '2', '2023', '18053526640');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016931396063495400', 'admin', '2026-01-26 23:49:55', 'admin', '2026-01-26 23:51:03', '202457501', '黄雅惠', 1, '2007-04-27', '4', '4', '2022', '18074187420');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016934065980298200', 'admin', '2026-01-26 11:30:35', 'admin', '2026-01-26 21:18:30', '202336240', '周秀玲', 2, '2005-03-23', '4', '4', '2022', '13766843955');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016937478339094000', 'admin', '2026-01-26 14:30:43', 'admin', '2026-01-26 16:43:31', '202415031', '朱奕发', 1, '2007-10-31', '4', '6', '2023', '13045870618');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016941035146317300', 'admin', '2026-01-26 10:48:42', 'admin', '2026-01-26 19:15:09', '202294260', '李佳雅', 1, '2006-03-02', '5', '5', '2022', '13842872916');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016944126780373800', 'admin', '2026-01-26 14:50:19', 'admin', '2026-01-26 16:55:45', '202382105', '张轩爱', 1, '2006-07-25', '2', '2', '2022', '17838539114');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016952370418236400', 'admin', '2026-01-26 13:56:22', 'admin', '2026-01-26 17:39:52', '202450300', '黄常芳', 1, '2006-08-21', '5', '3', '2022', '13249875650');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016954778350338000', 'admin', '2026-01-26 11:03:36', 'admin', '2026-01-26 16:22:34', '202438356', '王柏弘', 2, '2007-01-23', '1', '7', '2024', '18111244960');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016955142702115300', 'admin', '2026-01-26 19:23:16', 'admin', '2026-01-26 21:40:27', '202479651', '文真玫', 1, '2006-04-05', '2', '6', '2023', '18294824268');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016956826700519700', 'admin', '2026-01-26 18:12:22', 'admin', '2026-01-26 21:38:23', '202260869', '谢文琳', 2, '2006-12-14', '5', '5', '2024', '18574750448');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016965109198168600', 'admin', '2026-01-26 02:31:03', 'admin', '2026-01-26 11:53:04', '202439370', '黄宗翰', 2, '2007-05-23', '2', '3', '2022', '13917401130');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016966643084857000', 'admin', '2026-01-26 02:23:15', 'admin', '2026-01-26 16:05:31', '202391438', '黄丽江', 1, '2005-11-16', '3', '8', '2024', '15148951288');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016967548649368800', 'admin', '2026-01-26 17:08:27', 'admin', '2026-01-26 22:23:35', '202320606', '方肇俊', 1, '2007-03-14', '2', '2', '2023', '13115519811');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016969940981085400', 'admin', '2026-01-26 18:51:40', 'admin', '2026-01-26 21:57:31', '202203130', '罗筱男', 1, '2007-11-06', '2', '4', '2023', '13819154839');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016973874174486800', 'admin', '2026-01-26 19:42:59', 'admin', '2026-01-26 23:37:58', '202431205', '杨玮轩', 2, '2005-08-20', '1', '3', '2023', '17826947626');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016974937516699000', 'admin', '2026-01-26 00:49:22', 'admin', '2026-01-26 06:25:23', '202489088', '林家华', 2, '2005-09-16', '4', '2', '2023', '17667264665');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016982111653497000', 'admin', '2026-01-26 23:47:41', 'admin', '2026-01-26 23:50:56', '202430172', '刘千意', 1, '2005-11-26', '4', '3', '2022', '15524858373');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016982144772151800', 'admin', '2026-01-26 03:20:07', 'admin', '2026-01-26 12:42:21', '202420652', '洪淑俐', 2, '2005-04-30', '1', '4', '2023', '15395850677');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016984015348436000', 'admin', '2026-01-26 15:05:38', 'admin', '2026-01-26 22:34:45', '202459720', '邱伟伦', 1, '2005-04-14', '2', '6', '2023', '18678602267');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016984341932168200', 'admin', '2026-01-26 08:22:15', 'admin', '2026-01-26 20:55:48', '202487648', '李文贞', 2, '2005-03-15', '5', '8', '2024', '13932961493');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016984800713999000', 'admin', '2026-01-26 22:28:56', 'admin', '2026-01-26 22:55:22', '202353271', '林碧惠', 1, '2005-12-29', '2', '4', '2022', '1822838542');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016985552004487700', 'admin', '2026-01-26 17:10:49', 'admin', '2026-01-26 18:15:57', '202367021', '陈雅云', 1, '2005-08-25', '1', '7', '2022', '17867550155');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016988450923570700', 'admin', '2026-01-26 12:49:18', 'admin', '2026-01-26 21:30:05', '202480013', '郎百启', 2, '2007-01-20', '3', '1', '2022', '18857918391');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016990632094994700', 'admin', '2026-01-26 11:13:41', 'admin', '2026-01-26 13:51:15', '202327406', '柳湘旭', 1, '2005-06-21', '1', '6', '2022', '18610419895');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016991330098180400', 'admin', '2026-01-26 06:02:30', 'admin', '2026-01-26 22:59:57', '202404983', '王与馨', 1, '2006-04-08', '1', '5', '2022', '15538683350');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016993571122708000', 'admin', '2026-01-26 15:30:03', 'admin', '2026-01-26 21:04:44', '202483602', '陈敏燕', 1, '2007-06-13', '4', '6', '2023', '1771351007');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016996241876952000', 'admin', '2026-01-26 15:23:00', 'admin', '2026-01-26 20:22:57', '202362201', '杨奇真', 2, '2005-08-15', '3', '4', '2024', '17765312702');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2016998059531566300', 'admin', '2026-01-26 02:15:51', 'admin', '2026-01-26 07:34:13', '202458632', '林国容', 2, '2005-06-23', '5', '3', '2023', '18310105835');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2017002934397792300', 'admin', '2026-01-26 09:21:32', 'admin', '2026-01-26 21:46:01', '202409676', '陈山菱', 2, '2005-06-29', '2', '4', '2024', '18082952651');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2017004293241351000', 'admin', '2026-01-26 18:30:20', 'admin', '2026-01-26 22:18:41', '202253268', '冯欣怡', 1, '2005-10-17', '3', '6', '2023', '17027264163');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2017008557842612700', 'admin', '2026-01-26 13:39:33', 'admin', '2026-01-26 15:23:17', '202275048', '李妙峰', 2, '2006-07-13', '1', '4', '2022', '18373694071');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2017016831503545300', 'admin', '2026-01-26 21:13:05', 'admin', '2026-01-26 23:13:32', '202208106', '韩意威', 1, '2005-05-19', '4', '3', '2022', '17784990662');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2017016938746265600', 'admin', '2026-01-26 08:06:28', 'admin', '2026-01-26 12:04:37', '202427457', '黄建妃', 1, '2006-11-23', '3', '6', '2022', '18099060761');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2017022998813277200', 'admin', '2026-01-26 14:17:02', 'admin', '2026-01-26 17:24:27', '202393355', '谢柏毅', 2, '2005-02-10', '3', '5', '2024', '13412263604');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2017024760698764800', 'admin', '2026-01-26 14:00:48', 'admin', '2026-01-26 14:47:55', '202309030', '夏宗泉', 2, '2007-01-22', '3', '1', '2022', '18390194815');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2017025144747167200', 'admin', '2026-01-26 20:15:20', 'admin', '2026-01-26 21:58:14', '202228454', '王秀玲', 1, '2007-11-18', '1', '6', '2024', '13439961328');
+INSERT INTO `student_info` (`id`, `create_by`, `create_time`, `update_by`, `update_time`, `student_no`, `name`, `sex`, `birthday`, `major`, `class_name`, `year`, `phone`) VALUES
+	('2017026793741686300', 'admin', '2026-01-26 09:46:13', 'admin', '2026-01-26 11:54:32', '202499467', '简泓茜', 1, '2007-07-31', '3', '3', '2023', '15862785126');
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
