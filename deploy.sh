@@ -27,3 +27,6 @@ echo "========================================================"
 echo " Deployment Successful!"
 echo " check logs with: docker logs -f jeecg-boot-system"
 echo "========================================================"
+
+# 3.显示后端日志
+docker logs -f jeecg-boot-system

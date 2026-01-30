@@ -35,13 +35,13 @@ public class StudentGrade extends JeecgEntity {
     private java.lang.String studentName;
 
 	/**课程*/
-	@Excel(name = "课程", width = 15)
+	@Excel(name = "课程", width = 15, dicCode = "course")
     @Schema(description = "课程")
     @Dict(dicCode = "course")
     private java.lang.String course;
 
 	/**成绩*/
-	@Excel(name = "成绩", width = 15)
+	@Excel(name = "成绩", width = 15, type = 3)
     @Schema(description = "成绩")
     private java.lang.Double score;
 

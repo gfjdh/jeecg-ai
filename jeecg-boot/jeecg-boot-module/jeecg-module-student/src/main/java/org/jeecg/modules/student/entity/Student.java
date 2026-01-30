@@ -64,7 +64,7 @@ public class Student extends JeecgEntity {
     /**
      * 专业
      */
-    @Excel(name = "专业", width = 15)
+    @Excel(name = "专业", width = 15, dicCode = "major")
     @Schema(description = "专业")
     @Dict(dicCode = "major")
     private String major;
