@@ -113,10 +113,12 @@
     const actions = [
       {
         label: '编辑',
+        auth: 'edit',
         onClick: handleEdit.bind(null, record),
       },
       {
         label: '删除',
+        auth: 'delete',
         popConfirm: {
           title: '是否确认删除',
           confirm: handleDelete.bind(null, record),
@@ -126,6 +128,7 @@
     if (props.hasDetail) {
       actions.unshift({
         label: '详情',
+        auth: 'view',
         onClick: handleDetail.bind(null, record),
       });
     }

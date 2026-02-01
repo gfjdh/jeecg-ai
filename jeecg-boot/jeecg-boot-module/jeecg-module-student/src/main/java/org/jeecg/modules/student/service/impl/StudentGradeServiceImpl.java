@@ -30,7 +30,16 @@ public class StudentGradeServiceImpl extends ServiceImpl<StudentGradeMapper, Stu
 
     @Override
     public IPage<StudentGrade> queryPageList(StudentGrade studentGrade, Integer pageNo, Integer pageSize, java.util.Map<String, String[]> parameterMap) {
+        // 解决多表关联查询 student_no 字段冲突
+        String studentNo = studentGrade.getStudentNo();
+        studentGrade.setStudentNo(null);
         QueryWrapper<StudentGrade> queryWrapper = QueryGenerator.initQueryWrapper(studentGrade, parameterMap);
+        // 恢复并手动添加带别名的查询条件
+        if(studentNo != null && !studentNo.isEmpty()){
+            studentGrade.setStudentNo(studentNo);
+            queryWrapper.like("g.student_no", studentNo.replace("*", ""));
+        }
+        
         // 自定义查询条件: 年级和班级 (关联表字段)
         if(studentGrade.getYear() != null && !studentGrade.getYear().isEmpty()){
             // 去除前端传值的*号，避免与mybatis-plus的like方法重复
