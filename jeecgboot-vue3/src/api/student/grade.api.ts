@@ -37,7 +37,11 @@ export const getStudentGradeList = (params) => {
  */
 export const saveOrUpdateStudentGrade = (params, isUpdate) => {
   let url = isUpdate ? Api.edit : Api.save;
-  return defHttp.put({ url: url, params });
+  if (isUpdate) {
+    return defHttp.put({ url: url, params });
+  } else {
+    return defHttp.post({ url: url, params });
+  }
 };
 
 /**

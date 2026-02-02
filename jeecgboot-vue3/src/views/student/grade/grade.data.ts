@@ -47,6 +47,7 @@ export const searchFormSchema: FormSchema[] = [
     field: 'studentNo',
     label: '学号',
     component: 'Input',
+    auth: 'studentGrade:analysis',
     colProps: { span: 6 },
   },
   {
@@ -63,12 +64,14 @@ export const searchFormSchema: FormSchema[] = [
     field: 'year',
     label: '年级',
     component: 'Input',
+    auth: 'studentGrade:analysis',
     colProps: { span: 6 },
   },
   {
     field: 'className',
     label: '班级',
     component: 'Input',
+    auth: 'studentGrade:analysis',
     colProps: { span: 6 },
   }
 ];

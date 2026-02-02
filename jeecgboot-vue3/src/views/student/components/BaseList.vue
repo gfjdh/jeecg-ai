@@ -3,10 +3,10 @@
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
         <slot name="toolbar"></slot>
-        <Button type="primary" preIcon="ant-design:plus-outlined" @click="handleAdd">新增</Button>
+        <Button type="primary" preIcon="ant-design:plus-outlined" v-if="hasPermission('add')" @click="handleAdd">新增</Button>
         <Button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</Button>
         <a-upload name="file" :showUploadList="false" :customRequest="(file) => onImportXls(file)">
-          <Button type="primary" preIcon="ant-design:import-outlined">导入</Button>
+          <Button type="primary" preIcon="ant-design:import-outlined" v-if="hasPermission('importExcel')">导入</Button>
         </a-upload>
         <Dropdown
           v-if="selectedRowKeys.length > 0"
@@ -55,7 +55,9 @@
   import { useMethods } from '/@/hooks/system/useMethods';
   import { FormSchema } from '/@/components/Form/index';
   import BaseModal from './BaseModal.vue';
+  import { usePermission } from '/@/hooks/web/usePermission'
 
+  const { hasPermission } = usePermission();
   const emit = defineEmits(['viewDetail']);
 
   const props = defineProps({

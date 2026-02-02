@@ -19,7 +19,7 @@
       :modalGetDetailApi="getStudentGradeById"
     >
       <template #toolbar>
-        <Button type="primary" @click="openBatchModal">批量录入</Button>
+        <Button type="primary" v-if="hasPermission('studentGrade:batchAdd')" @click="openBatchModal">批量录入</Button>
       </template>
     </BaseList>
     <BatchGradeModal @register="registerBatchModal" @success="handleBatchSuccess" />
@@ -40,6 +40,9 @@
   import BaseList from '../components/BaseList.vue';
   import BatchGradeModal from './BatchGradeModal.vue';
   import GradeAnalysis from './GradeAnalysis.vue';
+  import { usePermission } from '/@/hooks/web/usePermission'
+
+  const { hasPermission } = usePermission();
 
   const baseListRef = ref();
   const [registerBatchModal, { openModal: openBatchModal }] = useModal();

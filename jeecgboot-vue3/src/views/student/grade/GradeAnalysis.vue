@@ -1,5 +1,5 @@
 <template>
-  <Card :bordered="false" title="成绩分析" class="mb-4">
+  <Card :bordered="false" title="成绩分析" class="mb-4" v-if="hasPermission('studentGrade:analysis')">
     <template #extra>
       <Select
         v-model:value="currentCourse"
@@ -49,7 +49,9 @@
   import { Card, Row, Col, Statistic, Select, Divider } from 'ant-design-vue';
   import { useECharts } from '/@/hooks/web/useECharts';
   import { getStudentGradeList } from '/@/api/student/grade.api';
+  import { usePermission } from '/@/hooks/web/usePermission'
 
+  const { hasPermission } = usePermission();
   // 用于前端统计分析的数据缓存
   const allData = ref<any[]>([]);
   const currentCourse = ref<string | undefined>(undefined);

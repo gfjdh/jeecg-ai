@@ -55,7 +55,7 @@
   import { Button, message, Select } from 'ant-design-vue';
   import { JDictSelectTag } from '/@/components/Form';
   import { getStudentList, getYearList, getClassListByYear } from '/@/api/student/student.api';
-  import { saveOrUpdateStudentGrade } from '/@/api/student/grade.api';
+  import { saveOrUpdateStudentGrade, getStudentGradeList } from '/@/api/student/grade.api';
 
   const emit = defineEmits(['success', 'register']);
   const [registerModal, { setModalProps, closeModal }] = useModalInner(() => {
@@ -177,9 +177,14 @@
 
     loading.value = true;
     try {
-      // 查询学生列表
-      const res = await getStudentList({ year: formState.year, className: formState.className, pageSize: 1000 });
-      const list = res.records || [];
+      // Parallelly fetch students and grades
+      const [studentRes, gradeRes] = await Promise.all([
+        getStudentList({ year: formState.year, className: formState.className, pageSize: 1000 }),
+        getStudentGradeList({ course: formState.course, year: formState.year, className: formState.className, pageSize: 1000 })
+      ]);
+
+      const list = studentRes.records || [];
+      const gradeList = gradeRes.records || [];
       
       if (list.length === 0) {
         message.warning('未找到该班级的学生');
@@ -187,17 +192,21 @@
         return;
       }
 
-      dataSource.value = list.map(item => ({
-        id: item.id, // 唯一标识，JVxeTable需要
-        studentNo: item.studentNo,
-        name: item.name,
-        className: item.className,
-        course: formState.course,
-        score: null
-      }));
+      dataSource.value = list.map(item => {
+        const grade = gradeList.find(g => g.studentNo === item.studentNo);
+        return {
+          id: item.id, // 唯一标识，JVxeTable需要
+          studentNo: item.studentNo,
+          name: item.name,
+          className: item.className,
+          course: formState.course,
+          score: grade ? grade.score : null,
+          gradeId: grade ? grade.id : null
+        };
+      });
     } catch (e) {
       console.error(e);
-      message.error('加载学生失败');
+      message.error('加载学生或成绩失败');
     } finally {
       loading.value = false;
     }
@@ -222,11 +231,22 @@
       }
       
       try {
-          await saveOrUpdateStudentGrade({
+          const isUpdate = !!row.gradeId;
+          const params: any = {
             studentNo: row.studentNo,
             course: formState.course,
             score: row.score
-          }, false);
+          };
+          if (isUpdate) {
+             params.id = row.gradeId;
+          }
+
+          const result = await saveOrUpdateStudentGrade(params, isUpdate);
+          if (!isUpdate && result) {
+             if (result && result.id) {
+               row.gradeId = result.id;
+             }
+          }
       } catch (e) {
           console.error(e);
       }

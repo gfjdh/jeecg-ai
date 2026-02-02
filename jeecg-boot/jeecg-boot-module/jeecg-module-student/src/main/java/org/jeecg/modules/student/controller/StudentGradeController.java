@@ -4,6 +4,7 @@ import java.util.Arrays;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.modules.student.entity.StudentGrade;
@@ -67,7 +68,7 @@ public class StudentGradeController extends JeecgController<StudentGrade, IStude
      */
     @AutoLog(value = "学生成绩-添加", operateType = CommonConstant.OPERATE_TYPE_2)
     @Operation(summary = "学生成绩-添加")
-    @RequiresRoles({"aiadmin","admin"})
+    @RequiresPermissions("edit")
     @PostMapping(value = "/add")
     public Result<String> add(@RequestBody StudentGrade studentGrade) {
         studentGradeService.save(studentGrade);
@@ -81,7 +82,7 @@ public class StudentGradeController extends JeecgController<StudentGrade, IStude
      */
     @AutoLog(value = "学生成绩-批量添加", operateType = CommonConstant.OPERATE_TYPE_2)
     @Operation(summary = "学生成绩-批量添加")
-    @RequiresRoles({"aiadmin","admin"})
+    @RequiresPermissions("edit")
     @PostMapping(value = "/addBatch")
     public Result<String> addBatch(@RequestBody java.util.List<StudentGrade> studentGrades) {
         studentGradeService.saveBatch(studentGrades);
@@ -96,7 +97,7 @@ public class StudentGradeController extends JeecgController<StudentGrade, IStude
      */
     @AutoLog(value = "学生成绩-编辑", operateType = CommonConstant.OPERATE_TYPE_3)
     @Operation(summary = "学生成绩-编辑")
-    @RequiresRoles({"aiadmin","admin"})
+    @RequiresPermissions("edit")
     @PutMapping(value = "/edit")
     public Result<String> edit(@RequestBody StudentGrade studentGrade) {
         studentGradeService.updateById(studentGrade);
@@ -111,7 +112,7 @@ public class StudentGradeController extends JeecgController<StudentGrade, IStude
      */
     @AutoLog(value = "学生成绩-通过id删除", operateType = CommonConstant.OPERATE_TYPE_4)
     @Operation(summary = "学生成绩-通过id删除")
-    @RequiresRoles({"aiadmin","admin"})
+    @RequiresPermissions("delete")
     @DeleteMapping(value = "/delete")
     public Result<String> delete(@RequestParam(name="id",required=true) String id) {
         studentGradeService.removeById(id);
@@ -126,7 +127,7 @@ public class StudentGradeController extends JeecgController<StudentGrade, IStude
      */
     @Operation(summary = "学生成绩-批量删除")
     @DeleteMapping(value = "/deleteBatch")
-    @RequiresRoles({"aiadmin","admin"})
+    @RequiresPermissions("delete")
     public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
         this.studentGradeService.removeByIds(Arrays.asList(ids.split(",")));
         return Result.ok("批量删除成功!");
@@ -139,6 +140,7 @@ public class StudentGradeController extends JeecgController<StudentGrade, IStude
      * @return
      */
     @Operation(summary = "学生成绩-通过id查询")
+    @PermissionData(pageComponent="student/grade/index")
     @GetMapping(value = "/queryById")
     public Result<StudentGrade> queryById(@RequestParam(name="id",required=true) String id) {
         StudentGrade studentGrade = studentGradeService.getById(id);
@@ -167,7 +169,7 @@ public class StudentGradeController extends JeecgController<StudentGrade, IStude
      * @param response
      * @return
      */
-    @RequiresRoles({"aiadmin","admin"})
+    @RequiresPermissions("importExcel")
     @PostMapping(value = "/importExcel")
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, StudentGrade.class);
