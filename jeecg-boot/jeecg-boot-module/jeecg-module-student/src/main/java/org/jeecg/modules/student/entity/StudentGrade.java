@@ -41,7 +41,7 @@ public class StudentGrade extends JeecgEntity {
     private java.lang.String course;
 
 	/**成绩*/
-	@Excel(name = "成绩", width = 15, type = 3)
+	@Excel(name = "成绩", width = 15)
     @Schema(description = "成绩")
     private java.lang.Double score;
 

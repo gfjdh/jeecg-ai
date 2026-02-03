@@ -5,7 +5,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.modules.student.entity.StudentGrade;
 import org.jeecg.modules.student.service.IStudentGradeService;
@@ -158,6 +157,7 @@ public class StudentGradeController extends JeecgController<StudentGrade, IStude
      * @param student
      */
     @RequestMapping(value = "/exportXls")
+    @PermissionData
     public ModelAndView exportXls(HttpServletRequest request, StudentGrade studentGrade) {
         return super.exportXls(request, studentGrade, StudentGrade.class, "学生成绩");
     }
