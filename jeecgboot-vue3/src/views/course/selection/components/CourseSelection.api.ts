@@ -6,6 +6,7 @@ enum Api {
   Available = '/course/studentCourseRush/available',
   Rush = '/course/studentCourseRush/rush',
   RushStatus = '/course/studentCourseRush/rush/status',
+  Drop = '/course/studentCourseRush/drop',
 }
 
 export const getSummary = () => {
@@ -22,6 +23,10 @@ export const getAvailableCourses = (params?: { subject?: string }) => {
 
 export const rushCourse = (courseId: string) => {
   return defHttp.post({ url: Api.Rush, data: { courseId } });
+};
+
+export const dropCourse = (courseId: string) => {
+  return defHttp.post({ url: Api.Drop, data: { courseId } });
 };
 
 export const getRushStatus = (courseId: string) => {

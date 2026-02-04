@@ -4,6 +4,7 @@
     <BasicTable @register="registerTable" @row-click="handleRowClick">
       <template #action="{ record }">
          <a-button 
+           v-if="!selectedCourseIds.has(record.courseId)"
            type="primary" 
            danger 
            size="small" 
@@ -12,15 +13,25 @@
          >
            选课
          </a-button>
+         <a-button 
+           v-else
+           type="primary" 
+           ghost
+           size="small" 
+           :loading="record.dropping"
+           @click.stop="handleDrop(record)"
+         >
+           退课
+         </a-button>
       </template>
     </BasicTable>
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
+  import { defineComponent, ref, onMounted } from 'vue';
   import { BasicTable, useTable } from '/@/components/Table';
-  import { getAvailableCourses, rushCourse, getRushStatus } from './CourseSelection.api';
+  import { getAvailableCourses, rushCourse, dropCourse, getRushStatus, getSchedule } from './CourseSelection.api';
   import { message, Button } from 'ant-design-vue';
   import { columns, searchFormSchema } from './CourseList.data';
 
@@ -29,6 +40,8 @@
     components: { BasicTable, AButton: Button },
     emits: ['refresh', 'preview'],
     setup(_, { emit }) {
+      const selectedCourseIds = ref<Set<string>>(new Set());
+
       const [registerTable, { reload }] = useTable({
         title: '可选课程',
         api: getAvailableCourses,
@@ -40,6 +53,22 @@
         }
       });
 
+      // 获取已选课程ID列表
+      const fetchSelectedCourses = async () => {
+        try {
+          const res = await getSchedule();
+          if (res && res.records) {
+             selectedCourseIds.value = new Set(res.records.map((item: any) => item.courseId));
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      };
+
+      onMounted(() => {
+        fetchSelectedCourses();
+      });
+
       const pollStatus = async (courseId: string, record: any) => {
           try {
              const res = await getRushStatus(courseId);
@@ -49,6 +78,7 @@
              } else if (res === 'SUCCESS') {
                  message.success('选课成功！');
                  record.rushing = false;
+                 await fetchSelectedCourses();
                  reload();
                  emit('refresh');
              } else {
@@ -59,6 +89,7 @@
              record.rushing = false; 
           }
       };
+
 
       const handleRush = async (record: any) => {
          record.rushing = true;
@@ -77,11 +108,24 @@
          }
       };
 
+      const handleDrop = async (record: any) => {
+         record.dropping = true;
+         try {
+            await dropCourse(record.courseId);
+            record.dropping = false;
+            await fetchSelectedCourses();
+            reload();
+            emit('refresh');
+         } catch (e) {
+            record.dropping = false;
+         }
+      };
+
       const handleRowClick = (record: any) => {
         emit('preview', record);
       };
       
-      return { registerTable, handleRush, handleRowClick };
+      return { registerTable, handleRush, handleDrop, handleRowClick, selectedCourseIds };
     },
   });
 </script>

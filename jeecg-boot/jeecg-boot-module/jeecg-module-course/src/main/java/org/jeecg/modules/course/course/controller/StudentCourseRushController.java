@@ -178,4 +178,19 @@ public class StudentCourseRushController {
         return Result.OK(status.toString());
     }
 
+    /**
+     * 退课接口
+     */
+    @PostMapping(value = "/drop")
+    public Result<String> drop(@RequestBody Map<String, String> json) {
+        String courseId = json.get("courseId");
+        if (courseId == null) return Result.error("缺少课程ID");
+        
+        LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
+        studentCourseSelectionService.remove(new LambdaQueryWrapper<StudentCourseSelection>()
+                .eq(StudentCourseSelection::getStudentNo, user.getUsername())
+                .eq(StudentCourseSelection::getCourseId, courseId));
+        return Result.OK("退课成功");
+    }
+
 }

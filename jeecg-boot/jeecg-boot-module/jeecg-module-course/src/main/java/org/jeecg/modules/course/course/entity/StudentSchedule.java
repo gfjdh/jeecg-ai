@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
- * @Description: 学生课表实体
+ * @Description: 学生课表实体(视图)
  * @Author: jeecg-boot
  * @Date:   2026-02-04
  * @Version: V1.0

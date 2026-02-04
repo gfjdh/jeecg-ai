@@ -4,10 +4,10 @@ export const columns: BasicColumn[] = [
   {
     title: '科目',
     dataIndex: 'course_dictText',
-    width: 150,
+    width: 120,
   },
   {
-    title: '教师',
+    title: '教师工号',
     dataIndex: 'teacherNo',
     width: 100,
   },
@@ -24,7 +24,7 @@ export const columns: BasicColumn[] = [
   {
     title: '容量',
     dataIndex: 'capacity',
-    width: 50,
+    width: 80,
   },
   {
     title: '星期',
