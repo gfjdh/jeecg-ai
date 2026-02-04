@@ -8,7 +8,7 @@ export const columns: BasicColumn[] = [
    {
     title: '专业ID',
     align:"center",
-    dataIndex: 'majorId'
+    dataIndex: 'majorId_dictText'
    },
    {
     title: '适用入学年份',
@@ -44,7 +44,11 @@ export const formSchema: FormSchema[] = [
   {
     label: '专业ID',
     field: 'majorId',
-    component: 'InputNumber',
+    component: 'JDictSelectTag',
+    componentProps: {
+       dictCode: 'major',
+       placeholder: '请选择专业',
+     },
   },
   {
     label: '适用入学年份',

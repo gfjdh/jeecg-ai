@@ -1,15 +1,20 @@
 package org.jeecg.modules.course.course.entity;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
+import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import org.jeecg.common.constant.ProvinceCityArea;
+import org.jeecg.common.util.SpringContextUtils;
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.jeecg.common.aspect.annotation.Dict;
 import org.jeecgframework.poi.excel.annotation.Excel;
+import org.jeecg.common.aspect.annotation.Dict;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -54,15 +59,18 @@ public class ClassCourseType implements Serializable {
 	/**班号*/
 	@Excel(name = "班号", width = 15)
     @Schema(description = "班号")
-    @TableField("class")
-    private java.lang.Integer classId;
+    private java.lang.String classId;
 	/**课程号*/
 	@Excel(name = "课程号", width = 15)
     @Schema(description = "课程号")
-    private java.lang.Integer courseId;
+    private java.lang.String courseId;
 	/**课程类型*/
 	@Excel(name = "课程类型", width = 15, dicCode = "course_type")
     @Dict(dicCode = "course_type")
     @Schema(description = "课程类型")
     private java.lang.Integer courseType;
+	/**年级*/
+	@Excel(name = "年级", width = 15)
+    @Schema(description = "年级")
+    private java.lang.String year;
 }

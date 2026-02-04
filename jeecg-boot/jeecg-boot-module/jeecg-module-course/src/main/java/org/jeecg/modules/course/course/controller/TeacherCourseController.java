@@ -37,6 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
 import org.jeecg.common.aspect.annotation.AutoLog;
+import org.jeecg.common.aspect.annotation.PermissionData;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 
 
@@ -67,6 +68,7 @@ public class TeacherCourseController {
 	 */
 	//@AutoLog(value = "教师课程安排-分页列表查询")
 	@Operation(summary="教师课程安排-分页列表查询")
+	@PermissionData(pageComponent="course/TeacherCourseList")
 	@GetMapping(value = "/list")
 	public Result<IPage<TeacherCourse>> queryPageList(TeacherCourse teacherCourse,
 								   @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
@@ -91,6 +93,10 @@ public class TeacherCourseController {
 	public Result<String> add(@RequestBody TeacherCoursePage teacherCoursePage) {
 		TeacherCourse teacherCourse = new TeacherCourse();
 		BeanUtils.copyProperties(teacherCoursePage, teacherCourse);
+		LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
+		if (!SecurityUtils.getSubject().isPermitted("teacherCourse:edit")) {
+			teacherCourse.setTeacherNo(sysUser.getUsername());
+		}
 		teacherCourseService.saveMain(teacherCourse, teacherCoursePage.getClassTimeList());
 		return Result.OK("添加成功！");
 	}
@@ -111,6 +117,10 @@ public class TeacherCourseController {
 		TeacherCourse teacherCourseEntity = teacherCourseService.getById(teacherCourse.getId());
 		if(teacherCourseEntity==null) {
 			return Result.error("未找到对应数据");
+		}
+		LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
+		if (!SecurityUtils.getSubject().isPermitted("teacherCourse:edit")) {
+			teacherCourse.setTeacherNo(sysUser.getUsername());
 		}
 		teacherCourseService.updateMain(teacherCourse, teacherCoursePage.getClassTimeList());
 		return Result.OK("编辑成功!");

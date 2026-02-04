@@ -53,7 +53,8 @@ public class TeacherCoursePage {
 	@Schema(description = "课程号")
     private java.lang.String courseId;
 	/**科目*/
-	@Excel(name = "科目", width = 15)
+	@Excel(name = "科目", width = 15, dicCode = "course")
+	@Dict(dicCode = "course")
 	@Schema(description = "科目")
     private java.lang.String course;
 	/**教师工号*/
@@ -69,7 +70,8 @@ public class TeacherCoursePage {
 	@Schema(description = "课程容量")
     private java.lang.Integer capacity;
 	/**课程类型*/
-	@Excel(name = "课程类型", width = 15)
+	@Excel(name = "课程类型", width = 15, dicCode = "course_type")
+	@Dict(dicCode = "course_type")
 	@Schema(description = "课程类型")
     private java.lang.Integer courseType;
 

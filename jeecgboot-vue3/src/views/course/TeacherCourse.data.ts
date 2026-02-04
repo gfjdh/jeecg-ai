@@ -32,7 +32,7 @@ export const columns: BasicColumn[] = [
     dataIndex: 'capacity'
   },
   {
-    title: '课程类型',
+    title: '默认课程类型',
     align: "center",
     dataIndex: 'courseType_dictText'
   },
@@ -73,12 +73,12 @@ export const searchFormSchema: FormSchema[] = [
     //colProps: {span: 6},
   },
   {
-    label: "课程类型",
+    label: "默认课程类型",
     field: "courseType",
     component: 'JDictSelectTag',
     componentProps: {
       dictCode: 'course_type',
-      placeholder: '请选择课程类型',
+      placeholder: '请选择默认课程类型',
     },
   },
 ];
@@ -101,6 +101,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '教师工号',
     field: 'teacherNo',
+    auth: 'teacherCourse:edit',
     component: 'Input',
   },
   {
@@ -114,12 +115,12 @@ export const formSchema: FormSchema[] = [
     component: 'InputNumber',
   },
   {
-    label: '课程类型',
+    label: '默认课程类型',
     field: 'courseType',
     component: 'JDictSelectTag',
     componentProps: {
       dictCode: 'course_type',
-      placeholder: '请选择课程类型',
+      placeholder: '请选择默认课程类型',
     },
   },
   // TODO 主键隐藏字段，目前写死为ID
@@ -183,7 +184,7 @@ export const superQuerySchema = {
   teacherNo: { title: '教师工号', order: 2, view: 'text', type: 'string', },
   courseCredit: { title: '课程学分', order: 3, view: 'number', type: 'number', },
   capacity: { title: '课程容量', order: 4, view: 'number', type: 'number', },
-  courseType: { title: '课程类型', order: 5, view: 'number', type: 'number', },
+  courseType: { title: '默认课程类型', order: 5, view: 'number', type: 'number', },
   //子表高级查询
   classTime: {
     title: '课程时间安排',
