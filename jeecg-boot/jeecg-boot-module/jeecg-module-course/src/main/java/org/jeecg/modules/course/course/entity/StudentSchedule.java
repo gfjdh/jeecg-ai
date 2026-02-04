@@ -40,7 +40,10 @@ public class StudentSchedule implements Serializable {
 
     @Schema(description = "学分")
     private java.lang.Double courseCredit;
-    
+
+    @Schema(description = "已选人数")
+    private java.lang.Integer selectedCount;
+
     @Schema(description = "容量")
     private java.lang.Integer capacity;
 

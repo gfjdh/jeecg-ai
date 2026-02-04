@@ -12,6 +12,7 @@ import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.vo.LoginUser;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.course.course.component.CourseRushConsumer;
+import org.jeecg.modules.course.course.vo.StudentCourseSummaryVO;
 import org.jeecg.modules.course.course.entity.ClassCourseType;
 import org.jeecg.modules.course.course.entity.StudentCourseSelection;
 import org.jeecg.modules.course.course.entity.TeacherCourse;
@@ -77,8 +78,16 @@ public class StudentCourseRushController {
      * 获取学生学分统计面板
      */
     @GetMapping(value = "/summary")
-    public Result<Map<String, Object>> summary() {
-        return Result.OK();
+    public Result<IPage<StudentCourseSummaryVO>> summary() {
+        LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
+        StudentCourseSummaryVO vo = studentCourseSelectionMapper.getCourseSummary(user.getUsername());
+        if (vo == null) {
+            vo = new StudentCourseSummaryVO();
+        }
+        IPage<StudentCourseSummaryVO> page = new Page<>();
+        page.setRecords(java.util.Arrays.asList(vo));
+        page.setTotal(1);
+        return Result.OK(page);
     }
 
     /**

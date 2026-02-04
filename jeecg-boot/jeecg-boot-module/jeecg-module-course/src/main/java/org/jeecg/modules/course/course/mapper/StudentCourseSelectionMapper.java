@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.jeecg.modules.course.course.entity.StudentCourseSelection;
 import org.jeecg.modules.course.course.entity.StudentSchedule;
+import org.jeecg.modules.course.course.vo.StudentCourseSummaryVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -36,5 +37,12 @@ public interface StudentCourseSelectionMapper extends BaseMapper<StudentCourseSe
                                               @Param("year") String year, 
                                               @Param("subject") String subject, 
                                               @Param("courseType") Integer courseType);
+
+    /**
+     * 获取学生选课学分统计
+     * @param studentNo 学号
+     * @return 统计结果
+     */
+    StudentCourseSummaryVO getCourseSummary(@Param("studentNo") String studentNo);
 
 }

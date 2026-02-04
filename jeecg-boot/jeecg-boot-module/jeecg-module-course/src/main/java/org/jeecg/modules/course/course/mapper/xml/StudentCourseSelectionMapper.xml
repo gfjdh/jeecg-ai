@@ -45,6 +45,10 @@
                 <when test="_databaseId == 'sqlserver'">CONVERT(VARCHAR, ISNULL(cct.course_type, tc.course_type))</when>
                 <otherwise>IFNULL(cct.course_type, tc.course_type)</otherwise>
             </choose> as course_type,
+            <choose>
+                <when test="_databaseId == 'sqlserver'">ISNULL(sc_count.num, 0)</when>
+                <otherwise>IFNULL(sc_count.num, 0)</otherwise>
+            </choose> as selected_count,
             ct.location
         FROM
             teacher_course tc
@@ -52,6 +56,9 @@
                 class_time ct ON tc.course_id = ct.course_id
             LEFT JOIN
                 class_course_type cct ON tc.course_id = cct.course_id AND cct.class_id = #{className} AND cct.year = #{year}
+            LEFT JOIN (
+                SELECT course_id, count(*) as num FROM student_course_selection GROUP BY course_id
+            ) sc_count ON tc.course_id = sc_count.course_id
         WHERE
             1=1
             <if test="subject != null and subject != ''">
@@ -64,4 +71,14 @@
                 </choose> = #{courseType}
             </if>
     </select>
+    <select id="getCourseSummary" resultType="org.jeecg.modules.course.course.vo.StudentCourseSummaryVO">
+        SELECT 
+            COALESCE(SUM(CASE WHEN course_type = 1 AND study_status = 0 THEN course_credit ELSE 0 END), 0) as selectedCompulsory,
+            COALESCE(SUM(CASE WHEN course_type = 2 AND study_status = 0 THEN course_credit ELSE 0 END), 0) as selectedElective,
+            COALESCE(SUM(CASE WHEN course_type = 1 AND study_status = 2 THEN course_credit ELSE 0 END), 0) as completedCompulsory,
+            COALESCE(SUM(CASE WHEN course_type = 2 AND study_status = 2 THEN course_credit ELSE 0 END), 0) as completedElective
+        FROM student_course_selection
+        WHERE student_no = #{studentNo}
+    </select>
+
 </mapper>

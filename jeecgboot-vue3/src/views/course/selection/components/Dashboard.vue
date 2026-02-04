@@ -35,8 +35,8 @@
 
       onMounted(async () => {
         const res = await getSummary();
-        if (res) {
-          stats.value = res;
+        if (res && res.records && res.records.length > 0) {
+          stats.value = res.records[0];
         }
       });
 

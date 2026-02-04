@@ -22,9 +22,13 @@ export const columns: BasicColumn[] = [
     width: 50,
   },
   {
-    title: '容量',
+    title: '已选/容量',
     dataIndex: 'capacity',
     width: 80,
+    customRender: ({ record }) => {
+      // 显示 已选/容量
+      return `${record.selectedCount || 0}/${record.capacity}`;
+    },
   },
   {
     title: '星期',
