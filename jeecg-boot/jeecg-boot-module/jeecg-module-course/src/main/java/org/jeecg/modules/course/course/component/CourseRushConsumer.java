@@ -13,6 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
+import org.jeecg.modules.course.course.entity.ClassCourseType;
+import org.jeecg.modules.course.course.service.IClassCourseTypeService;
+import org.jeecg.modules.student.entity.Student;
+import org.jeecg.modules.student.service.IStudentService;
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import java.math.BigDecimal;
 
@@ -31,6 +36,12 @@ public class CourseRushConsumer {
     
     @Autowired
     private IClassTimeService classTimeService;
+    
+    @Autowired
+    private IStudentService studentService;
+    
+    @Autowired
+    private IClassCourseTypeService classCourseTypeService;
 
     public static final String GLOBAL_QUEUE_KEY = "course:rush:global_queue";
     public static final String STATUS_KEY_PREFIX = "course:rush:status:";
@@ -102,24 +113,46 @@ public class CourseRushConsumer {
                  
                  for (ClassTime newTime : newCourseTimes) {
                      for (ClassTime existTime : existingTimes) {
+                         // null check
+                         if (newTime.getWeekday() == null || existTime.getWeekday() == null) {
+                             continue;
+                         }
                          if (newTime.getWeekday().equals(existTime.getWeekday())) {
                              // Check overlap
-                             if (isOverlap(newTime.getStartSection(), newTime.getEndSection(), 
-                                           existTime.getStartSection(), existTime.getEndSection())) {
-                                 redisTemplate.opsForValue().set(statusKey, "FAILED: Time Conflict with " + scs.getCourseId());
-                                 return;
+                             if (newTime.getStartSection() != null && newTime.getEndSection() != null &&
+                                 existTime.getStartSection() != null && existTime.getEndSection() != null) {
+                                 if (isOverlap(newTime.getStartSection(), newTime.getEndSection(), 
+                                               existTime.getStartSection(), existTime.getEndSection())) {
+                                     redisTemplate.opsForValue().set(statusKey, "FAILED: Time Conflict with " + scs.getCourseId());
+                                     return;
+                                 }
                              }
                          }
                      }
                  }
              }
 
-            // 4. Success - Save
+            // 4. Determine Course Type (Check override)
+            Integer finalCourseType = teacherCourse.getCourseType();
+            Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getStudentNo, studentNo));
+            if (student != null) {
+                ClassCourseType cct = classCourseTypeService.getOne(new LambdaQueryWrapper<ClassCourseType>()
+                        .eq(ClassCourseType::getClassId, student.getClassName())
+                        .eq(ClassCourseType::getYear, student.getYear())
+                        .eq(ClassCourseType::getCourseId, courseId));
+                if (cct != null && cct.getCourseType() != null) {
+                    finalCourseType = cct.getCourseType();
+                }
+            }
+
+            // 5. Success - Save
             StudentCourseSelection newSelection = new StudentCourseSelection();
             newSelection.setStudentNo(studentNo);
             newSelection.setCourseId(courseId);
-            newSelection.setCourseCredit(new BigDecimal(teacherCourse.getCourseCredit())); 
-            newSelection.setCourseType(teacherCourse.getCourseType());
+            if (teacherCourse.getCourseCredit() != null) {
+                newSelection.setCourseCredit(new BigDecimal(teacherCourse.getCourseCredit())); 
+            }
+            newSelection.setCourseType(finalCourseType);
             newSelection.setStudyStatus(0); // 0: Normal/In Progress
             studentCourseSelectionService.save(newSelection);
             

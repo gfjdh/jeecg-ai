@@ -23,6 +23,15 @@ import org.jeecg.common.system.vo.LoginUser;
 import org.apache.shiro.SecurityUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 
+import org.jeecg.modules.course.course.entity.ClassCourseType;
+import org.jeecg.modules.course.course.service.IClassCourseTypeService;
+import org.jeecg.modules.student.entity.Student;
+import org.jeecg.modules.student.service.IStudentService;
+import org.jeecg.modules.course.course.mapper.StudentCourseSelectionMapper;
+import org.jeecg.modules.course.course.vo.StudentScheduleVo;
+import org.jeecg.common.util.oConvertUtils;
+import org.springframework.beans.BeanUtils;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -59,10 +68,16 @@ public class StudentCourseSelectionController extends JeecgController<StudentCou
     @Autowired
     private IClassTimeService classTimeService;
     
+    @Autowired
+    private IStudentService studentService;
+    
+    @Autowired
+    private IClassCourseTypeService classCourseTypeService;
+    
     // --- Course Selection / Rush Logic ---
 
     /**
-     * Get Student Credit Dashboard
+     * 获取学生学分统计面板
      */
     @GetMapping(value = "/summary")
     public Result<Map<String, Object>> summary() {
@@ -77,13 +92,13 @@ public class StudentCourseSelectionController extends JeecgController<StudentCou
         BigDecimal completedCompulsory = BigDecimal.ZERO;
         BigDecimal completedElective = BigDecimal.ZERO;
         
-        // Assumption: courseType 1 = Compulsory, 2 = Elective (Adjust as per Dict)
-        // Assumption: studyStatus 1 = Completed, 0 = Selected (Adjust as per Dict)
+        // 假设: courseType 1 = 必修, 2 = 选修 (请根据实际字典调整)
+        // 假设: studyStatus 1 = 已修读, 0 = 选课中 (请根据实际字典调整)
         
         for (StudentCourseSelection s : list) {
             BigDecimal credit = s.getCourseCredit() != null ? s.getCourseCredit() : BigDecimal.ZERO;
-            boolean isCompleted = Integer.valueOf(1).equals(s.getStudyStatus()); // 1 is just guess, usually based on dict
-            boolean isCompulsory = Integer.valueOf(1).equals(s.getCourseType()); // 1 is just guess
+            boolean isCompleted = Integer.valueOf(1).equals(s.getStudyStatus()); 
+            boolean isCompulsory = Integer.valueOf(1).equals(s.getCourseType()); 
             
             if (isCompulsory) {
                 if (isCompleted) completedCompulsory = completedCompulsory.add(credit);
@@ -103,68 +118,68 @@ public class StudentCourseSelectionController extends JeecgController<StudentCou
     }
 
     /**
-     * Get Student Schedule
+     * 获取学生课表
      */
     @GetMapping(value = "/schedule")
-    public Result<List<Map<String, Object>>> schedule() {
+    public Result<List<StudentScheduleVo>> schedule() {
         LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
         String studentNo = user.getUsername();
         
-        // 1. Get selected courses
-        List<StudentCourseSelection> selections = studentCourseSelectionService.list(new LambdaQueryWrapper<StudentCourseSelection>()
-             .eq(StudentCourseSelection::getStudentNo, studentNo));
-        
-        if (selections.isEmpty()) {
-            return Result.OK(java.util.Collections.emptyList());
-        }
-        
-        List<String> courseIds = selections.stream().map(StudentCourseSelection::getCourseId).collect(Collectors.toList());
-        
-        // 2. Get Class Times
-        List<ClassTime> times = classTimeService.list(new LambdaQueryWrapper<ClassTime>()
-             .in(ClassTime::getCourseId, courseIds));
-             
-        // 3. Get Teacher/Course Details
-        List<TeacherCourse> courses = teacherCourseService.list(new LambdaQueryWrapper<TeacherCourse>()
-             .in(TeacherCourse::getCourseId, courseIds));
-        Map<String, TeacherCourse> courseMap = courses.stream().collect(Collectors.toMap(TeacherCourse::getCourseId, c->c));
-        
-        // 4. Merge
-        List<Map<String, Object>> result = new java.util.ArrayList<>();
-        for (ClassTime t : times) {
-             TeacherCourse c = courseMap.get(t.getCourseId());
-             if (c != null) {
-                 Map<String, Object> item = new HashMap<>();
-                 item.put("courseId", c.getCourseId());
-                 item.put("courseName", c.getCourse()); // 'course' field is usually name or code. Assuming name/subject
-                 item.put("teacherNo", c.getTeacherNo());
-                 item.put("weekday", t.getWeekday());
-                 item.put("startSection", t.getStartSection());
-                 item.put("endSection", t.getEndSection());
-                 item.put("location", t.getLocation());
-                 result.add(item);
-             }
-        }
-        return Result.OK(result);
+        List<StudentScheduleVo> scheduleList = studentCourseSelectionMapper.getStudentSchedule(studentNo);
+        return Result.OK(scheduleList);
     }
     
     /**
-     * Get Available Courses
+     * 获取可选课程列表
+     * 支持根据班级动态调整课程属性 (必修/选修)
+     * @param subject 课程名称或编码
+     * @param courseType 筛选课程类型 (1: 必修, 2: 选修)
      */
     @GetMapping(value = "/available")
-    public Result<List<TeacherCourse>> available(@RequestParam(name="subject", required=false) String subject) {
-        // Return all TeacherCourse (optionally filtered by subject)
-        // In real app, filter out already selected? Frontend can handle that or here.
+    public Result<List<TeacherCourse>> available(
+            @RequestParam(name="subject", required=false) String subject,
+            @RequestParam(name="courseType", required=false) Integer courseTypeQuery) {
+        
+        LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
+        Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getStudentNo, user.getUsername()));
+        
         LambdaQueryWrapper<TeacherCourse> query = new LambdaQueryWrapper<>();
-        if (subject != null && !subject.isEmpty()) {
-            query.like(TeacherCourse::getCourse, subject);
+        if (oConvertUtils.isNotEmpty(subject)) {
+            query.eq(TeacherCourse::getCourse, subject);
         }
-        List<TeacherCourse> list = teacherCourseService.list(query);
-        return Result.OK(list);
+        List<TeacherCourse> courses = teacherCourseService.list(query);
+        
+        Map<String, Integer> specialTypes = new HashMap<>();
+        if (student != null) {
+            List<ClassCourseType> ccts = classCourseTypeService.list(new LambdaQueryWrapper<ClassCourseType>()
+                    .eq(ClassCourseType::getClassId, student.getClassName())
+                    .eq(ClassCourseType::getYear, student.getYear()));
+            for (ClassCourseType cct : ccts) {
+                specialTypes.put(cct.getCourseId(), cct.getCourseType());
+            }
+        }
+        
+        List<TeacherCourse> result = new java.util.ArrayList<>();
+        
+        for (TeacherCourse tc : courses) {
+            Integer effectiveType = specialTypes.containsKey(tc.getCourseId()) 
+                    ? specialTypes.get(tc.getCourseId()) 
+                    : tc.getCourseType();
+            
+            if (courseTypeQuery != null && !courseTypeQuery.equals(effectiveType)) {
+                continue;
+            }
+            
+            tc.setCourseType(effectiveType);
+            result.add(tc);
+        }
+        
+        return Result.OK(result);
     }
 
     /**
-     * Rush Course
+     * 抢课接口 (Rush Course)
+     * 使用 Redis 队列处理高并发
      */
     @PostMapping(value = "/rush")
     public Result<String> rush(@RequestBody Map<String, String> json) {
@@ -172,34 +187,36 @@ public class StudentCourseSelectionController extends JeecgController<StudentCou
         LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
         String studentNo = user.getUsername();
         
-        if (courseId == null) return Result.error("Course ID required");
+        if (courseId == null) return Result.error("缺少课程ID");
         
-        // 1. Check Queue Limit
-        // Redundancy 1.25 -> 50 for 40
+        // 1. 检查队列限制 (Check Queue Limit)
+        // 冗余设计: 允许 1.25 倍容量进入队列，防止因并发导致的超卖或误判
         TeacherCourse course = teacherCourseService.getOne(new LambdaQueryWrapper<TeacherCourse>().eq(TeacherCourse::getCourseId, courseId));
-        if (course == null) return Result.error("Course not found");
+        if (course == null) return Result.error("课程不存在");
         
-        long limit = (long) (course.getCapacity() * 1.25); // Hardcoded redundancy
+        long limit = (long) (course.getCapacity() * 1.25); 
         String countKey = "course:rush:count:" + courseId;
         
         long currentCount = redisTemplate.opsForValue().increment(countKey);
         if (currentCount > limit) {
         	redisTemplate.opsForValue().decrement(countKey);
-            return Result.error("Course Full (Queue Full)");
+            return Result.error("课程已满 (排队人数过多)");
         }
         
-        // 2. Push to Queue
+        // 2. 推入队列 (Push to Queue)
         String statusKey = CourseRushConsumer.STATUS_KEY_PREFIX + courseId + ":" + studentNo;
+        // 设置初始状态
         redisTemplate.opsForValue().set(statusKey, "PENDING");
         
         String payload = courseId + ":" + studentNo;
+        // 发送到全局处理队列
         redisTemplate.opsForList().leftPush(CourseRushConsumer.GLOBAL_QUEUE_KEY, payload);
         
-        return Result.OK("Queued. Please wait...");
+        return Result.OK("排队中，请稍候...");
     }
     
     /**
-     * Check Rush Status
+     * 查询抢课状态
      */
     @GetMapping(value = "/rush/status")
     public Result<String> rushStatus(@RequestParam(name="courseId") String courseId) {
@@ -208,7 +225,7 @@ public class StudentCourseSelectionController extends JeecgController<StudentCou
         String statusKey = CourseRushConsumer.STATUS_KEY_PREFIX + courseId + ":" + studentNo;
         
         Object status = redisTemplate.opsForValue().get(statusKey);
-        if (status == null) return Result.error("No record");
+        if (status == null) return Result.error("无排队记录");
         return Result.OK(status.toString());
     }
     
