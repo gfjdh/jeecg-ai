@@ -1,11 +1,11 @@
 import { defHttp } from '/@/utils/http/axios';
 
 enum Api {
-  Summary = '/course/studentCourseSelection/summary',
-  Schedule = '/course/studentCourseSelection/schedule',
-  Available = '/course/studentCourseSelection/available',
-  Rush = '/course/studentCourseSelection/rush',
-  RushStatus = '/course/studentCourseSelection/rush/status',
+  Summary = '/course/studentCourseRush/summary',
+  Schedule = '/course/studentCourseRush/schedule',
+  Available = '/course/studentCourseRush/available',
+  Rush = '/course/studentCourseRush/rush',
+  RushStatus = '/course/studentCourseRush/rush/status',
 }
 
 export const getSummary = () => {

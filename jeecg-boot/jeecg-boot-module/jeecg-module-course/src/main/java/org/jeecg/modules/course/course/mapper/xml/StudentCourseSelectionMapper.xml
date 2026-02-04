@@ -2,4 +2,66 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.jeecg.modules.course.course.mapper.StudentCourseSelectionMapper">
 
+    <select id="getStudentSchedule" resultType="org.jeecg.modules.course.course.entity.StudentSchedule">
+        SELECT
+            tc.id,
+            tc.course_id,
+            tc.course,
+            tc.teacher_no,
+            ct.weekday,
+            ct.start_section,
+            ct.end_section,
+            <choose>
+                <when test="_databaseId == 'sqlserver'">CONVERT(VARCHAR, ISNULL(cct.course_type, tc.course_type))</when>
+                <otherwise>IFNULL(cct.course_type, tc.course_type)</otherwise>
+            </choose> as course_type,
+            ct.location
+        FROM
+            student_course_selection scs
+        JOIN 
+            teacher_course tc ON scs.course_id = tc.course_id
+        JOIN 
+            class_time ct ON scs.course_id = ct.course_id
+        JOIN 
+            student_info s ON scs.student_no = s.student_no
+        LEFT JOIN
+            class_course_type cct ON tc.course_id = cct.course_id AND cct.class_id = s.class_name AND cct.year = s.year
+        WHERE
+            scs.student_no = #{studentNo}
+    </select>
+
+    <select id="getAvailableCourses" resultType="org.jeecg.modules.course.course.entity.StudentSchedule">
+        SELECT
+            tc.id,
+            tc.course_id,
+            tc.course,
+            tc.teacher_no,
+            tc.course_credit,
+            tc.capacity,
+            ct.weekday,
+            ct.start_section,
+            ct.end_section,
+            <choose>
+                <when test="_databaseId == 'sqlserver'">CONVERT(VARCHAR, ISNULL(cct.course_type, tc.course_type))</when>
+                <otherwise>IFNULL(cct.course_type, tc.course_type)</otherwise>
+            </choose> as course_type,
+            ct.location
+        FROM
+            teacher_course tc
+            JOIN 
+                class_time ct ON tc.course_id = ct.course_id
+            LEFT JOIN
+                class_course_type cct ON tc.course_id = cct.course_id AND cct.class_id = #{className} AND cct.year = #{year}
+        WHERE
+            1=1
+            <if test="subject != null and subject != ''">
+                AND tc.course = #{subject}
+            </if>
+            <if test="courseType != null">
+                AND <choose>
+                    <when test="_databaseId == 'sqlserver'">ISNULL(cct.course_type, tc.course_type)</when>
+                    <otherwise>IFNULL(cct.course_type, tc.course_type)</otherwise>
+                </choose> = #{courseType}
+            </if>
+    </select>
 </mapper>

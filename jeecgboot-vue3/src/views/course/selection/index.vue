@@ -1,13 +1,12 @@
 <template>
   <div class="p-4">
     <Dashboard />
-    
     <a-row :gutter="16">
       <a-col :span="10">
         <TimeTable ref="timetableRef" />
       </a-col>
       <a-col :span="14">
-        <CourseList @refresh="onSelectionChanged" />
+        <CourseList @refresh="onSelectionChanged" @preview="onPreview" />
       </a-col>
     </a-row>
   </div>
@@ -27,16 +26,18 @@
       const timetableRef = ref();
 
       const onSelectionChanged = () => {
-         // Refresh timetable
          if (timetableRef.value) {
-            // timetableRef.value.loadData();
-            // Need to expose loadData or trigger it.
-            // Simplified: Refresh page or window.location.reload() or implement exposed method.
-            window.location.reload(); 
+            timetableRef.value.refresh();
          }
       };
 
-      return { timetableRef, onSelectionChanged };
+      const onPreview = (record: any) => {
+         if (timetableRef.value) {
+            timetableRef.value.setPreview(record);
+         }
+      };
+
+      return { timetableRef, onSelectionChanged, onPreview };
     },
   });
 </script>

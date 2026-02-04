@@ -1,14 +1,14 @@
 <template>
   <div class="p-4 bg-white">
     <h3 class="mb-4">可选课程 (选课)</h3>
-    <BasicTable @register="registerTable">
+    <BasicTable @register="registerTable" @row-click="handleRowClick">
       <template #action="{ record }">
          <a-button 
            type="primary" 
            danger 
            size="small" 
            :loading="record.rushing"
-           @click="handleRush(record)"
+           @click.stop="handleRush(record)"
          >
            选课
          </a-button>
@@ -27,7 +27,8 @@
   export default defineComponent({
     name: 'CourseList',
     components: { BasicTable, AButton: Button },
-    setup() {
+    emits: ['refresh', 'preview'],
+    setup(_, { emit }) {
       const [registerTable, { reload }] = useTable({
         title: '可选课程',
         api: getAvailableCourses,
@@ -49,8 +50,9 @@
                  message.success('选课成功！');
                  record.rushing = false;
                  reload();
+                 emit('refresh');
              } else {
-                 message.error(res); // 失败: ...
+                 message.error(res); // 失败
                  record.rushing = false;
              }
           } catch (e) {
@@ -62,19 +64,24 @@
          record.rushing = true;
          try {
             const res = await rushCourse(record.courseId);
-            if (res && res.includes('Queued')) {
-                message.info('请求已进入队列');
+            if (res && res.includes('Queued')) { 
+                pollStatus(record.courseId, record);
+            } else if (typeof res === 'string' && (res.includes('排队') || res.includes('Queued'))) {
                 pollStatus(record.courseId, record);
             } else {
-                message.warning(res || '未知状态');
+                message.warning(res || '未知状态'); // If it returns message string directly
                 record.rushing = false;
             }
          } catch (e) {
             record.rushing = false;
          }
       };
+
+      const handleRowClick = (record: any) => {
+        emit('preview', record);
+      };
       
-      return { registerTable, handleRush };
+      return { registerTable, handleRush, handleRowClick };
     },
   });
 </script>

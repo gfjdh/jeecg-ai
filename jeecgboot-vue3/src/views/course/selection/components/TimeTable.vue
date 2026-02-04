@@ -12,15 +12,15 @@
         <tr v-for="section in 11" :key="section">
           <td class="section-col">{{ section }}</td>
           <td v-for="(dayName, dayIndex) in days" :key="dayIndex" class="course-cell">
-             <!-- Check matrix for course -->
              <div 
                 v-if="matrix[dayIndex + 1][section] && matrix[dayIndex + 1][section].isHead"
                 class="course-card"
+                :class="{ 'preview-card': matrix[dayIndex + 1][section].isPreview }"
                 :style="{ height: getCardHeight(matrix[dayIndex + 1][section].span) }"
              >
-                <div class="course-name">{{ matrix[dayIndex + 1][section].data.courseName }}</div>
+                <div class="course-name">{{ matrix[dayIndex + 1][section].data.course_dictText || matrix[dayIndex + 1][section].data.course }}</div>
                 <div class="course-loc">{{ matrix[dayIndex + 1][section].data.location }}</div>
-                <div class="course-teacher">T: {{ matrix[dayIndex + 1][section].data.teacherNo }}</div>
+                <div class="course-teacher">T: {{ matrix[dayIndex + 1][section].data.teacherNo_dictText || matrix[dayIndex + 1][section].data.teacherNo }}</div>
              </div>
           </td>
         </tr>
@@ -37,7 +37,6 @@
     name: 'TimeTable',
     setup() {
       const days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-      // Matrix: day (1-7) -> section (1-11) -> { isHead: bool, span: number, data: any }
       const initMatrix = () => {
         const m: any = {};
         for(let d=1; d<=7; d++) {
@@ -50,65 +49,65 @@
       };
 
       const matrix = ref<any>(initMatrix());
+      const scheduleList = ref<any[]>([]);
+      const previewItem = ref<any>(null);
 
-      const loadData = async () => {
-         const list = await getSchedule(); // [{weekday, startSection, endSection, ...}]
+      const buildMatrix = () => {
          const m = initMatrix();
-         
-         if(list) {
-             list.forEach((item: any) => {
-                 const day = item.weekday;
-                 const start = item.startSection;
-                 const end = item.endSection;
-                 const span = end - start + 1;
-                 
-                 // Head
-                 if(m[day] && m[day][start] !== undefined) {
-                     m[day][start] = { isHead: true, span: span, data: item };
-                     // Occupied
-                     for(let i=1; i<span; i++) {
-                         if (start + i <= 11) {
-                             m[day][start + i] = { isHead: false }; // Mark as occupied but not head (so v-if fails logic needs adjustment logic above only renders if isHead)
-                              // Actually my v-if logic "v-if matrix... && isHead" is correct. 
-                              // But I also need to make sure I don't render empty td if it's occupied by a rowspan? 
-                              // Vue table rendering with rowspan is tricky.
-                              // Simpler: CSS Absolute positioning inside relative TD? 
-                              // Or just render a card that overflows?
-                              // Let's stick to simple "One card per slot" if rowspan is hard, BUT requirement says "Continuous card".
-                              // To do true rowspan in simple table loop:
-                              // If I use rowspan, I need to NOT render the <td class="course-cell"> for the skipping rows.
-                              // But my loop `v-for="dayIndex"` renders a TD for every column.
-                              // I can't easily skip TDs in a row-major loop based on column state without complex logic.
-                              // Alternative: Flex/Grid layout.
-                              // Let's use Absolute positioning wrapper.
-                         }
+         // Function to add item to matrix
+         const addItem = (item: any, isPreview: boolean) => {
+             const day = item.weekday;
+             const start = item.startSection;
+             const end = item.endSection;
+             if (!day || !start || !end) return;
+
+             const span = end - start + 1;
+             
+             if(m[day] && m[day][start] !== undefined) {
+                 m[day][start] = { isHead: true, span: span, data: item, isPreview: isPreview };
+                 // Occupied
+                 for(let i=1; i<span; i++) {
+                     if (start + i <= 11) {
+                         m[day][start + i] = { isHead: false }; 
                      }
                  }
-             });
+             }
+         };
+
+         // Add existing schedule
+         if(scheduleList.value) {
+             scheduleList.value.forEach((item: any) => addItem(item, false));
          }
-         
-         // Re-process for simple "One TD, content z-index/absolute" or just manual rowspan Logic.
-         // Let's use the default "Card covers multiple" by making the card `height: calc(100% * span + gap)`.
-         // But the parent TD has fixed height?
-         // Let's assume standard table.
+         // Add preview item (can overwrite existing)
+         if (previewItem.value) {
+             addItem(previewItem.value, true);
+         }
          matrix.value = m;
       };
+
+      const loadData = async () => {
+         const res: any = await getSchedule(); 
+         const list = res.records || res;
+         scheduleList.value = list || [];
+         buildMatrix();
+      };
       
+      const refresh = () => {
+          loadData();
+      };
+
+      const setPreview = (item: any) => {
+          previewItem.value = item;
+          buildMatrix();
+      };
+
       const getCardHeight = (span: number) => {
-          // Approximate height if each row is e.g. 50px
-          // better: calc(100% * span + (span - 1) * border)
-          // But since we are in a cell, we just want to push it down? 
-          // Actually, if we use `rowspan` in `td`, we need to change the template.
-          // But modifying the template loop to check rowspan is hard.
-          // Strategy: Use CSS Absolute Position relative to a container, OR just use `min-height` and let it flow?
-          // Requirement: "Whole card covers multiple sections".
-          // Let's try height: `calc(50px * ${span})` and `position: absolute` with `z-index: 10`.
           return `calc(50px * ${span} + ${(span-1)*2}px)`; 
       };
 
       onMounted(loadData);
 
-      return { days, matrix, getCardHeight };
+      return { days, matrix, getCardHeight, refresh, setPreview };
     },
   });
 </script>
@@ -121,7 +120,7 @@
 .timetable th, .timetable td {
   border: 1px solid #eee;
   text-align: center;
-  position: relative; /* For absolute cards */
+  position: relative; 
   height: 50px;
 }
 .section-col {
@@ -143,6 +142,11 @@
   font-size: 12px;
   overflow: hidden;
   z-index: 1;
+}
+.course-card.preview-card {
+  background-color: #fffbe6 !important;
+  border-left: 3px solid #faad14 !important;
+  z-index: 10;
 }
 .course-name { font-weight: bold; }
 </style>
