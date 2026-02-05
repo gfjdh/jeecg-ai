@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.shiro.SecurityUtils;
 import org.jeecg.common.api.vo.Result;
@@ -181,7 +182,7 @@ public class StudentCourseRushController {
         // 2. 推入队列
         String payload = courseId + ":" + studentNo;
         String statusKey = CourseRushConsumer.STATUS_KEY_PREFIX + payload;
-        stringRedisTemplate.opsForValue().set(statusKey, "PENDING");        // 设置初始状态
+        stringRedisTemplate.opsForValue().set(statusKey, "PENDING", 1, TimeUnit.MINUTES);        // 设置初始状态
         
         // 发送到全局处理队列
         redisTemplate.opsForList().leftPush(CourseRushConsumer.GLOBAL_QUEUE_KEY, payload);
@@ -200,6 +201,10 @@ public class StudentCourseRushController {
         
         Object status = stringRedisTemplate.opsForValue().get(statusKey);
         if (status == null) return Result.error("无排队记录");
+        if ("PENDING".equals(status.toString())) return Result.OK("");
+        if (status.toString().startsWith("FAILED:")) {
+            return Result.error(status.toString().substring(7)); // 去掉 "FAILED: " 前缀
+        }
         return Result.OK(status.toString());
     }
 
@@ -239,7 +244,7 @@ public class StudentCourseRushController {
                     timeConfig.put("end", program.getCourseSelectionEnd().getTime());
                 }
                 // 缓存 1 分钟
-                redisTemplate.opsForValue().set(key, timeConfig, 1, java.util.concurrent.TimeUnit.MINUTES);
+                redisTemplate.opsForValue().set(key, timeConfig, 1, TimeUnit.MINUTES);
             }
         }
         

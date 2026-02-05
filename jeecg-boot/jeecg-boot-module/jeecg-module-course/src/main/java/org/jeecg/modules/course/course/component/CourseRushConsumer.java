@@ -81,21 +81,21 @@ public class CourseRushConsumer {
                     .eq(StudentCourseSelection::getStudentNo, studentNo)
                     .eq(StudentCourseSelection::getCourseId, courseId));
             if (count > 0) {
-                stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 已选该课程");
+                stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 已选该课程", 5, TimeUnit.MINUTES);
                 return;
             }
 
             // 2. 检查课程容量（带缓存检查）
             TeacherCourse teacherCourse = teacherCourseService.getTeacherCourseCached(courseId);
             if (teacherCourse == null) {
-                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程不存在");
+                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程不存在", 5, TimeUnit.MINUTES);
                 return;
             }
             
             long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
                     .eq(StudentCourseSelection::getCourseId, courseId));
             if (selectedCount >= teacherCourse.getCapacity()) {
-                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满");
+                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满", 5, TimeUnit.MINUTES);
                 return;
             }
 
@@ -124,7 +124,7 @@ public class CourseRushConsumer {
                                  existTime.getStartSection() != null && existTime.getEndSection() != null) {
                                  if (isOverlap(newTime.getStartSection(), newTime.getEndSection(), 
                                                existTime.getStartSection(), existTime.getEndSection())) {
-                                     stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 与已选课程时间冲突： " + scs.getCourseId());
+                                     stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 与已选课程时间冲突： " + scs.getCourseId(), 5, TimeUnit.MINUTES);
                                      return;
                                  }
                              }
@@ -157,11 +157,11 @@ public class CourseRushConsumer {
             newSelection.setStudyStatus(0); // 0: 正常/在读状态
             studentCourseSelectionService.save(newSelection);
             
-            stringRedisTemplate.opsForValue().set(statusKey, "选课成功");
+            stringRedisTemplate.opsForValue().set(statusKey, "选课成功", 5, TimeUnit.MINUTES);
 
         } catch (Exception e) {
             log.error("处理抢课请求时出错: " + payload, e);
-            stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 系统错误");
+            stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 系统错误", 5, TimeUnit.MINUTES);
         } finally {
             stringRedisTemplate.opsForValue().decrement(countKey);
         }
