@@ -15,7 +15,7 @@
              <div 
                 v-if="matrix[dayIndex + 1][section] && matrix[dayIndex + 1][section].isHead"
                 class="course-card"
-                :class="{ 'preview-card': matrix[dayIndex + 1][section].isPreview }"
+                :class="getCardClass(matrix[dayIndex + 1][section])"
                 :style="{ height: getCardHeight(matrix[dayIndex + 1][section].span) }"
              >
                 <div class="course-name">{{ matrix[dayIndex + 1][section].data.course_dictText || matrix[dayIndex + 1][section].data.course }}</div>
@@ -52,9 +52,49 @@
       const scheduleList = ref<any[]>([]);
       const previewItem = ref<any>(null);
 
+      // 检查课程是否与已选课程相同
+      const isSameAsSelected = (_item: any) => {
+        if (!previewItem.value || !scheduleList.value.length) return false;
+        
+        const previewList = previewItem.value.scheduleList || [previewItem.value];
+        
+        // 检查预览课程是否在已选课程列表中
+        return scheduleList.value.some(selected => {
+          return previewList.some((preview: any) => {
+            // 根据课程唯一标识比较，这里假设id或course字段是唯一的
+            return (preview.id && preview.id === selected.id) || 
+                   (preview.course && preview.course === selected.course) ||
+                   // 或者通过时间和教师等综合判断
+                   (preview.weekday === selected.weekday && 
+                    preview.startSection === selected.startSection && 
+                    preview.endSection === selected.endSection &&
+                    preview.teacherNo === selected.teacherNo);
+          });
+        });
+      };
+
+      // 检查课程是否有时间冲突
+      const hasTimeConflict = (item: any) => {
+        if (!scheduleList.value.length) return false;
+        
+        const day = item.weekday;
+        const start = item.startSection;
+        const end = item.endSection;
+        
+        // 检查是否有时间重叠的已选课程
+        return scheduleList.value.some(selected => {
+          // 跳过同一天的课程检查（已通过isSameAsSelected处理）
+          if (selected.weekday !== day) return false;
+          
+          // 检查时间段是否重叠
+          return !(end < selected.startSection || start > selected.endSection);
+        });
+      };
+
       const buildMatrix = () => {
          const m = initMatrix();
-         const addItem = (item: any, isPreview: boolean) => {
+         
+         const addItem = (item: any, isPreview: boolean, _state?: string) => {
              const day = item.weekday;
              const start = item.startSection;
              const end = item.endSection;
@@ -63,14 +103,40 @@
              const span = end - start + 1;
              
              if(m[day] && m[day][start] !== undefined) {
-                 m[day][start] = { isHead: true, span: span, data: item, isPreview: isPreview };
+                 // 默认状态
+                 let cardState = 'normal';
+                 
+                 if (isPreview) {
+                   // 检查是否是已选课程
+                   if (isSameAsSelected(item)) {
+                     cardState = 'selected';
+                   } 
+                   // 检查是否有时间冲突
+                   else if (hasTimeConflict(item)) {
+                     cardState = 'conflict';
+                   } else {
+                     cardState = 'preview';
+                   }
+                 }
+                 
+                 m[day][start] = { 
+                   isHead: true, 
+                   span: span, 
+                   data: item, 
+                   isPreview: isPreview,
+                   state: cardState
+                 };
+                 
                  for(let i=1; i<span; i++) {
                      if (start + i <= 11) {
-                         // 修复预览课程与已有课程重叠时，已有课程消失的问题
+                         // 预览课程与已有课程重叠时，跳过非头部单元格
                          if (isPreview && m[day][start + i] && m[day][start + i].isHead) {
                              continue;
                          }
-                         m[day][start + i] = { isHead: false }; 
+                         m[day][start + i] = { 
+                           isHead: false,
+                           state: cardState
+                         }; 
                      }
                  }
              }
@@ -78,8 +144,9 @@
 
          // 添加已选课程
          if(scheduleList.value) {
-             scheduleList.value.forEach((item: any) => addItem(item, false));
+             scheduleList.value.forEach((item: any) => addItem(item, false, 'normal'));
          }
+         
          // 添加预览课程
          if (previewItem.value) {
              if (previewItem.value.scheduleList && previewItem.value.scheduleList.length > 0) {
@@ -89,6 +156,23 @@
              }
          }
          matrix.value = m;
+      };
+
+      // 获取卡片类名
+      const getCardClass = (cell: any) => {
+        if (!cell) return '';
+        
+        const classes = ['course-card'];
+        
+        if (cell.state) {
+          classes.push(`${cell.state}-card`);
+        }
+        
+        return classes.join(' ');
+      };
+
+      const getCardHeight = (span: number) => {
+          return `calc(50px * ${span} + ${(span-1)*2}px)`; 
       };
 
       const loadData = async () => {
@@ -107,13 +191,16 @@
           buildMatrix();
       };
 
-      const getCardHeight = (span: number) => {
-          return `calc(50px * ${span} + ${(span-1)*2}px)`; 
-      };
-
       onMounted(loadData);
 
-      return { days, matrix, getCardHeight, refresh, setPreview };
+      return { 
+        days, 
+        matrix, 
+        getCardHeight, 
+        getCardClass,
+        refresh, 
+        setPreview 
+      };
     },
   });
 </script>
@@ -142,17 +229,49 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #e6f7ff;
-  border-left: 3px solid #1890ff;
   padding: 4px;
   font-size: 12px;
   overflow: hidden;
   z-index: 1;
 }
-.course-card.preview-card {
+
+/* 正常已选课程 - 蓝色 */
+.normal-card {
+  background-color: #e6f7ff !important;
+  border-left: 3px solid #1890ff !important;
+}
+
+/* 选中已选课程 - 绿色 */
+.selected-card {
+  background-color: #f6ffed !important;
+  border-left: 3px solid #52c41a !important;
+  z-index: 20;
+}
+
+/* 预览课程冲突 - 红色 */
+.conflict-card {
+  background-color: #fff2f0 !important;
+  border-left: 3px solid #ff4d4f !important;
+  z-index: 10;
+}
+
+/* 无冲突且未选课的选中课程 - 橙色 */
+.preview-card {
   background-color: #fffbe6 !important;
   border-left: 3px solid #faad14 !important;
   z-index: 10;
 }
-.course-name { font-weight: bold; }
+
+.course-name { 
+  font-weight: bold; 
+  margin-bottom: 2px;
+}
+.course-loc { 
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+.course-teacher { 
+  font-size: 11px;
+  color: #666;
+}
 </style>

@@ -203,7 +203,7 @@ public class StudentCourseRushController {
         if (status == null) return Result.error("无排队记录");
         if ("PENDING".equals(status.toString())) return Result.OK("");
         if (status.toString().startsWith("FAILED:")) {
-            return Result.error(status.toString().substring(7)); // 去掉 "FAILED: " 前缀
+            return Result.error(status.toString().substring(7)); 
         }
         return Result.OK(status.toString());
     }
