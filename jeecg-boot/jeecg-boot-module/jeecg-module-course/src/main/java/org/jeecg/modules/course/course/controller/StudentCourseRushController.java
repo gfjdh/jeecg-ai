@@ -24,6 +24,9 @@ import org.jeecg.modules.course.course.service.IStudentCourseSelectionService;
 import org.jeecg.modules.course.course.service.ITeacherCourseService;
 import org.jeecg.modules.student.entity.Student;
 import org.jeecg.modules.student.service.IStudentService;
+import org.jeecg.modules.course.course.service.ITrainingProgramService;
+import org.jeecg.modules.course.course.entity.TrainingProgram;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,6 +77,9 @@ public class StudentCourseRushController {
     @Autowired
     private IClassCourseTypeService classCourseTypeService;
 
+    @Autowired
+    private ITrainingProgramService trainingProgramService;
+
     /**
      * 获取学生学分统计面板
      */
@@ -116,6 +122,13 @@ public class StudentCourseRushController {
             @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
             @RequestParam(name="pageSize", defaultValue="10") Integer pageSize) {
         LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
+
+        // 验证选课时间
+        String timeError = validateSelectionTime(user.getUsername());
+        if (timeError != null) {
+            // 不在选课时间内，返回空列表（前端表现为隐藏列表）
+            return Result.OK(new Page<>());
+        }
         
         List<StudentSchedule> list = studentCourseSelectionMapper.getAvailableCourses(
             user.getUsername(), 
@@ -140,6 +153,12 @@ public class StudentCourseRushController {
         
         if (courseId == null) return Result.error("缺少课程ID");
         
+        // 验证选课时间
+        String timeError = validateSelectionTime(studentNo);
+        if (timeError != null) {
+            return Result.error(timeError);
+        }
+
         // 1. 检查队列限制 (Check Queue Limit)
         // 冗余设计: 允许 1.25 倍容量进入队列，防止因并发导致的超卖或误判
         TeacherCourse course = teacherCourseService.getOne(new LambdaQueryWrapper<TeacherCourse>().eq(TeacherCourse::getCourseId, courseId));
@@ -163,7 +182,7 @@ public class StudentCourseRushController {
         // 发送到全局处理队列
         redisTemplate.opsForList().leftPush(CourseRushConsumer.GLOBAL_QUEUE_KEY, payload);
         
-        return Result.OK("Queued");
+        return Result.OK("排队中");
     }
     
     /**
@@ -193,6 +212,36 @@ public class StudentCourseRushController {
                 .eq(StudentCourseSelection::getStudentNo, user.getUsername())
                 .eq(StudentCourseSelection::getCourseId, courseId));
         return Result.OK("退课成功");
+    }
+
+    /**
+     * 校验选课时间
+     */
+    private String validateSelectionTime(String studentNo) {
+        Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getStudentNo, studentNo));
+        if (student != null && oConvertUtils.isNotEmpty(student.getMajor())) {
+            try {
+                // 假设 Student major 存储的是 Integer ID 的字符串形式，如果是非数字字符串需要另外处理
+                // 如果存在转换失败风险，可以用 try-catch 捕获
+                TrainingProgram program = trainingProgramService.getOne(new LambdaQueryWrapper<TrainingProgram>()
+                    .eq(TrainingProgram::getMajorId, Integer.valueOf(student.getMajor()))
+                    .eq(TrainingProgram::getStartYear, student.getYear()));
+                 
+                if (program != null) {
+                    Date now = new Date();
+                    boolean notStarted = program.getCourseSelectionBegin() != null && now.before(program.getCourseSelectionBegin());
+                    boolean ended = program.getCourseSelectionEnd() != null && now.after(program.getCourseSelectionEnd());
+                    
+                    if (notStarted) return "选课未开始";
+                    if (ended) return "选课已结束";
+                }
+            } catch (NumberFormatException e) {
+                log.warn("Student major ID format error: {}", student.getMajor());
+            } catch (Exception e) {
+                log.error("Check training program failed", e);
+            }
+        }
+        return null;
     }
 
 }

@@ -79,7 +79,7 @@ public class CourseRushConsumer {
                     .eq(StudentCourseSelection::getStudentNo, studentNo)
                     .eq(StudentCourseSelection::getCourseId, courseId));
             if (count > 0) {
-                redisTemplate.opsForValue().set(statusKey, "SUCCESS: Already selected");
+                redisTemplate.opsForValue().set(statusKey, "SUCCESS: 已选该课程");
                 return;
             }
 
@@ -87,14 +87,14 @@ public class CourseRushConsumer {
             TeacherCourse teacherCourse = teacherCourseService.getOne(new LambdaQueryWrapper<TeacherCourse>()
                     .eq(TeacherCourse::getCourseId, courseId));
             if (teacherCourse == null) {
-                redisTemplate.opsForValue().set(statusKey, "FAILED: Course not found");
+                redisTemplate.opsForValue().set(statusKey, "FAILED: 课程不存在");
                 return;
             }
             
             long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
                     .eq(StudentCourseSelection::getCourseId, courseId));
             if (selectedCount >= teacherCourse.getCapacity()) {
-                redisTemplate.opsForValue().set(statusKey, "FAILED: Course Full");
+                redisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满");
                 return;
             }
 
@@ -156,11 +156,11 @@ public class CourseRushConsumer {
             newSelection.setStudyStatus(0); // 0: 正常/在读状态
             studentCourseSelectionService.save(newSelection);
             
-            redisTemplate.opsForValue().set(statusKey, "SUCCESS");
+            redisTemplate.opsForValue().set(statusKey, "选课成功");
 
         } catch (Exception e) {
             log.error("处理抢课请求时出错: " + payload, e);
-            redisTemplate.opsForValue().set(statusKey, "FAILED: System Error");
+            redisTemplate.opsForValue().set(statusKey, "FAILED: 系统错误");
         } finally {
             redisTemplate.opsForValue().decrement(countKey);
         }

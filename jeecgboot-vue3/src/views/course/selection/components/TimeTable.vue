@@ -11,7 +11,7 @@
       <tbody>
         <tr v-for="section in 11" :key="section">
           <td class="section-col">{{ section }}</td>
-          <td v-for="(dayIndex) in days" :key="dayIndex" class="course-cell">
+          <td v-for="(_day, dayIndex) in days" :key="dayIndex" class="course-cell">
              <div 
                 v-if="matrix[dayIndex + 1][section] && matrix[dayIndex + 1][section].isHead"
                 class="course-card"
@@ -66,6 +66,10 @@
                  m[day][start] = { isHead: true, span: span, data: item, isPreview: isPreview };
                  for(let i=1; i<span; i++) {
                      if (start + i <= 11) {
+                         // 修复预览课程与已有课程重叠时，已有课程消失的问题
+                         if (isPreview && m[day][start + i] && m[day][start + i].isHead) {
+                             continue;
+                         }
                          m[day][start + i] = { isHead: false }; 
                      }
                  }

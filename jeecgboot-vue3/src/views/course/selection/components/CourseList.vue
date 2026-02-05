@@ -46,6 +46,9 @@
         api: getAvailableCourses,
         columns,
         useSearchForm: true,
+        locale: {
+          emptyText: '当前不是选课时间或没有可选课程',
+        },
         afterFetch: (data) => {
              if (!data) return [];
              const map = new Map<string, any>();
@@ -62,7 +65,11 @@
         },
         formConfig: {
             labelWidth: 80,
-            schemas: searchFormSchema
+            schemas: searchFormSchema,
+            actionColOptions: { 
+                span: 6,
+                style: { paddingLeft: '20px' }
+            }
         }
       });
 
@@ -88,8 +95,7 @@
              if (res === 'PENDING') {
                  message.loading('排队中...', 1);
                  setTimeout(() => pollStatus(courseId, record), 1000);
-             } else if (res === 'SUCCESS') {
-                 message.success('选课成功！');
+             } else if (res === '选课成功' || res === 'SUCCESS: 已选该课程') {
                  record.rushing = false;
                  await fetchSelectedCourses();
                  reload();
@@ -108,9 +114,7 @@
          record.rushing = true;
          try {
             const res = await rushCourse(record.courseId);
-            if (res && res.includes('Queued')) { 
-                pollStatus(record.courseId, record);
-            } else if (typeof res === 'string' && (res.includes('排队') || res.includes('Queued'))) {
+            if (res && res.includes('排队中')) { 
                 pollStatus(record.courseId, record);
             } else {
                 message.warning(res || '未知状态');

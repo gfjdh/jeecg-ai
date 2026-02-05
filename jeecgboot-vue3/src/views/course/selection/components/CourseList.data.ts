@@ -69,7 +69,8 @@ export const searchFormSchema: FormSchema[] = [
     componentProps: 
     { 
       dictCode: 'course' 
-    } 
+    },
+    colProps: { span: 10 },
   },
   { 
     field: 'courseType', 
@@ -79,6 +80,7 @@ export const searchFormSchema: FormSchema[] = [
     { 
       dictCode: 'course_type', 
       stringToNumber: true 
-    } 
+    },
+    colProps: { span: 6 },
   }
 ];
