@@ -54,8 +54,10 @@
             teacher_course tc
             JOIN 
                 class_time ct ON tc.course_id = ct.course_id
+            JOIN 
+                student_info s ON s.student_no = #{studentNo}
             LEFT JOIN
-                class_course_type cct ON tc.course_id = cct.course_id AND cct.class_id = #{className} AND cct.year = #{year}
+                class_course_type cct ON tc.course_id = cct.course_id AND cct.class_id = s.class_name AND cct.year = s.year
             LEFT JOIN (
                 SELECT course_id, count(*) as num FROM student_course_selection GROUP BY course_id
             ) sc_count ON tc.course_id = sc_count.course_id

@@ -35,7 +35,8 @@ public class StudentSchedule implements Serializable {
     @Schema(description = "科目")
     private java.lang.String course;
     
-    @Schema(description = "教师工号")
+    @Schema(description = "教师")
+    @Dict(dictTable = "sys_user", dicText = "realname", dicCode = "username")
     private java.lang.String teacherNo;
 
     @Schema(description = "学分")

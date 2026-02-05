@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <Dashboard />
+    <Dashboard ref="dashboardRef" />
     <a-row :gutter="16">
       <a-col :span="10">
         <TimeTable ref="timetableRef" />
@@ -24,10 +24,14 @@
     components: { Dashboard, TimeTable, CourseList, ARow: Row, ACol: Col },
     setup() {
       const timetableRef = ref();
+      const dashboardRef = ref();
 
       const onSelectionChanged = () => {
          if (timetableRef.value) {
             timetableRef.value.refresh();
+         }
+         if (dashboardRef.value) {
+            dashboardRef.value.refresh();
          }
       };
 
@@ -37,7 +41,7 @@
          }
       };
 
-      return { timetableRef, onSelectionChanged, onPreview };
+      return { timetableRef, dashboardRef, onSelectionChanged, onPreview };
     },
   });
 </script>

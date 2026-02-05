@@ -116,16 +116,9 @@ public class StudentCourseRushController {
             @RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
             @RequestParam(name="pageSize", defaultValue="10") Integer pageSize) {
         LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
-        // 获取学生所属班级和年级信息
-        Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getStudentNo, user.getUsername()));
-        if (student == null) {
-            return Result.error("未找到学生档案信息");
-        }
         
         List<StudentSchedule> list = studentCourseSelectionMapper.getAvailableCourses(
             user.getUsername(), 
-            student.getClassName(), 
-            student.getYear(),
             subject, 
             courseTypeQuery
         );
@@ -170,7 +163,7 @@ public class StudentCourseRushController {
         // 发送到全局处理队列
         redisTemplate.opsForList().leftPush(CourseRushConsumer.GLOBAL_QUEUE_KEY, payload);
         
-        return Result.OK("排队中，请稍候...");
+        return Result.OK("Queued");
     }
     
     /**

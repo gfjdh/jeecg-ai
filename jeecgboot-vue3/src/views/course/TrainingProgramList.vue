@@ -21,15 +21,13 @@
                 <Icon icon="mdi:chevron-down"></Icon>
               </a-button>
         </a-dropdown>
-        <!-- 高级查询 -->
-        <super-query :config="superQueryConfig" @search="handleSuperQuery" />
       </template>
        <!--操作栏-->
       <template #action="{ record }">
         <TableAction :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
       </template>
       <!--字段回显插槽-->
-      <template v-slot:bodyCell="{ column, record, index, text }">
+      <template v-slot:bodyCell="">
       </template>
     </BasicTable>
     <!-- 表单区域 -->
@@ -38,28 +36,24 @@
 </template>
 
 <script lang="ts" name="course-trainingProgram" setup>
-  import {ref, reactive, computed, unref} from 'vue';
-  import {BasicTable, useTable, TableAction} from '/@/components/Table';
+  import {reactive} from 'vue';
+  import {BasicTable, TableAction} from '/@/components/Table';
   import {useModal} from '/@/components/Modal';
   import { useListPage } from '/@/hooks/system/useListPage'
   import TrainingProgramModal from './components/TrainingProgramModal.vue'
-  import {columns, searchFormSchema, superQuerySchema} from './TrainingProgram.data';
+  import {columns, searchFormSchema} from './TrainingProgram.data';
   import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './TrainingProgram.api';
-  import { downloadFile } from '/@/utils/common/renderUtils';
-  import { useUserStore } from '/@/store/modules/user';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { getDateByPicker } from '/@/utils';
   //日期个性化选择
   const fieldPickers = reactive({
   });
   const queryParam = reactive<any>({});
-  const checkedKeys = ref<Array<string | number>>([]);
-  const userStore = useUserStore();
-  const { createMessage } = useMessage();
+  useMessage();
   //注册model
   const [registerModal, {openModal}] = useModal();
   //注册table数据
-  const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({
+  const { tableContext,onExportXls,onImportXls } = useListPage({
       tableProps:{
            title: '培养方案表',
            api: list,
@@ -103,18 +97,7 @@
 
   const [registerTable, {reload},{ rowSelection, selectedRowKeys }] = tableContext
 
-  // 高级查询配置
-  const superQueryConfig = reactive(superQuerySchema);
 
-  /**
-   * 高级查询事件
-   */
-  function handleSuperQuery(params) {
-    Object.keys(params).map((k) => {
-      queryParam[k] = params[k];
-    });
-    reload();
-  }
    /**
     * 新增事件
     */

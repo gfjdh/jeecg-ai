@@ -51,13 +51,13 @@ public class CourseRushConsumer {
         new Thread(() -> {
             while (true) {
                 try {
-                    // Blocking pop, wait 1 second
-                    Object payloadObj = redisTemplate.opsForList().rightPop(GLOBAL_QUEUE_KEY, 1, TimeUnit.SECONDS);
+                    // 阻塞式弹出，等待10ms后继续循环
+                    Object payloadObj = redisTemplate.opsForList().rightPop(GLOBAL_QUEUE_KEY, 10, TimeUnit.MILLISECONDS);
                     if (payloadObj != null) {
                         handleRush((String) payloadObj);
                     }
                 } catch (Exception e) {
-                    log.error("Course rush consumer error", e);
+                    log.error("课程抢购消费者错误", e);
                     try { Thread.sleep(1000); } catch (InterruptedException ie) {}
                 }
             }
@@ -65,7 +65,7 @@ public class CourseRushConsumer {
     }
 
     private void handleRush(String payload) {
-        // payload format: "courseId:studentNo"
+        // 负载格式: "courseId:studentNo"
         String[] parts = payload.split(":");
         if (parts.length != 2) return;
         String courseId = parts[0];
@@ -74,7 +74,7 @@ public class CourseRushConsumer {
         String countKey = "course:rush:count:" + courseId;
 
         try {
-            // 1. Check if already selected
+            // 1. 检查是否已选过该课程
             long count = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
                     .eq(StudentCourseSelection::getStudentNo, studentNo)
                     .eq(StudentCourseSelection::getCourseId, courseId));
@@ -83,7 +83,7 @@ public class CourseRushConsumer {
                 return;
             }
 
-            // 2. Check Capacity (Double check DB)
+            // 2. 检查课程容量（数据库双重检查）
             TeacherCourse teacherCourse = teacherCourseService.getOne(new LambdaQueryWrapper<TeacherCourse>()
                     .eq(TeacherCourse::getCourseId, courseId));
             if (teacherCourse == null) {
@@ -98,12 +98,12 @@ public class CourseRushConsumer {
                 return;
             }
 
-            // 3. Check Time Conflict
-            // Get new course times
+            // 3. 检查时间冲突
+            // 获取新课程的上课时间
             List<ClassTime> newCourseTimes = classTimeService.list(new LambdaQueryWrapper<ClassTime>()
                     .eq(ClassTime::getCourseId, courseId));
             
-            // Get student's existing detailed schedule
+            // 获取学生现有的详细课程安排
              List<StudentCourseSelection> existingSelections = studentCourseSelectionService.list(new LambdaQueryWrapper<StudentCourseSelection>()
                     .eq(StudentCourseSelection::getStudentNo, studentNo));
             
@@ -113,17 +113,17 @@ public class CourseRushConsumer {
                  
                  for (ClassTime newTime : newCourseTimes) {
                      for (ClassTime existTime : existingTimes) {
-                         // null check
+                         // 空值检查
                          if (newTime.getWeekday() == null || existTime.getWeekday() == null) {
                              continue;
                          }
                          if (newTime.getWeekday().equals(existTime.getWeekday())) {
-                             // Check overlap
+                             // 检查时间段是否重叠
                              if (newTime.getStartSection() != null && newTime.getEndSection() != null &&
                                  existTime.getStartSection() != null && existTime.getEndSection() != null) {
                                  if (isOverlap(newTime.getStartSection(), newTime.getEndSection(), 
                                                existTime.getStartSection(), existTime.getEndSection())) {
-                                     redisTemplate.opsForValue().set(statusKey, "FAILED: Time Conflict with " + scs.getCourseId());
+                                     redisTemplate.opsForValue().set(statusKey, "FAILED: 与已选课程时间冲突： " + scs.getCourseId());
                                      return;
                                  }
                              }
@@ -132,7 +132,7 @@ public class CourseRushConsumer {
                  }
              }
 
-            // 4. Determine Course Type (Check override)
+            // 4. 确定课程类型（检查是否有班级覆盖）
             Integer finalCourseType = teacherCourse.getCourseType();
             Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getStudentNo, studentNo));
             if (student != null) {
@@ -145,7 +145,7 @@ public class CourseRushConsumer {
                 }
             }
 
-            // 5. Success - Save
+            // 5. 抢课成功 - 保存选课记录
             StudentCourseSelection newSelection = new StudentCourseSelection();
             newSelection.setStudentNo(studentNo);
             newSelection.setCourseId(courseId);
@@ -153,19 +153,27 @@ public class CourseRushConsumer {
                 newSelection.setCourseCredit(new BigDecimal(teacherCourse.getCourseCredit())); 
             }
             newSelection.setCourseType(finalCourseType);
-            newSelection.setStudyStatus(0); // 0: Normal/In Progress
+            newSelection.setStudyStatus(0); // 0: 正常/在读状态
             studentCourseSelectionService.save(newSelection);
             
             redisTemplate.opsForValue().set(statusKey, "SUCCESS");
 
         } catch (Exception e) {
-            log.error("Error processing rush for " + payload, e);
+            log.error("处理抢课请求时出错: " + payload, e);
             redisTemplate.opsForValue().set(statusKey, "FAILED: System Error");
         } finally {
             redisTemplate.opsForValue().decrement(countKey);
         }
     }
 
+    /**
+     * 检查两个时间段是否重叠
+     * @param start1 时间段1的开始节次
+     * @param end1 时间段1的结束节次
+     * @param start2 时间段2的开始节次
+     * @param end2 时间段2的结束节次
+     * @return 如果重叠返回true，否则返回false
+     */
     private boolean isOverlap(int start1, int end1, int start2, int end2) {
         return Math.max(start1, start2) <= Math.min(end1, end2);
     }

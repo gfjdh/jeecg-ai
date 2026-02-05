@@ -11,7 +11,7 @@
       <tbody>
         <tr v-for="section in 11" :key="section">
           <td class="section-col">{{ section }}</td>
-          <td v-for="(dayName, dayIndex) in days" :key="dayIndex" class="course-cell">
+          <td v-for="(dayIndex) in days" :key="dayIndex" class="course-cell">
              <div 
                 v-if="matrix[dayIndex + 1][section] && matrix[dayIndex + 1][section].isHead"
                 class="course-card"
@@ -54,7 +54,6 @@
 
       const buildMatrix = () => {
          const m = initMatrix();
-         // Function to add item to matrix
          const addItem = (item: any, isPreview: boolean) => {
              const day = item.weekday;
              const start = item.startSection;
@@ -65,7 +64,6 @@
              
              if(m[day] && m[day][start] !== undefined) {
                  m[day][start] = { isHead: true, span: span, data: item, isPreview: isPreview };
-                 // Occupied
                  for(let i=1; i<span; i++) {
                      if (start + i <= 11) {
                          m[day][start + i] = { isHead: false }; 
@@ -74,13 +72,17 @@
              }
          };
 
-         // Add existing schedule
+         // 添加已选课程
          if(scheduleList.value) {
              scheduleList.value.forEach((item: any) => addItem(item, false));
          }
-         // Add preview item (can overwrite existing)
+         // 添加预览课程
          if (previewItem.value) {
-             addItem(previewItem.value, true);
+             if (previewItem.value.scheduleList && previewItem.value.scheduleList.length > 0) {
+                 previewItem.value.scheduleList.forEach((item: any) => addItem(item, true));
+             } else {
+                 addItem(previewItem.value, true);
+             }
          }
          matrix.value = m;
       };

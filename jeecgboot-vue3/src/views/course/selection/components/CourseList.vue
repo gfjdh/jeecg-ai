@@ -6,7 +6,6 @@
          <a-button 
            v-if="!selectedCourseIds.has(record.courseId)"
            type="primary" 
-           danger 
            size="small" 
            :loading="record.rushing"
            @click.stop="handleRush(record)"
@@ -16,7 +15,7 @@
          <a-button 
            v-else
            type="primary" 
-           ghost
+           danger
            size="small" 
            :loading="record.dropping"
            @click.stop="handleDrop(record)"
@@ -47,6 +46,20 @@
         api: getAvailableCourses,
         columns,
         useSearchForm: true,
+        afterFetch: (data) => {
+             if (!data) return [];
+             const map = new Map<string, any>();
+             data.forEach((item: any) => {
+                 if (map.has(item.courseId)) {
+                     const existing = map.get(item.courseId);
+                     existing.scheduleList.push(item);
+                 } else {
+                     const newItem = { ...item, scheduleList: [item] };
+                     map.set(item.courseId, newItem);
+                 }
+             });
+             return Array.from(map.values());
+        },
         formConfig: {
             labelWidth: 80,
             schemas: searchFormSchema
@@ -100,7 +113,7 @@
             } else if (typeof res === 'string' && (res.includes('排队') || res.includes('Queued'))) {
                 pollStatus(record.courseId, record);
             } else {
-                message.warning(res || '未知状态'); // If it returns message string directly
+                message.warning(res || '未知状态');
                 record.rushing = false;
             }
          } catch (e) {

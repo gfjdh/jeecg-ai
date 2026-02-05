@@ -33,14 +33,18 @@
         completedElective: 0,
       });
 
-      onMounted(async () => {
+      const fetchStats = async () => {
         const res = await getSummary();
         if (res && res.records && res.records.length > 0) {
           stats.value = res.records[0];
         }
+      };
+
+      onMounted(() => {
+        fetchStats();
       });
 
-      return { stats };
+      return { stats, refresh: fetchStats };
     },
   });
 </script>

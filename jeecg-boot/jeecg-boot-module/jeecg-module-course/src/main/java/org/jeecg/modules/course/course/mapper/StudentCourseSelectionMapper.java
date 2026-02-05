@@ -26,15 +26,11 @@ public interface StudentCourseSelectionMapper extends BaseMapper<StudentCourseSe
     /**
      * 获取可选课程列表
      * @param studentNo 学号
-     * @param className 班级
-     * @param year 年级
      * @param subject 科目
      * @param courseType 课程类型
      * @return 课程列表
      */
     List<StudentSchedule> getAvailableCourses(@Param("studentNo") String studentNo,
-                                              @Param("className") String className,
-                                              @Param("year") String year, 
                                               @Param("subject") String subject, 
                                               @Param("courseType") Integer courseType);
 

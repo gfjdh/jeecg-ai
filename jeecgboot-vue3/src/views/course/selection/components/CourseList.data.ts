@@ -1,52 +1,62 @@
 import { BasicColumn, FormSchema } from '/@/components/Table';
+import { h } from 'vue';
 
 export const columns: BasicColumn[] = [
+  {
+    title: '课程编号',
+    dataIndex: 'courseId',
+    width: 80,
+  },
   {
     title: '科目',
     dataIndex: 'course_dictText',
     width: 120,
   },
   {
-    title: '教师工号',
-    dataIndex: 'teacherNo',
-    width: 100,
+    title: '教师',
+    dataIndex: 'teacherNo_dictText',
+    width: 80,
   },
   {
     title: '类型',
     dataIndex: 'courseType_dictText',
-    width: 50,
+    width: 40,
   },
   {
     title: '学分',
     dataIndex: 'courseCredit',
-    width: 50,
+    width: 40,
   },
   {
     title: '已选/容量',
     dataIndex: 'capacity',
-    width: 80,
+    width: 50,
     customRender: ({ record }) => {
       // 显示 已选/容量
       return `${record.selectedCount || 0}/${record.capacity}`;
     },
   },
   {
-    title: '星期',
-    dataIndex: 'weekday_dictText',
-    width: 50,
-  },
-  {
-    title: '节次',
+    title: '时间',
     dataIndex: 'startSection',
     customRender: ({ record }) => {
-      return `${record.startSection} - ${record.endSection}节`;
+      if (record.scheduleList && record.scheduleList.length > 0) {
+        return h('div', record.scheduleList.map(item => h('div', `${item.weekday_dictText} ${item.startSection} - ${item.endSection}节`)));
+      }
+      return `${record.weekday_dictText} ${record.startSection} - ${record.endSection}节`;
     },
-    width: 50,
+    width: 100,
   },
   {
     title: '地点',
     dataIndex: 'location',
-    width: 50,
+    customRender: ({ record }) => {
+      if (record.scheduleList && record.scheduleList.length > 0) {
+        return h('div', record.scheduleList.map(item => h('div', item.location)));
+      }
+      return record.location;
+    },
+    width: 60,
   },
   { title: '操作', dataIndex: 'action', width: 50, slots: { customRender: 'action' } },
 ];
