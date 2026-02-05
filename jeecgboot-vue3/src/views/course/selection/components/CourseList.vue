@@ -92,7 +92,7 @@
       const pollStatus = async (courseId: string, record: any) => {
           try {
              const res = await getRushStatus(courseId);
-             if (res === 'PENDING') {
+             if (res === 'PENDING' || res === '排队中') {
                  message.loading('排队中...', 1);
                  setTimeout(() => pollStatus(courseId, record), 1000);
              } else if (res === '选课成功' || res === 'SUCCESS: 已选该课程') {
@@ -101,7 +101,7 @@
                  reload();
                  emit('refresh');
              } else {
-                 message.error(res); // 失败
+                 message.error(res);
                  record.rushing = false;
              }
           } catch (e) {
@@ -114,7 +114,7 @@
          record.rushing = true;
          try {
             const res = await rushCourse(record.courseId);
-            if (res && res.includes('排队中')) { 
+            if (res && res.includes('排队')) { 
                 pollStatus(record.courseId, record);
             } else {
                 message.warning(res || '未知状态');

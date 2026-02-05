@@ -8,10 +8,14 @@ import org.jeecg.modules.course.course.service.ITeacherCourseService;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 
 /**
  * @Description: 教师课程安排
@@ -26,6 +30,9 @@ public class TeacherCourseServiceImpl extends ServiceImpl<TeacherCourseMapper, T
 	private TeacherCourseMapper teacherCourseMapper;
 	@Autowired
 	private ClassTimeMapper classTimeMapper;
+    
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 	
 	@Override
 	@Transactional(rollbackFor = Exception.class)
@@ -79,5 +86,43 @@ public class TeacherCourseServiceImpl extends ServiceImpl<TeacherCourseMapper, T
 			teacherCourseMapper.deleteById(id);
 		}
 	}
+
+    @Override
+    public TeacherCourse getTeacherCourseCached(String courseId) {
+        String key = "course:info:" + courseId;
+        Object cached = redisTemplate.opsForValue().get(key);
+        if (cached != null) {
+            if (cached instanceof TeacherCourse) {
+                return (TeacherCourse) cached;
+            }
+            if (cached instanceof Map) {
+                Map<?,?> map = (Map<?,?>) cached;
+                TeacherCourse c = new TeacherCourse();
+                c.setCourseId((String) map.get("courseId"));
+                // 处理数值类型可能的差异 (Integer/Long)
+                Object cap = map.get("capacity");
+                if (cap instanceof Number) {
+                    c.setCapacity(((Number) cap).intValue());
+                }
+                
+                Object type = map.get("courseType");
+                if (type instanceof Number) {
+                    c.setCourseType(((Number) type).intValue());
+                }
+                
+                Object credit = map.get("courseCredit");
+                if (credit instanceof Number) {
+                    c.setCourseCredit(((Number) credit).intValue());
+                }
+                return c;
+            }
+        }
+        TeacherCourse course = this.getOne(new LambdaQueryWrapper<TeacherCourse>().eq(TeacherCourse::getCourseId, courseId));
+        if (course != null) {
+            // 缓存10分钟
+            redisTemplate.opsForValue().set(key, course, 10, TimeUnit.MINUTES);
+        }
+        return course;
+    }
 	
 }

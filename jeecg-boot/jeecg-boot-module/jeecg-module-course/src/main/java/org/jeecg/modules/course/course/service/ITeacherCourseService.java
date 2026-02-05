@@ -44,5 +44,11 @@ public interface ITeacherCourseService extends IService<TeacherCourse> {
 	 * @param idList
 	 */
 	public void delBatchMain (Collection<? extends Serializable> idList);
-	
+
+	/**
+	 * 获取课程信息（带缓存）
+	 * @param courseId
+	 * @return
+	 */
+	TeacherCourse getTeacherCourseCached(String courseId);
 }

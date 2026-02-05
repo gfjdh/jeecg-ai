@@ -2,6 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.jeecg.modules.course.course.mapper.StudentCourseSelectionMapper">
 
+    <select id="getTrainingProgramByStudentNo" resultType="org.jeecg.modules.course.course.entity.TrainingProgram">
+        SELECT
+            tp.*
+        FROM
+            training_program tp
+        JOIN
+            student_info s ON tp.major_id = s.major AND tp.start_year = s.year
+        WHERE
+            s.student_no = #{studentNo}
+    </select>
+
     <select id="getStudentSchedule" resultType="org.jeecg.modules.course.course.entity.StudentSchedule">
         SELECT
             tc.id,

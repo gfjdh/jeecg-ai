@@ -27,6 +27,9 @@ public class CourseRushConsumer {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+
+    @Autowired
+    private org.springframework.data.redis.core.StringRedisTemplate stringRedisTemplate;
     
     @Autowired
     private IStudentCourseSelectionService studentCourseSelectionService;
@@ -51,14 +54,13 @@ public class CourseRushConsumer {
         new Thread(() -> {
             while (true) {
                 try {
-                    // 阻塞式弹出，等待10ms后继续循环
-                    Object payloadObj = redisTemplate.opsForList().rightPop(GLOBAL_QUEUE_KEY, 10, TimeUnit.MILLISECONDS);
+                    // 阻塞式弹出，等待100ms后继续循环
+                    Object payloadObj = redisTemplate.opsForList().rightPop(GLOBAL_QUEUE_KEY, 100, TimeUnit.MILLISECONDS);
                     if (payloadObj != null) {
                         handleRush((String) payloadObj);
                     }
                 } catch (Exception e) {
-                    log.error("课程抢购消费者错误", e);
-                    try { Thread.sleep(1000); } catch (InterruptedException ie) {}
+                    log.error("抢课消费者错误", e);
                 }
             }
         }).start();
@@ -79,22 +81,21 @@ public class CourseRushConsumer {
                     .eq(StudentCourseSelection::getStudentNo, studentNo)
                     .eq(StudentCourseSelection::getCourseId, courseId));
             if (count > 0) {
-                redisTemplate.opsForValue().set(statusKey, "SUCCESS: 已选该课程");
+                stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 已选该课程");
                 return;
             }
 
-            // 2. 检查课程容量（数据库双重检查）
-            TeacherCourse teacherCourse = teacherCourseService.getOne(new LambdaQueryWrapper<TeacherCourse>()
-                    .eq(TeacherCourse::getCourseId, courseId));
+            // 2. 检查课程容量（带缓存检查）
+            TeacherCourse teacherCourse = teacherCourseService.getTeacherCourseCached(courseId);
             if (teacherCourse == null) {
-                redisTemplate.opsForValue().set(statusKey, "FAILED: 课程不存在");
+                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程不存在");
                 return;
             }
             
             long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
                     .eq(StudentCourseSelection::getCourseId, courseId));
             if (selectedCount >= teacherCourse.getCapacity()) {
-                redisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满");
+                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满");
                 return;
             }
 
@@ -123,7 +124,7 @@ public class CourseRushConsumer {
                                  existTime.getStartSection() != null && existTime.getEndSection() != null) {
                                  if (isOverlap(newTime.getStartSection(), newTime.getEndSection(), 
                                                existTime.getStartSection(), existTime.getEndSection())) {
-                                     redisTemplate.opsForValue().set(statusKey, "FAILED: 与已选课程时间冲突： " + scs.getCourseId());
+                                     stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 与已选课程时间冲突： " + scs.getCourseId());
                                      return;
                                  }
                              }
@@ -156,13 +157,13 @@ public class CourseRushConsumer {
             newSelection.setStudyStatus(0); // 0: 正常/在读状态
             studentCourseSelectionService.save(newSelection);
             
-            redisTemplate.opsForValue().set(statusKey, "选课成功");
+            stringRedisTemplate.opsForValue().set(statusKey, "选课成功");
 
         } catch (Exception e) {
             log.error("处理抢课请求时出错: " + payload, e);
-            redisTemplate.opsForValue().set(statusKey, "FAILED: 系统错误");
+            stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 系统错误");
         } finally {
-            redisTemplate.opsForValue().decrement(countKey);
+            stringRedisTemplate.opsForValue().decrement(countKey);
         }
     }
 

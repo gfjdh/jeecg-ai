@@ -1,19 +1,16 @@
 package org.jeecg.modules.course.course.controller;
 
-import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.apache.shiro.SecurityUtils;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.vo.LoginUser;
-import org.jeecg.common.util.oConvertUtils;
+import org.jeecg.config.shiro.IgnoreAuth;
 import org.jeecg.modules.course.course.component.CourseRushConsumer;
 import org.jeecg.modules.course.course.vo.StudentCourseSummaryVO;
-import org.jeecg.modules.course.course.entity.ClassCourseType;
 import org.jeecg.modules.course.course.entity.StudentCourseSelection;
 import org.jeecg.modules.course.course.entity.TeacherCourse;
 import org.jeecg.modules.course.course.entity.StudentSchedule;
@@ -22,13 +19,12 @@ import org.jeecg.modules.course.course.service.IClassCourseTypeService;
 import org.jeecg.modules.course.course.service.IClassTimeService;
 import org.jeecg.modules.course.course.service.IStudentCourseSelectionService;
 import org.jeecg.modules.course.course.service.ITeacherCourseService;
-import org.jeecg.modules.student.entity.Student;
-import org.jeecg.modules.student.service.IStudentService;
-import org.jeecg.modules.course.course.service.ITrainingProgramService;
 import org.jeecg.modules.course.course.entity.TrainingProgram;
-import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
+import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,7 +36,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 
@@ -56,6 +51,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class StudentCourseRushController {
 
+    private static final RedisScript<Long> RUSH_SCRIPT;
+
+    static {
+        String lua = "local current = redis.call('get', KEYS[1]) or 0 " +
+                     "if tonumber(current) >= tonumber(ARGV[1]) then " +
+                     "   return -1 " +
+                     "else " +
+                     "   return redis.call('incr', KEYS[1]) " +
+                     "end";
+        RUSH_SCRIPT = new DefaultRedisScript<>(lua, Long.class);
+    }
+
     @Autowired
     private IStudentCourseSelectionService studentCourseSelectionService;
 
@@ -66,19 +73,16 @@ public class StudentCourseRushController {
     private RedisTemplate<String, Object> redisTemplate;
 
     @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
     private ITeacherCourseService teacherCourseService;
 
     @Autowired
     private IClassTimeService classTimeService;
     
     @Autowired
-    private IStudentService studentService;
-    
-    @Autowired
     private IClassCourseTypeService classCourseTypeService;
-
-    @Autowired
-    private ITrainingProgramService trainingProgramService;
 
     /**
      * 获取学生学分统计面板
@@ -126,7 +130,7 @@ public class StudentCourseRushController {
         // 验证选课时间
         String timeError = validateSelectionTime(user.getUsername());
         if (timeError != null) {
-            // 不在选课时间内，返回空列表（前端表现为隐藏列表）
+            // 不在选课时间内，返回空列表
             return Result.OK(new Page<>());
         }
         
@@ -145,44 +149,44 @@ public class StudentCourseRushController {
      * 抢课接口 (Rush Course)
      * 使用 Redis 队列处理高并发
      */
+    // @IgnoreAuth
     @PostMapping(value = "/rush")
     public Result<String> rush(@RequestBody Map<String, String> json) {
         String courseId = json.get("courseId");
+        if (courseId == null) return Result.error("缺少课程ID");
+
         LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
         String studentNo = user.getUsername();
-        
-        if (courseId == null) return Result.error("缺少课程ID");
-        
+                
         // 验证选课时间
         String timeError = validateSelectionTime(studentNo);
         if (timeError != null) {
             return Result.error(timeError);
         }
 
-        // 1. 检查队列限制 (Check Queue Limit)
-        // 冗余设计: 允许 1.25 倍容量进入队列，防止因并发导致的超卖或误判
-        TeacherCourse course = teacherCourseService.getOne(new LambdaQueryWrapper<TeacherCourse>().eq(TeacherCourse::getCourseId, courseId));
+        // 1. 检查队列限制
+        TeacherCourse course = teacherCourseService.getTeacherCourseCached(courseId);
         if (course == null) return Result.error("课程不存在");
         
+        // 冗余设计: 允许 1.25 倍容量进入队列
         long limit = (long) (course.getCapacity() * 1.25); 
         String countKey = "course:rush:count:" + courseId;
         
-        long currentCount = redisTemplate.opsForValue().increment(countKey);
-        if (currentCount > limit) {
-        	redisTemplate.opsForValue().decrement(countKey);
+        // 检查队列是否已满，使用lua脚本确保操作原子性
+        Long result = stringRedisTemplate.execute(RUSH_SCRIPT, Collections.singletonList(countKey), String.valueOf(limit));
+        if (result != null && result == -1) {
             return Result.error("课程已满 (排队人数过多)");
         }
         
-        // 2. 推入队列 (Push to Queue)
-        String statusKey = CourseRushConsumer.STATUS_KEY_PREFIX + courseId + ":" + studentNo;
-        // 设置初始状态
-        redisTemplate.opsForValue().set(statusKey, "PENDING");
-        
+        // 2. 推入队列
         String payload = courseId + ":" + studentNo;
+        String statusKey = CourseRushConsumer.STATUS_KEY_PREFIX + payload;
+        stringRedisTemplate.opsForValue().set(statusKey, "PENDING");        // 设置初始状态
+        
         // 发送到全局处理队列
         redisTemplate.opsForList().leftPush(CourseRushConsumer.GLOBAL_QUEUE_KEY, payload);
         
-        return Result.OK("排队中");
+        return Result.OK("进入排队");
     }
     
     /**
@@ -194,7 +198,7 @@ public class StudentCourseRushController {
         String studentNo = user.getUsername();
         String statusKey = CourseRushConsumer.STATUS_KEY_PREFIX + courseId + ":" + studentNo;
         
-        Object status = redisTemplate.opsForValue().get(statusKey);
+        Object status = stringRedisTemplate.opsForValue().get(statusKey);
         if (status == null) return Result.error("无排队记录");
         return Result.OK(status.toString());
     }
@@ -215,31 +219,37 @@ public class StudentCourseRushController {
     }
 
     /**
-     * 校验选课时间
+     * 校验选课时间+缓存
      */
+    @SuppressWarnings("unchecked")
     private String validateSelectionTime(String studentNo) {
-        Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getStudentNo, studentNo));
-        if (student != null && oConvertUtils.isNotEmpty(student.getMajor())) {
-            try {
-                // 假设 Student major 存储的是 Integer ID 的字符串形式，如果是非数字字符串需要另外处理
-                // 如果存在转换失败风险，可以用 try-catch 捕获
-                TrainingProgram program = trainingProgramService.getOne(new LambdaQueryWrapper<TrainingProgram>()
-                    .eq(TrainingProgram::getMajorId, Integer.valueOf(student.getMajor()))
-                    .eq(TrainingProgram::getStartYear, student.getYear()));
-                 
-                if (program != null) {
-                    Date now = new Date();
-                    boolean notStarted = program.getCourseSelectionBegin() != null && now.before(program.getCourseSelectionBegin());
-                    boolean ended = program.getCourseSelectionEnd() != null && now.after(program.getCourseSelectionEnd());
+        String key = "course:rush:time:" + studentNo;
+        // 从缓存获取时间配置
+        Map<String, Object> timeConfig = (Map<String, Object>) redisTemplate.opsForValue().get(key);
+        
+        if (timeConfig == null) {
+            TrainingProgram program = studentCourseSelectionMapper.getTrainingProgramByStudentNo(studentNo);
                     
-                    if (notStarted) return "选课未开始";
-                    if (ended) return "选课已结束";
+            if (program != null) {
+                timeConfig = new HashMap<>();
+                if (program.getCourseSelectionBegin() != null) {
+                    timeConfig.put("start", program.getCourseSelectionBegin().getTime());
                 }
-            } catch (NumberFormatException e) {
-                log.warn("Student major ID format error: {}", student.getMajor());
-            } catch (Exception e) {
-                log.error("Check training program failed", e);
+                if (program.getCourseSelectionEnd() != null) {
+                    timeConfig.put("end", program.getCourseSelectionEnd().getTime());
+                }
+                // 缓存 1 分钟
+                redisTemplate.opsForValue().set(key, timeConfig, 1, java.util.concurrent.TimeUnit.MINUTES);
             }
+        }
+        
+        if (timeConfig != null) {
+            long now = System.currentTimeMillis();
+            Object startObj = timeConfig.get("start");
+            Object endObj = timeConfig.get("end");
+            
+            if (startObj != null && now < ((Number) startObj).longValue()) return "选课未开始";
+            if (endObj != null && now > ((Number) endObj).longValue()) return "选课已结束";
         }
         return null;
     }

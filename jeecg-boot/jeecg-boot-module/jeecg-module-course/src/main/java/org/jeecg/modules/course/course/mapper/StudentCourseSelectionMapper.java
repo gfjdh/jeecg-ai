@@ -8,6 +8,8 @@ import org.jeecg.modules.course.course.entity.StudentSchedule;
 import org.jeecg.modules.course.course.vo.StudentCourseSummaryVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import org.jeecg.modules.course.course.entity.TrainingProgram;
+
 /**
  * @Description: 学生选课表
  * @Author: jeecg-boot
@@ -15,6 +17,13 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @Version: V1.0
  */
 public interface StudentCourseSelectionMapper extends BaseMapper<StudentCourseSelection> {
+
+    /**
+     * 查询学生培养方案
+     * @param studentNo 学号
+     * @return 培养方案
+     */
+    TrainingProgram getTrainingProgramByStudentNo(@Param("studentNo") String studentNo);
 
     /**
      * 查询学生课表
