@@ -54,13 +54,24 @@ public class CourseRushConsumer {
         new Thread(() -> {
             while (true) {
                 try {
-                    // 阻塞式弹出，等待100ms后继续循环
-                    Object payloadObj = redisTemplate.opsForList().rightPop(GLOBAL_QUEUE_KEY, 100, TimeUnit.MILLISECONDS);
+                    // 非阻塞弹出
+                    Object payloadObj = redisTemplate.opsForList().rightPop(GLOBAL_QUEUE_KEY);
                     if (payloadObj != null) {
                         handleRush((String) payloadObj);
+                        // 处理完一个后继续循环，立即尝试获取下一个
+                        continue;
                     }
+                    // 队列为空时，休眠100ms再检查
+                    Thread.sleep(100);
                 } catch (Exception e) {
                     log.error("抢课消费者错误", e);
+                    // 发生异常时也适当休眠，避免CPU空转
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ie) {
+                        Thread.currentThread().interrupt();
+                        break;
+                    }
                 }
             }
         }).start();
