@@ -19,7 +19,7 @@
                 :style="{ height: getCardHeight(matrix[dayIndex + 1][section].span) }"
              >
                 <div class="course-name">{{ matrix[dayIndex + 1][section].data.course_dictText || matrix[dayIndex + 1][section].data.course }}</div>
-                <div class="course-loc">{{ matrix[dayIndex + 1][section].data.location }}</div>
+                <div class="course-loc">L: {{ matrix[dayIndex + 1][section].data.location }}</div>
                 <div class="course-teacher">T: {{ matrix[dayIndex + 1][section].data.teacherNo_dictText || matrix[dayIndex + 1][section].data.teacherNo }}</div>
              </div>
           </td>
@@ -61,14 +61,8 @@
         // 检查预览课程是否在已选课程列表中
         return scheduleList.value.some(selected => {
           return previewList.some((preview: any) => {
-            // 根据课程唯一标识比较，这里假设id或course字段是唯一的
-            return (preview.id && preview.id === selected.id) || 
-                   (preview.course && preview.course === selected.course) ||
-                   // 或者通过时间和教师等综合判断
-                   (preview.weekday === selected.weekday && 
-                    preview.startSection === selected.startSection && 
-                    preview.endSection === selected.endSection &&
-                    preview.teacherNo === selected.teacherNo);
+            // 根据课程唯一标识比较
+            return (preview.id && preview.id === selected.id)
           });
         });
       };

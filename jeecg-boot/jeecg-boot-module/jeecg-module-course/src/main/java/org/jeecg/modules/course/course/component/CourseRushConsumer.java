@@ -1,7 +1,10 @@
 package org.jeecg.modules.course.course.component;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 import jakarta.annotation.PostConstruct;
 import org.jeecg.modules.course.course.entity.ClassTime;
 import org.jeecg.modules.course.course.entity.StudentCourseSelection;
@@ -87,16 +90,7 @@ public class CourseRushConsumer {
         String countKey = "course:rush:count:" + courseId;
 
         try {
-            // 1. 检查是否已选过该课程
-            long count = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
-                    .eq(StudentCourseSelection::getStudentNo, studentNo)
-                    .eq(StudentCourseSelection::getCourseId, courseId));
-            if (count > 0) {
-                stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 已选该课程", 5, TimeUnit.MINUTES);
-                return;
-            }
-
-            // 2. 检查课程容量（带缓存检查）
+            // 1. 检查课程容量（带缓存检查）
             TeacherCourse teacherCourse = teacherCourseService.getTeacherCourseCached(courseId);
             if (teacherCourse == null) {
                 stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程不存在", 5, TimeUnit.MINUTES);
@@ -107,6 +101,15 @@ public class CourseRushConsumer {
                     .eq(StudentCourseSelection::getCourseId, courseId));
             if (selectedCount >= teacherCourse.getCapacity()) {
                 stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满", 5, TimeUnit.MINUTES);
+                return;
+            }
+
+            // 2. 检查是否已选过该课程
+            long count = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
+                    .eq(StudentCourseSelection::getStudentNo, studentNo)
+                    .eq(StudentCourseSelection::getCourseId, courseId));
+            if (count > 0) {
+                stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 已选该课程", 5, TimeUnit.MINUTES);
                 return;
             }
 
