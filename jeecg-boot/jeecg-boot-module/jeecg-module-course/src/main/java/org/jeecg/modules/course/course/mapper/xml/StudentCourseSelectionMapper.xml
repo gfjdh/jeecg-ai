@@ -95,4 +95,22 @@
         WHERE student_no = #{studentNo}
     </select>
 
+    <!-- 检查选课时间冲突 -->
+    <select id="checkTimeConflict" resultType="java.lang.String">
+        SELECT ct_exist.course_id
+        FROM class_time ct_new
+        JOIN student_course_selection scs ON scs.student_no = #{studentNo}
+        JOIN class_time ct_exist ON scs.course_id = ct_exist.course_id
+        WHERE ct_new.course_id = #{courseId}
+          AND ct_new.weekday = ct_exist.weekday
+          AND ct_new.start_section &lt;= ct_exist.end_section
+          AND ct_new.end_section &gt;= ct_exist.start_section
+        <if test="_databaseId == 'sqlserver'">
+            ORDER BY ct_exist.course_id OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY
+        </if>
+        <if test="_databaseId != 'sqlserver'">
+            LIMIT 1
+        </if>
+    </select>
+
 </mapper>

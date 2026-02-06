@@ -1,15 +1,10 @@
 package org.jeecg.modules.course.course.component;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 import jakarta.annotation.PostConstruct;
-import org.jeecg.modules.course.course.entity.ClassTime;
 import org.jeecg.modules.course.course.entity.StudentCourseSelection;
 import org.jeecg.modules.course.course.entity.TeacherCourse;
-import org.jeecg.modules.course.course.service.IClassTimeService;
 import org.jeecg.modules.course.course.service.IStudentCourseSelectionService;
 import org.jeecg.modules.course.course.service.ITeacherCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +34,6 @@ public class CourseRushConsumer {
     
     @Autowired
     private ITeacherCourseService teacherCourseService;
-    
-    @Autowired
-    private IClassTimeService classTimeService;
     
     @Autowired
     private IStudentService studentService;
@@ -90,62 +82,43 @@ public class CourseRushConsumer {
         String countKey = "course:rush:count:" + courseId;
 
         try {
-            // 1. 检查课程容量（带缓存检查）
+            // 1. 检查课程容量（在入队列时已带缓存检查，对性能影响较小）
             TeacherCourse teacherCourse = teacherCourseService.getTeacherCourseCached(courseId);
             if (teacherCourse == null) {
                 stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程不存在", 5, TimeUnit.MINUTES);
                 return;
             }
             
-            long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
-                    .eq(StudentCourseSelection::getCourseId, courseId));
+            // 2. 合并查询：一次性获取相关选课信息和上课时间
+            // 获取：1.该课程的所有选课(查容量) 2.该学生的所有选课(查重复和冲突)
+            List<StudentCourseSelection> allRelatedSelections = studentCourseSelectionService.list(new LambdaQueryWrapper<StudentCourseSelection>()
+                    .eq(StudentCourseSelection::getCourseId, courseId)
+                    .or()
+                    .eq(StudentCourseSelection::getStudentNo, studentNo));
+
+            // 过滤出该课程的当前选课人数
+            long selectedCount = allRelatedSelections.stream()
+                    .filter(s -> courseId.equals(s.getCourseId()))
+                    .count();
             if (selectedCount >= teacherCourse.getCapacity()) {
                 stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满", 5, TimeUnit.MINUTES);
                 return;
             }
 
-            // 2. 检查是否已选过该课程
-            long count = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
-                    .eq(StudentCourseSelection::getStudentNo, studentNo)
-                    .eq(StudentCourseSelection::getCourseId, courseId));
-            if (count > 0) {
+            // 过滤出该学生是否已选过该课程
+            boolean alreadySelected = allRelatedSelections.stream()
+                    .anyMatch(s -> courseId.equals(s.getCourseId()) && studentNo.equals(s.getStudentNo()));
+            if (alreadySelected) {
                 stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 已选该课程", 5, TimeUnit.MINUTES);
                 return;
             }
 
-            // 3. 检查时间冲突
-            // 获取新课程的上课时间
-            List<ClassTime> newCourseTimes = classTimeService.list(new LambdaQueryWrapper<ClassTime>()
-                    .eq(ClassTime::getCourseId, courseId));
-            
-            // 获取学生现有的详细课程安排
-             List<StudentCourseSelection> existingSelections = studentCourseSelectionService.list(new LambdaQueryWrapper<StudentCourseSelection>()
-                    .eq(StudentCourseSelection::getStudentNo, studentNo));
-            
-             for (StudentCourseSelection scs : existingSelections) {
-                 List<ClassTime> existingTimes = classTimeService.list(new LambdaQueryWrapper<ClassTime>()
-                         .eq(ClassTime::getCourseId, scs.getCourseId()));
-                 
-                 for (ClassTime newTime : newCourseTimes) {
-                     for (ClassTime existTime : existingTimes) {
-                         // 空值检查
-                         if (newTime.getWeekday() == null || existTime.getWeekday() == null) {
-                             continue;
-                         }
-                         if (newTime.getWeekday().equals(existTime.getWeekday())) {
-                             // 检查时间段是否重叠
-                             if (newTime.getStartSection() != null && newTime.getEndSection() != null &&
-                                 existTime.getStartSection() != null && existTime.getEndSection() != null) {
-                                 if (isOverlap(newTime.getStartSection(), newTime.getEndSection(), 
-                                               existTime.getStartSection(), existTime.getEndSection())) {
-                                     stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 与已选课程时间冲突： " + scs.getCourseId(), 5, TimeUnit.MINUTES);
-                                     return;
-                                 }
-                             }
-                         }
-                     }
-                 }
-             }
+            // 3. 检查选课时间冲突（通过 SQL 进行联表查询）
+            String conflictCourseId = studentCourseSelectionService.checkTimeConflict(studentNo, courseId);
+            if (conflictCourseId != null) {
+                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 与已选课程时间冲突： " + conflictCourseId, 5, TimeUnit.MINUTES);
+                return;
+            }
 
             // 4. 确定课程类型（检查是否有班级覆盖）
             Integer finalCourseType = teacherCourse.getCourseType();
@@ -179,17 +152,5 @@ public class CourseRushConsumer {
         } finally {
             stringRedisTemplate.opsForValue().decrement(countKey);
         }
-    }
-
-    /**
-     * 检查两个时间段是否重叠
-     * @param start1 时间段1的开始节次
-     * @param end1 时间段1的结束节次
-     * @param start2 时间段2的开始节次
-     * @param end2 时间段2的结束节次
-     * @return 如果重叠返回true，否则返回false
-     */
-    private boolean isOverlap(int start1, int end1, int start2, int end2) {
-        return Math.max(start1, start2) <= Math.min(end1, end2);
     }
 }

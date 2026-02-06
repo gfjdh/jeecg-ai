@@ -50,4 +50,12 @@ public interface StudentCourseSelectionMapper extends BaseMapper<StudentCourseSe
      */
     StudentCourseSummaryVO getCourseSummary(@Param("studentNo") String studentNo);
 
+    /**
+     * 检查选课时间冲突，返回冲突的课程ID
+     * @param studentNo 学号
+     * @param courseId 要选的新课程ID
+     * @return 冲突的课程ID，如果没有冲突则返回 null
+     */
+    String checkTimeConflict(@Param("studentNo") String studentNo, @Param("courseId") String courseId);
+
 }

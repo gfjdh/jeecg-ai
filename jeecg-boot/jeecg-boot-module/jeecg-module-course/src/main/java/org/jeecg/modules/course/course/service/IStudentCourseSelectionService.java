@@ -27,4 +27,12 @@ public interface IStudentCourseSelectionService extends IService<StudentCourseSe
      */
     String validateSelectionTime(String studentNo);
 
+    /**
+     * 检查选课时间冲突
+     * @param studentNo 学号
+     * @param courseId 课程ID
+     * @return 冲突的课程ID，如果没有冲突则返回 null
+     */
+    String checkTimeConflict(String studentNo, String courseId);
+
 }
