@@ -1,19 +1,13 @@
 package org.jeecg.modules.course.course.vo;
 
 import java.util.List;
-import org.jeecg.modules.course.course.entity.TeacherCourse;
 import org.jeecg.modules.course.course.entity.ClassTime;
 import lombok.Data;
 import org.jeecgframework.poi.excel.annotation.Excel;
-import org.jeecgframework.poi.excel.annotation.ExcelEntity;
 import org.jeecgframework.poi.excel.annotation.ExcelCollection;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
-import java.util.Date;
 import org.jeecg.common.aspect.annotation.Dict;
-import org.jeecg.common.constant.ProvinceCityArea;
-import org.jeecg.common.util.SpringContextUtils;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
@@ -64,7 +58,7 @@ public class TeacherCoursePage {
 	/**课程学分*/
 	@Excel(name = "课程学分", width = 15)
 	@Schema(description = "课程学分")
-    private java.lang.Integer courseCredit;
+    private java.math.BigDecimal courseCredit;
 	/**课程容量*/
 	@Excel(name = "课程容量", width = 15)
 	@Schema(description = "课程容量")

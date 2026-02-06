@@ -64,17 +64,6 @@ public class CourseRushConsumer {
         }).start();
     }
 
-    /*
-    时间复杂度分析：
-    + O(1) - 获取课程信息（假设有缓存）
-    + O(k) - 布隆过滤器检查（k=3次bit检查）
-    + O(log M) - 检查是否已选（数据库查询，假设有索引）
-    + O(1) - 检查课程人数（数据库count，假设有索引）
-    + O(X) - 检查时间冲突（X为学生已选课程数，需要具体分析实现）
-    + O(1) - 获取覆盖类型
-    + O(1) - 保存记录
-    + O(k) - 更新布隆过滤器（k=3次SETBIT）
-     */
     private void handleRush(String payload) {
         // 负载格式: "courseId:studentNo"
         String[] parts = payload.split(":");

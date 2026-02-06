@@ -150,9 +150,34 @@ public class StudentCourseRushController {
     }
     
     /**
+     * 抢课状态接口 (不带 Auth，用于压测)
+     * @param json 需包含 courseId 和 studentNo
+     */
+    @IgnoreAuth
+    @PostMapping(value = "/rushStatusNoAuth")
+    @Operation(summary = "查询抢课状态压测接口 (免授权)")
+    public Result<String> rushStatusNoAuth(@RequestBody Map<String, String> json) {
+        String courseId = json.get("courseId");
+        String studentNo = json.get("studentNo");
+        if (courseId == null) return Result.error("缺少课程ID");
+        if (studentNo == null) return Result.error("缺少学号");
+        
+        String statusKey = CourseRushConsumer.STATUS_KEY_PREFIX + courseId + ":" + studentNo;
+        
+        Object status = stringRedisTemplate.opsForValue().get(statusKey);
+        if (status == null) return Result.error("无排队记录");
+        if ("PENDING".equals(status.toString())) return Result.OK("排队中");
+        if (status.toString().startsWith("FAILED:")) {
+            return Result.error(status.toString().substring(7)); 
+        }
+        return Result.OK(status.toString());
+    }
+    
+    /**
      * 查询抢课状态
      */
     @GetMapping(value = "/rush/status")
+    @Operation(summary = "查询抢课状态")
     public Result<String> rushStatus(@RequestParam(name="courseId") String courseId) {
         LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
         String studentNo = user.getUsername();

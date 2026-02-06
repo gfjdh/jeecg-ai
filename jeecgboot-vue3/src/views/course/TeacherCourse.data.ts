@@ -107,7 +107,7 @@ export const formSchema: FormSchema[] = [
   {
     label: '课程学分',
     field: 'courseCredit',
-    component: 'InputNumber',
+    component: 'Input',
   },
   {
     label: '课程容量',
