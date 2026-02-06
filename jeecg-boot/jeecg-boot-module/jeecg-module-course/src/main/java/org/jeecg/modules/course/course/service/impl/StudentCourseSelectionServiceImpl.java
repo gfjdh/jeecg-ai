@@ -129,4 +129,9 @@ public class StudentCourseSelectionServiceImpl extends ServiceImpl<StudentCourse
     public String checkTimeConflict(String studentNo, String courseId) {
         return studentCourseSelectionMapper.checkTimeConflict(studentNo, courseId);
     }
+
+    @Override
+    public Integer getOverrideCourseType(String studentNo, String courseId) {
+        return studentCourseSelectionMapper.getOverrideCourseType(studentNo, courseId);
+    }
 }

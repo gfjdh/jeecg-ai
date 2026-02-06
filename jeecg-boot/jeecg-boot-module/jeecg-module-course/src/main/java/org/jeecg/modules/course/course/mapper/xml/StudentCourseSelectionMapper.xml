@@ -113,4 +113,23 @@
         </if>
     </select>
 
+    <!-- 获取学生针对特定课程的覆盖课程类型 -->
+    <select id="getOverrideCourseType" resultType="java.lang.Integer">
+        SELECT
+            cct.course_type
+        FROM
+            student_info s
+        JOIN
+            class_course_type cct ON s.class_name = cct.class_id AND s.year = cct.year
+        WHERE
+            s.student_no = #{studentNo}
+            AND cct.course_id = #{courseId}
+        <if test="_databaseId == 'sqlserver'">
+            ORDER BY (SELECT NULL) OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY
+        </if>
+        <if test="_databaseId != 'sqlserver'">
+            LIMIT 1
+        </if>
+    </select>
+
 </mapper>

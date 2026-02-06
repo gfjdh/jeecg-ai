@@ -11,10 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
-import org.jeecg.modules.course.course.entity.ClassCourseType;
-import org.jeecg.modules.course.course.service.IClassCourseTypeService;
-import org.jeecg.modules.student.entity.Student;
-import org.jeecg.modules.student.service.IStudentService;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import java.math.BigDecimal;
@@ -34,12 +30,6 @@ public class CourseRushConsumer {
     
     @Autowired
     private ITeacherCourseService teacherCourseService;
-    
-    @Autowired
-    private IStudentService studentService;
-    
-    @Autowired
-    private IClassCourseTypeService classCourseTypeService;
 
     public static final String GLOBAL_QUEUE_KEY = "course:rush:global_queue";
     public static final String STATUS_KEY_PREFIX = "course:rush:status:";
@@ -120,17 +110,11 @@ public class CourseRushConsumer {
                 return;
             }
 
-            // 4. 确定课程类型（检查是否有班级覆盖）
+            // 4. 确定课程类型（查询是否有班级覆盖）
             Integer finalCourseType = teacherCourse.getCourseType();
-            Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getStudentNo, studentNo));
-            if (student != null) {
-                ClassCourseType cct = classCourseTypeService.getOne(new LambdaQueryWrapper<ClassCourseType>()
-                        .eq(ClassCourseType::getClassId, student.getClassName())
-                        .eq(ClassCourseType::getYear, student.getYear())
-                        .eq(ClassCourseType::getCourseId, courseId));
-                if (cct != null && cct.getCourseType() != null) {
-                    finalCourseType = cct.getCourseType();
-                }
+            Integer overrideType = studentCourseSelectionService.getOverrideCourseType(studentNo, courseId);
+            if (overrideType != null) {
+                finalCourseType = overrideType;
             }
 
             // 5. 抢课成功 - 保存选课记录

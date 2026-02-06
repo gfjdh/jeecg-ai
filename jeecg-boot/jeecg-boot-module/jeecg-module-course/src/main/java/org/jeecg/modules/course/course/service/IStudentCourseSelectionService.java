@@ -35,4 +35,11 @@ public interface IStudentCourseSelectionService extends IService<StudentCourseSe
      */
     String checkTimeConflict(String studentNo, String courseId);
 
+    /**
+     * 获取学生针对特定课程的覆盖课程类型
+     * @param studentNo 学号
+     * @param courseId 课程ID
+     * @return 覆盖课程类型
+     */
+    Integer getOverrideCourseType(String studentNo, String courseId);
 }

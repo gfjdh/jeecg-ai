@@ -58,4 +58,8 @@ public interface StudentCourseSelectionMapper extends BaseMapper<StudentCourseSe
      */
     String checkTimeConflict(@Param("studentNo") String studentNo, @Param("courseId") String courseId);
 
+    /**
+     * 获取学生针对特定课程的覆盖课程类型
+     */
+    Integer getOverrideCourseType(@Param("studentNo") String studentNo, @Param("courseId") String courseId);
 }
