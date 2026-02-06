@@ -64,7 +64,7 @@ public class StudentCourseSelectionServiceImpl extends ServiceImpl<StudentCourse
         }
 
         // 1. 检查队列限制
-        TeacherCourse course = teacherCourseService.getTeacherCourseCached(courseId);
+        TeacherCourse course = teacherCourseService.getTeacherCourse(courseId);
         if (course == null) return Result.error("课程不存在");
         
         // 冗余设计: 允许 1.25 倍容量进入队列

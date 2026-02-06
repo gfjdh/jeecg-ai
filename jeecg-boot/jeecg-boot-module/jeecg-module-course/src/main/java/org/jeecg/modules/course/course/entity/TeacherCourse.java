@@ -62,7 +62,7 @@ public class TeacherCourse implements Serializable {
 	/**课程学分*/
 	@Excel(name = "课程学分", width = 15)
     @Schema(description = "课程学分")
-    private java.lang.Integer courseCredit;
+    private java.math.BigDecimal courseCredit;
 	/**课程容量*/
 	@Excel(name = "课程容量", width = 15)
     @Schema(description = "课程容量")

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Collection;
@@ -88,7 +89,7 @@ public class TeacherCourseServiceImpl extends ServiceImpl<TeacherCourseMapper, T
 	}
 
     @Override
-    public TeacherCourse getTeacherCourseCached(String courseId) {
+    public TeacherCourse getTeacherCourse(String courseId) {
         String key = "course:info:" + courseId;
         Object cached = redisTemplate.opsForValue().get(key);
         if (cached != null) {
@@ -112,7 +113,7 @@ public class TeacherCourseServiceImpl extends ServiceImpl<TeacherCourseMapper, T
                 
                 Object credit = map.get("courseCredit");
                 if (credit instanceof Number) {
-                    c.setCourseCredit(((Number) credit).intValue());
+                    c.setCourseCredit(new BigDecimal(((Number) credit).doubleValue()));
                 }
                 return c;
             }

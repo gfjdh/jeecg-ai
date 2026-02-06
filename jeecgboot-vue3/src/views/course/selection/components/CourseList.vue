@@ -95,7 +95,7 @@
              if (res === 'PENDING' || res === '') {
                  message.loading('排队中...', 1);
                  setTimeout(() => pollStatus(courseId, record), 1000);
-             } else if (res === '选课成功' || res === 'SUCCESS: 已选该课程') {
+             } else if (res === 'SUCCESS: 选课成功' || res === 'SUCCESS: 已选该课程') {
                  record.rushing = false;
                  await fetchSelectedCourses();
                  reload();

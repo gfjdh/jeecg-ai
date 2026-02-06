@@ -50,5 +50,5 @@ public interface ITeacherCourseService extends IService<TeacherCourse> {
 	 * @param courseId
 	 * @return
 	 */
-	TeacherCourse getTeacherCourseCached(String courseId);
+	TeacherCourse getTeacherCourse(String courseId);
 }

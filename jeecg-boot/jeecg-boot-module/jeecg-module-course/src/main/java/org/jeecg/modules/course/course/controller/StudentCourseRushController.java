@@ -122,6 +122,12 @@ public class StudentCourseRushController {
         if (courseId == null) return Result.error("缺少课程ID");
 
         LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
+        // 验证选课时间
+        String timeError = studentCourseSelectionService.validateSelectionTime(user.getUsername());
+        if (timeError != null) {
+            // 不在选课时间内，返回错误信息
+            return Result.error("不在选课时间内，无法选课");
+        }
         String studentNo = user.getUsername();
                 
         return studentCourseSelectionService.rush(courseId, studentNo);
@@ -166,10 +172,18 @@ public class StudentCourseRushController {
      */
     @PostMapping(value = "/drop")
     public Result<String> drop(@RequestBody Map<String, String> json) {
+
         String courseId = json.get("courseId");
         if (courseId == null) return Result.error("缺少课程ID");
         
         LoginUser user = (LoginUser) SecurityUtils.getSubject().getPrincipal();
+
+        // 验证选课时间
+        String timeError = studentCourseSelectionService.validateSelectionTime(user.getUsername());
+        if (timeError != null) {
+            // 不在选课时间内，返回错误信息
+            return Result.error("不在选课时间内，无法退课");
+        }
         studentCourseSelectionService.remove(new LambdaQueryWrapper<StudentCourseSelection>()
                 .eq(StudentCourseSelection::getStudentNo, user.getUsername())
                 .eq(StudentCourseSelection::getCourseId, courseId));
