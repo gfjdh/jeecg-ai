@@ -2,7 +2,10 @@ package org.jeecg.modules.course.course.component;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Arrays;
 import jakarta.annotation.PostConstruct;
 import org.jeecg.modules.course.course.entity.StudentCourseSelection;
 import org.jeecg.modules.course.course.entity.TeacherCourse;
@@ -55,7 +58,7 @@ public class CourseRushConsumer {
                     log.error("抢课消费者错误", e);
                     // 发生异常时适当休眠
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException ie) {
                         Thread.currentThread().interrupt();
                         break;
@@ -77,50 +80,104 @@ public class CourseRushConsumer {
         try {
             // 1. 获取课程容量和类型（在入队列时已带缓存，对性能影响较小）
             TeacherCourse teacherCourse = teacherCourseService.getTeacherCourse(courseId);
+
+            // 初始化异步控制
+            CompletableFuture<String> resultFuture = new CompletableFuture<>();
+            AtomicInteger passCount = new AtomicInteger(0);
             
-            // 2. 检查是否已选该课程 (使用布隆过滤器优化)
-            String bloomKey = BLOOM_FILTER_KEY_PREFIX + courseId;
-            if (isMember(bloomKey, studentNo)) {
-                // 如果布隆过滤器判断可能已选，再查库确认（排除误判）
-                boolean exists = studentCourseSelectionService.exists(new LambdaQueryWrapper<StudentCourseSelection>()
-                        .eq(StudentCourseSelection::getCourseId, courseId)
-                        .eq(StudentCourseSelection::getStudentNo, studentNo));
-                if (exists) {
-                    stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 已选该课程", 5, TimeUnit.MINUTES);
-                    return;
+            // 2. 异步检查是否已选该课程 (使用布隆过滤器优化)
+            CompletableFuture<String> task2 = CompletableFuture.supplyAsync(() -> {
+                String bloomKey = BLOOM_FILTER_KEY_PREFIX + courseId;
+                if (isMember(bloomKey, studentNo)) {
+                    // 如果布隆过滤器判断可能已选，再查库确认（排除误判）
+                    boolean exists = studentCourseSelectionService.exists(new LambdaQueryWrapper<StudentCourseSelection>()
+                            .eq(StudentCourseSelection::getCourseId, courseId)
+                            .eq(StudentCourseSelection::getStudentNo, studentNo));
+                    if (exists) {
+                        return "SUCCESS: 已选该课程";
+                    }
                 }
-            }
+                return null;
+            });
 
-            // 3. 检查课程人数是否已满
-            String fullKey = FULL_KEY_PREFIX + courseId;
-            if (Boolean.parseBoolean(stringRedisTemplate.opsForValue().get(fullKey))) {
-                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满", 5, TimeUnit.MINUTES);
+            // 3. 异步检查课程人数是否已满
+            CompletableFuture<String> task3 = CompletableFuture.supplyAsync(() -> {
+                String fullKey = FULL_KEY_PREFIX + courseId;
+                String isFullStr = stringRedisTemplate.opsForValue().get(fullKey);
+                if (isFullStr != null && Boolean.parseBoolean(isFullStr)) {
+                    return "FAILED: 课程已满";
+                }
+
+                long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
+                        .eq(StudentCourseSelection::getCourseId, courseId));
+                if (selectedCount >= teacherCourse.getCapacity()) {
+                    stringRedisTemplate.opsForValue().set(fullKey, "true", 10, TimeUnit.SECONDS);
+                    return "FAILED: 课程已满";
+                }
+                return null;
+            });
+
+            // 4. 异步检查选课时间冲突（通过 SQL 处理冲突检验逻辑）
+            CompletableFuture<String> task4 = CompletableFuture.supplyAsync(() -> {
+                String conflictCourseId = studentCourseSelectionService.checkTimeConflict(studentNo, courseId);
+                if (conflictCourseId != null) {
+                    return "FAILED: 与已选课程时间冲突： " + conflictCourseId;
+                }
+                return null;
+            });
+
+            // 5. 异步确定课程类型
+            CompletableFuture<Integer> task5 = CompletableFuture.supplyAsync(() -> {
+                Integer finalCourseType = teacherCourse.getCourseType();
+                Integer overrideType = studentCourseSelectionService.getOverrideCourseType(studentNo, courseId);
+                if (overrideType != null) {
+                    finalCourseType = overrideType;
+                }
+                return finalCourseType;
+            });
+
+            List<CompletableFuture<String>> validationTasks = Arrays.asList(task2, task3, task4);
+
+            // 结果处理器：若有任务返回非空结果（失败或已存在），则完成主Future；若都通过（null），则计数完成后通知
+            java.util.function.Consumer<String> resultHandler = (res) -> {
+                if (res != null) {
+                    resultFuture.complete(res);
+                } else {
+                    if (passCount.incrementAndGet() == validationTasks.size()) {
+                        resultFuture.complete(null);
+                    }
+                }
+            };
+            
+            // 注册回调
+            validationTasks.forEach(task -> task.thenAccept(resultHandler));
+
+            // 等待校验结果
+            String validationResult;
+            try {
+                validationResult = resultFuture.get(30, TimeUnit.SECONDS);
+            } catch (java.util.concurrent.TimeoutException e) {
+                log.warn("选课校验超时: {}", payload);
+                // 超时取消所有任务
+                validationTasks.forEach(t -> t.cancel(true));
+                task5.cancel(true);
+                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 请求超时，请重试", 5, TimeUnit.MINUTES);
                 return;
             }
 
-            long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
-                    .eq(StudentCourseSelection::getCourseId, courseId));
-            if (selectedCount >= teacherCourse.getCapacity()) {
-                stringRedisTemplate.opsForValue().set(fullKey, "true", 10, TimeUnit.SECONDS);
-                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满", 5, TimeUnit.MINUTES);
+            if (validationResult != null) {
+                // 如果结果不为null，说明有了结论（失败或直接成功）
+                stringRedisTemplate.opsForValue().set(statusKey, validationResult, 5, TimeUnit.MINUTES);
+                
+                // 尝试取消其他任务
+                validationTasks.forEach(t -> { if(!t.isDone()) t.cancel(true); });
+                if(!task5.isDone()) task5.cancel(true);
                 return;
-            }
-
-            // 4. 检查选课时间冲突（通过 SQL 处理冲突检验逻辑）
-            String conflictCourseId = studentCourseSelectionService.checkTimeConflict(studentNo, courseId);
-            if (conflictCourseId != null) {
-                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 与已选课程时间冲突： " + conflictCourseId, 5, TimeUnit.MINUTES);
-                return;
-            }
-
-            // 5. 确定课程类型（查询是否有班级覆盖，带缓存）
-            Integer finalCourseType = teacherCourse.getCourseType();
-            Integer overrideType = studentCourseSelectionService.getOverrideCourseType(studentNo, courseId);
-            if (overrideType != null) {
-                finalCourseType = overrideType;
             }
 
             // 6. 抢课成功 - 保存选课记录
+            Integer finalCourseType = task5.get();
+
             StudentCourseSelection newSelection = new StudentCourseSelection();
             newSelection.setStudentNo(studentNo);
             newSelection.setCourseId(courseId);
@@ -130,6 +187,7 @@ public class CourseRushConsumer {
             studentCourseSelectionService.save(newSelection);
             
             // 抢课成功，更新布隆过滤器
+            String bloomKey = BLOOM_FILTER_KEY_PREFIX + courseId;
             addToBloomFilter(bloomKey, studentNo);
             
             stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 选课成功", 5, TimeUnit.MINUTES);
