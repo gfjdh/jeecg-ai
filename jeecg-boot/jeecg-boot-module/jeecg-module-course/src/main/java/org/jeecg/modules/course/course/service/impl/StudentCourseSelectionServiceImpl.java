@@ -132,6 +132,15 @@ public class StudentCourseSelectionServiceImpl extends ServiceImpl<StudentCourse
 
     @Override
     public Integer getOverrideCourseType(String studentNo, String courseId) {
-        return studentCourseSelectionMapper.getOverrideCourseType(studentNo, courseId);
+        String key = "course:override:type:" + studentNo + ":" + courseId;
+        Integer type = (Integer) redisTemplate.opsForValue().get(key);
+        if (type != null) {
+            return type;
+        }
+        type = studentCourseSelectionMapper.getOverrideCourseType(studentNo, courseId);
+        if (type != null) {
+            redisTemplate.opsForValue().set(key, type, 1, TimeUnit.MINUTES);
+        }
+        return type;
     }
 }

@@ -34,6 +34,7 @@ public class CourseRushConsumer {
     public static final String GLOBAL_QUEUE_KEY = "course:rush:global_queue";
     public static final String STATUS_KEY_PREFIX = "course:rush:status:";
     public static final String BLOOM_FILTER_KEY_PREFIX = "course:rush:bloom:";
+    public static final String FULL_KEY_PREFIX = "course:rush:full:";
 
     @PostConstruct
     public void startConsumer() {
@@ -91,9 +92,16 @@ public class CourseRushConsumer {
             }
 
             // 3. 检查课程人数是否已满
+            String fullKey = FULL_KEY_PREFIX + courseId;
+            if (Boolean.parseBoolean(stringRedisTemplate.opsForValue().get(fullKey))) {
+                stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满", 5, TimeUnit.MINUTES);
+                return;
+            }
+
             long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
                     .eq(StudentCourseSelection::getCourseId, courseId));
             if (selectedCount >= teacherCourse.getCapacity()) {
+                stringRedisTemplate.opsForValue().set(fullKey, "true", 10, TimeUnit.SECONDS);
                 stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 课程已满", 5, TimeUnit.MINUTES);
                 return;
             }
@@ -105,7 +113,7 @@ public class CourseRushConsumer {
                 return;
             }
 
-            // 5. 确定课程类型（查询是否有班级覆盖）
+            // 5. 确定课程类型（查询是否有班级覆盖，带缓存）
             Integer finalCourseType = teacherCourse.getCourseType();
             Integer overrideType = studentCourseSelectionService.getOverrideCourseType(studentNo, courseId);
             if (overrideType != null) {
