@@ -3,6 +3,7 @@ package org.jeecg.modules.course.course.service.impl;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.jeecg.common.api.vo.Result;
@@ -13,6 +14,11 @@ import org.jeecg.modules.course.course.entity.TrainingProgram;
 import org.jeecg.modules.course.course.mapper.StudentCourseSelectionMapper;
 import org.jeecg.modules.course.course.service.IStudentCourseSelectionService;
 import org.jeecg.modules.course.course.service.ITeacherCourseService;
+import org.jeecg.modules.course.course.service.IClassTimeService;
+import org.jeecg.modules.course.course.entity.ClassTime;
+import org.jeecg.modules.course.course.entity.StudentSchedule;
+import java.util.Set;
+import java.util.HashSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -54,6 +60,9 @@ public class StudentCourseSelectionServiceImpl extends ServiceImpl<StudentCourse
 
     @Autowired
     private ITeacherCourseService teacherCourseService;
+
+    @Autowired
+    private IClassTimeService classTimeService;
 
     @Override
     public Result<String> rush(String courseId, String studentNo) {
@@ -126,8 +135,40 @@ public class StudentCourseSelectionServiceImpl extends ServiceImpl<StudentCourse
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public String checkTimeConflict(String studentNo, String courseId) {
-        return studentCourseSelectionMapper.checkTimeConflict(studentNo, courseId);
+        String key = "course:student:time:" + studentNo;
+        Set<String> selectedTimes = (Set<String>) redisTemplate.opsForValue().get(key);
+        
+        if (selectedTimes == null) {
+            selectedTimes = new HashSet<>();
+            List<StudentSchedule> schedules = studentCourseSelectionMapper.getStudentSchedule(studentNo);
+            if (schedules != null) {
+                for (StudentSchedule schedule : schedules) {
+                    if (schedule.getWeekday() != null && schedule.getStartSection() != null && schedule.getEndSection() != null) {
+                        for (int i = schedule.getStartSection(); i <= schedule.getEndSection(); i++) {
+                            selectedTimes.add(schedule.getWeekday() + "-" + i);
+                        }
+                    }
+                }
+            }
+            redisTemplate.opsForValue().set(key, selectedTimes, 10, TimeUnit.MINUTES);
+        }
+        
+        List<ClassTime> newCourseTimes = classTimeService.selectByMainId(courseId);
+        if (newCourseTimes != null) {
+            for (ClassTime ct : newCourseTimes) {
+                if (ct.getWeekday() != null && ct.getStartSection() != null && ct.getEndSection() != null) {
+                    for (int i = ct.getStartSection(); i <= ct.getEndSection(); i++) {
+                        if (selectedTimes.contains(ct.getWeekday() + "-" + i)) {
+                            return "conflict with " + courseId;
+                        }
+                    }
+                }
+            }
+        }
+        
+        return null;
     }
 
     @Override

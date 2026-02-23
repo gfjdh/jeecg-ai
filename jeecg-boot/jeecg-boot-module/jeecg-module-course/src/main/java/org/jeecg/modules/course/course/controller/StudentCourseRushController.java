@@ -212,6 +212,10 @@ public class StudentCourseRushController {
         studentCourseSelectionService.remove(new LambdaQueryWrapper<StudentCourseSelection>()
                 .eq(StudentCourseSelection::getStudentNo, user.getUsername())
                 .eq(StudentCourseSelection::getCourseId, courseId));
+        
+        // 同步操作缓存：删除学生已选课时间缓存，下次请求时重新加载
+        stringRedisTemplate.delete("course:student:time:" + user.getUsername());
+        
         return Result.OK("退课成功");
     }
 

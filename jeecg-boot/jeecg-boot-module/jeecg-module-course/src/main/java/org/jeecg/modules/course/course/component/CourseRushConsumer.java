@@ -1,5 +1,8 @@
 package org.jeecg.modules.course.course.component;
 
+import org.jeecg.modules.course.course.entity.ClassTime;
+import org.jeecg.modules.course.course.service.IClassTimeService;
+import java.util.Set;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -7,7 +10,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Map;
+import java.util.BitSet;
+import java.util.concurrent.ConcurrentHashMap;
 import jakarta.annotation.PostConstruct;
 import org.jeecg.modules.course.course.entity.StudentCourseSelection;
 import org.jeecg.modules.course.course.entity.TeacherCourse;
@@ -15,7 +20,6 @@ import org.jeecg.modules.course.course.service.IStudentCourseSelectionService;
 import org.jeecg.modules.course.course.service.ITeacherCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,15 +41,39 @@ public class CourseRushConsumer {
     @Autowired
     private ITeacherCourseService teacherCourseService;
 
+    @Autowired
+    private IClassTimeService classTimeService;
+
+    // 本地布隆过滤器存储 courseId -> BitSet
+    private final Map<String, BitSet> localBloomFilters = new ConcurrentHashMap<>();
+
     public static final String GLOBAL_QUEUE_KEY = "course:rush:global_queue";
     public static final String STATUS_KEY_PREFIX = "course:rush:status:";
     public static final String BLOOM_FILTER_KEY_PREFIX = "course:rush:bloom:";
     public static final String FULL_KEY_PREFIX = "course:rush:full:";
+    public static final String REMAIN_KEY_PREFIX = "course:rush:remain:";
 
     @PostConstruct
     public void startConsumer() {
         // 初始化布隆过滤器，加载数据库中已有的选课数据
         initBloomFilter();
+
+        // 启动队列长度实时监控线程 (使用 \r 同一行覆盖打印，避免刷屏)
+        new Thread(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                try {
+                    Long size = redisTemplate.opsForList().size(GLOBAL_QUEUE_KEY);
+                    // \r 将光标移至行首，末尾补空格确保覆盖旧内容的残余字符
+                    System.out.print("\r>>> [队列实时监控] 当前待处理长度: " + (size != null ? size : 0) + "    ");
+                    System.out.flush();
+                    TimeUnit.MILLISECONDS.sleep(500); // 每500毫秒更新一次l,kmj
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                } catch (Exception e) {
+                    // 监控异常不影响抢课主逻辑
+                }
+            }
+        }, "QueueMonitorThread").start();
 
         new Thread(() -> {
             BatchStats currentStats = null;
@@ -133,20 +161,33 @@ public class CourseRushConsumer {
                 }
             });
 
-            // 3. 异步检查课程人数是否已满
+            // 3. 异步检查课程人数是否已满 (使用 Redis 剩余容量缓存优化)
             CompletableFuture<String> task3 = CompletableFuture.supplyAsync(() -> {
                 long start = System.currentTimeMillis();
                 try {
-                    String fullKey = FULL_KEY_PREFIX + courseId;
-                    String isFullStr = stringRedisTemplate.opsForValue().get(fullKey);
-                    if (isFullStr != null && Boolean.parseBoolean(isFullStr)) {
-                        return "FAILED: 课程已满";
+                    String remainKey = REMAIN_KEY_PREFIX + courseId;
+                    String remainStr = stringRedisTemplate.opsForValue().get(remainKey);
+                    
+                    if (remainStr == null) {
+                        // 如果过期或不存在，从数据库重新加载
+                        long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
+                                .eq(StudentCourseSelection::getCourseId, courseId));
+                        long remainValue = teacherCourse.getCapacity() - selectedCount;
+                        // 写入 Redis，有效期 10 秒
+                        stringRedisTemplate.opsForValue().set(remainKey, String.valueOf(remainValue), 10, TimeUnit.SECONDS);
+                        
+                        if (remainValue <= 0) {
+                            return "FAILED: 课程已满";
+                        }
+                    } else {
+                        if (Long.parseLong(remainStr) <= 0) {
+                            return "FAILED: 课程已满";
+                        }
                     }
 
-                    long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
-                            .eq(StudentCourseSelection::getCourseId, courseId));
-                    if (selectedCount >= teacherCourse.getCapacity()) {
-                        stringRedisTemplate.opsForValue().set(fullKey, "true", 10, TimeUnit.SECONDS);
+                    // 预扣减容量
+                    Long afterDecr = stringRedisTemplate.opsForValue().decrement(remainKey);
+                    if (afterDecr != null && afterDecr < 0) {
                         return "FAILED: 课程已满";
                     }
                     return null;
@@ -253,7 +294,25 @@ public class CourseRushConsumer {
             // 抢课成功，更新布隆过滤器
             String bloomKey = BLOOM_FILTER_KEY_PREFIX + courseId;
             addToBloomFilter(bloomKey, studentNo);
-            
+
+            // 同步操作缓存：如果缓存存在，将新课程的时间加入缓存
+            String studentTimeKey = "course:student:time:" + studentNo;
+            @SuppressWarnings("unchecked")
+            Set<String> selectedTimes = (Set<String>) redisTemplate.opsForValue().get(studentTimeKey);
+            if (selectedTimes != null) {
+                List<ClassTime> newCourseTimes = classTimeService.selectByMainId(courseId);
+                if (newCourseTimes != null) {
+                    for (ClassTime ct : newCourseTimes) {
+                        if (ct.getWeekday() != null && ct.getStartSection() != null && ct.getEndSection() != null) {
+                            for (int i = ct.getStartSection(); i <= ct.getEndSection(); i++) {
+                                selectedTimes.add(ct.getWeekday() + "-" + i);
+                            }
+                        }
+                    }
+                    redisTemplate.opsForValue().set(studentTimeKey, selectedTimes, 10, TimeUnit.MINUTES);
+                }
+            }
+
             stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 选课成功", 5, TimeUnit.MINUTES);
             stats.step6Cost.addAndGet(System.currentTimeMillis() - s6);
             stats.successCount.incrementAndGet();
@@ -291,10 +350,16 @@ public class CourseRushConsumer {
      * 判断是否可能已选（布隆过滤器）
      */
     private boolean isMember(String key, String value) {
-        for (int i = 0; i < 3; i++) {
-            long offset = (Objects.hash(value, i) & Integer.MAX_VALUE) % 1000000;
-            if (!Boolean.TRUE.equals(stringRedisTemplate.opsForValue().getBit(key, offset))) {
-                return false;
+        BitSet filter = localBloomFilters.get(key);
+        if (filter == null) {
+            return false;
+        }
+        synchronized (filter) {
+            for (int i = 0; i < 3; i++) {
+                int offset = (Objects.hash(value, i) & Integer.MAX_VALUE) % 1000000;
+                if (!filter.get(offset)) {
+                    return false;
+                }
             }
         }
         return true;
@@ -304,9 +369,12 @@ public class CourseRushConsumer {
      * 添加到布隆过滤器
      */
     private void addToBloomFilter(String key, String value) {
-        for (int i = 0; i < 3; i++) {
-            long offset = (Objects.hash(value, i) & Integer.MAX_VALUE) % 1000000;
-            stringRedisTemplate.opsForValue().setBit(key, offset, true);
+        BitSet filter = localBloomFilters.computeIfAbsent(key, k -> new BitSet(1000000));
+        synchronized (filter) {
+            for (int i = 0; i < 3; i++) {
+                int offset = (Objects.hash(value, i) & Integer.MAX_VALUE) % 1000000;
+                filter.set(offset, true);
+            }
         }
     }
 
@@ -314,7 +382,8 @@ public class CourseRushConsumer {
      * 初始化布隆过滤器，加载数据库中所有课程的已有选课数据
      */
     public void initBloomFilter() {
-        log.info("开始初始化布隆过滤器...");
+        log.info("开始初始化本地布隆过滤器...");
+        localBloomFilters.clear();
         // 查询数据库中所有已选课记录
         List<StudentCourseSelection> allSelections = studentCourseSelectionService.list();
 
@@ -324,7 +393,7 @@ public class CourseRushConsumer {
                 addToBloomFilter(bloomKey, selection.getStudentNo());
             }
         }
-        log.info("布隆过滤器初始化完成，共加载 {} 条选课数据", allSelections == null ? 0 : allSelections.size());
+        log.info("本地布隆过滤器初始化完成，共加载 {} 条选课数据", allSelections == null ? 0 : allSelections.size());
     }
 
     private static class BatchStats {
