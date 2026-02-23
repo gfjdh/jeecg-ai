@@ -1,6 +1,7 @@
 package org.jeecg.modules.course.course.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.jeecg.modules.course.course.entity.StudentCourseSelection;
@@ -62,4 +63,11 @@ public interface StudentCourseSelectionMapper extends BaseMapper<StudentCourseSe
      * 获取学生针对特定课程的覆盖课程类型
      */
     Integer getOverrideCourseType(@Param("studentNo") String studentNo, @Param("courseId") String courseId);
+
+    /**
+     * 获取指定课程的所有学生覆盖类型配置
+     * @param courseId 课程ID
+     * @return 包含 student_no 和 course_type 的 Map 列表
+     */
+    List<Map<String, Object>> getStudentOverridesByCourseId(@Param("courseId") String courseId);
 }

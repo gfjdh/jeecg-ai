@@ -132,4 +132,17 @@
         </if>
     </select>
 
+    <!-- 获取指定课程的所有学生覆盖类型配置 -->
+    <select id="getStudentOverridesByCourseId" resultType="java.util.Map">
+        SELECT
+            s.student_no as studentNo,
+            cct.course_type as courseType
+        FROM
+            student_info s
+        JOIN
+            class_course_type cct ON s.class_name = cct.class_id AND s.year = cct.year
+        WHERE
+            cct.course_id = #{courseId}
+    </select>
+
 </mapper>

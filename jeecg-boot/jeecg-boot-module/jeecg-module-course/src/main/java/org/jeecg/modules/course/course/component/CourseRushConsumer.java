@@ -4,7 +4,6 @@ import org.jeecg.modules.course.course.entity.ClassTime;
 import org.jeecg.modules.course.course.service.IClassTimeService;
 import java.util.Set;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -13,6 +12,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.BitSet;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 import jakarta.annotation.PostConstruct;
 import org.jeecg.modules.course.course.entity.StudentCourseSelection;
 import org.jeecg.modules.course.course.entity.TeacherCourse;
@@ -44,8 +44,8 @@ public class CourseRushConsumer {
     @Autowired
     private IClassTimeService classTimeService;
 
-    // 本地布隆过滤器存储 courseId -> BitSet
-    private final Map<String, BitSet> localBloomFilters = new ConcurrentHashMap<>();
+    // 为了减少 synchronized 锁竞争，这里引入读写锁控制并发
+    private final Map<String, BloomFilterContainer> localBloomFilters = new ConcurrentHashMap<>();
 
     public static final String GLOBAL_QUEUE_KEY = "course:rush:global_queue";
     public static final String STATUS_KEY_PREFIX = "course:rush:status:";
@@ -111,8 +111,9 @@ public class CourseRushConsumer {
         }).start();
     }
 
+
     private void handleRush(String payload, BatchStats stats) {
-        long methodStart = System.currentTimeMillis();
+        long methodStart = System.nanoTime();
         stats.totalRequests.incrementAndGet();
 
         // 负载格式: "courseId:studentNo"
@@ -124,6 +125,7 @@ public class CourseRushConsumer {
         String countKey = "course:rush:count:" + courseId;
 
         // 记录各步骤的耗时，用于瓶颈分析（初始值-1表示未完成）
+        // 改用纳秒记录，避免 0ms 引起的统计偏差
         AtomicLong cost2 = new AtomicLong(-1);
         AtomicLong cost3 = new AtomicLong(-1);
         AtomicLong cost4 = new AtomicLong(-1);
@@ -131,9 +133,9 @@ public class CourseRushConsumer {
 
         try {
             // 1. 获取课程容量和类型（在入队列时已带缓存，对性能影响较小）
-            long s1 = System.currentTimeMillis();
+            long s1 = System.nanoTime();
             TeacherCourse teacherCourse = teacherCourseService.getTeacherCourse(courseId);
-            stats.step1Cost.addAndGet(System.currentTimeMillis() - s1);
+            stats.step1Cost.addAndGet((System.nanoTime() - s1) / 1000000); // 纳秒转毫秒累计
 
             // 初始化异步控制
             CompletableFuture<String> resultFuture = new CompletableFuture<>();
@@ -141,7 +143,7 @@ public class CourseRushConsumer {
             
             // 2. 异步检查是否已选该课程 (使用布隆过滤器优化)
             CompletableFuture<String> task2 = CompletableFuture.supplyAsync(() -> {
-                long start = System.currentTimeMillis();
+                long start = System.nanoTime();
                 try {
                     String bloomKey = BLOOM_FILTER_KEY_PREFIX + courseId;
                     if (isMember(bloomKey, studentNo)) {
@@ -155,15 +157,15 @@ public class CourseRushConsumer {
                     }
                     return null;
                 } finally {
-                    long cost = System.currentTimeMillis() - start;
-                    stats.step2Cost.addAndGet(cost);
+                    long cost = System.nanoTime() - start;
+                    stats.step2Cost.addAndGet(cost / 1000000);
                     cost2.set(cost);
                 }
             });
 
             // 3. 异步检查课程人数是否已满 (使用 Redis 剩余容量缓存优化)
             CompletableFuture<String> task3 = CompletableFuture.supplyAsync(() -> {
-                long start = System.currentTimeMillis();
+                long start = System.nanoTime();
                 try {
                     String remainKey = REMAIN_KEY_PREFIX + courseId;
                     String remainStr = stringRedisTemplate.opsForValue().get(remainKey);
@@ -173,8 +175,8 @@ public class CourseRushConsumer {
                         long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
                                 .eq(StudentCourseSelection::getCourseId, courseId));
                         long remainValue = teacherCourse.getCapacity() - selectedCount;
-                        // 写入 Redis，有效期 10 秒
-                        stringRedisTemplate.opsForValue().set(remainKey, String.valueOf(remainValue), 10, TimeUnit.SECONDS);
+                        // 写入 Redis，有效期 30 秒
+                        stringRedisTemplate.opsForValue().set(remainKey, String.valueOf(remainValue), 30, TimeUnit.SECONDS);
                         
                         if (remainValue <= 0) {
                             return "FAILED: 课程已满";
@@ -192,15 +194,15 @@ public class CourseRushConsumer {
                     }
                     return null;
                 } finally {
-                    long cost = System.currentTimeMillis() - start;
-                    stats.step3Cost.addAndGet(cost);
+                    long cost = System.nanoTime() - start;
+                    stats.step3Cost.addAndGet(cost / 1000000);
                     cost3.set(cost);
                 }
             });
 
-            // 4. 异步检查选课时间冲突（通过 SQL 处理冲突检验逻辑）
+            // 4. 异步检查选课时间冲突
             CompletableFuture<String> task4 = CompletableFuture.supplyAsync(() -> {
-                long start = System.currentTimeMillis();
+                long start = System.nanoTime();
                 try {
                     String conflictCourseId = studentCourseSelectionService.checkTimeConflict(studentNo, courseId);
                     if (conflictCourseId != null) {
@@ -208,15 +210,15 @@ public class CourseRushConsumer {
                     }
                     return null;
                 } finally {
-                    long cost = System.currentTimeMillis() - start;
-                    stats.step4Cost.addAndGet(cost);
+                    long cost = System.nanoTime() - start;
+                    stats.step4Cost.addAndGet(cost / 1000000);
                     cost4.set(cost);
                 }
             });
 
             // 5. 异步确定课程类型
             CompletableFuture<Integer> task5 = CompletableFuture.supplyAsync(() -> {
-                long start = System.currentTimeMillis();
+                long start = System.nanoTime();
                 try {
                     Integer finalCourseType = teacherCourse.getCourseType();
                     Integer overrideType = studentCourseSelectionService.getOverrideCourseType(studentNo, courseId);
@@ -225,8 +227,8 @@ public class CourseRushConsumer {
                     }
                     return finalCourseType;
                 } finally {
-                    long cost = System.currentTimeMillis() - start;
-                    stats.step5Cost.addAndGet(cost);
+                    long cost = System.nanoTime() - start;
+                    stats.step5Cost.addAndGet(cost / 1000000);
                     cost5.set(cost);
                 }
             });
@@ -248,11 +250,11 @@ public class CourseRushConsumer {
             validationTasks.forEach(task -> task.thenAccept(resultHandler));
 
             // 等待校验结果
-            long waitStart = System.currentTimeMillis();
+            long waitStart = System.nanoTime();
             String validationResult;
             try {
                 validationResult = resultFuture.get(30, TimeUnit.SECONDS);
-                stats.waitCost.addAndGet(System.currentTimeMillis() - waitStart);
+                stats.waitCost.addAndGet((System.nanoTime() - waitStart) / 1000000);
             } catch (java.util.concurrent.TimeoutException e) {
                 log.warn("选课校验超时: {}", payload);
                 // 超时取消所有任务
@@ -280,7 +282,7 @@ public class CourseRushConsumer {
             }
 
             // 6. 抢课成功 - 保存选课记录
-            long s6 = System.currentTimeMillis();
+            long s6 = System.nanoTime();
             Integer finalCourseType = task5.get();
 
             StudentCourseSelection newSelection = new StudentCourseSelection();
@@ -314,7 +316,7 @@ public class CourseRushConsumer {
             }
 
             stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 选课成功", 5, TimeUnit.MINUTES);
-            stats.step6Cost.addAndGet(System.currentTimeMillis() - s6);
+            stats.step6Cost.addAndGet((System.nanoTime() - s6) / 1000000);
             stats.successCount.incrementAndGet();
 
         } catch (Exception e) {
@@ -328,54 +330,51 @@ public class CourseRushConsumer {
             long c4 = cost4.get();
             long c5 = cost5.get();
             
-            long max = -1;
-            if (c2 > max) max = c2;
-            if (c3 > max) max = c3;
-            if (c4 > max) max = c4;
-            if (c5 > max) max = c5;
+            // 只有当所有任务都真正完成后再比较，避免短路造成的误判
+            boolean allFinished = c2 >= 0 && c3 >= 0 && c4 >= 0 && c5 >= 0;
 
-            if (max > -1) {
-                if (max == c2) stats.step2Bottleneck.incrementAndGet();
-                else if (max == c3) stats.step3Bottleneck.incrementAndGet();
-                else if (max == c4) stats.step4Bottleneck.incrementAndGet();
-                else if (max == c5) stats.step5Bottleneck.incrementAndGet();
+            if (allFinished) {
+                long max = -1;
+                if (c2 > max) max = c2;
+                if (c3 > max) max = c3;
+                if (c4 > max) max = c4;
+                if (c5 > max) max = c5;
+
+                if (max > -1) {
+                    // 使用纳秒级比较，通常不会相等，如果相等则可以忽略极小的差别
+                    if (max == c2) stats.step2Bottleneck.incrementAndGet();
+                    else if (max == c3) stats.step3Bottleneck.incrementAndGet();
+                    else if (max == c4) stats.step4Bottleneck.incrementAndGet();
+                    else if (max == c5) stats.step5Bottleneck.incrementAndGet();
+                }
             }
 
             stringRedisTemplate.opsForValue().decrement(countKey);
-            stats.totalCost.addAndGet(System.currentTimeMillis() - methodStart);
+
+            stats.totalCost.addAndGet((System.nanoTime() - methodStart) / 1000000);
         }
     }
 
     /**
      * 判断是否可能已选（布隆过滤器）
+     * 优化：使用双重哈希增加散列度，使用读锁减少竞争
      */
     private boolean isMember(String key, String value) {
-        BitSet filter = localBloomFilters.get(key);
-        if (filter == null) {
+        BloomFilterContainer container = localBloomFilters.get(key);
+        if (container == null) {
             return false;
         }
-        synchronized (filter) {
-            for (int i = 0; i < 3; i++) {
-                int offset = (Objects.hash(value, i) & Integer.MAX_VALUE) % 1000000;
-                if (!filter.get(offset)) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        return container.mightContain(value);
     }
 
     /**
      * 添加到布隆过滤器
+     * 优化：使用写锁保证线程安全
      */
     private void addToBloomFilter(String key, String value) {
-        BitSet filter = localBloomFilters.computeIfAbsent(key, k -> new BitSet(1000000));
-        synchronized (filter) {
-            for (int i = 0; i < 3; i++) {
-                int offset = (Objects.hash(value, i) & Integer.MAX_VALUE) % 1000000;
-                filter.set(offset, true);
-            }
-        }
+        // computeIfAbsent 保证容器本身的存在
+        BloomFilterContainer container = localBloomFilters.computeIfAbsent(key, k -> new BloomFilterContainer());
+        container.put(value);
     }
 
     /**
@@ -389,11 +388,74 @@ public class CourseRushConsumer {
 
         if (allSelections != null && !allSelections.isEmpty()) {
             for (StudentCourseSelection selection : allSelections) {
+                // 原有的逻辑 key 带有前缀，保持一致
                 String bloomKey = BLOOM_FILTER_KEY_PREFIX + selection.getCourseId();
-                addToBloomFilter(bloomKey, selection.getStudentNo());
+                // 使用 computeIfAbsent 确保容器只被创建一次
+                BloomFilterContainer container = localBloomFilters.computeIfAbsent(bloomKey, k -> new BloomFilterContainer());
+                container.put(selection.getStudentNo());
             }
         }
         log.info("本地布隆过滤器初始化完成，共加载 {} 条选课数据", allSelections == null ? 0 : allSelections.size());
+    }
+
+    // 内部类封装布隆过滤器逻辑
+    private static class BloomFilterContainer {
+        // 位数组大小，根据最大课程容量预估调整，例如 10000 bit
+        // 对于 200 人容量，10000 bit 误判率极低
+        private static final int DEFAULT_SIZE = 10000;
+        // 哈希函数数量
+        private static final int HASH_COUNT = 3;
+        
+        private final BitSet bitSet;
+        private final int size;
+        private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+
+        public BloomFilterContainer() {
+            // 默认值
+            this(DEFAULT_SIZE);
+        }
+
+        public BloomFilterContainer(int size) {
+            this.size = size;
+            this.bitSet = new BitSet(size);
+        }
+
+        public void put(String value) {
+            lock.writeLock().lock();
+            try {
+                int hash1 = value.hashCode();
+                int hash2 = hash1 >>> 16;
+                for (int i = 1; i <= HASH_COUNT; i++) {
+                    int combinedHash = hash1 + (i * hash2);
+                    if (combinedHash < 0) {
+                        combinedHash = ~combinedHash;
+                    }
+                    bitSet.set(combinedHash % size);
+                }
+            } finally {
+                lock.writeLock().unlock();
+            }
+        }
+
+        public boolean mightContain(String value) {
+            lock.readLock().lock();
+            try {
+                int hash1 = value.hashCode();
+                int hash2 = hash1 >>> 16;
+                for (int i = 1; i <= HASH_COUNT; i++) {
+                    int combinedHash = hash1 + (i * hash2);
+                    if (combinedHash < 0) {
+                        combinedHash = ~combinedHash;
+                    }
+                    if (!bitSet.get(combinedHash % size)) {
+                        return false;
+                    }
+                }
+                return true;
+            } finally {
+                lock.readLock().unlock();
+            }
+        }
     }
 
     private static class BatchStats {

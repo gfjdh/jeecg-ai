@@ -173,15 +173,68 @@ public class StudentCourseSelectionServiceImpl extends ServiceImpl<StudentCourse
 
     @Override
     public Integer getOverrideCourseType(String studentNo, String courseId) {
-        String key = "course:override:type:" + studentNo + ":" + courseId;
-        Integer type = (Integer) redisTemplate.opsForValue().get(key);
-        if (type != null) {
-            return type;
+        String key = "course:override:map:" + courseId;
+        
+        // 1. 检查缓存是否存在
+        if (redisTemplate.hasKey(key)) {
+            Object val = redisTemplate.opsForHash().get(key, studentNo);
+            if (val != null) {
+                // 有覆盖配置，安全转换类型
+                if (val instanceof Integer) {
+                    return (Integer) val;
+                } else if (val instanceof Number) {
+                    return ((Number) val).intValue();
+                } else if (val instanceof String) {
+                    try {
+                        return Integer.parseInt((String) val);
+                    } catch (NumberFormatException e) {
+                        return null;
+                    }
+                }
+                return null;
+            } else {
+                // 缓存存在但无此学生配置，说明无覆盖，返回null（即原课程类型）
+                return null;
+            }
         }
-        type = studentCourseSelectionMapper.getOverrideCourseType(studentNo, courseId);
-        if (type != null) {
-            redisTemplate.opsForValue().set(key, type, 1, TimeUnit.MINUTES);
+
+        // 2. 缓存未命中，加载全量数据
+        List<Map<String, Object>> overrides = studentCourseSelectionMapper.getStudentOverridesByCourseId(courseId);
+        Map<String, Object> cacheMap = new HashMap<>();
+        
+        // 放入一个标记键，防止空Map无法存入Redis leading to cache penetration
+        cacheMap.put("_loaded", "1");
+        
+        if (overrides != null && !overrides.isEmpty()) {
+            for (Map<String, Object> item : overrides) {
+                String sNo = (String) item.get("studentNo");
+                Object cVal = item.get("courseType");
+                if (sNo != null && cVal != null) {
+                   // 确保类型安全地转换为 Integer，避免因数据异常导致缓存无法使用
+                   if (cVal instanceof Integer) {
+                       cacheMap.put(sNo, cVal);
+                   } else if (cVal instanceof Number) {
+                       cacheMap.put(sNo, ((Number) cVal).intValue());
+                   } else {
+                       try {
+                           cacheMap.put(sNo, Integer.parseInt(cVal.toString()));
+                       } catch (NumberFormatException e) {}
+                   }
+                }
+            }
         }
-        return type;
+        
+        // 3. 写入缓存，过期时间10分钟
+        redisTemplate.opsForHash().putAll(key, cacheMap);
+        redisTemplate.expire(key, 10, TimeUnit.MINUTES);
+        
+        // 4. 返回当前请求的结果
+        Object currentVal = cacheMap.get(studentNo);
+        if (currentVal instanceof Integer) {
+            return (Integer) currentVal;
+        } else if (currentVal instanceof Number) {
+            return ((Number) currentVal).intValue();
+        }
+        return null;
     }
 }
