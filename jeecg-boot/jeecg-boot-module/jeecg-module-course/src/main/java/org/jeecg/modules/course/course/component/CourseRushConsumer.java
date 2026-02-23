@@ -66,7 +66,7 @@ public class CourseRushConsumer {
                     // \r 将光标移至行首，末尾补空格确保覆盖旧内容的残余字符
                     System.out.print("\r>>> [队列实时监控] 当前待处理长度: " + (size != null ? size : 0) + "    ");
                     System.out.flush();
-                    TimeUnit.MILLISECONDS.sleep(500); // 每500毫秒更新一次l,kmj
+                    TimeUnit.MILLISECONDS.sleep(100); 
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 } catch (Exception e) {
@@ -175,8 +175,8 @@ public class CourseRushConsumer {
                         long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
                                 .eq(StudentCourseSelection::getCourseId, courseId));
                         long remainValue = teacherCourse.getCapacity() - selectedCount;
-                        // 写入 Redis，有效期 30 秒
-                        stringRedisTemplate.opsForValue().set(remainKey, String.valueOf(remainValue), 30, TimeUnit.SECONDS);
+                        // 写入 Redis，有效期 5 秒
+                        stringRedisTemplate.opsForValue().set(remainKey, String.valueOf(remainValue), 5, TimeUnit.SECONDS);
                         
                         if (remainValue <= 0) {
                             return "FAILED: 课程已满";
@@ -400,8 +400,7 @@ public class CourseRushConsumer {
 
     // 内部类封装布隆过滤器逻辑
     private static class BloomFilterContainer {
-        // 位数组大小，根据最大课程容量预估调整，例如 10000 bit
-        // 对于 200 人容量，10000 bit 误判率极低
+        // 位数组大小，根据最大课程容量预估调整
         private static final int DEFAULT_SIZE = 10000;
         // 哈希函数数量
         private static final int HASH_COUNT = 3;
