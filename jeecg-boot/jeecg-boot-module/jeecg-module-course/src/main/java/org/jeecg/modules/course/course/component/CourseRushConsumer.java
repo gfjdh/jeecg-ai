@@ -13,6 +13,8 @@ import java.util.Map;
 import java.util.BitSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.Condition;
 import jakarta.annotation.PostConstruct;
 import org.jeecg.modules.course.course.entity.StudentCourseSelection;
 import org.jeecg.modules.course.course.entity.TeacherCourse;
@@ -44,8 +46,77 @@ public class CourseRushConsumer {
     @Autowired
     private IClassTimeService classTimeService;
 
-    // 为了减少 synchronized 锁竞争，这里引入读写锁控制并发
     private final Map<String, BloomFilterContainer> localBloomFilters = new ConcurrentHashMap<>();
+
+    // 自定义链表节点实现队列
+    protected static class Node<E> {
+        E item;
+        Node<E> next;
+        Node(E x) { item = x; }
+    }
+
+    public static class CustomLinkedQueue<E> {
+        private final AtomicInteger count = new AtomicInteger(0);
+        private Node<E> head;
+        private Node<E> tail;
+        
+        private final ReentrantLock lock = new ReentrantLock();
+        private final Condition notEmpty = lock.newCondition();
+
+        public CustomLinkedQueue() {
+            head = new Node<E>(null);
+            tail = head;
+        }
+
+        // 入队操作
+        public boolean offer(E e) {
+            if (e == null) throw new NullPointerException();
+            final ReentrantLock lock = this.lock;
+            lock.lock();
+            try {
+                Node<E> node = new Node<>(e);
+                tail.next = node;
+                tail = node;
+                // 增加计数并唤醒等待的消费者
+                count.getAndIncrement();
+                notEmpty.signal();
+            } finally {
+                lock.unlock();
+            }
+            return true;
+        }
+
+        // 出队操作
+        public E poll(long timeout, TimeUnit unit) throws InterruptedException {
+            long nanos = unit.toNanos(timeout);
+            final ReentrantLock lock = this.lock;
+            lock.lockInterruptibly();
+            try {
+                while (count.get() == 0) {
+                    if (nanos <= 0)
+                        return null;
+                    nanos = notEmpty.awaitNanos(nanos);
+                }
+                
+                Node<E> first = head.next;
+                E x = first.item;
+                first.item = null;
+                head = first; // 丢弃旧的 head，将 first 变为新的 head (哨兵)
+                
+                count.decrementAndGet();
+                return x;
+            } finally {
+                lock.unlock();
+            }
+        }
+        
+        public int size() {
+            return count.get();
+        }
+    }
+
+    // 改用自定义队列实现
+    public static final CustomLinkedQueue<String> rushQueue = new CustomLinkedQueue<>();
 
     public static final String GLOBAL_QUEUE_KEY = "course:rush:global_queue";
     public static final String STATUS_KEY_PREFIX = "course:rush:status:";
@@ -62,9 +133,9 @@ public class CourseRushConsumer {
         new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 try {
-                    Long size = redisTemplate.opsForList().size(GLOBAL_QUEUE_KEY);
+                    int size = rushQueue.size();
                     // \r 将光标移至行首，末尾补空格确保覆盖旧内容的残余字符
-                    System.out.print("\r>>> [队列实时监控] 当前待处理长度: " + (size != null ? size : 0) + "    ");
+                    System.out.print("\r>>> [队列实时监控] 当前待处理长度: " + size + "    ");
                     System.out.flush();
                     TimeUnit.MILLISECONDS.sleep(100); 
                 } catch (InterruptedException e) {
@@ -80,7 +151,8 @@ public class CourseRushConsumer {
             while (true) {
                 try {
                     // 阻塞式弹出, 改为10秒超时
-                    Object payloadObj = redisTemplate.opsForList().rightPop(GLOBAL_QUEUE_KEY, 10, TimeUnit.SECONDS);
+                    // Object payloadObj = redisTemplate.opsForList().rightPop(GLOBAL_QUEUE_KEY, 10, TimeUnit.SECONDS);
+                    Object payloadObj = rushQueue.poll(10, TimeUnit.SECONDS);
                     if (payloadObj != null) {
                         if (currentStats == null) {
                             String newBatchId = String.valueOf(System.currentTimeMillis());

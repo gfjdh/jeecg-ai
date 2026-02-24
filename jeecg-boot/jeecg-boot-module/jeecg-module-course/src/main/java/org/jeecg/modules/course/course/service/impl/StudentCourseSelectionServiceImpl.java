@@ -92,7 +92,8 @@ public class StudentCourseSelectionServiceImpl extends ServiceImpl<StudentCourse
         stringRedisTemplate.opsForValue().set(statusKey, "PENDING", 1, TimeUnit.MINUTES);        // 设置初始状态
         
         // 发送到全局处理队列
-        redisTemplate.opsForList().leftPush(CourseRushConsumer.GLOBAL_QUEUE_KEY, payload);
+        // redisTemplate.opsForList().leftPush(CourseRushConsumer.GLOBAL_QUEUE_KEY, payload);
+        CourseRushConsumer.rushQueue.offer(payload);
         
         return Result.OK("进入排队");
     }
@@ -152,7 +153,7 @@ public class StudentCourseSelectionServiceImpl extends ServiceImpl<StudentCourse
                     }
                 }
             }
-            redisTemplate.opsForValue().set(key, selectedTimes, 10, TimeUnit.MINUTES);
+            redisTemplate.opsForValue().set(key, selectedTimes, 1, TimeUnit.MINUTES);
         }
         
         List<ClassTime> newCourseTimes = classTimeService.selectByMainId(courseId);
