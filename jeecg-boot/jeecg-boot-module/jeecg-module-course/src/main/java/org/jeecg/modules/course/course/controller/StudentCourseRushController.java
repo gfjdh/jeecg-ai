@@ -209,13 +209,17 @@ public class StudentCourseRushController {
             // 不在选课时间内，返回错误信息
             return Result.error("不在选课时间内，无法退课");
         }
-        studentCourseSelectionService.remove(new LambdaQueryWrapper<StudentCourseSelection>()
+        boolean removed = studentCourseSelectionService.remove(new LambdaQueryWrapper<StudentCourseSelection>()
                 .eq(StudentCourseSelection::getStudentNo, user.getUsername())
                 .eq(StudentCourseSelection::getCourseId, courseId));
+        if (!removed) {
+            return Result.error("退课失败，未找到选课记录");
+        }
         
-        // 同步操作缓存：删除学生已选课时间缓存，下次请求时重新加载
+        // 同步操作缓存
         stringRedisTemplate.delete("course:student:time:" + user.getUsername());
-        
+        String remainKey = "course:rush:remain:" + courseId;
+        stringRedisTemplate.opsForValue().increment(remainKey);
         return Result.OK("退课成功");
     }
 

@@ -52,10 +52,13 @@ public class CourseRushConsumer {
     protected static class Node<E> {
         E item;
         Node<E> next;
-        Node(E x) { item = x; }
+        Node(E x) { 
+            item = x; 
+            next = null;
+        }
     }
 
-    public static class CustomLinkedQueue<E> {
+    public static class MyLinkedQueue<E> {
         private final AtomicInteger count = new AtomicInteger(0);
         private Node<E> head;
         private Node<E> tail;
@@ -63,7 +66,7 @@ public class CourseRushConsumer {
         private final ReentrantLock lock = new ReentrantLock();
         private final Condition notEmpty = lock.newCondition();
 
-        public CustomLinkedQueue() {
+        public MyLinkedQueue() {
             head = new Node<E>(null);
             tail = head;
         }
@@ -78,7 +81,7 @@ public class CourseRushConsumer {
                 tail.next = node;
                 tail = node;
                 // 增加计数并唤醒等待的消费者
-                count.getAndIncrement();
+                count.incrementAndGet();
                 notEmpty.signal();
             } finally {
                 lock.unlock();
@@ -101,7 +104,7 @@ public class CourseRushConsumer {
                 Node<E> first = head.next;
                 E x = first.item;
                 first.item = null;
-                head = first; // 丢弃旧的 head，将 first 变为新的 head (哨兵)
+                head = first;
                 
                 count.decrementAndGet();
                 return x;
@@ -116,7 +119,7 @@ public class CourseRushConsumer {
     }
 
     // 改用自定义队列实现
-    public static final CustomLinkedQueue<String> rushQueue = new CustomLinkedQueue<>();
+    public static final MyLinkedQueue<String> rushQueue = new MyLinkedQueue<>();
 
     public static final String GLOBAL_QUEUE_KEY = "course:rush:global_queue";
     public static final String STATUS_KEY_PREFIX = "course:rush:status:";
@@ -203,6 +206,7 @@ public class CourseRushConsumer {
         AtomicLong cost4 = new AtomicLong(-1);
         AtomicLong cost5 = new AtomicLong(-1);
 
+        boolean hasDeductedRedis = false; // 标记是否已经扣减 Redis 库存，异常时需要回滚
         try {
             // 1. 获取课程容量和类型（在入队列时已带缓存，对性能影响较小）
             long s1 = System.nanoTime();
@@ -242,8 +246,15 @@ public class CourseRushConsumer {
                     String remainKey = REMAIN_KEY_PREFIX + courseId;
                     String remainStr = stringRedisTemplate.opsForValue().get(remainKey);
                     
-                    if (remainStr == null) {
-                        // 如果过期或不存在，从数据库重新加载
+                    boolean needLoadFromDb = (remainStr == null);
+                    
+                    // 如果 Redis 显示没库存了(<=1)，为防止 Redis 数据偏差导致"假满"，强制查库校准
+                    if (!needLoadFromDb && Long.parseLong(remainStr) <= 1) {
+                        needLoadFromDb = true;
+                    }
+
+                    if (needLoadFromDb) {
+                        // 如果过期或不存在，或者Redis显示已满，从数据库重新加载
                         long selectedCount = studentCourseSelectionService.count(new LambdaQueryWrapper<StudentCourseSelection>()
                                 .eq(StudentCourseSelection::getCourseId, courseId));
                         long remainValue = teacherCourse.getCapacity() - selectedCount;
@@ -253,16 +264,6 @@ public class CourseRushConsumer {
                         if (remainValue <= 0) {
                             return "FAILED: 课程已满";
                         }
-                    } else {
-                        if (Long.parseLong(remainStr) <= 0) {
-                            return "FAILED: 课程已满";
-                        }
-                    }
-
-                    // 预扣减容量
-                    Long afterDecr = stringRedisTemplate.opsForValue().decrement(remainKey);
-                    if (afterDecr != null && afterDecr < 0) {
-                        return "FAILED: 课程已满";
                     }
                     return null;
                 } finally {
@@ -354,6 +355,10 @@ public class CourseRushConsumer {
             }
 
             // 6. 抢课成功 - 保存选课记录
+            String remainKey = REMAIN_KEY_PREFIX + courseId;
+            stringRedisTemplate.opsForValue().decrement(remainKey);
+            hasDeductedRedis = true;
+
             long s6 = System.nanoTime();
             Integer finalCourseType = task5.get();
 
@@ -395,6 +400,16 @@ public class CourseRushConsumer {
             log.error("处理抢课请求时出错: " + payload, e);
             stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 系统错误", 5, TimeUnit.MINUTES);
             stats.failCount.incrementAndGet();
+            
+            // 异常时回滚redis库存
+            if (hasDeductedRedis) {
+                 try {
+                     stringRedisTemplate.opsForValue().increment(REMAIN_KEY_PREFIX + courseId);
+                 } catch (Exception redisEx) {
+                     log.error("回滚 Redis 库存失败: " + courseId, redisEx);
+                 }
+            }
+            
         } finally {
             // 计算瓶颈：只要有步骤完成（耗时>=0），就参与比较，记录耗时最长的步骤
             long c2 = cost2.get();
@@ -473,7 +488,7 @@ public class CourseRushConsumer {
     // 内部类封装布隆过滤器逻辑
     private static class BloomFilterContainer {
         // 位数组大小，根据最大课程容量预估调整
-        private static final int DEFAULT_SIZE = 10000;
+        private static final int DEFAULT_SIZE = 100000;
         // 哈希函数数量
         private static final int HASH_COUNT = 3;
         
