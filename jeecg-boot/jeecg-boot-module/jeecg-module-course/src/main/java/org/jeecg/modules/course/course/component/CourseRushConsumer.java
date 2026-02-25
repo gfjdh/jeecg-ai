@@ -206,7 +206,6 @@ public class CourseRushConsumer {
         AtomicLong cost4 = new AtomicLong(-1);
         AtomicLong cost5 = new AtomicLong(-1);
 
-        boolean hasDeductedRedis = false; // 标记是否已经扣减 Redis 库存，异常时需要回滚
         try {
             // 1. 获取课程容量和类型（在入队列时已带缓存，对性能影响较小）
             long s1 = System.nanoTime();
@@ -223,6 +222,12 @@ public class CourseRushConsumer {
                 try {
                     String bloomKey = BLOOM_FILTER_KEY_PREFIX + courseId;
                     if (isMember(bloomKey, studentNo)) {
+                        // 优化：先查 Redis 缓存的状态（Step 6 成功后会写入），减少 DB 穿透
+                        String statusVal = stringRedisTemplate.opsForValue().get(statusKey);
+                        if (statusVal != null && statusVal.startsWith("SUCCESS")) {
+                            return "SUCCESS: 已选该课程";
+                        }
+
                         // 如果布隆过滤器判断可能已选，再查库确认（排除误判）
                         boolean exists = studentCourseSelectionService.exists(new LambdaQueryWrapper<StudentCourseSelection>()
                                 .eq(StudentCourseSelection::getCourseId, courseId)
@@ -356,41 +361,27 @@ public class CourseRushConsumer {
 
             // 6. 抢课成功 - 保存选课记录
             String remainKey = REMAIN_KEY_PREFIX + courseId;
-            stringRedisTemplate.opsForValue().decrement(remainKey);
-            hasDeductedRedis = true;
-
             long s6 = System.nanoTime();
             Integer finalCourseType = task5.get();
+            
+            // 同步操作缓存：如果缓存存在，将新课程的时间加入缓存
+            studentCourseSelectionService.addStudentTimeCache(studentNo, courseId);
 
+            // 数据库事务操作
             StudentCourseSelection newSelection = new StudentCourseSelection();
             newSelection.setStudentNo(studentNo);
             newSelection.setCourseId(courseId);
             newSelection.setCourseCredit(teacherCourse.getCourseCredit()); 
             newSelection.setCourseType(finalCourseType);
             newSelection.setStudyStatus(0); // 0: 正常/在读状态
-            studentCourseSelectionService.save(newSelection);
+            studentCourseSelectionService.saveSelectionWithTransaction(newSelection);
             
+            // Redis 预扣减库存
+            stringRedisTemplate.opsForValue().decrement(remainKey);
+
             // 抢课成功，更新布隆过滤器
             String bloomKey = BLOOM_FILTER_KEY_PREFIX + courseId;
             addToBloomFilter(bloomKey, studentNo);
-
-            // 同步操作缓存：如果缓存存在，将新课程的时间加入缓存
-            String studentTimeKey = "course:student:time:" + studentNo;
-            @SuppressWarnings("unchecked")
-            Set<String> selectedTimes = (Set<String>) redisTemplate.opsForValue().get(studentTimeKey);
-            if (selectedTimes != null) {
-                List<ClassTime> newCourseTimes = classTimeService.selectByMainId(courseId);
-                if (newCourseTimes != null) {
-                    for (ClassTime ct : newCourseTimes) {
-                        if (ct.getWeekday() != null && ct.getStartSection() != null && ct.getEndSection() != null) {
-                            for (int i = ct.getStartSection(); i <= ct.getEndSection(); i++) {
-                                selectedTimes.add(ct.getWeekday() + "-" + i);
-                            }
-                        }
-                    }
-                    redisTemplate.opsForValue().set(studentTimeKey, selectedTimes, 10, TimeUnit.MINUTES);
-                }
-            }
 
             stringRedisTemplate.opsForValue().set(statusKey, "SUCCESS: 选课成功", 5, TimeUnit.MINUTES);
             stats.step6Cost.addAndGet((System.nanoTime() - s6) / 1000000);
@@ -398,18 +389,12 @@ public class CourseRushConsumer {
 
         } catch (Exception e) {
             log.error("处理抢课请求时出错: " + payload, e);
+            // 发生异常时清除时间冲突缓存，确保下次重试能获取最新数据
+            studentCourseSelectionService.deleteStudentTimeCache(studentNo);
+
             stringRedisTemplate.opsForValue().set(statusKey, "FAILED: 系统错误", 5, TimeUnit.MINUTES);
             stats.failCount.incrementAndGet();
-            
-            // 异常时回滚redis库存
-            if (hasDeductedRedis) {
-                 try {
-                     stringRedisTemplate.opsForValue().increment(REMAIN_KEY_PREFIX + courseId);
-                 } catch (Exception redisEx) {
-                     log.error("回滚 Redis 库存失败: " + courseId, redisEx);
-                 }
-            }
-            
+
         } finally {
             // 计算瓶颈：只要有步骤完成（耗时>=0），就参与比较，记录耗时最长的步骤
             long c2 = cost2.get();
@@ -488,7 +473,8 @@ public class CourseRushConsumer {
     // 内部类封装布隆过滤器逻辑
     private static class BloomFilterContainer {
         // 位数组大小，根据最大课程容量预估调整
-        private static final int DEFAULT_SIZE = 100000;
+        // 扩容至 100W 以降低高并发选课下的误判率 (原 10W 在 3W+ 数据下误判率较高)
+        private static final int DEFAULT_SIZE = 1000000;
         // 哈希函数数量
         private static final int HASH_COUNT = 3;
         

@@ -21,6 +21,12 @@ public interface IStudentCourseSelectionService extends IService<StudentCourseSe
     Result<String> rush(String courseId, String studentNo);
 
     /**
+     * 保存选课记录 (事务操作)
+     * @param studentCourseSelection 选课信息
+     */
+    void saveSelectionWithTransaction(StudentCourseSelection studentCourseSelection);
+
+    /**
      * 校验选课时间
      * @param studentNo 学号
      * @return 错误信息，若通过则返回 null
@@ -42,4 +48,17 @@ public interface IStudentCourseSelectionService extends IService<StudentCourseSe
      * @return 覆盖课程类型
      */
     Integer getOverrideCourseType(String studentNo, String courseId);
+
+    /**
+     * 同步操作缓存：如果缓存存在，将新课程的时间加入缓存
+     * @param studentNo 学号
+     * @param courseId 课程ID
+     */
+    void addStudentTimeCache(String studentNo, String courseId);
+
+    /**
+     * 删除学生课程时间缓存
+     * @param studentNo 学号
+     */
+    void deleteStudentTimeCache(String studentNo);
 }

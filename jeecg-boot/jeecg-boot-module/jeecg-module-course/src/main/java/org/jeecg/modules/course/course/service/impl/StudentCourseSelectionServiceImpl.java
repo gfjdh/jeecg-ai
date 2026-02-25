@@ -25,6 +25,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
@@ -63,6 +64,15 @@ public class StudentCourseSelectionServiceImpl extends ServiceImpl<StudentCourse
 
     @Autowired
     private IClassTimeService classTimeService;
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void saveSelectionWithTransaction(StudentCourseSelection studentCourseSelection) {
+        boolean saveSuccess = this.save(studentCourseSelection);
+        if (!saveSuccess) {
+            throw new RuntimeException("Save course selection failed");
+        }
+    }
 
     @Override
     public Result<String> rush(String courseId, String studentNo) {
@@ -237,5 +247,32 @@ public class StudentCourseSelectionServiceImpl extends ServiceImpl<StudentCourse
             return ((Number) currentVal).intValue();
         }
         return null;
+    }
+
+    @Override
+    public void addStudentTimeCache(String studentNo, String courseId) {
+        // 同步操作缓存：如果缓存存在，将新课程的时间加入缓存
+        String studentTimeKey = "course:student:time:" + studentNo;
+        @SuppressWarnings("unchecked")
+        Set<String> selectedTimes = (Set<String>) redisTemplate.opsForValue().get(studentTimeKey);
+        if (selectedTimes != null) {
+            List<ClassTime> newCourseTimes = classTimeService.selectByMainId(courseId);
+            if (newCourseTimes != null) {
+                for (ClassTime ct : newCourseTimes) {
+                    if (ct.getWeekday() != null && ct.getStartSection() != null && ct.getEndSection() != null) {
+                        for (int i = ct.getStartSection(); i <= ct.getEndSection(); i++) {
+                            selectedTimes.add(ct.getWeekday() + "-" + i);
+                        }
+                    }
+                }
+                redisTemplate.opsForValue().set(studentTimeKey, selectedTimes, 10, TimeUnit.MINUTES);
+            }
+        }
+    }
+
+    @Override
+    public void deleteStudentTimeCache(String studentNo) {
+        String studentTimeKey = "course:student:time:" + studentNo;
+        redisTemplate.delete(studentTimeKey);
     }
 }
