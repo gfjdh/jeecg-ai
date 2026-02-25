@@ -11,8 +11,9 @@
 ### 学生模块代码位置
 
 **后端（Spring Boot）**
-- 学生模块：[jeecg-boot/jeecg-boot-module/jeecg-module-student/](jeecg-boot/jeecg-boot-module/jeecg-module-student/)
+- [学生模块](jeecg-boot/jeecg-boot-module/jeecg-module-student/src/main/java/org/jeecg/modules/student/)
+- [选课模块](jeecg-boot/jeecg-boot-module/jeecg-module-course/src/main/java/org/jeecg/modules/course/)
 
 **前端（Vue3 + Ant Design Vue）**
-- 页面视图：[jeecgboot-vue3/src/views/student/](jeecgboot-vue3/src/views/student/)
-- API 接口：[jeecgboot-vue3/src/api/student/](jeecgboot-vue3/src/api/student/)
+- [页面视图](jeecgboot-vue3/src/views/student/)
+- [API 接口](jeecgboot-vue3/src/api/student/)
