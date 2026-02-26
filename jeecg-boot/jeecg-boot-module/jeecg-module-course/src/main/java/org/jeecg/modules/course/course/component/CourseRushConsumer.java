@@ -1,8 +1,5 @@
 package org.jeecg.modules.course.course.component;
 
-import org.jeecg.modules.course.course.entity.ClassTime;
-import org.jeecg.modules.course.course.service.IClassTimeService;
-import java.util.Set;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +18,6 @@ import org.jeecg.modules.course.course.entity.TeacherCourse;
 import org.jeecg.modules.course.course.service.IStudentCourseSelectionService;
 import org.jeecg.modules.course.course.service.ITeacherCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,9 +28,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 public class CourseRushConsumer {
 
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
-
-    @Autowired
     private org.springframework.data.redis.core.StringRedisTemplate stringRedisTemplate;
     
     @Autowired
@@ -42,9 +35,6 @@ public class CourseRushConsumer {
     
     @Autowired
     private ITeacherCourseService teacherCourseService;
-
-    @Autowired
-    private IClassTimeService classTimeService;
 
     private final Map<String, BloomFilterContainer> localBloomFilters = new ConcurrentHashMap<>();
 
